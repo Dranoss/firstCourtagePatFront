@@ -1,0 +1,48 @@
+:host{
+  color: var(--text-color);
+}
+
+footer{
+  position: relative;
+  width: 100%;
+  background-color: rgb(219, 219, 219);
+  padding-top: 40px;
+  padding-bottom: 80px;
+}
+
+.logo{
+  width: 13%;
+  height: 13%;
+  align-self: center;
+}
+
+.container{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.footerElement{
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-left: 3px solid rgb(160, 160, 160);
+  padding: 0px 30px;
+}
+
+p, h3{
+  width: 100%;
+  margin: 5px 0;
+}
+
+h3{
+  margin-top: 0;
+}
+
+p{
+  font-weight: lighter;
+}
+
+.lastP{
+  margin-bottom: 0;
+}
