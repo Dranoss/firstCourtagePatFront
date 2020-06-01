@@ -1,0 +1,68 @@
+<div class="container">
+  <iframe src="{{videoUrl}}" frameborder="0"></iframe>
+  <button *ngIf="isAdmin()" (click)="toggleDisplayEditFormUrl()">Editer</button>
+  <form *ngIf="displayEditFormUrl" (ngSubmit)="videoUrlForm.valid && onSubmitUrlForm()" #videoUrlForm="ngForm">
+    <div class="inputContainer">
+      <label for="videoUrl">Lien vidéo<span>*</span></label>
+      <input type="text" name="videoUrl" placeholder="https://wwww.youtube.com" [(ngModel)]="videoModel.url" #videoUrl="ngModel" required>
+    </div>
+    <div class="errorMessage" *ngIf="videoUrl.errors?.required && videoUrlForm.submitted">Une url pour la viédo est requise</div>
+    <div class="buttonContainer">
+      <button type="submit">Valider</button>
+      <button class="quitForm" (click)="toggleDisplayEditFormUrl()">Annuler</button>
+    </div>
+  </form>
+</div>
+<div class="container">
+  <div class="textCard" *ngFor="let text of texts">
+    <div class="text">
+      {{text.text}}
+    </div>
+    <div class="buttonContainer">
+      <button *ngIf="isAdmin()" (click)="activeEditTextMethods(text)">Editer</button>
+      <button class="quitForm" *ngIf="isAdmin()" (click)="deleteText(text)">Supprimer</button>
+    </div>
+  </div>
+  <form *ngIf="displayEditText" (ngSubmit)="writtingSectionForm.valid && onSubmitTextForm()" #writtingSectionForm="ngForm">
+    <div class="inputContainer">
+      <label for="text">Texte<span>*</span></label>
+      <textarea name="text" id="text" cols="90" rows="10" placeholder="Tapez votre texte ici" [(ngModel)]="textModel.text" #text="ngModel" required></textarea>
+    </div>
+    <div class="errorMessage" *ngIf="text.errors?.required && writtingSectionForm.submitted">Un texte est requis</div>
+    <div class="buttonContainer">
+      <button *ngIf="displayNewText" (click)="createNewText(textModel)">Valider</button>
+      <button *ngIf="!displayNewText" type="submit">Valider edit</button>
+      <button class="quitForm" (click)="toggleDisplayEditText(); initalizeTextForm()">Annuler</button>
+    </div>
+  </form>
+  <div class="container add">
+    <button *ngIf="isAdmin()" (click)="toggleDisplayNewTextButton()">Nouveau</button>
+  </div>
+</div>
+<div class="pictureContainer">
+  <div class="picture" *ngFor="let picture of pictures, let i = index">
+    <div class="container">
+      <img class="picture" src="{{picture.url}}" alt="Picture {{i}}">
+      <button *ngIf="isAdmin()" (click)="activeEditPictureMethods(picture)">Editer</button>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <form *ngIf="displayEditPicture" (ngSubmit)="pictureForm.valid && onSubmitPictureForm()" #pictureForm="ngForm">
+    <div class="inputContainer">
+      <label for="pictureUrl">Lien photo<span>*</span></label>
+      <input type="text" name="pictureUrl" placeholder="https://mypicture.com" [(ngModel)]="pictureModel.url" #pictureUrl="ngModel" required>
+    </div>
+    <div class="errorMessage" *ngIf="pictureUrl.errors?.required && pictureForm.submitted">Une url pour la phooto est requise</div>
+    <div class="buttonContainer">
+      <button type="submit">Valider</button>
+      <button class="quitForm" (click)="toggleDisplayEditPicture(); initalizePictureForm()">Annuler</button>
+    </div>
+  </form>
+</div>
+
+<!-- A SUPPRIMER LORSQUE LA PAGE SERA VALIDEE PAR LE CLIENT -->
+<div class="buttonContainer">
+  <button (click)="roleIsClient()">Vue Client</button>
+  <button (click)="roleIsClient()">Vue Admin</button>
+</div>
