@@ -11,6 +11,8 @@ import { BrokerageComponent } from './pages/brokerage/brokerage.component';
 import { BusinessContributorComponent } from './pages/business-contributor/business-contributor.component';
 import { ConsultancyComponent } from './pages/consultancy/consultancy.component';
 import { LoginComponent } from './pages/login/login.component';
+import { YouTubePlayerModule } from '@angular/youtube-player';
+import { VideoComponent } from './video/video/video.component';
 
 @NgModule({
   declarations: [
@@ -21,14 +23,19 @@ import { LoginComponent } from './pages/login/login.component';
     BrokerageComponent,
     BusinessContributorComponent,
     ConsultancyComponent,
-    LoginComponent
+    LoginComponent,
+    VideoComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    YouTubePlayerModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [VideoComponent],
 })
 export class AppModule { }
+
+

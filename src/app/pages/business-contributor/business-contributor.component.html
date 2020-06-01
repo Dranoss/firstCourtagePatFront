@@ -1,12 +1,13 @@
 <div class="container">
-  <iframe src="{{videoUrl}}" frameborder="0"></iframe>
+  <apa-video [videoCode]="videoCode"></apa-video>
+  <!-- <iframe src="{{videoUrl}}" frameborder="0"></iframe> -->
   <button *ngIf="isAdmin()" (click)="toggleDisplayEditFormUrl()">Editer</button>
   <form *ngIf="displayEditFormUrl" (ngSubmit)="videoUrlForm.valid && onSubmitUrlForm()" #videoUrlForm="ngForm">
     <div class="inputContainer">
-      <label for="videoUrl">Lien vidéo<span>*</span></label>
-      <input type="text" name="videoUrl" placeholder="https://wwww.youtube.com" [(ngModel)]="videoModel.url" #videoUrl="ngModel" required>
+      <label for="videoCode">Lien vidéo<span>*</span></label>
+      <input type="text" name="videoCode" placeholder="oPqHzTLgBr0" [(ngModel)]="videoModel.code" #videoCode="ngModel" required>
     </div>
-    <div class="errorMessage" *ngIf="videoUrl.errors?.required && videoUrlForm.submitted">Une url pour la viédo est requise</div>
+    <div class="errorMessage" *ngIf="videoCode.errors?.required && videoUrlForm.submitted">Un code pour la viédo est requis</div>
     <div class="buttonContainer">
       <button type="submit">Valider</button>
       <button class="quitForm" (click)="toggleDisplayEditFormUrl()">Annuler</button>
