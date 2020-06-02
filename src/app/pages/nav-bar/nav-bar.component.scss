@@ -14,46 +14,56 @@
   cursor: pointer;
 }
 
+.separator{
+  width: 40%;
+  margin: auto;
+}
+
 .account{
   position: absolute;
   align-items: center;
   top: 0;
   right: 0;
+  margin-top: 5px;
   margin-right: 2%;
   padding-bottom: 2px;
-  width: 125px;
+  width: 115px;
   display: flex;
   justify-content: flex-end;
-  border-bottom: solid 1px var(--text-color);
   cursor: pointer;
+  font-family: var(--title-font);
+  font-size: small;
+  text-decoration: underline;
 }
 
 .menu{
   display: flex;
   justify-content: space-evenly;
-  width: 50%;
+  width: 70%;
   margin: 10px auto;
+  font-weight: 500;
 }
 
 .menuElement{
-  width: 25%;
+  width: 15%;
   padding: 5px 0;
   text-align: center;
   background: linear-gradient(var(--text-color),var(--text-color)) center bottom;
   background-size: 0% 2px;
   cursor: pointer;
   border-radius: 5px;
+  font-family: var(--title-font);
 }
 
 .active{
   padding-bottom: 1px;
   background-size: 100% 2px;
   background-repeat:no-repeat;
-  transition: all 0.5s;
+  transition: background 1s;
 }
 
-.menuElement:hover{
+.menuElement:hover, .active:hover{
   font-size: larger;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  transition: all 0.2s;
+  // transition: box-shadow 1s;
 }
