@@ -11,7 +11,11 @@ export class BusinessContributorComponent implements OnInit {
   pictureModel = {id: 0, url: ''};
   videoCode = 'https://www.dailymotion.com/video/x59050';
   texts = [{id: 1, text: 'Quid? qui se etiam nunc subsidiis patrimonii aut amicorum liberalitate sustentant, hos perire patiemur? An, si qui frui publico non potuit per hostem, hic tegitur ipsa lege censoria; quem is frui non sinit, qui est, etiamsi non appellatur, hostis, huic ferri auxilium non oportet? Retinete igitur in provincia diutius eum, qui de sociis cum hostibus, de civibus cum sociis faciat pactiones, qui hoc etiam se pluris esse quam collegam putet, quod ille vos tristia voltuque deceperit, ipse numquam se minus quam erat, nequam esse simularit. Piso autem alio quodam modo gloriatur se brevi tempore perfecisse, ne Gabinius unus omnium nequissimus existimaretur.'}];
-  pictures = [{id: 1, url: 'http://via.placeholder.com/300'}, {id: 2, url: 'http://via.placeholder.com/300'}, {id: 3, url: 'http://via.placeholder.com/300'}];
+  pictures = [
+    {id: 1, url: 'https://images.unsplash.com/photo-1544377193-33dcf4d68fb5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80'},
+    {id: 2, url: 'https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'},
+    {id: 3, url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1002&q=80'}];
+  // pictures = [{id: 1, url: 'http://via.placeholder.com/300'}, {id: 2, url: 'http://via.placeholder.com/300'}, {id: 3, url: 'http://via.placeholder.com/300'}];
   displayEditFormUrl = false;
   displayEditText = false;
   displayNewText = false;
