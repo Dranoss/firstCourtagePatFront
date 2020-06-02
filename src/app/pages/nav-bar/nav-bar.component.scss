@@ -15,10 +15,16 @@
 }
 
 .account{
-  width: 95%;
+  position: absolute;
+  align-items: center;
+  top: 0;
+  right: 0;
+  margin-right: 2%;
+  padding-bottom: 2px;
+  width: 125px;
   display: flex;
   justify-content: flex-end;
-  text-decoration: underline;
+  border-bottom: solid 1px var(--text-color);
   cursor: pointer;
 }
 
@@ -31,6 +37,23 @@
 
 .menuElement{
   width: 25%;
+  padding: 5px 0;
   text-align: center;
+  background: linear-gradient(var(--text-color),var(--text-color)) center bottom;
+  background-size: 0% 2px;
   cursor: pointer;
+  border-radius: 5px;
+}
+
+.active{
+  padding-bottom: 1px;
+  background-size: 100% 2px;
+  background-repeat:no-repeat;
+  transition: all 0.5s;
+}
+
+.menuElement:hover{
+  font-size: larger;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  transition: all 0.2s;
 }
