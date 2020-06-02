@@ -1,4 +1,4 @@
-.test{
+.page{
   margin: 0 auto;
   padding: 0;
   width: 100%;
@@ -7,6 +7,7 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+
 .container{
   width: 100%;
   display: flex;
@@ -40,6 +41,7 @@ button{
   padding: 5px 20px;
   border-radius: 50px;
   width: 100px;
+  cursor: pointer;
   &:hover{
     background-color: var(--text-color);
     color: white;
@@ -91,6 +93,9 @@ input{
 }
 
 .picture{
-  width: 300px;
+  width: 70%;
+  height: 60%;
+  overflow: hidden;
+  margin: 0 3%;
   border-radius: 5px;
 }

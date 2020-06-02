@@ -1,4 +1,4 @@
-<div class="test">
+<div class="page">
 
   <div class="container">
     <apa-video [videoCode]="videoCode"></apa-video>
@@ -42,11 +42,12 @@
     </div>
   </div>
   <div class="pictureContainer">
-    <div class="picture" *ngFor="let picture of pictures, let i = index">
-      <div class="container">
+    <div class="container" *ngFor="let picture of pictures, let i = index">
+    <!-- <div class="picture" *ngFor="let picture of pictures, let i = index"> -->
+      <!-- <div class="container"> -->
         <img class="picture" src="{{picture.url}}" alt="Picture {{i}}">
         <button *ngIf="isAdmin()" (click)="activeEditPictureMethods(picture)">Editer</button>
-      </div>
+      <!-- </div> -->
     </div>
   </div>
   <div class="container">
