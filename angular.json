@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "angpatrimoine"
+    }
+  },
+  "defaultProject": "angpatrimoine",
+  "cli": {
+    "analytics": false
+  }
 }
