@@ -8,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class ConsultancyComponent implements OnInit {
 
   constructor() { }
-
+  articleId = 2;
   ngOnInit(): void {
+    this.sendArticleId();
   }
-
+  sendArticleId(){
+    return this.articleId;
+  }
 }
