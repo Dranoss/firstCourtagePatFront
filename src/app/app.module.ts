@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,7 +13,8 @@ import { BusinessContributorComponent } from './pages/business-contributor/busin
 import { ConsultancyComponent } from './pages/consultancy/consultancy.component';
 import { LoginComponent } from './pages/login/login.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
-import { VideoComponent } from './video/video/video.component';
+import { VideoComponent } from './shared/components/video/video.component';
+import { EditableContentComponent } from './shared/components/editable-content/editable-content.component';
 
 @NgModule({
   declarations: [
@@ -25,12 +27,14 @@ import { VideoComponent } from './video/video/video.component';
     ConsultancyComponent,
     LoginComponent,
     VideoComponent,
+    EditableContentComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     YouTubePlayerModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
