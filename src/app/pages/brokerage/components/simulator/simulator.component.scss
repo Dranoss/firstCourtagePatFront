@@ -6,41 +6,35 @@
   border: 2px solid grey;
   border-radius: 10px;
   border-width: auto;
+}
 
+#form{
+  display: flex;
+  justify-content: center;
+}
 
-  #form{
-    display: flex;
-    justify-content: center;
+input{
+  border-radius: 30px;
+  border-color:solid grey;
+  text-decoration: none;
+  padding: 8px;
+}
 
-    input{
-      border-radius: 30px;
-      border-color:solid grey;
-      text-decoration: none;
-      padding: 8px;
-    }
+p{
+  margin-top : 1em;
+  // display: flex; // A SUPPRIMER SI LE CSS FONCTIONNE SANS
+  // flex-direction: row; // A SUPPRIMER SI LE CSS FONCTIONNE SANS
+}
 
+.subcontainer {
+  display : flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 2em;
+}
 
-    p{
-      margin-top : 1em;
-
-    }
-  }
-
-  .subcontainer {
-    display : flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin: 2em;
-  }
-
-  .title {
-    text-align: center;
-    font-size: larger;
-  }
-  .p {
-    display: flex;
-    flex-direction: row;
-  }
-
+.title {
+  text-align: center;
+  font-size: larger;
 }
 
