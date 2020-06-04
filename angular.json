@@ -127,6 +127,6 @@
   },
   "defaultProject": "angpatrimoine",
   "cli": {
-    "analytics": "3b96d1e8-30c2-478a-a618-7c2e8dad6d04"
+    "analytics": false
   }
 }
