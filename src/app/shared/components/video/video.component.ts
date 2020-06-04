@@ -10,7 +10,7 @@ export class VideoComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.videoCode = 'oPqHzTLgBr0';
+    // this.videoCode = 'oPqHzTLgBr0';
     const tag = document.createElement('script');
 
     tag.src = 'https://www.youtube.com/iframe_api';
