@@ -13,6 +13,7 @@ import { ConsultancyComponent } from './pages/consultancy/consultancy.component'
 import { LoginComponent } from './pages/login/login.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { VideoComponent } from './video/video/video.component';
+import { SimulatorComponent } from './pages/brokerage/components/simulator/simulator.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { VideoComponent } from './video/video/video.component';
     ConsultancyComponent,
     LoginComponent,
     VideoComponent,
+    SimulatorComponent,
   ],
   imports: [
     BrowserModule,

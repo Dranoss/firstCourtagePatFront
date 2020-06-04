@@ -1,0 +1,46 @@
+.container {
+  display : flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 2em;
+  border: 2px solid grey;
+  border-radius: 10px;
+  border-width: auto;
+
+
+  #form{
+    display: flex;
+    justify-content: center;
+
+    input{
+      border-radius: 30px;
+      border-color:solid grey;
+      text-decoration: none;
+      padding: 8px;
+    }
+
+
+    p{
+      margin-top : 1em;
+
+    }
+  }
+
+  .subcontainer {
+    display : flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 2em;
+  }
+
+  .title {
+    text-align: center;
+    font-size: larger;
+  }
+  .p {
+    display: flex;
+    flex-direction: row;
+  }
+
+}
+

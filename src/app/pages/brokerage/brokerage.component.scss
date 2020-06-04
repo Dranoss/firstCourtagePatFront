@@ -1,0 +1,23 @@
+.container {
+  flex-direction: row;
+  text-align: center;
+  margin: 3em;
+
+}
+
+p{
+  font-weight: bolder;
+}
+
+button {
+  background-color: rgb(42, 42, 78);
+  color : white;
+  padding: 15px 32px;
+  border-radius: 10px;
+}
+
+apa-simulator{
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
