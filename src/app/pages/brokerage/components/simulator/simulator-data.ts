@@ -1,6 +1,5 @@
 export class SimulatorData {
 
-
     netIncome = 0;
     rentIncome = 0;
     otherIncome = 0;
@@ -24,15 +23,11 @@ export class SimulatorData {
     calculate(){
 
         let mensualite :number;
-       // this.setRate(0,8);
 
         this.totalExpense = this.loanExpense + this.rentExpense + this.otherExpense;
         this.totalIncome = this.netIncome+ this.rentIncome + this.otherIncome;
 
-
-
         mensualite = (this.totalIncome-this.totalExpense)/3;
         this.loanCapacity = Math.round(mensualite *( 1 - ( 1 + this.rate / 12 ) **(-this.duration*12) ) / ( this.rate/ 12 ))
-
     }
 }
