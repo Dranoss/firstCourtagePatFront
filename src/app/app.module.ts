@@ -13,6 +13,7 @@ import { BusinessContributorComponent } from './pages/business-contributor/busin
 import { ConsultancyComponent } from './pages/consultancy/consultancy.component';
 import { LoginComponent } from './pages/login/login.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
+import { SimulatorComponent } from './pages/brokerage/components/simulator/simulator.component';
 import { VideoComponent } from './shared/components/video/video.component';
 import { EditableContentComponent } from './shared/components/editable-content/editable-content.component';
 
@@ -27,6 +28,7 @@ import { EditableContentComponent } from './shared/components/editable-content/e
     ConsultancyComponent,
     LoginComponent,
     VideoComponent,
+    SimulatorComponent,
     EditableContentComponent,
   ],
   imports: [

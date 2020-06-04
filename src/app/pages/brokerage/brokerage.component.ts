@@ -6,13 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./brokerage.component.scss']
 })
 export class BrokerageComponent implements OnInit {
-
-  constructor() { }
+  isShow = true;
   articleId = 3;
+  
+  constructor() { }
+
   ngOnInit(): void {
     this.sendArticleId();
   }
+ 
   sendArticleId(){
     return this.articleId;
+  }
+ 
+  toggleDisplay(){
+    this.isShow= !this.isShow;
   }
 }
