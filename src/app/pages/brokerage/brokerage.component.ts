@@ -7,11 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BrokerageComponent implements OnInit {
   isShow = true;
+  articleId = 3;
+  
   constructor() { }
 
   ngOnInit(): void {
+    this.sendArticleId();
   }
-
+ 
+  sendArticleId(){
+    return this.articleId;
+  }
+ 
   toggleDisplay(){
     this.isShow= !this.isShow;
   }
