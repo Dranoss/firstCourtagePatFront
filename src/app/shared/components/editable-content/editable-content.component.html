@@ -1,31 +1,27 @@
 <div class="page">
-
   <div class="container">
     <apa-video [videoCode]="article.videoCode"></apa-video>
-    <button *ngIf="isAdmin()" (click)="toggleDisplayEditFormUrl()">Editer</button>
-    <form *ngIf="displayEditFormUrl" (ngSubmit)="videoUrlForm.valid && onSubmitUrlForm()" #videoUrlForm="ngForm">
+    <button *ngIf="displayEditButton" (click)="toggleDisplayEditVideoCodeForm()">Editer</button>
+    <form *ngIf="displayEditVideoCodeForm" (ngSubmit)="videoCodeForm.valid && onSubmitVideoCodeForm()" #videoCodeForm="ngForm">
       <div class="inputContainer">
         <label for="videoCode">Code vidéo<span>*</span></label>
         <input type="text" name="videoCode" placeholder="oPqHzTLgBr0" [(ngModel)]="videoModel.code" #videoCode="ngModel" required>
       </div>
-      <div class="errorMessage" *ngIf="videoCode.errors?.required && videoUrlForm.submitted">Un code pour la viédo est requis</div>
+      <div class="errorMessage" *ngIf="videoCode.errors?.required && videoCodeForm.submitted">Un code pour la viédo est requis</div>
       <div class="buttonContainer">
         <button type="submit">Valider</button>
-        <button class="quitForm" (click)="toggleDisplayEditFormUrl()">Annuler</button>
+        <button class="quitForm" (click)="toggleDisplayEditVideoCodeForm()">Annuler</button>
       </div>
     </form>
   </div>
-
-
-
   <div class="container">
     <div class="textCard" *ngFor="let text of article.texts">
       <div class="text">
         {{text.text}}
       </div>
       <div class="buttonContainer">
-        <button *ngIf="isAdmin()" (click)="activeEditTextMethods(text)">Editer</button>
-        <button class="quitForm" *ngIf="isAdmin()" (click)="deleteText(text)">Supprimer</button>
+        <button *ngIf="displayEditButton" (click)="activeEditTextMethods(text)">Editer</button>
+        <button class="quitForm" *ngIf="displayEditButton" (click)="deleteText(text)">Supprimer</button>
       </div>
     </div>
     <form *ngIf="displayEditText" (ngSubmit)="writtingSectionForm.valid && onSubmitTextForm()" #writtingSectionForm="ngForm">
@@ -41,16 +37,13 @@
       </div>
     </form>
     <div class="container add">
-      <button *ngIf="isAdmin()" (click)="toggleDisplayNewTextButton()">Nouveau</button>
+      <button *ngIf="displayEditButton" (click)="toggleDisplayNewTextButton()">Nouveau</button>
     </div>
   </div>
-
-
-
   <div class="pictureContainer">
     <div class="container" *ngFor="let picture of article.pictures, let i = index">
         <img class="picture" src="{{picture.url}}" alt="Picture {{i}}">
-        <button *ngIf="isAdmin()" (click)="activeEditPictureMethods(picture)">Editer</button>
+        <button *ngIf="displayEditButton" (click)="activeEditPictureMethods(picture)">Editer</button>
     </div>
   </div>
   <div class="container">
@@ -66,10 +59,7 @@
       </div>
     </form>
   </div>
-
-  <!-- A SUPPRIMER LORSQUE LA PAGE SERA VALIDEE PAR LE CLIENT -->
   <div class="buttonContainer">
-    <button (click)="roleIsClient()">Vue Client</button>
-    <button (click)="roleIsAdmin()">Vue Admin</button>
+    <button *ngIf="roleIsAdmin" id="changeViewButton" (click)="changeView()">Vue Client / Admin</button>
   </div>
 </div>
