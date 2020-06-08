@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'assets/scss/modules/_fonts.scss';
+
+
+*{
+  margin: 0;
+  padding: 0;
+  font-family: var(--text-font);
+  color: var(--text-color);
+}
+
+html, body{
+  height: 100%;
+  width: 100%;
+}
+
+:root{
+  --text-color:rgb(42, 42, 78);
+  --title-font: 'Cinzel', serif;
+  --text-font: 'Segoe UI', sans-serif;
+}
