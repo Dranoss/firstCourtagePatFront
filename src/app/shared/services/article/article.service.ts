@@ -19,20 +19,20 @@ export class ArticleService {
       {id: 2, url: 'https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'},
       {id: 3, url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1002&q=80'}
     ],
-    videoCode: 'oPqHzTLgBr0'
+    videoCode: 'evkLxCeGWok'
   },
   {
     id: 2,
     texts: [
-      {id: 2, text: 'Ceci est un test pour mon article 2'},
-      {id: 3, text: 'Ceci est un autre test pour mon article 2'}
+      {id: 2, text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'},
+      {id: 3, text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'}
   ],
     pictures: [
       {id: 4, url: 'https://via.placeholder.com/150?text=IMAGE-CONSEIL'},
       {id: 5, url: 'https://via.placeholder.com/150?text=IMAGE-CONSEIL'},
       {id: 6, url: 'https://via.placeholder.com/150?text=IMAGE-CONSEIL'}
     ],
-    videoCode: 'SS4h4BjKfp0'
+    videoCode: '9CkpmNzr5Yw'
   },
   {
     id: 3,
