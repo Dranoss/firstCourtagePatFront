@@ -6,11 +6,19 @@ export class Article{
   texts: ArticleText[];
   pictures: ArticlePicture[];
   videoCode: string;
+  order: {video: number, text: number, picture: number};
 
-  constructor(texts: ArticleText[], pictures: ArticlePicture[], videoCode: string, id?: number){
-    this.id = id;
-    this.texts = texts;
-    this.pictures = pictures;
-    this.videoCode = videoCode;
+  constructor(
+    texts: ArticleText[],
+    pictures: ArticlePicture[],
+    videoCode: string,
+    order: {video: number, text: number, picture: number},
+    id?: number)
+    {
+      this.id = id;
+      this.texts = texts;
+      this.pictures = pictures;
+      this.videoCode = videoCode;
+      this.order = order;
   }
 }
