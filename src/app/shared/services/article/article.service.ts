@@ -21,6 +21,10 @@ export class ArticleService {
       ],
       videoCode: 'evkLxCeGWok',
       order: {video: 1, text: 2, picture: 3},
+      // ou, si on suit la solution du back:
+      // videoOrder: 1,
+      // textOrder: 2,
+      // pictureOrder: 3,
     },
     {
       id: 2,
@@ -34,7 +38,7 @@ export class ArticleService {
         {id: 6, url: 'https://via.placeholder.com/150?text=IMAGE-CONSEIL'}
       ],
       videoCode: '9CkpmNzr5Yw',
-      order: {video: 1, text: 2, picture: 3},
+      order: {video: 2, text: 1, picture: 3}
     },
     {
       id: 3,

@@ -9,7 +9,7 @@ import { User } from '../../core/classes/user';
 export class UserService {
   // A SUPPRIMER LORSQUE NOUS AURONS LE LIEN AVEC LE BACK
   users: User[] = [{
-    role: 'admin',
+    role: 'client',
     type: '',
     firstname: 'Fabien',
     lastname: 'Jouanneau',
