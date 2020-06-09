@@ -1,5 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr, 'fr');
+
 import {FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -38,7 +42,9 @@ import { EditableContentComponent } from './shared/components/editable-content/e
     YouTubePlayerModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {provide: LOCALE_ID, useValue: 'fr-FR'},
+  ],
   bootstrap: [AppComponent],
   exports: [VideoComponent],
 })
