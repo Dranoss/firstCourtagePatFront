@@ -46,6 +46,14 @@ export class ArticleService {
     ],
     videoCode: 'p725rZK8--E'
   },
+  {
+    id: 4,
+    texts : [
+      {id : 5, text : "COURTAGE PATRIMOINE, située au 37 avenue Jean Lassauguette Bat E Apt 108 33270 Floirac est une EURL au capital de 1 000 €, enregistrée au RCS de Bordeaux sous le numéro N° XXXXXXXXXXX. Enregistrée à l’ORIAS sous le N° XXXXXX (www.orias.fr) en qualité de : IOBSP (Intermédiaire en Opération Bancaire et Service de Paiement) IAS (Intermédiaire en Assurance) Directeur de la publication du site : Mr Glenn Gendre (gérant COURTAGE PATRIMOINE)"}
+    ],
+    pictures : null,
+    videoCode : null
+  }
 ];
 
   // A DEFINIR POUR LIER LE BACK

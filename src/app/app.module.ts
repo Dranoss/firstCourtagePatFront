@@ -20,6 +20,7 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
 import { SimulatorComponent } from './pages/brokerage/components/simulator/simulator.component';
 import { VideoComponent } from './shared/components/video/video.component';
 import { EditableContentComponent } from './shared/components/editable-content/editable-content.component';
+import { LegalComponent } from './pages/legal/legal.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { EditableContentComponent } from './shared/components/editable-content/e
     VideoComponent,
     SimulatorComponent,
     EditableContentComponent,
+    LegalComponent,
   ],
   imports: [
     BrowserModule,
