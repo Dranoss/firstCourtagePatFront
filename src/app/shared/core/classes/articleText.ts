@@ -1,9 +1,9 @@
 export class ArticleText{
   id?: number;
-  text: string;
+  content: string;
 
-  constructor(text: string, id: number){
+  constructor(content: string, id: number){
     this.id = id;
-    this.text = text;
+    this.content = content;
   }
 }

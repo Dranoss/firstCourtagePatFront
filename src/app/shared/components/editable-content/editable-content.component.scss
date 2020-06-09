@@ -1,5 +1,8 @@
 .page{
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
+  margin-top: 50px;
   padding: 0;
   width: 100%;
   background-image: url(../../../../assets/img/Background2.png);
@@ -13,29 +16,29 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 30px 0;
+  margin: 10px 0;
 }
 
+// PARAGRAPHES
 .textCard{
   width: 60%;
-  margin: 10px auto;
+  margin: 10px 0 10px 20%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
-.text{
+.subcontainer{
   width: 100%;
   text-align: left;
 }
 
+// BOUTONS
 .buttonContainer{
-  width: 50%;
-  margin: auto;
+  width: 75%;
+  margin: 0 auto;
   display: flex;
   justify-content: space-around;
 }
-
 button{
   margin: 10px 0;
   padding: 5px 20px;
@@ -49,7 +52,6 @@ button{
     color: white;
   }
 }
-
 .quitForm{
   color: red;
   border-color: red;
@@ -58,7 +60,6 @@ button{
     color: white;
   }
 }
-
 #changeViewButton{
   width: 30%;
   font-size: medium;
@@ -69,11 +70,22 @@ button{
     color: var(--text-color);
   }
 }
-
+.arrowContainer{
+  width: 3%;
+  position: absolute;
+  right: 0;
+  margin-right: 3%;
+}
+.arrowButton{
+ padding: 0;
+ text-align: center;
+ width: 30px;
+}
 .add{
   margin-top: 0px;
 }
 
+// FORMULAIRE
 form{
   width: 40%;
   display: flex;
@@ -82,34 +94,55 @@ form{
   border: 1px solid grey;
   border-radius: 5px;
 }
-
 .inputContainer{
   display: flex;
   width: 100%;
   justify-content: space-evenly;
   margin-top: 10px;
 }
-
 input{
   width: 70%;
 }
-
 .errorMessage, span{
   color: red;
 }
 
+// IMAGES
 .pictureContainer{
   display: flex;
   width: 80%;
   margin: auto;
-  margin-bottom: 30px;
   justify-content: space-between;
 }
+.pictureCard{
+  margin-bottom: 0;
+}
 
+img{
+  max-width: 100%;
+  max-width: 100%;
+}
 .picture{
   width: 70%;
-  height: 60%;
+  // max-width: 70%;
+  height: 200px;
+  // height: 60%;
+  object-fit: cover;
   overflow: hidden;
   margin: 0 3%;
   border-radius: 5px;
+}
+
+// GESTION DE L'ORDRE D'AFFICHAGE
+.firstInOrder{
+  order: 1;
+}
+.secondInOrder{
+  order: 2;
+}
+.thirdInOrder{
+  order: 3;
+}
+.footer{
+  order: 4;
 }
