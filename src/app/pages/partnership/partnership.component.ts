@@ -9,7 +9,13 @@ export class PartnershipComponent implements OnInit {
 
   constructor() { }
 
+  articleId=5;
+
   ngOnInit(): void {
+  }
+
+  sendActicleId(){
+    return this.articleId;
   }
 
 }
