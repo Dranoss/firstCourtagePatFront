@@ -21,6 +21,11 @@ import { SimulatorComponent } from './pages/brokerage/components/simulator/simul
 import { VideoComponent } from './shared/components/video/video.component';
 import { EditableContentComponent } from './shared/components/editable-content/editable-content.component';
 import { LegalComponent } from './pages/legal/legal.component';
+import { CorporateComponent } from './pages/corporate/corporate.component';
+import { ClaimComponent } from './pages/claim/claim.component';
+import { RgpdComponent } from './pages/rgpd/rgpd.component';
+import { PartnershipComponent } from './pages/partnership/partnership.component';
+import { RecruitmentComponent } from './pages/recruitment/recruitment.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +41,11 @@ import { LegalComponent } from './pages/legal/legal.component';
     SimulatorComponent,
     EditableContentComponent,
     LegalComponent,
+    CorporateComponent,
+    ClaimComponent,
+    RgpdComponent,
+    PartnershipComponent,
+    RecruitmentComponent,
   ],
   imports: [
     BrowserModule,
