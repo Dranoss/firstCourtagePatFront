@@ -9,7 +9,13 @@ export class CorporateComponent implements OnInit {
 
   constructor() { }
 
+  articleId = 4;
+
   ngOnInit(): void {
+  }
+
+  sendActicleId(){
+    return this.articleId;
   }
 
 }
