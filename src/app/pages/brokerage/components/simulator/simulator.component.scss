@@ -3,11 +3,10 @@
   display : flex;
   flex-direction: column;
   justify-content: center;
-  margin: 2em;
-  border: 2px solid grey;
-  border-radius: 10px;
-  border-width: auto;
-  margin: auto;
+  margin: 6em auto 2em auto;
+  //border: 2px solid grey;
+  //border-radius: 10px;
+  //border-width: auto;
 }
 .formElementContainer{
   display: flex;
@@ -28,7 +27,7 @@ margin-bottom: 5px;
 
 .lign{
   width: 94%;
-  border-radius: 30px;
+  border-radius: 10px;
   border: 2px solid var(--text-color);
   text-decoration: none;
   font-size: medium;
@@ -38,6 +37,10 @@ margin-bottom: 5px;
 
 p, .result{
   margin-top : 1em;
+}
+
+.result .lign{
+  border: none;
 }
 
 .subcontainer {
