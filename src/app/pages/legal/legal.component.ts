@@ -9,13 +9,9 @@ export class LegalComponent implements OnInit {
 
   constructor() { }
 
-  articleId = 4;
 
   ngOnInit(): void {
-    this.sendActicleId();
-  }
-  sendActicleId(){
-    return this.articleId;
+
   }
 
 }
