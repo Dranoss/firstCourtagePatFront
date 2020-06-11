@@ -1,0 +1,35 @@
+.intro-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
+  background-color: #E2E3E3;
+  border-radius: 1.5em;
+  padding-left: 5em;
+  padding-right: 5em;
+  height: 40vh;
+}
+
+.intro-wrapper{
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper{
+  display: flex;
+  padding-top: 3vh;
+}
+
+.all-wrapper{
+  padding-top: 5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+p{
+  text-align: justify;
+}
