@@ -23,7 +23,6 @@ import { EditableContentComponent } from './shared/components/editable-content/e
 import { LegalComponent } from './pages/legal/legal.component';
 import { CorporateComponent } from './pages/corporate/corporate.component';
 import { ClaimComponent } from './pages/claim/claim.component';
-import { RgpdComponent } from './pages/rgpd/rgpd.component';
 import { PartnershipComponent } from './pages/partnership/partnership.component';
 import { RecruitmentComponent } from './pages/recruitment/recruitment.component';
 
@@ -43,7 +42,6 @@ import { RecruitmentComponent } from './pages/recruitment/recruitment.component'
     LegalComponent,
     CorporateComponent,
     ClaimComponent,
-    RgpdComponent,
     PartnershipComponent,
     RecruitmentComponent,
   ],
