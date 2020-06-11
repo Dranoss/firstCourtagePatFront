@@ -1,0 +1,25 @@
+
+.claim{
+  display: flex;
+  justify-content: center;
+}
+
+.claimForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0.5em;
+  width: 120px;
+  border-radius: 30px;
+}
+
+.valider{
+
+  margin-top: 1em;
+  width: 120px;
+
+}
+textarea {
+  resize: none;
+  border-radius: 10px;
+  }

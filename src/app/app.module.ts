@@ -1,5 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr, 'fr');
+
 import {FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -16,6 +20,11 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
 import { SimulatorComponent } from './pages/brokerage/components/simulator/simulator.component';
 import { VideoComponent } from './shared/components/video/video.component';
 import { EditableContentComponent } from './shared/components/editable-content/editable-content.component';
+import { LegalComponent } from './pages/legal/legal.component';
+import { CorporateComponent } from './pages/corporate/corporate.component';
+import { ClaimComponent } from './pages/claim/claim.component';
+import { PartnershipComponent } from './pages/partnership/partnership.component';
+import { RecruitmentComponent } from './pages/recruitment/recruitment.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +39,11 @@ import { EditableContentComponent } from './shared/components/editable-content/e
     VideoComponent,
     SimulatorComponent,
     EditableContentComponent,
+    LegalComponent,
+    CorporateComponent,
+    ClaimComponent,
+    PartnershipComponent,
+    RecruitmentComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +52,9 @@ import { EditableContentComponent } from './shared/components/editable-content/e
     YouTubePlayerModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {provide: LOCALE_ID, useValue: 'fr-FR'},
+  ],
   bootstrap: [AppComponent],
   exports: [VideoComponent],
 })

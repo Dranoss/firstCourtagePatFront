@@ -55,15 +55,9 @@
   font-family: var(--title-font);
 }
 
-.active{
+.menuElement:hover, .active{
   padding-bottom: 1px;
   background-size: 100% 2px;
   background-repeat:no-repeat;
   transition: background 1s;
-}
-
-.menuElement:hover, .active:hover{
-  font-size: larger;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  // transition: box-shadow 1s;
 }

@@ -1,0 +1,35 @@
+.back{
+  display: flex;
+  justify-content: center;
+}
+
+.loginForm{
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0.5em;
+  size: 100%;
+}
+
+.valider{
+  margin-top: 2em;
+  width: 18rem;
+  height: 2.5rem;
+}
+
+input{
+  width: 25rem;
+  height: 3rem;
+  margin-top: 0.5em;
+}
+
+input, label, .valider{
+  font-size: 1.4em;
+}
+
+label{
+  margin-top: 1em;
+}
+
+

@@ -1,32 +1,47 @@
 .container {
+  width: 75%;
   display : flex;
   flex-direction: column;
   justify-content: center;
-  margin: 2em;
-  border: 2px solid grey;
-  border-radius: 10px;
-  border-width: auto;
+  margin: 6em auto 2em auto;
 }
-
-#form{
+.formElementContainer{
   display: flex;
   justify-content: center;
 }
 
-input{
-  border-radius: 30px;
-  border-color:solid grey;
-  text-decoration: none;
-  padding: 8px;
+#form{
+  display: flex;
+  flex-direction: column;
 }
 
-p{
+.element{
+display: flex;
+flex-direction: column;
+width: 100%;
+margin-bottom: 5px;
+}
+
+.lign{
+  width: 94%;
+  border-radius: 10px;
+  border: 2px solid var(--text-color);
+  text-decoration: none;
+  font-size: medium;
+  padding: 5px 3%;
+  margin-top: 5px;
+}
+
+p, .result{
   margin-top : 1em;
-  // display: flex; // A SUPPRIMER SI LE CSS FONCTIONNE SANS
-  // flex-direction: row; // A SUPPRIMER SI LE CSS FONCTIONNE SANS
+}
+
+.result .lign{
+  border: none;
 }
 
 .subcontainer {
+  width: 30%;
   display : flex;
   flex-direction: column;
   justify-content: space-between;
@@ -36,5 +51,31 @@ p{
 .title {
   text-align: center;
   font-size: larger;
+  font-weight: lighter;
+}
+
+.buttonContainer{
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+button{
+  width: 100%;
+  padding: 5px 15px;
+  border: 2px solid var(--text-color);
+  border-radius: 15px;
+  font-size: medium;
+  cursor: pointer;
+  &:hover{
+    background-color: var(--text-color);
+    color: white;
+  }
+}
+
+.final{
+  border-color: transparent;
 }
 

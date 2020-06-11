@@ -1,65 +1,67 @@
 <div class="container">
-
-    <div class="title"> Simulateur de Capacité d'Emprunt</div>
-
-
-
-    <form id="form" name="simulateur" (ngSubmit)="simulatorData.calculate()">
-        <div class="subcontainer">
-            <p>
-                Revenus nets imposable / mois :<br />
-                <input type="number" [(ngModel)]="simulatorData.netIncome" name="revenus net" />
-            </p>
-            <p>
-                Revenus immobilier locatifs / mois :<br />
-                <input type="number" [(ngModel)]="simulatorData.rentIncome"name="revenus locatifs" />
-            </p>
-            <p>
-                Autres revenus / mois :<br />
-                <input type="number" [(ngModel)]="simulatorData.otherIncome"name="revenus autres" />
-            </p>
-            <p>
-              Total revenus / mois :<br />
-              <label >{{simulatorData.totalIncome}}
-            </label> </p>
+  <div class="title"> Simulateur de Capacité d'Emprunt</div>
+  <form id="form" name="simulateur" (ngSubmit)="simulatorData.calculate()">
+    <div class="formElementContainer">
+      <div class="subcontainer">
+        <div class="element">
+          <div> Revenus nets imposable / mois</div>
+          <input class="lign" type="number" [(ngModel)]="simulatorData.netIncome" name="revenus net" />
         </div>
-        <div class="subcontainer">
-            <p>
-                Loyers à charge après acquisition / mois :<br />
-                <input type="number" [(ngModel)]="simulatorData.rentExpense"name="charges loyers" />
-            </p>
-            <p>
-                Crédits en cours après acquisition / mois :<br />
-                <input type="number" [(ngModel)]="simulatorData.loanExpense"name="charges credits" />
-            </p>
-            <p>
-                Autres charges / mois :<br />
-                <input type="number" [(ngModel)]="simulatorData.otherExpense" name="charges autres" />
-            </p>
-            <p>
-              Total charges / mois :<br />
-              <label >{{simulatorData.totalExpense}}
-            </label> </p>
+        <div class="element">
+          <div>Revenus immobilier locatifs / mois</div>
+          <input class="lign" type="number" [(ngModel)]="simulatorData.rentIncome" name="revenus locatifs" />
         </div>
-
-
-        <div class="subcontainer">
-            <p>
-                Durée de crédit / an :<br />
-                <input type="number" [(ngModel)]="simulatorData.duration"name="duree" />
-            </p>
-            <p>
-                Taux d'intérêt (hors assurance) :<br />
-                <input type="number" [(ngModel)]="simulatorData.rate" name="taux" />
-            </p>
-            <p>
-              Capacité de financement :<br />
-              <label >{{simulatorData.loanCapacity}}
-            </label>  </p>
+        <div class="element">
+          <div>Autres revenus / mois</div>
+          <input class="lign" type="number" [(ngModel)]="simulatorData.otherIncome" name="revenus autres" />
         </div>
-
-        <button type="submit" > Valider</button>
-
-    </form>
-
+        <div class="result">
+          <div>Total revenus / mois </div>
+          <div class="lign">
+            {{simulatorData.totalIncome | number:'':'fr-FR'}} €
+          </div>
+        </div>
+      </div>
+      <div class="subcontainer">
+        <div class="element">
+          <div>Loyers à charge après acquisition / mois</div>
+          <input class="lign" type="number" [(ngModel)]="simulatorData.rentExpense" name="charges loyers" />
+        </div>
+        <div class="element">
+          <div>Crédits en cours après acquisition / mois</div>
+          <input class="lign" type="number" [(ngModel)]="simulatorData.loanExpense" name="charges credits" />
+        </div>
+        <div class="element">
+          <div>Autres charges / mois</div>
+          <input class="lign" type="number" [(ngModel)]="simulatorData.otherExpense" name="charges autres" />
+        </div>
+        <div class="result">
+          <div>Total charges / mois </div>
+          <div class="lign">
+            {{simulatorData.totalExpense | number:'':'fr-FR'}} €
+          </div>
+        </div>
+      </div>
+      <div class="subcontainer">
+        <div class="element">
+          <div>Durée de crédit / an</div>
+          <input class="lign" type="number" [(ngModel)]="simulatorData.duration"name="duree" />
+        </div>
+        <div class="element">
+          <div>Taux d'intérêt %</div>
+          <input class="lign" type="number" [(ngModel)]="simulatorData.rate" name="taux" />
+        </div>
+        <div class="element final">
+          <br>
+          <button type="submit" > Valider</button>
+        </div>
+        <div class="result">
+          <div><b>Montant Empruntable :</b></div>
+          <div class="lign final">
+            {{simulatorData.loanCapacity | number:'':'fr-FR'}} €
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
