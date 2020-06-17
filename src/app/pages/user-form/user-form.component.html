@@ -45,7 +45,7 @@
 
 
 <H4> Liste des Clients</H4>
-<select [(ngModel)]="selected" (change)="go()">
+<select [(ngModel)]="selected" (change)="go()" name="selectUser">
   <option *ngFor="let user of users" [ngValue]="user.id">
     {{user.id}}
     {{user.firstName}}
@@ -53,12 +53,16 @@
   </option>
 </select>
 
+<div>
+  <button name="button" type="submit" onsubmit="deleteUser()"> Supprimer le client selectionné</button>
+</div>
+
 <!--
 <H4> Liste des projets du client : {{selected.firstName}}{{selected.lastName}} </H4> -->
 
 
-<select [(ngModel)]="selectedProject" (change)="details()">
-  <option *ngFor="let project of projects" [ngValue]="project">
+<select [(ngModel)]="selectedProject" (change)="details()" name="selectProj">
+  <option *ngFor="let project of projects" [ngValue]="project" name="optionListe">
   id   {{project.id}}
   nom  {{project.name}}
   montant  {{project.amount}}
@@ -67,7 +71,7 @@
 
 <div *ngIf="selectedProject?.name" class="formProject">
   <H4> Infos du projet  : </H4>
-  <form (ngSubmit)="modify()" class="projetdetails" >
+  <form (ngSubmit)="modify()" class="projetdetails" name="formDetails" >
     <label> Nom du Projet  </label>
     <input name="name" type="text" [(ngModel)]="selectedProject.name">
     <label> Type du Projet  </label>
@@ -81,6 +85,9 @@
   <button type="submit">Modifier </button>
   </form>
 </div>
+
+
+
 
 
 
