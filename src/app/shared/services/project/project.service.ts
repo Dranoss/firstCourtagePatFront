@@ -9,11 +9,13 @@ import { TypeProject } from '../../core/classes/typeProject';
 })
 export class ProjectService {
   //Projects
-  private static URL_GET_PROJECTS = 'http://localhost:8080/projects/users';
-  private static URL_PUT_PROJECT = 'http://localhost:8080/projects/projectby';
-  private static URL_GET_TYPEPROJECTS = 'http://localhost:8080/typeProjects';
+  private static URL_GET_PROJECTS = 'http://localhost:8080/projects';
+  private static URL_GET_PROJECTSBYUSERID = 'http://localhost:8080/project';
+  private static URL_PUT_PROJECT = 'http://localhost:8080/projects';
 
-  private URL_GET_PROJECTSBYUSER = 'http://localhost:8080/projects/users';
+  private static URL_GET_TYPEPROJECTS = 'http://localhost:8080/typeProjects';
+  private static URL_POST_PROJECT = 'http://localhost:8080/projects/project';
+
 
 
   constructor(private http: HttpClient) {
@@ -24,8 +26,9 @@ export class ProjectService {
 
   // Projects
   getProjectsByUserId(id: number): Observable<Project[]>{
-    return this.http.get<Project[]>(ProjectService.URL_GET_PROJECTS + '/' +id);
+    return this.http.get<Project[]>(ProjectService.URL_GET_PROJECTSBYUSERID + '/' +id);
  }
+
 
 
  getProjects(): Observable<Project[]> {
@@ -39,4 +42,8 @@ export class ProjectService {
   putProject(project: Project): Observable<Project> {
     return this.http.put<Project>(ProjectService.URL_PUT_PROJECT, project);
   }
+  addProject(user: User , project: Project): Observable<Project> {
+    return this.http.post<Project>(ProjectService.URL_POST_PROJECT, { user, project });
+  }
+
 }

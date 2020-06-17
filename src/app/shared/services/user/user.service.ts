@@ -15,12 +15,14 @@ export class UserService {
 
   private URL_GET_PROJECTS = 'http://localhost:8080/projects';
   private URL_PUT_PROJECT = 'http://localhost:8080/projects/projectby';
+  private URL_POST_PROJECT = 'http://localhost:8080/projects';
+
   private URL_DELETE_USER = 'http://localhost:8080/deluser';
 
 
   private URL_GET_TYPEPROJECTS = 'http://localhost:8080/typeProjects';
 
-  private URL_GET_PROJECTSBYUSER = 'http://localhost:8080/projects/users';
+  //private URL_GET_PROJECTSBYUSER = 'http://localhost:8080/projects/users';
 
   private URL_POST_USER = 'http://www.courtagepatrimoine.net/users/user';
   private URL_UPDATE_USER = 'http://www.courtagepatrimoine.net/users/user';
@@ -31,21 +33,11 @@ export class UserService {
     return this.http.get<User[]>(this.URL_GET_USERS);
   }
 
-  getProjects(): Observable<Project[]> {
-    return this.http.get<Project[]>(this.URL_GET_TYPEPROJECTS);
-  }
 
-  getTypeProjects(): Observable<TypeProject[]> {
-    return this.http.get<TypeProject[]>(this.URL_GET_PROJECTS);
-  }
 
-  putProject(project: Project): Observable<Project> {
-    return this.http.put<Project>(this.URL_PUT_PROJECT, project);
-  }
-
-  getProjectsByUserId(id: number): Observable<Project[]> {
-    return this.http.get<Project[]>(this.URL_GET_PROJECTSBYUSER + '/' + id);
-  }
+  // getProjectsByUserId(id: number): Observable<Project[]> {
+  //   return this.http.get<Project[]>(this.URL_GET_PROJECTSBYUSER + '/' + id);
+  // }
 
   getUserById(id: number): Observable<User> {
     return this.http.get<User>(`${this.URL_GET_USER_BY_ID}/${id}`);

@@ -14,16 +14,18 @@ import { ProjectService } from 'src/app/shared/services/project/project.service'
 export class UserFormComponent implements OnInit {
 
   users: User[];
-  project: Project;
+  project: Project = new Project();
   projects: Project[];
   projectsAll: Project[];
-  selected: number;
+  selected: User;
+
   selectedProject: Project;
   selectedAll: Project[];
   selectedOneProject: Project;
   selectedType: TypeProject;
   typeProjects: TypeProject[];
 
+  userClicked = false;
 
   constructor(private userService: UserService, private projectService: ProjectService) {
 
@@ -31,21 +33,13 @@ export class UserFormComponent implements OnInit {
 
   ngOnInit(): void {
 
+    // Initialize users' list and types project's list
+    // liste de tous les users
+    this.getTheUserList();
 
-    // tous les users
-    this.getUsers().subscribe(data => {
-      this.users = data;
-      for (const user of this.users) {
-        console.log(user.lastName);
-      }
-      console.log(this.users);
-    });
+    // liste de tous les types de projects
+    this.getTypeOfProjects();
 
-    // tous les types de projects
-    this.getTypeProjects().subscribe(data => {
-      this.typeProjects = data;
-      console.log(data);
-    });
 
     // // tous les projects
     // this.getProjects().subscribe(data => {
@@ -64,41 +58,78 @@ export class UserFormComponent implements OnInit {
 
   }
 
-  public getProjects(): Observable<Project[]> {
-    return this.userService.getProjects();
+  public getTheUserList() {
+    this.getUsers().subscribe(data => {
+      this.users = data;
+      for (const user of this.users) {
+        console.log(user.lastName);
+      }
+      console.log(this.users);
+    });
+
+  }
+  public getTypeOfProjects() {
+
+    this.getTypeProjects().subscribe(data => {
+      this.typeProjects = data;
+      console.log(data);
+    });
+
   }
   public getUsers(): Observable<User[]> {
     return this.userService.getUsers();
   }
-  public getTypeProjects(): Observable<TypeProject[]> {
-    return this.userService.getTypeProjects();
-  }
 
+  // public getTypeProjects(): Observable<TypeProject[]> {
+  //   return this.typeProjectService.getTypeProjects();
+  // }
 
-  go(): void {
+  public getProjectsByUser() {
     //      this.getProjectsByUser(this.selected);
     // console.log('======>  salut le userid selectionne ==========>' + this.selected.id);
     // this.userService.getProjectsByUserId(this.selected.id);
 
-    this.userService.getProjectsByUserId(this.selected).subscribe(data => {
-      console.log(data);
+    this.projectService.getProjectsByUserId(this.selected.id).subscribe(data => {
       this.projects = data;
+      data.length === 0 ? this.userClicked = false : this.userClicked = true;
     });
 
   }
+  // public getProjects(): Observable<Project[]> {
+  //   return this.userService.getProjects();
+  // }
 
-  modify(): void {
 
-    this.userService.putProject(this.selectedProject).subscribe(data => {
+
+  clickOnUser(): void {
+    this.getProjectsByUser();
+
+
+  }
+
+  modifyProjectDetails(): void {
+
+    this.projectService.putProject(this.selectedProject).subscribe(data => {
       console.log('update le projet ' + this.selectedProject.name);
       this.selectedProject = data;
 
     });
+    this.getTheUserList();
 
   }
-  deleteUser(){
+  deleteUser() {
 
-    this.userService.deleteUserById(this.selected).subscribe(data => {
+    this.userService.deleteUserById(this.selected.id).subscribe(data => {
+      console.log('delete  le client ' + this.selected);
+
+    });
+
+
+  }
+
+  newProject() {
+
+    this.projectService.addProject(this.selected,this.project).subscribe(data => {
       console.log('delete  le client ' + this.selected);
 
     });
@@ -113,9 +144,5 @@ export class UserFormComponent implements OnInit {
 
   }
 
-  public getProjectsByUser(userSelected: User): Observable<Project[]> {
-    return this.userService.getProjectsByUserId(userSelected.id);
-
-  }
 
 }
