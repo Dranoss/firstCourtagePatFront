@@ -41,11 +41,8 @@ export class UserFormComponent implements OnInit {
     this.getTypeOfProjects();
 
 
-    // // tous les projects
-    // this.getProjects().subscribe(data => {
-    //   this.projectsAll = data;
-    //   console.log(data);
-    // });
+    // tous les projects
+    this.getListAllProjects();
 
     // this.getProjectsByUser(this.selected).subscribe(data => {
     //   console.log(data);
@@ -70,7 +67,7 @@ export class UserFormComponent implements OnInit {
   }
   public getTypeOfProjects() {
 
-    this.getTypeProjects().subscribe(data => {
+    this.projectService.getTypeProjects().subscribe(data => {
       this.typeProjects = data;
       console.log(data);
     });
@@ -95,9 +92,18 @@ export class UserFormComponent implements OnInit {
     });
 
   }
-  // public getProjects(): Observable<Project[]> {
-  //   return this.userService.getProjects();
-  // }
+
+  public getListAllProjects(){
+    this.getProjects().subscribe(data => {
+      this.projectsAll = data;
+      console.log(data);
+    });
+  }
+
+  public getProjects(): Observable<Project[]> {
+
+    return this.projectService.getProjects();
+  }
 
 
 
@@ -129,10 +135,14 @@ export class UserFormComponent implements OnInit {
 
   newProject() {
 
-    this.projectService.addProject(this.selected,this.project).subscribe(data => {
-      console.log('delete  le client ' + this.selected);
+    console.log(this.project.name);
+    this.projectService.addProject(this.selected, this.project).subscribe(data => {
+      console.log('add a project  ' + data);
 
     });
+
+    this.getTheUserList();
+
 
 
   }
