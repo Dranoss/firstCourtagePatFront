@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 import { User } from '../../core/classes/user';
 import { Project } from '../../core/classes/project';
 import { TypeProject } from '../../core/classes/typeProject';
@@ -10,55 +10,56 @@ import { TypeProject } from '../../core/classes/typeProject';
 })
 export class UserService {
 
-private URL_GET_USER_BY_ID = 'http://www.courtagepatrimoine.net/users/';
-private URL_GET_USERS = 'http://localhost:8080/users';
+  private URL_GET_USER_BY_ID = 'http://www.courtagepatrimoine.net/users/';
+  private URL_GET_USERS = 'http://localhost:8080/users';
 
-private URL_GET_PROJECTS = 'http://localhost:8080/projects';
-private URL_PUT_PROJECT = 'http://localhost:8080/projects/projectby';
+  private URL_GET_PROJECTS = 'http://localhost:8080/projects';
+  private URL_PUT_PROJECT = 'http://localhost:8080/projects/projectby';
+  private URL_DELETE_USER = 'http://localhost:8080/deluser';
 
-private URL_GET_TYPEPROJECTS = 'http://localhost:8080/typeProjects';
 
-private URL_GET_PROJECTSBYUSER = 'http://localhost:8080/projects/users';
+  private URL_GET_TYPEPROJECTS = 'http://localhost:8080/typeProjects';
 
-private URL_POST_USER = 'http://www.courtagepatrimoine.net/users/user';
-private URL_UPDATE_USER = 'http://www.courtagepatrimoine.net/users/user';
-private URL_DELETE_USER = 'http://www.courtagepatrimoine.net/users/deluser';
+  private URL_GET_PROJECTSBYUSER = 'http://localhost:8080/projects/users';
 
-constructor(private http: HttpClient) { }
+  private URL_POST_USER = 'http://www.courtagepatrimoine.net/users/user';
+  private URL_UPDATE_USER = 'http://www.courtagepatrimoine.net/users/user';
 
-getUsers(): Observable<User[]>{
-  return this.http.get<User[]>(this.URL_GET_USERS);
-}
+  constructor(private http: HttpClient) { }
 
-getProjects(): Observable<Project[]>{
-  return this.http.get<Project[]>(this.URL_GET_TYPEPROJECTS);
-}
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.URL_GET_USERS);
+  }
 
-getTypeProjects(): Observable<TypeProject[]>{
-  return this.http.get<TypeProject[]>(this.URL_GET_PROJECTS);
-}
+  getProjects(): Observable<Project[]> {
+    return this.http.get<Project[]>(this.URL_GET_TYPEPROJECTS);
+  }
 
-putProject(project: Project): Observable<Project>{
-  return this.http.put<Project>(this.URL_PUT_PROJECT , project);
-}
+  getTypeProjects(): Observable<TypeProject[]> {
+    return this.http.get<TypeProject[]>(this.URL_GET_PROJECTS);
+  }
 
-getProjectsByUserId(id: number): Observable<Project[]>{
-   return this.http.get<Project[]>(this.URL_GET_PROJECTSBYUSER+'/'+id);
-}
+  putProject(project: Project): Observable<Project> {
+    return this.http.put<Project>(this.URL_PUT_PROJECT, project);
+  }
 
-getUserById(id: number): Observable<User>{
-   return this.http.get<User>(`${this.URL_GET_USER_BY_ID}/${id}`);
-}
+  getProjectsByUserId(id: number): Observable<Project[]> {
+    return this.http.get<Project[]>(this.URL_GET_PROJECTSBYUSER + '/' + id);
+  }
 
-postUser(user: User): Observable<User>{
-  return this.http.post<User>(this.URL_POST_USER, user);
-}
+  getUserById(id: number): Observable<User> {
+    return this.http.get<User>(`${this.URL_GET_USER_BY_ID}/${id}`);
+  }
 
-putUserById(user: User): Observable<User>{
-  return this.http.put<User>(this.URL_UPDATE_USER + `/${user.id}`, user);
-}
+  postUser(user: User): Observable<User> {
+    return this.http.post<User>(this.URL_POST_USER, user);
+  }
 
-deleteUserById(id: number){
-  return this.http.delete<User>(`${this.URL_GET_USER_BY_ID}/${id}`);
-}
+  putUserById(user: User): Observable<User> {
+    return this.http.put<User>(this.URL_UPDATE_USER + `/${user.id}`, user);
+  }
+
+  deleteUserById(id: number) {
+    return this.http.delete(this.URL_DELETE_USER + "/" + id);
+  }
 }

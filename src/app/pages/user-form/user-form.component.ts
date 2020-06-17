@@ -4,6 +4,7 @@ import { User } from 'src/app/shared/core/classes/user';
 import { Observable } from 'rxjs';
 import { Project } from 'src/app/shared/core/classes/project';
 import { TypeProject } from 'src/app/shared/core/classes/typeProject';
+import { ProjectService } from 'src/app/shared/services/project/project.service';
 
 @Component({
   selector: 'apa-user-form',
@@ -24,7 +25,7 @@ export class UserFormComponent implements OnInit {
   typeProjects: TypeProject[];
 
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private projectService: ProjectService) {
 
   }
 
@@ -39,17 +40,18 @@ export class UserFormComponent implements OnInit {
       }
       console.log(this.users);
     });
+
     // tous les types de projects
     this.getTypeProjects().subscribe(data => {
       this.typeProjects = data;
       console.log(data);
     });
 
-    // tous les projects
-    this.getProjects().subscribe(data => {
-      this.projectsAll = data;
-      console.log(data);
-    });
+    // // tous les projects
+    // this.getProjects().subscribe(data => {
+    //   this.projectsAll = data;
+    //   console.log(data);
+    // });
 
     // this.getProjectsByUser(this.selected).subscribe(data => {
     //   console.log(data);
@@ -87,11 +89,20 @@ export class UserFormComponent implements OnInit {
 
   modify(): void {
 
-    this.userService.putProject(this.selectedProject).subscribe(data=>{
+    this.userService.putProject(this.selectedProject).subscribe(data => {
       console.log('update le projet ' + this.selectedProject.name);
       this.selectedProject = data;
 
     });
+
+  }
+  deleteUser(){
+
+    this.userService.deleteUserById(this.selected).subscribe(data => {
+      console.log('delete  le client ' + this.selected);
+
+    });
+
 
   }
 
