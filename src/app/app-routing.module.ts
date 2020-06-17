@@ -10,7 +10,7 @@ import { ClaimComponent } from './pages/claim/claim.component';
 import { RecruitmentComponent } from './pages/recruitment/recruitment.component';
 import { PartnershipComponent } from './pages/partnership/partnership.component';
 import { CorporateComponent } from './pages/corporate/corporate.component';
-
+import { UserFormComponent } from './pages/user-form/user-form.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -24,6 +24,7 @@ const routes: Routes = [
   {path : 'recruitment', component : RecruitmentComponent},
   {path : 'partnership', component : PartnershipComponent},
   {path : 'corporate', component : CorporateComponent},
+  {path : 'user', component : UserFormComponent},
 ];
 
 @NgModule({

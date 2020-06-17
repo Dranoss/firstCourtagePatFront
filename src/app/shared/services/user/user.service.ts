@@ -1,55 +1,64 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable} from 'rxjs';
 import { User } from '../../core/classes/user';
+import { Project } from '../../core/classes/project';
+import { TypeProject } from '../../core/classes/typeProject';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  // A SUPPRIMER LORSQUE NOUS AURONS LE LIEN AVEC LE BACK
-  users: User[] = [{
-    role: 'client',
-    type: '',
-    firstname: 'Fabien',
-    lastname: 'Jouanneau',
-    email: 'jouanneau.fab@gmail.com',
-    phoneNumber: '0768195419',
-    password: 'test',
-    societyName: '',
-    siretNumber: '',
-    sponsorshipCode: '',
-    id: 1,
-    address: {id: 1, addressNumber: 27, street: 'rue Saincric', zipCode: '33000', city: 'Bordeaux'},
-    rib: {id: 1, iban: '', bic: '', ownerFullname: '', bankName: ''}
-  },
-  ];
 
-// A DEFINIR POUR LIER LE BACK
-private USER_URL = '';
+private URL_GET_USER_BY_ID = 'http://www.courtagepatrimoine.net/users/';
+private URL_GET_USERS = 'http://localhost:8080/users';
+
+private URL_GET_PROJECTS = 'http://localhost:8080/projects';
+private URL_PUT_PROJECT = 'http://localhost:8080/projects/projectby';
+
+private URL_GET_TYPEPROJECTS = 'http://localhost:8080/typeProjects';
+
+private URL_GET_PROJECTSBYUSER = 'http://localhost:8080/projects/users';
+
+private URL_POST_USER = 'http://www.courtagepatrimoine.net/users/user';
+private URL_UPDATE_USER = 'http://www.courtagepatrimoine.net/users/user';
+private URL_DELETE_USER = 'http://www.courtagepatrimoine.net/users/deluser';
 
 constructor(private http: HttpClient) { }
 
-getUserById(id: number): User{
-// A UTILISER LORSQUE L'ON AURA LE BACK
-// getUserById(id: number): Observable<User[]>{
-//   this.http.get<User>(`${this.USER_URL}/${id}`);
-// }
+getUsers(): Observable<User[]>{
+  return this.http.get<User[]>(this.URL_GET_USERS);
+}
 
-  // A SUPPRIMER LORSQUE L'ON AURA LA LIAISON BACK
-  const user = this.users.find(x => x.id === id);
-  return user;
+getProjects(): Observable<Project[]>{
+  return this.http.get<Project[]>(this.URL_GET_TYPEPROJECTS);
+}
+
+getTypeProjects(): Observable<TypeProject[]>{
+  return this.http.get<TypeProject[]>(this.URL_GET_PROJECTS);
+}
+
+putProject(project: Project): Observable<Project>{
+  return this.http.put<Project>(this.URL_PUT_PROJECT , project);
+}
+
+getProjectsByUserId(id: number): Observable<Project[]>{
+   return this.http.get<Project[]>(this.URL_GET_PROJECTSBYUSER+'/'+id);
+}
+
+getUserById(id: number): Observable<User>{
+   return this.http.get<User>(`${this.URL_GET_USER_BY_ID}/${id}`);
 }
 
 postUser(user: User): Observable<User>{
-  return this.http.post<User>(this.USER_URL, user);
+  return this.http.post<User>(this.URL_POST_USER, user);
 }
 
 putUserById(user: User): Observable<User>{
-  return this.http.put<User>(this.USER_URL + `/${user.id}`, user);
+  return this.http.put<User>(this.URL_UPDATE_USER + `/${user.id}`, user);
 }
 
-deleteUserById(user){
-  return this.http.delete<User>(this.USER_URL + `/${user.id}`, user);
+deleteUserById(id: number){
+  return this.http.delete<User>(`${this.URL_GET_USER_BY_ID}/${id}`);
 }
 }

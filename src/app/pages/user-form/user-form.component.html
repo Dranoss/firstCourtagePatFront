@@ -1,0 +1,86 @@
+<!--<H4> Liste des projets total </H4>
+
+<select [(ngModel)]="selectedAll" >
+  <option *ngFor="let project of projectsAll" [ngValue]="project" >
+    {{project.id}}
+    {{project.name}}
+    {{project.amount}}
+  </option>
+</select>
+
+<p> ici c est pas lié</p>
+
+<H4> Liste des Clients</H4>
+
+<select [(ngModel)]="users" name="selectedUser">
+  <option *ngFor="let user of users" value="user.id">
+    <div>
+      {{user.id}}{{user.firstName}} {{user.lastName}}
+    </div>
+  </option>
+</select>
+-->
+
+<!--
+<H4> Catégories de Projets</H4>
+<select [(ngModel)]="selectedtype">
+  <option *ngFor="let type of typeProjects">
+    {{type.name}}
+  </option>
+</select>
+--><!--
+<H4> Liste des projets par type : {{selectedtype.name}}
+  </H4>
+<select>
+  <option *ngFor="let project of projects" [ngValue]="project">
+
+    {{project.id}}
+    {{project.name}}
+    {{project.amount}}
+  </option>
+</select>
+
+-->
+<p> ici c est les projets sont lies aux clients</p>
+
+
+<H4> Liste des Clients</H4>
+<select [(ngModel)]="selected" (change)="go()">
+  <option *ngFor="let user of users" [ngValue]="user.id">
+    {{user.id}}
+    {{user.firstName}}
+    {{user.lastName}}
+  </option>
+</select>
+
+<!--
+<H4> Liste des projets du client : {{selected.firstName}}{{selected.lastName}} </H4> -->
+
+
+<select [(ngModel)]="selectedProject" (change)="details()">
+  <option *ngFor="let project of projects" [ngValue]="project">
+  id   {{project.id}}
+  nom  {{project.name}}
+  montant  {{project.amount}}
+  </option>
+</select>
+
+<div *ngIf="selectedProject?.name" class="formProject">
+  <H4> Infos du projet  : </H4>
+  <form (ngSubmit)="modify()" class="projetdetails" >
+    <label> Nom du Projet  </label>
+    <input name="name" type="text" [(ngModel)]="selectedProject.name">
+    <label> Type du Projet  </label>
+    <input name="typeProject" type="text" [(ngModel)]="selectedProject.typeProject">
+    <label> Montant </label>
+    <input name="amount" type="text" [(ngModel)]="selectedProject.amount">
+    <label> Date de création </label>
+    <input name="dateOpened" type="text" [(ngModel)]="selectedProject.dateOpened">
+    <label> Date de clôture </label>
+    <input name="dateClosed" type="text" [(ngModel)]="selectedProject.dateClosed">
+  <button type="submit">Modifier </button>
+  </form>
+</div>
+
+
+
