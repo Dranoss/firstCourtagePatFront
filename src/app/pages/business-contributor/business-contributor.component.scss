@@ -2,34 +2,30 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  align-items: center;
   text-align: center;
   background-color: #E2E3E3;
   border-radius: 1.5em;
   padding-left: 5em;
   padding-right: 5em;
   height: 40vh;
+  margin-bottom: 5em;
+}
+
+.intro-container p{
+  text-align: center;
 }
 
 .intro-wrapper{
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  height: 70vh;
 }
 
-.wrapper{
-  display: flex;
-  padding-top: 3vh;
-}
-
-.all-wrapper{
-  padding-top: 5em;
+.rdv-wrapper{
+  margin-top: 5em;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  width: 60vw;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-p{
-  text-align: justify;
+  align-items: center;
 }

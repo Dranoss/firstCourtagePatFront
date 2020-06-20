@@ -21,15 +21,17 @@ html, body{
 }
 
 h3{
-  font-size: 2.5vh;
+  font-size: 3vh;
 }
 
 h4{
-  font-size: 2vh;
+  font-size: 2.5vh;
 }
 
 p{
-  font-size: 1.8vh;
+  font-size: 2.2em;
+  margin-top: 1em;
+  text-align: justify;
 }
 
 .back{
@@ -41,3 +43,74 @@ p{
   background-position: center;
 }
 
+button{
+  font-size: 2.2em;
+}
+
+// Static pages image/text repetition style
+
+.wrapper{
+  display: flex;
+  align-items: center;
+}
+
+.all-wrapper{
+  padding-top: 5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+img{
+  width: 30%;
+  height: auto;
+}
+
+.wrapped-text-right{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.wrapped-text-left{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.wrapped-text h4, p{
+  width: 80%;
+}
+
+.spark{
+  width: 55%;
+  height: 10em
+}
+
+.spark-container-right{
+  display: flex;
+  justify-content: flex-end;
+}
+
+// Appointment button container
+
+.rdv-container{
+  margin-top: 8em;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  height: 20vh;
+  margin-bottom: 2em;
+}
+
+.rdv-container h4{
+  margin-bottom: 2em;
+}
+
+h4{
+  color: #9A9A9A
+}

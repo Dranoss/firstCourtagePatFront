@@ -2,29 +2,28 @@
   flex-direction: row;
   text-align: center;
   margin: 20px;
+  height: 60vh;
 }
 
-p{
-  font-weight: bolder;
+.central-big-img{
+  width: 100%;
+  height: auto;
 }
 
-button {
-  background-color: var(--text-color);
-  color : white;
-  padding: 10px 50px;
-  border-radius: 15px;
-  font-size: medium;
-  cursor: pointer;
-  &:hover{
-    background-color: white;
-    color: var(--text-color);
-  }
+.mortgage-wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 10em;
 }
 
-.top{
-  margin-top: 30px;
+.mortgage-wrapper p{
+  text-align: center;
+  margin-top: 1em;
+  width: 100%;
 }
 
-.footer{
-  margin-top: 100px;
+.mortgage-container{
+  margin-bottom: 3em;
 }
