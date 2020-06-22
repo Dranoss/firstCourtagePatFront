@@ -21,14 +21,16 @@ html, body{
 }
 
 h3{
-  font-size: 2em;
+  font-size: 2.4rem;
 }
 
 h4{
-  font-size: 1.5em;
+  font-size: 2.2rem;
+  color: #9A9A9A
 }
 
 p{
+  font-size: 2rem;
   margin-top: 1em;
   text-align: justify;
 }
@@ -58,7 +60,7 @@ button{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 60vw;
+  width: 60%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -102,14 +104,10 @@ img{
   flex-direction: column;
   text-align: center;
   align-items: center;
-  height: 20vh;
+  height: 20%;
   margin-bottom: 2em;
 }
 
 .rdv-container h4{
   margin-bottom: 2em;
-}
-
-h4{
-  color: #9A9A9A
 }
