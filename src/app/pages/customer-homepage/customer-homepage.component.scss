@@ -1,0 +1,33 @@
+#title {
+    text-align: center;
+    margin-top: 3em;
+}
+
+.container {
+  margin: 1em;
+  padding: 1em;
+  border:2px solid var(--text-color);
+    size: auto;
+  display: flex;
+  flex-direction: column;
+
+}
+#main{
+  background-image: url("/assets/img/Background2.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  flex-direction : row ;
+  justify-content: space-around;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+  width: 60%;
+  padding-bottom: 10em;
+}
+
+p{
+  text-align: center;
+  font-size: large;
+}

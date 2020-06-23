@@ -25,6 +25,7 @@ import { CorporateComponent } from './pages/corporate/corporate.component';
 import { ClaimComponent } from './pages/claim/claim.component';
 import { PartnershipComponent } from './pages/partnership/partnership.component';
 import { RecruitmentComponent } from './pages/recruitment/recruitment.component';
+import { CustomerHomepageComponent } from './pages/customer-homepage/customer-homepage.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { RecruitmentComponent } from './pages/recruitment/recruitment.component'
     ClaimComponent,
     PartnershipComponent,
     RecruitmentComponent,
+    CustomerHomepageComponent,
   ],
   imports: [
     BrowserModule,
