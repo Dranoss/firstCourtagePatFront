@@ -1,11 +1,11 @@
 button {
   background-color: var(--text-color);
   color : white;
+  border-radius: 15px;
   padding: 1em 3em;
-  border-radius: 1em;
-  font-size: 1.6vh;
-  width: 35rem;
-  height: 5rem;
+  font-size: 0.8vw;
+  width: 20vw;
+  transition: 0.3s;
   cursor: pointer;
   &:hover{
     background-color: white;
