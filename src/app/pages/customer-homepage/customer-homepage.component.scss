@@ -7,8 +7,9 @@
   margin: 1em;
   padding: 1em;
   border:2px solid var(--text-color);
-  width: 90%;
-  size: auto;
+    size: auto;
+  display: flex;
+  flex-direction: column;
 
 }
 #main{

@@ -2,42 +2,17 @@
   Bonjour Mr/Mme {{projects[1].user_name}}, bienvenue dans votre espace personnel
 </div>
 
-
 <div id="main">
-<div class="container" *ngIf="projects[0]">
-  <p>Projet N°1 :</p>
-  <p>{{projects[0].type}}</p>
-  <p>{{projects[0].amount}} €</p>
-  <p>{{projects[0].duration}} ans</p>
-
+  <div class="container" *ngFor="let projet of projects">
+    <p>Projet N° {{projet.id}}:</p>
+    <p>{{projet.type}}</p>
+    <p>{{projet.amount}} €</p>
+    <p>{{projet.duration}} ans</p>
+  </div>
 </div>
 
-<div class="container" *ngIf="projects[1]">
-  <p>Projet N°2 :</p>
 
-  <p>{{projects[1].type}}</p>
-  <p>{{projects[1].amount}} €</p>
-  <p>{{projects[1].duration}} ans</p>
 
-</div>
 
-<div class="container" *ngIf="projects[2]">
-  <p>Projet N°3 :</p>
 
-  <p>{{projects[2].type}}</p>
-  <p>{{projects[2].amount}} €</p>
-  <p>{{projects[2].duration}} ans</p>
-
-</div>
-
-<div class="container" *ngIf="projects[3]">
-  <p>Projet N°4 :</p>
-
-  <p>{{projects[3].type}}</p>
-  <p>{{projects[3].amount}} €</p>
-  <p>{{projects[3].duration}} ans</p>
-
-</div>
-
-</div>
 
