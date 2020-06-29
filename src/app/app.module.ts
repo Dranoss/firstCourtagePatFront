@@ -25,6 +25,8 @@ import { CorporateComponent } from './pages/corporate/corporate.component';
 import { ClaimComponent } from './pages/claim/claim.component';
 import { PartnershipComponent } from './pages/partnership/partnership.component';
 import { RecruitmentComponent } from './pages/recruitment/recruitment.component';
+import { ArrowDownComponentComponent } from './shared/style/arrow-down-component/arrow-down-component.component';
+import { AppointmentButtonComponent } from './shared/buttons/appointment-button/appointment-button.component';
 import { CustomerHomepageComponent } from './pages/customer-homepage/customer-homepage.component';
 
 @NgModule({
@@ -45,6 +47,8 @@ import { CustomerHomepageComponent } from './pages/customer-homepage/customer-ho
     ClaimComponent,
     PartnershipComponent,
     RecruitmentComponent,
+    ArrowDownComponentComponent,
+    AppointmentButtonComponent,
     CustomerHomepageComponent,
   ],
   imports: [

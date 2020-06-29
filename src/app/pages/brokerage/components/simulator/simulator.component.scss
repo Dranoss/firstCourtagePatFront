@@ -1,5 +1,5 @@
 .container {
-  width: 75%;
+  width: 65%;
   display : flex;
   flex-direction: column;
   justify-content: center;
@@ -7,7 +7,9 @@
 }
 .formElementContainer{
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 #form{
@@ -18,18 +20,31 @@
 .element{
 display: flex;
 flex-direction: column;
-width: 100%;
-margin-bottom: 5px;
+justify-content: center;
+align-items: center;
+width: 80%;
+margin-bottom: 1em;
+}
+
+.button-element{
+  width: 80%;
+  margin-bottom: 2em;
+  margin-top: 4em;
 }
 
 .lign{
-  width: 94%;
+  width: 80%;
+  height: 2em;
   border-radius: 10px;
   border: 2px solid var(--text-color);
   text-decoration: none;
-  font-size: medium;
   padding: 5px 3%;
-  margin-top: 5px;
+  margin-top: 0.8em;
+  font-size: 0.8em;
+}
+
+.input-description{
+  margin-top: 1.2em;
 }
 
 p, .result{
@@ -41,11 +56,10 @@ p, .result{
 }
 
 .subcontainer {
-  width: 30%;
+  width: 96%;
   display : flex;
-  flex-direction: column;
   justify-content: space-between;
-  margin: 2em;
+  margin: 0.2em;
 }
 
 .title {
@@ -57,17 +71,17 @@ p, .result{
 .buttonContainer{
   display: flex;
   justify-content: center;
-  margin: auto;
+  margin-top: 6em;
   width: 100%;
-  margin-bottom: 5px;
+  height: 2em;
 }
 
 button{
-  width: 100%;
-  padding: 5px 15px;
+  width: 88%;
+  height: 2em;
+  font-size: 1.2em;
   border: 2px solid var(--text-color);
   border-radius: 15px;
-  font-size: medium;
   cursor: pointer;
   &:hover{
     background-color: var(--text-color);
@@ -79,3 +93,18 @@ button{
   border-color: transparent;
 }
 
+div{
+  font-size: 1.8vh;
+}
+
+.element .final{
+  margin-top: 6em;
+}
+
+.result{
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}

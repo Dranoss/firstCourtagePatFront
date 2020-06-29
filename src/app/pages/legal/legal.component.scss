@@ -1,18 +1,12 @@
-#title {
-    text-align: center;
-    font-size: larger;
-    font-weight: lighter;
-    text-decoration: underline;
-}
-
 .aurias {
   font-weight: bolder;
 }
 
 .subtitle {
-  font-weight: bolder;
-  color : blue;
-  margin-bottom: 5px;
+  font-weight: bold;
+  color : var(--text-color);
+  margin: 3em auto;
+  text-align: center;
 }
 #main {
   display: flex;
