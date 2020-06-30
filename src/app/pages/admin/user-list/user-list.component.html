@@ -1,0 +1,29 @@
+
+<div class="userList"> Liste des clients
+
+  <div>
+    <select *ngFor="let user of users" onchange="onSelectedUser()">
+     <div>{{user.firstname}} {{user.lastname}}
+    </div>
+    <div class="row">
+      <h2>
+          {{user.firstName}} {{user.lastName}}
+      </h2>
+  </div>
+  <div class="row">
+      <span>Phone Number: </span> {{user.phoneNumber}}
+  </div>
+  <div class="row">
+      <span>Social security number: </span> {{user.companyName}}
+  </div>
+       </select>
+  </div>
+
+  <div>
+    <select *ngFor="let project of projects">
+      {{project.projectName}} {{project.projectAmount}}
+      </select>
+      <div></div>
+  </div>
+
+</div>
