@@ -10,7 +10,11 @@ import { ClaimComponent } from './pages/claim/claim.component';
 import { RecruitmentComponent } from './pages/recruitment/recruitment.component';
 import { PartnershipComponent } from './pages/partnership/partnership.component';
 import { CorporateComponent } from './pages/corporate/corporate.component';
+<<<<<<< HEAD
 import { UserListComponent } from './pages/admin/user-list/user-list.component';
+=======
+import { CustomerHomepageComponent } from './pages/customer-homepage/customer-homepage.component';
+>>>>>>> develop
 
 
 const routes: Routes = [
@@ -25,8 +29,12 @@ const routes: Routes = [
   {path : 'recruitment', component : RecruitmentComponent},
   {path : 'partnership', component : PartnershipComponent},
   {path : 'corporate', component : CorporateComponent},
+<<<<<<< HEAD
   {path : 'admin', component : UserListComponent},
 
+=======
+  {path : 'customer-homepage', component: CustomerHomepageComponent}
+>>>>>>> develop
 ];
 
 @NgModule({

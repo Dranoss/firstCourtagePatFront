@@ -1,0 +1,38 @@
+button {
+  background-color: var(--text-color);
+  color : white;
+  border-radius: 15px;
+  padding: 1em 3em;
+  font-size: 0.8vw;
+  width: 20vw;
+  transition: 0.3s;
+  cursor: pointer;
+  &:hover{
+    background-color: white;
+    color: var(--text-color);
+  }
+}
+
+.infos{
+  margin-top: 1em;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.infos p{
+  width: min-content;
+}
+
+.button-appointment{
+  display: flex;
+  justify-content: center;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+}
