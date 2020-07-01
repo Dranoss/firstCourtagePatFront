@@ -1,4 +1,5 @@
 import { TypeProject } from './typeProject';
+import { User } from './user';
 
 export class Project {
   id: number;
@@ -7,6 +8,7 @@ export class Project {
   dateOpened: Date;
   dateClosed: Date;
   typeProject: TypeProject;
+  user: User;
 
   constructor() {
 

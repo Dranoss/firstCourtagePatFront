@@ -16,11 +16,7 @@ export class ProjectService {
   private static URL_GET_TYPEPROJECTS = 'http://localhost:8080/typeProjects';
   private static URL_POST_PROJECT = 'http://localhost:8080/projects/project';
 
-
-
   constructor(private http: HttpClient) {
-
-
 
   }
 
@@ -29,9 +25,7 @@ export class ProjectService {
     return this.http.get<Project[]>(ProjectService.URL_GET_PROJECTSBYUSERID + '/' +id);
  }
 
-
-
- getProjects(): Observable<Project[]> {
+  getAllProjects(): Observable<Project[]> {
     return this.http.get<Project[]>(ProjectService.URL_GET_PROJECTS);
   }
 

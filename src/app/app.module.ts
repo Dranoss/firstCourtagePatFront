@@ -26,6 +26,7 @@ import { ClaimComponent } from './pages/claim/claim.component';
 import { PartnershipComponent } from './pages/partnership/partnership.component';
 import { RecruitmentComponent } from './pages/recruitment/recruitment.component';
 import { UserFormComponent } from './pages/user-form/user-form.component';
+import { ProjectListComponent } from './pages/project-list/project-list.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { UserFormComponent } from './pages/user-form/user-form.component';
     PartnershipComponent,
     RecruitmentComponent,
     UserFormComponent,
+    ProjectListComponent,
   ],
   imports: [
     BrowserModule,

@@ -35,23 +35,8 @@ export class UserFormComponent implements OnInit {
   ngOnInit(): void {
 
     // Initialize users' list and types project's list
-    // liste de tous les users
-    this.getTheUserList();
-
-    // liste de tous les types de projects
-    this.getTypeOfProjects();
-
-
-    // tous les projects
-    this.getListAllProjects();
-
-    // this.getProjectsByUser(this.selected).subscribe(data => {
-    //   console.log(data);
-    //   // this.selectedProject = data;
-    // for (const p of this.projects) {
-    //   console.log(p.amount);
-    // }
-    // });
+     this.getTheUserList();
+     this.getTypeOfProjects();
 
 
   }
@@ -97,7 +82,7 @@ export class UserFormComponent implements OnInit {
 
   public getProjects(): Observable<Project[]> {
 
-    return this.projectService.getProjects();
+    return this.projectService.getAllProjects();
   }
 
 
