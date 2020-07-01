@@ -1,3 +1,4 @@
+
 import { TypeProject } from './typeProject';
 import { User } from './user';
 
@@ -11,7 +12,6 @@ export class Project {
   user: User;
 
   constructor() {
-
   }
 
 }

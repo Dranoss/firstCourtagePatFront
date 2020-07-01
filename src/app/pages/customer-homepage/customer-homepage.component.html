@@ -1,0 +1,18 @@
+<div id="title">
+  Bonjour Mr/Mme {{projects[1].user_name}}, bienvenue dans votre espace personnel
+</div>
+
+<div id="main">
+  <div class="container" *ngFor="let projet of projects">
+    <p>Projet N° {{projet.id}}:</p>
+    <p>{{projet.type}}</p>
+    <p>{{projet.amount}} €</p>
+    <p>{{projet.duration}} ans</p>
+  </div>
+</div>
+
+
+
+
+
+

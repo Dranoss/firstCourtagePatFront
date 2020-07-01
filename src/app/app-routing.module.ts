@@ -12,6 +12,8 @@ import { PartnershipComponent } from './pages/partnership/partnership.component'
 import { CorporateComponent } from './pages/corporate/corporate.component';
 import { UserFormComponent } from './pages/user-form/user-form.component';
 import { ProjectListComponent } from './pages/project-list/project-list.component';
+import { CustomerHomepageComponent } from './pages/customer-homepage/customer-homepage.component';
+
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -26,8 +28,8 @@ const routes: Routes = [
   {path : 'partnership', component : PartnershipComponent},
   {path : 'corporate', component : CorporateComponent},
   {path : 'user', component : UserFormComponent},
-  {path : 'projects/:id', component : ProjectListComponent}
-
+  {path : 'projects/:id', component : ProjectListComponent},
+  {path : 'customer-homepage', component: CustomerHomepageComponent}
 ];
 
 @NgModule({

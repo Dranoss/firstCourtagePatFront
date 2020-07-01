@@ -27,6 +27,10 @@ import { PartnershipComponent } from './pages/partnership/partnership.component'
 import { RecruitmentComponent } from './pages/recruitment/recruitment.component';
 import { UserFormComponent } from './pages/user-form/user-form.component';
 import { ProjectListComponent } from './pages/project-list/project-list.component';
+import { ArrowDownComponentComponent } from './shared/style/arrow-down-component/arrow-down-component.component';
+import { AppointmentButtonComponent } from './shared/buttons/appointment-button/appointment-button.component';
+import { CustomerHomepageComponent } from './pages/customer-homepage/customer-homepage.component';
+
 
 @NgModule({
   declarations: [
@@ -48,6 +52,9 @@ import { ProjectListComponent } from './pages/project-list/project-list.componen
     RecruitmentComponent,
     UserFormComponent,
     ProjectListComponent,
+    ArrowDownComponentComponent,
+    AppointmentButtonComponent,
+    CustomerHomepageComponent,
   ],
   imports: [
     BrowserModule,
