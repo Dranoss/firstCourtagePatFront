@@ -10,6 +10,10 @@ import { ClaimComponent } from './pages/claim/claim.component';
 import { RecruitmentComponent } from './pages/recruitment/recruitment.component';
 import { PartnershipComponent } from './pages/partnership/partnership.component';
 import { CorporateComponent } from './pages/corporate/corporate.component';
+import { ClientViewComponent } from './pages/client-view/client-view.component';
+import { ClientDetailsComponent } from './pages/client-details/client-details.component';
+import { ClientProjectsComponent } from './pages/client-projects/client-projects.component';
+import { CreateClientComponent } from './pages/create-client/create-client.component';
 
 
 const routes: Routes = [
@@ -24,6 +28,10 @@ const routes: Routes = [
   {path : 'recruitment', component : RecruitmentComponent},
   {path : 'partnership', component : PartnershipComponent},
   {path : 'corporate', component : CorporateComponent},
+  {path : 'clientView', component : ClientViewComponent},
+  {path : 'client-details/:userType/:id', component : ClientDetailsComponent},
+  {path : 'client-details/new-client', component : CreateClientComponent},
+  {path : 'client-projects/:userType/:id', component : ClientProjectsComponent},
 ];
 
 @NgModule({
