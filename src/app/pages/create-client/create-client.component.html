@@ -1,0 +1,98 @@
+<h1>Nouveau client</h1>
+<div class="subcontainer">
+  <button class="principal" (click)="navigateToClientsList()">Retour</button>
+</div>
+<h4>Selectionnez le type de clients</h4>
+<div class="subcontainer">
+  <button *ngFor="let type of userTypes" (click)="selectUserType(type)">{{type.name}}</button>
+</div>
+<form *ngIf="editedUser.userType.name!=''" (ngSubmit)="createForm.valid && onSubmit()" #createForm="ngForm">
+  <section>
+    <div class="formSubcontainer" *ngIf="editedUser.userType.name==='Particulier'">
+      <label>Prénom <span>*</span></label>
+      <input type="text" name="firstName" [(ngModel)]="editedUser.firstName" #firstName="ngModel" required>
+      <!-- <input *ngIf="userType==='Particulier'" type="text" name="firstName" [(ngModel)]="editedUser.firstName" #firstName="ngModel" required> -->
+    </div>
+    <div class="formSubcontainer" *ngIf="editedUser.userType.name==='Particulier'">
+      <label>Nom <span>*</span></label>
+      <input type="text" name="lastName" [(ngModel)]="editedUser.lastName" #lastName="ngModel" required>
+      <!-- <input *ngIf="userType==='Particulier'" type="text" name="lastName" [(ngModel)]="editedUser.lastName" #lastName="ngModel" required> -->
+    </div>
+    <div class="formSubcontainer" *ngIf="editedUser.userType.name==='Professionnel'">
+      <label>Raison sociale <span>*</span></label>
+      <input type="text" name="companyName" [(ngModel)]="editedUser.companyName" #companyName="ngModel" required>
+      <!-- <input *ngIf="userType==='Professionnel'" type="text" name="companyName" [(ngModel)]="editedUser.companyName" #companyName="ngModel" required> -->
+    </div>
+    <div class="formSubcontainer" *ngIf="editedUser.userType.name==='Professionnel'">
+      <label>Numéro siret <span>*</span></label>
+      <input type="text" name="siretNumber" [(ngModel)]="editedUser.siretNumber" #siretNumber="ngModel" required>
+      <!-- <input *ngIf="userType==='Professionnel'" type="text" name="siretNumber" [(ngModel)]="editedUser.siretNumber" #siretNumber="ngModel" required> -->
+    </div>
+    <div class="formSubcontainer">
+      <label>Email <span>*</span></label>
+      <input type="email" name="email" [(ngModel)]="editedUser.email" #email="ngModel" required>
+    </div>
+    <div *ngIf="email.errors?.required && createForm.submitted" class="errorMessage">Une addresse email est requise.</div>
+    <div class="formSubcontainer">
+      <label>Numéro de téléphone <span>*</span></label>
+      <input type="tel" name="phoneNumber" [(ngModel)]="editedUser.phoneNumber" #phoneNumber="ngModel" required minlength="10">
+    </div>
+    <div class="errorMessage" *ngIf="phoneNumber.errors?.required && createForm.submitted">Un numéro de téléphone est requis.</div>
+    <div class="errorMessage" *ngIf="phoneNumber.errors?.minlength && createForm.submitted">Le numéro de téléphone doit faire plus de 10 charactères.</div>
+    <div class="formSubcontainer">
+      <label>Mot de passe <span>*</span></label>
+      <input type="password" name="password" [(ngModel)]="editedUser.password" #password="ngModel" required minlength="8">
+    </div>
+    <div class="errorMessage" *ngIf="password.errors?.required && createForm.submitted">Un mot de passe est requis.</div>
+    <div class="errorMessage" *ngIf="password.errors?.minlength && createForm.submitted">Le mot de passe doit faire plus de 8 charactères.</div>
+  </section>
+  <section>
+    <div class="formSubcontainer">
+      <label>Numéro de rue <span>*</span></label>
+      <input type="number" name="addressNumber" [(ngModel)]="editedUser.userAddress.streetNumber" #streetNumber="ngModel" required>
+    </div>
+    <div class="errorMessage" *ngIf="streetNumber.errors?.required && createForm.submitted">Un numéro de rue est requis.</div>
+    <div class="formSubcontainer">
+      <label>Rue <span>*</span></label>
+      <input type="text" name="street" [(ngModel)]="editedUser.userAddress.streetName" #streetName="ngModel" required>
+    </div>
+    <div class="errorMessage" *ngIf="streetName.errors?.required && createForm.submitted">Un nom de rue est requis.</div>
+    <div class="formSubcontainer">
+      <label>Code postal <span>*</span></label>
+      <input type="text" name="zipCode" [(ngModel)]="editedUser.userAddress.zipCode" #zipCode="ngModel" required>
+    </div>
+    <div class="errorMessage" *ngIf="zipCode.errors?.required && createForm.submitted">Un code postal est requis.</div>
+    <div class="formSubcontainer">
+      <label>Ville <span>*</span></label>
+      <input type="text" name="city" [(ngModel)]="editedUser.userAddress.cityName" #city="ngModel" required>
+    </div>
+    <div class="errorMessage" *ngIf="city.errors?.required && createForm.submitted">Une ville est requise.</div>
+  </section>
+  <section>
+    <div class="formSubcontainer">
+      <label>Titulaire du compte <span>*</span></label>
+      <input type="text" name="ownerName" [(ngModel)]="editedUser.userRib.ownerName" #ownerName="ngModel" required>
+    </div>
+    <div class="errorMessage" *ngIf="ownerName.errors?.required && createForm.submitted">Un titulaire de compte est requis.</div>
+    <div class="formSubcontainer">
+      <label>Banque <span>*</span></label>
+      <input type="text" name="bankName" [(ngModel)]="editedUser.userRib.bankName" #bankName="ngModel" required>
+    </div>
+    <div class="errorMessage" *ngIf="bankName.errors?.required && createForm.submitted">Un nom de banque est requis.</div>
+    <div class="formSubcontainer">
+      <label>Iban <span>*</span></label>
+      <input type="text" name="ibanNumber" [(ngModel)]="editedUser.userRib.ibanNumber" #ibanNumber="ngModel" required>
+    </div>
+    <div class="errorMessage" *ngIf="ibanNumber.errors?.required && createForm.submitted">Un numéro iban requis.</div>
+    <div class="formSubcontainer">
+      <label>Code BIC <span>*</span></label>
+      <input type="text" name="bicCode" [(ngModel)]="editedUser.userRib.bicCode" #bicCode="ngModel" required>
+    </div>
+    <div class="errorMessage" *ngIf="bicCode.errors?.required && createForm.submitted">Un code BIC est requis.</div>
+  </section>
+
+  <div class="subcontainer">
+    <button class="principal" type="submit">Valider</button>
+    <button class="cancelEdit" (click)="resetForm()" type="reset">Annuler</button>
+  </div>
+</form>
