@@ -14,6 +14,7 @@ import { ProjectService } from 'src/app/shared/services/project/project.service'
 export class UserFormComponent implements OnInit {
 
   users: User[];
+  headers = ['Nom', 'Prenom', 'Telephone','Societe'];
   project: Project = new Project();
   projects: Project[];
   projectsAll: Project[];
@@ -56,12 +57,8 @@ export class UserFormComponent implements OnInit {
   }
 
   public getTheUserList() {
-    this.getUsers().subscribe(data => {
+    this.userService.getUsers().subscribe(data => {
       this.users = data;
-      for (const user of this.users) {
-        console.log(user.lastName);
-      }
-      console.log(this.users);
     });
 
   }
@@ -73,9 +70,7 @@ export class UserFormComponent implements OnInit {
     });
 
   }
-  public getUsers(): Observable<User[]> {
-    return this.userService.getUsers();
-  }
+
 
   // public getTypeProjects(): Observable<TypeProject[]> {
   //   return this.typeProjectService.getTypeProjects();
