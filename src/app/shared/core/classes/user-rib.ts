@@ -1,15 +1,15 @@
-export class Rib {
+export class UserRib {
   public id?: number;
-  public iban: string;
-  public bic: string;
-  public ownerFullname: string;
+  public ibanNumber: string;
+  public bicCode: string;
+  public ownerName: string;
   public bankName: string;
 
-  constructor(iban: string, bic: string, ownerFullname: string, bankName: string, id?: number ){
+  constructor(ibanNumber: string, bicCode: string, ownerName: string, bankName: string, id?: number ){
     this.id = id;
-    this.iban = iban;
-    this.bic = bic;
-    this.ownerFullname = ownerFullname;
+    this.ibanNumber = ibanNumber;
+    this.bicCode = bicCode;
+    this.ownerName = ownerName;
     this.bankName = bankName;
   }
 
