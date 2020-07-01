@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ResolvedReflectiveFactory } from '@angular/core';
+import { Router } from '@angular/router';
+import { log } from 'util';
 
 @Component({
   selector: 'apa-login',
@@ -7,9 +9,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  email:string;
+  password:string;
+
+  constructor(private router :Router) { }
 
   ngOnInit(): void {
   }
+
+  valider(mail : string, passw : string): void{
+
+// tester si login est bon
+    this.email = mail;
+    this.password = passw;
+    console.log(this.email);
+    console.log(this.password);
+
+//  if  get(email,passw);
+
+//this.redirect();
+
+
+  }
+
+  redirect(): void{
+
+    this.router.navigate(['user']);
+  }
+
 
 }
