@@ -4,9 +4,8 @@ import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 registerLocaleData(localeFr, 'fr');
 
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './pages/nav-bar/nav-bar.component';
@@ -27,6 +26,18 @@ import { PartnershipComponent } from './pages/partnership/partnership.component'
 import { RecruitmentComponent } from './pages/recruitment/recruitment.component';
 import { UserFormComponent } from './pages/user-form/user-form.component';
 import { ProjectListComponent } from './pages/project-list/project-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { from } from 'rxjs';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { UserCardComponent } from './pages/user-card/user-card.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -48,6 +59,9 @@ import { ProjectListComponent } from './pages/project-list/project-list.componen
     RecruitmentComponent,
     UserFormComponent,
     ProjectListComponent,
+    UserCardComponent,
+
+
   ],
   imports: [
     BrowserModule,
@@ -55,12 +69,23 @@ import { ProjectListComponent } from './pages/project-list/project-list.componen
     FormsModule,
     YouTubePlayerModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatIconModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatFormFieldModule,
+    MatDialogModule
+
+
+
   ],
   providers: [
-    {provide: LOCALE_ID, useValue: 'fr-FR'},
+    { provide: LOCALE_ID, useValue: 'fr-FR' },
   ],
   bootstrap: [AppComponent],
-  exports: [VideoComponent],
+  exports: [VideoComponent, MatTableModule],
+  entryComponents: [UserFormComponent]
 })
 export class AppModule { }
 

@@ -1,47 +1,45 @@
 
-:host{
-  display: flex;
-  flex-direction:row ;
-  align-items: center;
-  justify-content: space-evenly;
-}
 
-.selectProject{
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-left: 11px;
+.button{
+  margin: 2px;
 }
-.user{
-  margin-left: 11px;
-  display: flex;
-  align-content: center;
+// .selectProject{
 
-}
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   margin-left: 11px;
+// }
+// .user{
+//   margin-left: 11px;
+//   display: flex;
+//   align-content: center;
 
-.total{
-  display: flex;
-  justify-content: center;
+// }
 
-}
-.formProject{
-    display: flex;
-    justify-content: center;
-}
+// .total{
+//   display: flex;
+//   justify-content: center;
 
-.projetdetails{
-  display: flex;
-  flex-direction: column;
-  align-items: baseline;
-  margin-left: 11px;
-}
+// }
+// .formProject{
+//     display: flex;
+//     justify-content: center;
+// }
 
-.client , .projet{
-  display: block;
-}
+// .projetdetails{
+//   display: flex;
+//   flex-direction: column;
+//   align-items: baseline;
+//   margin-left: 11px;
+// }
 
-.ligne{
-  border-top: inset;
-  background-color:--text-color;
-}
+// .client , .projet{
+//   display: block;
+// }
+
+// .ligne{
+//   cursor: pointer;
+//   border-top: inset;
+//   background-color:--text-color;
+// }

@@ -10,7 +10,7 @@ export class User {
   public email: string;
   public phoneNumber: string;
   public password: string;
-  public societyName: string;
+  public companyName: string;
   public siretNumber: string;
   public sponsorshipCode: string;
   public address: Address;
@@ -40,7 +40,7 @@ export class User {
     this.email = email;
     this.phoneNumber = phoneNumber;
     this.password = password;
-    this.societyName = societyName;
+    this.companyName = societyName;
     this.siretNumber = siretNumber;
     this.sponsorshipCode = sponsorshipCode;
     this.address = address;

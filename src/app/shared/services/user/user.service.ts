@@ -17,7 +17,7 @@ export class UserService {
   private URL_PUT_PROJECT = 'http://localhost:8080/projects/projectby';
   private URL_POST_PROJECT = 'http://localhost:8080/projects';
 
-  private URL_DELETE_USER = 'http://localhost:8080/deluser';
+  private URL_DELETE_USER = 'http://localhost:8080/users';
 
 
   private URL_GET_TYPEPROJECTS = 'http://localhost:8080/typeProjects';

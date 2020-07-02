@@ -1,10 +1,14 @@
-import { Component, OnInit, Injectable } from '@angular/core';
+import { Component, OnInit, Injectable, ViewChild } from '@angular/core';
 import { UserService } from 'src/app/shared/services/user/user.service';
 import { User } from 'src/app/shared/core/classes/user';
 import { Observable } from 'rxjs';
 import { Project } from 'src/app/shared/core/classes/project';
 import { TypeProject } from 'src/app/shared/core/classes/typeProject';
 import { ProjectService } from 'src/app/shared/services/project/project.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 @Component({
   selector: 'apa-user-form',
@@ -14,12 +18,14 @@ import { ProjectService } from 'src/app/shared/services/project/project.service'
 export class UserFormComponent implements OnInit {
 
   users: User[];
-  headers = ['Nom', 'Prenom', 'Telephone','Societe'];
+  listOfUsers: MatTableDataSource<any>;
   project: Project = new Project();
   projects: Project[];
   projectsAll: Project[];
   selected: User;
-
+  headers: string[];
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   selectedProject: Project;
   selectedAll: Project[];
   selectedOneProject: Project;
@@ -28,22 +34,28 @@ export class UserFormComponent implements OnInit {
 
   userClicked = false;
 
-  constructor(private userService: UserService, private projectService: ProjectService) {
+  searchKey: string;
+
+  constructor(private userService: UserService,
+    private projectService: ProjectService,
+    private dialog: MatDialog) {
 
   }
 
   ngOnInit(): void {
+    this.headers = ['Nom', 'Prénom', 'Email', 'Téléphone', 'Société', 'actions'];
 
     // Initialize users' list and types project's list
-     this.getTheUserList();
-     this.getTypeOfProjects();
-
-
+    this.getTheUserList();
+    //  this.getTypeOfProjects();
   }
 
   public getTheUserList() {
     this.userService.getUsers().subscribe(data => {
-      this.users = data;
+      //this.users = data;
+      this.listOfUsers = new MatTableDataSource(data);
+      this.listOfUsers.sort = this.sort;
+      this.listOfUsers.paginator = this.paginator;
     });
 
   }
@@ -73,7 +85,7 @@ export class UserFormComponent implements OnInit {
 
   }
 
-  public getListAllProjects(){
+  public getListAllProjects() {
     this.getProjects().subscribe(data => {
       this.projectsAll = data;
       console.log(data);
@@ -93,46 +105,28 @@ export class UserFormComponent implements OnInit {
 
   }
 
-  modifyProjectDetails(): void {
 
-    this.projectService.putProject(this.selectedProject).subscribe(data => {
-      console.log('update le projet ' + this.selectedProject.name);
-      this.selectedProject = data;
+  deleteUser(user: User) {
 
-    });
-    this.getTheUserList();
-
-  }
-  deleteUser() {
-
-    this.userService.deleteUserById(this.selected.id).subscribe(data => {
-      console.log('delete  le client ' + this.selected);
+    this.userService.deleteUserById(user.id).subscribe(data => {
+      console.log('delete  le client ' + user);
 
     });
 
 
   }
 
-  newProject() {
+  onSearchClear() {
 
-    console.log(this.project.name);
-    this.projectService.addProject(this.selected, this.project).subscribe(data => {
-      console.log('add a project  ' + data);
-
-    });
-
-    this.getTheUserList();
-
-
-
+    this.searchKey = '';
+    this.filter();
+  }
+  filter() {
+    this.listOfUsers.filter = this.searchKey.trim().toLowerCase();
   }
 
-  details(): void {
-    //this.project = this.selectedProject;
-
-    console.log(this.selectedProject);
-
+  addUser() {
+    this.dialog.open(UserFormComponent);
   }
-
 
 }
