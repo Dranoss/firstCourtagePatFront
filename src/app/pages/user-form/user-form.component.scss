@@ -1,5 +1,9 @@
 
+h1{
 
+text-align: center;
+
+}
 .button{
   margin: 2px;
 }
@@ -39,7 +43,11 @@
 // }
 
 // .ligne{
-//   cursor: pointer;
-//   border-top: inset;
-//   background-color:--text-color;
+
+
+//   background-color: blue;
 // }
+.mat-row:nth-child(even){
+  background-color:rgb(225, 225, 236);
+  opacity: 0,6;
+  }

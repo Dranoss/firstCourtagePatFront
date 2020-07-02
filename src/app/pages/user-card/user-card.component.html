@@ -1,14 +1,42 @@
-
 Details du Client
-<form [formGroup]="userCardService.form">
+<form [formGroup]="form">
 
   <mat-grid-list cols="2" rowHeight="300px">
     <mat-grid-tile></mat-grid-tile>
-    <div> <input type="hidden" formControlName="$key">
-    <mat-form-field>
-    <input formControlName="lastName" matInput>
-    </mat-form-field></div>
-    <mat-grid-tile></mat-grid-tile>
+    <div>
+
+      <mat-form-field>
+        <input formControlName="lastName" matInput placeholder="Nom*">
+        <mat-error>Le champs est requis</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input formControlName="firstName" matInput placeholder="Prénom">
+      </mat-form-field>
+      <mat-form-field>
+        <input formControlName="email" matInput placeholder="Email*">
+      </mat-form-field>
+      <mat-form-field>
+        <input formControlName="phoneNumber" matInput placeholder="Numéro de téléphone*">
+      </mat-form-field>
+      <mat-form-field>
+        <input formControlName="societyName" matInput placeholder="Nom de Société">
+      </mat-form-field>
+      <mat-form-field>
+        <input formControlName="siretNumber" matInput placeholder="Numéro de Siret">
+      </mat-form-field>
+
+      <button mat-stroked-button click="onValidate()">
+        Valider
+      </button>
+    </div>
+    <mat-grid-tile>
+      <mat-form-field>
+        <mat-select  formControlName="typeUser" matInput placeholder="Type de Client">
+          <mat-option *ngFor="let type of typeUser"></mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </mat-grid-tile>
 
   </mat-grid-list>
 </form>

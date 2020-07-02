@@ -5,6 +5,8 @@ import localeFr from '@angular/common/locales/fr';
 registerLocaleData(localeFr, 'fr');
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,15 +29,17 @@ import { RecruitmentComponent } from './pages/recruitment/recruitment.component'
 import { UserFormComponent } from './pages/user-form/user-form.component';
 import { UserCardComponent } from './pages/user-card/user-card.component';
 import { ProjectListComponent } from './pages/project-list/project-list.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { from } from 'rxjs';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule} from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatGridList, MatGridListModule } from '@angular/material/grid-list';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -78,7 +82,14 @@ import { MatGridList, MatGridListModule } from '@angular/material/grid-list';
     MatFormFieldModule,
     MatDialogModule,
     MatGridListModule,
-    ReactiveFormsModule
+    MatSelectModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatInputModule,
+    ReactiveFormsModule,
+
+
+
 
 
 
@@ -87,7 +98,7 @@ import { MatGridList, MatGridListModule } from '@angular/material/grid-list';
     { provide: LOCALE_ID, useValue: 'fr-FR' },
   ],
   bootstrap: [AppComponent],
-  exports: [VideoComponent, MatTableModule,MatGridListModule],
+  exports: [VideoComponent, MatTableModule,MatGridListModule,MatSelectModule,BrowserAnimationsModule],
   entryComponents: [UserFormComponent]
 })
 export class AppModule { }

@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { UserCardService } from 'src/app/shared/services/user-card/user-card.service';
+import { TypeUser } from 'src/app/shared/core/classes/typeUser';
+import { UserService } from 'src/app/shared/services/user/user.service';
+import { User } from 'src/app/shared/core/classes/user';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'apa-user-card',
@@ -8,13 +13,39 @@ import { UserCardService } from 'src/app/shared/services/user-card/user-card.ser
 })
 export class UserCardComponent implements OnInit {
 
-  userCardService : UserCardService;
-  constructor() { }
+   typeUser: TypeUser[]=[];
+   user;
+
+  constructor(private userCardService: UserCardService) { }
+  form: FormGroup = new FormGroup({
+
+
+    //role: new FormControl('client'),
+    //type: new FormControl(0),
+    lastName: new FormControl('',Validators.required),
+    firstName: new FormControl('',Validators.required),
+    email: new FormControl('',Validators.email),
+    phoneNumber: new FormControl('',[Validators.required,Validators.minLength(10)]),
+    password: new FormControl(''),
+    societyName: new FormControl(''),
+    siretNumber: new FormControl(''),
+    sponsorshipCode: new FormControl(''),
+    address: new FormControl(null),
+    rib: new FormControl(null),
+    typeUser: new FormControl(null,Validators.required)
+
+
+  });
 
   ngOnInit(): void {
 
   }
 
+  onValidate(){
+  this.user = this.form;
+  this.userCardService.addUser(this.user);
+
+  }
 
   modifyUserDetails(): void {
 

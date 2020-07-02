@@ -25,7 +25,7 @@ export class UserFormComponent implements OnInit {
   projectsAll: Project[];
   selected: User;
   headers: string[];
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   selectedProject: Project;
   selectedAll: Project[];
@@ -54,9 +54,11 @@ export class UserFormComponent implements OnInit {
   public getTheUserList() {
     this.userService.getUsers().subscribe(data => {
       //this.users = data;
+
       this.listOfUsers = new MatTableDataSource(data);
       this.listOfUsers.sort = this.sort;
       this.listOfUsers.paginator = this.paginator;
+
     });
 
   }
@@ -110,8 +112,8 @@ export class UserFormComponent implements OnInit {
   deleteUser(user: User) {
 
     this.userService.deleteUserById(user.id).subscribe(data => {
-      console.log('delete  le client ' + user);
 
+      this.getTheUserList();
     });
 
 

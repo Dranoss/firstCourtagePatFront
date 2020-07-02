@@ -24,7 +24,7 @@ export class UserService {
 
   //private URL_GET_PROJECTSBYUSER = 'http://localhost:8080/projects/users';
 
-  private URL_POST_USER = 'http://www.courtagepatrimoine.net/users/user';
+  private URL_POST_USER = 'http://www.courtagepatrimoine.net/users';
   private URL_UPDATE_USER = 'http://www.courtagepatrimoine.net/users/user';
 
   constructor(private http: HttpClient) { }
