@@ -17,11 +17,13 @@ export class UserCardComponent implements OnInit {
    typeOfUsers: TypeUser[]=[];
    user;
 
-  constructor(private userCardService: UserCardService,private typeOfUserService: TypeOfUserService) { }
-  form: FormGroup = new FormGroup({
+   form;
+  constructor(private userCardService: UserCardService,private typeOfUserService: TypeOfUserService) {
+  this.form: FormGroup = new FormGroup({
 
 
-    role: new FormControl('client'),
+    //role: new FormControl('client'),
+    //type: new FormControl(0),
     lastName: new FormControl('',Validators.required),
     firstName: new FormControl('',Validators.required),
     email: new FormControl('',Validators.email),
@@ -36,6 +38,7 @@ export class UserCardComponent implements OnInit {
 
 
   });
+  }
 
   ngOnInit(): void {
 
@@ -50,9 +53,11 @@ export class UserCardComponent implements OnInit {
         .subscribe(data =>{ this.typeOfUsers = data});
 
   }
+
+
   onValidate(){
   this.user = this.form;
- // this.userCardService.addUser(this.user);
+  this.userCardService.addUser(this.user);
 
   }
 
