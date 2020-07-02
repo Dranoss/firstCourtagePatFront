@@ -9,6 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { UserCardComponent } from '../user-card/user-card.component';
 
 @Component({
   selector: 'apa-user-form',
@@ -126,7 +127,7 @@ export class UserFormComponent implements OnInit {
   }
 
   addUser() {
-    this.dialog.open(UserFormComponent);
+    this.dialog.open(UserCardComponent);
   }
 
 }

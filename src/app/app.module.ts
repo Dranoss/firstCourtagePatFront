@@ -4,7 +4,7 @@ import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 registerLocaleData(localeFr, 'fr');
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,6 +25,7 @@ import { ClaimComponent } from './pages/claim/claim.component';
 import { PartnershipComponent } from './pages/partnership/partnership.component';
 import { RecruitmentComponent } from './pages/recruitment/recruitment.component';
 import { UserFormComponent } from './pages/user-form/user-form.component';
+import { UserCardComponent } from './pages/user-card/user-card.component';
 import { ProjectListComponent } from './pages/project-list/project-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { from } from 'rxjs';
@@ -34,7 +35,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
-import { UserCardComponent } from './pages/user-card/user-card.component';
+import { MatGridList, MatGridListModule } from '@angular/material/grid-list';
 
 
 
@@ -75,7 +76,9 @@ import { UserCardComponent } from './pages/user-card/user-card.component';
     MatPaginatorModule,
     MatSortModule,
     MatFormFieldModule,
-    MatDialogModule
+    MatDialogModule,
+    MatGridListModule,
+    ReactiveFormsModule
 
 
 
@@ -84,7 +87,7 @@ import { UserCardComponent } from './pages/user-card/user-card.component';
     { provide: LOCALE_ID, useValue: 'fr-FR' },
   ],
   bootstrap: [AppComponent],
-  exports: [VideoComponent, MatTableModule],
+  exports: [VideoComponent, MatTableModule,MatGridListModule],
   entryComponents: [UserFormComponent]
 })
 export class AppModule { }

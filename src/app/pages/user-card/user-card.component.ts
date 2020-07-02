@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserCardService } from 'src/app/shared/services/user-card/user-card.service';
 
 @Component({
   selector: 'apa-user-card',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserCardComponent implements OnInit {
 
+  userCardService : UserCardService;
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
+
+  modifyUserDetails(): void {
+
+    // this.userService.putUser().subscribe(data => {
+    //   console.log('update le projet ' + this.selectedProject.name);
+    //   this.selectedProject = data;
+
+    // });
+    // // this.getTheUserList();
+
+  }
 }

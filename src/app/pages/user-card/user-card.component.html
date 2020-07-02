@@ -1,1 +1,14 @@
-<p>user-card works!</p>
+
+Details du Client
+<form [formGroup]="userCardService.form">
+
+  <mat-grid-list cols="2" rowHeight="300px">
+    <mat-grid-tile></mat-grid-tile>
+    <div> <input type="hidden" formControlName="$key">
+    <mat-form-field>
+    <input formControlName="lastName" matInput>
+    </mat-form-field></div>
+    <mat-grid-tile></mat-grid-tile>
+
+  </mat-grid-list>
+</form>
