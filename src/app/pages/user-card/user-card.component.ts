@@ -4,6 +4,7 @@ import { TypeUser } from 'src/app/shared/core/classes/typeUser';
 import { UserService } from 'src/app/shared/services/user/user.service';
 import { User } from 'src/app/shared/core/classes/user';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { TypeOfUserService } from 'src/app/shared/typeUser/type-of-user.service';
 
 
 @Component({
@@ -13,15 +14,14 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class UserCardComponent implements OnInit {
 
-   typeUser: TypeUser[]=[];
+   typeOfUsers: TypeUser[]=[];
    user;
 
-  constructor(private userCardService: UserCardService) { }
+  constructor(private userCardService: UserCardService,private typeOfUserService: TypeOfUserService) { }
   form: FormGroup = new FormGroup({
 
 
-    //role: new FormControl('client'),
-    //type: new FormControl(0),
+    role: new FormControl('client'),
     lastName: new FormControl('',Validators.required),
     firstName: new FormControl('',Validators.required),
     email: new FormControl('',Validators.email),
@@ -39,8 +39,17 @@ export class UserCardComponent implements OnInit {
 
   ngOnInit(): void {
 
+     // initialize liste of types users
+     this.getTypeOfUsers();
+
   }
 
+  getTypeOfUsers(){
+
+        this.typeOfUserService.getTypeOfUsers()
+        .subscribe(data =>{ this.typeOfUsers = data});
+
+  }
   onValidate(){
   this.user = this.form;
   this.userCardService.addUser(this.user);

@@ -125,6 +125,7 @@ export class UserFormComponent implements OnInit {
     this.filter();
   }
   filter() {
+
     this.listOfUsers.filter = this.searchKey.trim().toLowerCase();
   }
 

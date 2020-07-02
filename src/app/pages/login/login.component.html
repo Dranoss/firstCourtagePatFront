@@ -1,6 +1,6 @@
 <router-outlet></router-outlet>
 
-<a href routerLink="/user">go to user form</a>
+go to user form
 
 
 
@@ -11,7 +11,7 @@
       <input type="text" ngModel="userName"/>
       <label for="password">Mot de passe :</label>
       <input type="password" ngModel="password"/>
-    <button type="submit"   onsubmit="valider()" lass="valider">Valider</button>
-  </fieldset>
+      <a href routerLink="/user">   <button type="submit"   onsubmit="valider()" class="valider">Valider</button>
+      </a> </fieldset>
 </ng-form>
 </div>

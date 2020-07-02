@@ -7,7 +7,7 @@
 </div>
 
 
-<input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off">
+<input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (change)="filter()">
 
 
 <div>
