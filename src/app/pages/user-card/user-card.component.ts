@@ -52,7 +52,7 @@ export class UserCardComponent implements OnInit {
   }
   onValidate(){
   this.user = this.form;
-  this.userCardService.addUser(this.user);
+ // this.userCardService.addUser(this.user);
 
   }
 
