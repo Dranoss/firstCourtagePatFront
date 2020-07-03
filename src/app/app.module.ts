@@ -40,6 +40,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
+import { MatGridList,  } from '@angular/material/grid-list';
 
 
 
@@ -90,6 +91,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 
 
+    ReactiveFormsModule
 
 
 
@@ -99,6 +101,7 @@ import { MatButtonModule } from '@angular/material/button';
   ],
   bootstrap: [AppComponent],
   exports: [VideoComponent, MatTableModule,MatGridListModule,MatSelectModule,BrowserAnimationsModule],
+
   entryComponents: [UserFormComponent]
 })
 export class AppModule { }
