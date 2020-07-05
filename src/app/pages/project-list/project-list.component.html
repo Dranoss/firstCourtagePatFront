@@ -4,52 +4,66 @@
 <!--
 <H4> Liste des projets du client : {{selected.firstName}}{{selected.lastName}} </H4> -->
 
-<section class="projet">
-  <div class="selectProject">
-    <select [(ngModel)]="selectedProject" (change)="details()" name="selectProj">
-      <option *ngFor="let project of projects" [ngValue]="project" name="optionListe">
-        {{project.name}}
-      </option>
-    </select>
-    <!-- div *ngIf="selectedProject?.id -->
-    <H4> Infos du projet : </H4>
-    <div *ngIf="selectedProject?.id; else noproject" class="formProject">
-      <form (ngSubmit)="modifyProjectDetails()" class="projetdetails" name="formDetails">
 
-        <input name="name" type="text" [(ngModel)]="selectedProject.name">
-        <label> Type du Projet </label>
-        <input name="typeProject" type="text" [(ngModel)]="selectedProject.typeProject">
-        <label> Montant </label>
-        <input name="amount" type="text" [(ngModel)]="selectedProject.amount">
-        <label> Date de création </label>
-        <input name="dateOpened" type="text" [(ngModel)]="selectedProject.dateOpened">
-        <label> Date de clôture </label>
-        <input name="dateClosed" type="text" [(ngModel)]="selectedProject.dateClosed">
-        <button type="submit">Modifier </button>
-      </form>
-    </div>
-    <ng-template #noproject> Pas de projects</ng-template>
-  </div>
+<H3>Liste des Projets de : {{userName}}</H3>
+
+<div><button mat-icon-button (click)="newProject()" class="button">
+  Nouveau Projet <mat-icon>add_circle</mat-icon>
+</button>
+</div>
 
 
-<!--
-  <div class="newProject">
-    <button name="buttonNew" type="submit" (click)="newProject()"> Ajouter Un Nouveau Projet</button>
+<input matInput  name="inputSearch" placeholder="Search" autocomplete="on" >
 
-    <form (ngSubmit)="newProject()" class="projetdetails" name="formDetails">
-      <label> Nom du Projet </label>
-      <input name="name" type="text" [(ngModel)]="project.name">
-      <label> Type du Projet </label>
-      <input name="typeProject" type="text" [(ngModel)]="project.typeProject">
-      <label> Montant </label>
-      <input name="amount" type="text" [(ngModel)]="project.amount">
-      <label> Date de création </label>
-      <input name="dateOpened" type="text" [(ngModel)]="project.dateOpened">
-      <label> Date de clôture </label>
-      <input name="dateClosed" type="text" [(ngModel)]="project.dateClosed">
-      <button type="submit">Modifier </button>
-    </form>
 
-  </div> -->
 
-</section>
+<div>
+   <mat-table [dataSource]="projects" matSort>
+    <mat-header-row *matHeaderRowDef="headers" > </mat-header-row>
+    <mat-row *matRowDef="let row;columns: headers;" class="mat-row"></mat-row>
+
+    <ng-container matColumnDef="Nom">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Nom </mat-header-cell>
+      <mat-cell *matCellDef="let project">{{project.name}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Type">
+      <mat-header-cell *matHeaderCellDef>Type de projet </mat-header-cell>
+      <mat-cell *matCellDef="let project">{{project.typeProject}}</mat-cell>
+    </ng-container>
+     <ng-container matColumnDef="Montant">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Montant</mat-header-cell>
+      <mat-cell *matCellDef="let project">{{project.amount}}</mat-cell>
+    </ng-container>
+     <ng-container matColumnDef="Date Ouverture">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Date d'Ouverture</mat-header-cell>
+      <mat-cell *matCellDef="let project">{{project.dateOpened}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Date cloture">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Date de Clôture </mat-header-cell>
+      <mat-cell *matCellDef="let project">{{project.dateClosed}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Durée">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Durée </mat-header-cell>
+      <mat-cell *matCellDef="let project">{{project.duration}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let project">
+        <button mat-icon-button   (click)="modifyProject(project)" class="button">
+          <mat-icon >launch</mat-icon>
+        </button>
+
+        <button mat-icon-button (click)="deleteProject(project)" class="button">
+          <mat-icon color="warn" >delete_forever</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5,10,20,50]" [pageSize]="5">
+
+  </mat-paginator>
+</div>
+
+
+
+

@@ -29,7 +29,7 @@ import { RecruitmentComponent } from './pages/recruitment/recruitment.component'
 import { UserFormComponent } from './pages/user-form/user-form.component';
 import { UserCardComponent } from './pages/user-card/user-card.component';
 import { ProjectListComponent } from './pages/project-list/project-list.component';
-import { from } from 'rxjs';
+
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -40,7 +40,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
-
+import {MatDatepickerModule, MatDatepicker} from '@angular/material/datepicker';
+import { ProjectCardComponent } from './pages/projectCard/project-card/project-card.component';
+import { from } from 'rxjs';
 
 
 
@@ -65,6 +67,7 @@ import { MatButtonModule } from '@angular/material/button';
     UserFormComponent,
     ProjectListComponent,
     UserCardComponent,
+    ProjectCardComponent,
 
 
   ],
@@ -86,6 +89,7 @@ import { MatButtonModule } from '@angular/material/button';
     BrowserAnimationsModule,
     MatButtonModule,
     MatInputModule,
+
     ReactiveFormsModule,
 
 
@@ -98,7 +102,8 @@ import { MatButtonModule } from '@angular/material/button';
     { provide: LOCALE_ID, useValue: 'fr-FR' },
   ],
   bootstrap: [AppComponent],
-  exports: [VideoComponent, MatTableModule,MatGridListModule,MatSelectModule,BrowserAnimationsModule],
+  exports: [VideoComponent, MatTableModule,MatGridListModule,MatSelectModule,BrowserAnimationsModule,
+  ],
   entryComponents: [UserFormComponent]
 })
 export class AppModule { }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Injectable, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from 'src/app/shared/services/user/user.service';
 import { User } from 'src/app/shared/core/classes/user';
 import { Observable } from 'rxjs';
@@ -19,13 +19,13 @@ import { UserCardComponent } from '../user-card/user-card.component';
 export class UserFormComponent implements OnInit {
 
   users: User[];
-  listOfUsers: MatTableDataSource<any>;
+  listOfUsers: MatTableDataSource<User>;
   project: Project = new Project();
   projects: Project[];
   projectsAll: Project[];
   selected: User;
   headers: string[];
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   selectedProject: Project;
   selectedAll: Project[];
@@ -130,7 +130,13 @@ export class UserFormComponent implements OnInit {
   }
 
   addUser() {
-    this.dialog.open(UserCardComponent);
+    this.dialog.open(UserCardComponent, { data: null });
   }
+
+  modifyUser(user: User) {
+    this.dialog.open(UserCardComponent, { data: user });
+
+  }
+
 
 }

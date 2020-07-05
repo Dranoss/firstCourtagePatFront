@@ -26,7 +26,7 @@ const routes: Routes = [
   {path : 'partnership', component : PartnershipComponent},
   {path : 'corporate', component : CorporateComponent},
   {path : 'user', component : UserFormComponent},
-  {path : 'projects/:id', component : ProjectListComponent}
+  {path : 'projects/:id/:userName', component : ProjectListComponent}
 
 ];
 

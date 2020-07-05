@@ -1,42 +1,88 @@
-Details du Client
-<form [formGroup]="form">
+<h2>Details du Client</h2>
 
-  <mat-grid-list cols="2" rowHeight="300px">
-    <mat-grid-tile></mat-grid-tile>
+<form [formGroup]="form" class="form">
+
+  <mat-grid-list cols="2" rowHeight="600px">
+    <!-- <mat-grid-tile></mat-grid-tile> -->
     <div>
-
-      <mat-form-field>
-        <input formControlName="lastName" matInput placeholder="Nom*">
+      <mat-label class="label"> Identité</mat-label>
+      <br>
+      <mat-form-field class="field">
+        <input formControlName="lastName" matInput placeholder="Nom *">
         <mat-error>Le champs est requis</mat-error>
       </mat-form-field>
-      <mat-form-field>
-        <input formControlName="firstName" matInput placeholder="Prénom">
+      <mat-form-field class="field">
+        <input formControlName="firstName" matInput placeholder="Prénom *">
       </mat-form-field>
-      <mat-form-field>
-        <input formControlName="email" matInput placeholder="Email*">
+      <mat-form-field class="field">
+        <input formControlName="email" matInput placeholder="Email *">
       </mat-form-field>
-      <mat-form-field>
-        <input formControlName="phoneNumber" matInput placeholder="Numéro de téléphone*">
+      <mat-form-field class="field">
+        <input formControlName="phoneNumber" matInput placeholder="Numéro de téléphone *">
       </mat-form-field>
-      <mat-form-field>
+    </div>
+    <br>
+        <mat-label class="label"> Société</mat-label>
+    <br>
+    <div>
+      <mat-form-field class="field">
         <input formControlName="societyName" matInput placeholder="Nom de Société">
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field class="field">
         <input formControlName="siretNumber" matInput placeholder="Numéro de Siret">
       </mat-form-field>
+      <!-- <mat-grid-tile>
 
-      <button mat-stroked-button click="onValidate()">
-        Valider
-      </button>
-    </div>
-    <mat-grid-tile>
-      <mat-form-field>
-        <mat-select  formControlName="typeUser" matInput placeholder="Type de Client">
-          <mat-option *ngFor="let type of typeOfUsers"></mat-option>
-        </mat-select>
+      </mat-grid-tile> -->
+
+      <div>
+
+        <mat-label class="label"> Adresse</mat-label>
+      <br>
+
+      <mat-form-field class="field">
+        <input formControlName="addressNumber" matInput placeholder="Numéro de rue">
       </mat-form-field>
+      <mat-form-field class="field">
+        <input formControlName="street" matInput placeholder="rue">
+      </mat-form-field>
+      <mat-form-field class="field">
+        <input formControlName="zipCode" matInput placeholder="Code Postal">
+      </mat-form-field>
+      <mat-form-field class="field">
+        <input formControlName="city" matInput placeholder="Ville">
+      </mat-form-field>
+    </div>
+    <div>
+       <mat-label class="label"> Banque</mat-label>
+      <br>
+      <mat-form-field class="field">
+        <input formControlName="iban" matInput placeholder="Iban">
+      </mat-form-field>
+      <mat-form-field class="field">
+        <input formControlName="bic" matInput placeholder="Bic">
+      </mat-form-field>
+      <mat-form-field class="field">
+        <input formControlName="ownerFullname" matInput placeholder="Nom du Titulaire">
+      </mat-form-field>
+      <mat-form-field class="field">
+        <input formControlName="bankName" matInput placeholder="Nom de la banque">
+      </mat-form-field>
+    </div>
+    <mat-form-field>
+      <mat-select    formControlName="userTypeForm" matInput placeholder="Type de Client" name="inputSelect">
+        <mat-option  *ngFor="let type of typeOfUsers" [value]="idType"> {{type.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-    </mat-grid-tile>
+    <button mat-stroked-button (click)="onValidate()" class="button">
+      Valider
+    </button>
+
+    <button mat-stroked-button (click)="modifyUserDetails()" class="button">
+      Modifier
+    </button>
+</div>
 
   </mat-grid-list>
 </form>

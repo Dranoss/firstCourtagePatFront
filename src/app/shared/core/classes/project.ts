@@ -8,6 +8,7 @@ export class Project {
   dateOpened: Date;
   dateClosed: Date;
   typeProject: TypeProject;
+  duration: number;
   user: User;
 
   constructor() {

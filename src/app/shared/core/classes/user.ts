@@ -1,10 +1,11 @@
 import { Address } from './user-address';
 import { Rib } from './rib';
+import { UserType } from './userType';
 
 export class User {
-  public id: number;
+  public id?: number;
   public role: 'admin' | 'client';
-  public type: string;
+  public userType: UserType;
   public lastName: string;
   public firstName: string;
   public email: string;
@@ -16,9 +17,10 @@ export class User {
   public address: Address;
   public rib: Rib;
 
+
   constructor(
     role: 'admin' | 'client',
-    type: string,
+    userType: UserType,
     lastName: string,
     firstName: string,
     email: string,
@@ -29,12 +31,12 @@ export class User {
     sponsorshipCode: string,
     address: Address,
     rib: Rib,
-    id: number
+    id?: number
     ){
 
     this.id = id;
     this.role = role;
-    this.type = type;
+    this.userType = userType;
     this.lastName = lastName;
     this.firstName = firstName;
     this.email = email;
