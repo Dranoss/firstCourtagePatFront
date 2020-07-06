@@ -14,6 +14,7 @@ import { ClientViewComponent } from './pages/client-view/client-view.component';
 import { ClientDetailsComponent } from './pages/client-details/client-details.component';
 import { ClientProjectsComponent } from './pages/client-projects/client-projects.component';
 import { CreateClientComponent } from './pages/create-client/create-client.component';
+import { ProjectCreationComponent } from './pages/project-creation/project-creation.component';
 
 
 const routes: Routes = [
@@ -32,6 +33,7 @@ const routes: Routes = [
   {path : 'client-details/:userType/:id', component : ClientDetailsComponent},
   {path : 'client-details/new-client', component : CreateClientComponent},
   {path : 'client-projects/:userType/:id', component : ClientProjectsComponent},
+  {path: 'project-creation/:userType/:userId', component: ProjectCreationComponent},
 ];
 
 @NgModule({
