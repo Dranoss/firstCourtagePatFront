@@ -31,6 +31,7 @@ import { ClientViewComponent } from './pages/client-view/client-view.component';
 import { ClientDetailsComponent } from './pages/client-details/client-details.component';
 import { ClientProjectsComponent } from './pages/client-projects/client-projects.component';
 import { CreateClientComponent } from './pages/create-client/create-client.component';
+import { ProjectCreationComponent } from './pages/project-creation/project-creation.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { CreateClientComponent } from './pages/create-client/create-client.compo
     ClientDetailsComponent,
     ClientProjectsComponent,
     CreateClientComponent,
+    ProjectCreationComponent,
   ],
   imports: [
     BrowserModule,
