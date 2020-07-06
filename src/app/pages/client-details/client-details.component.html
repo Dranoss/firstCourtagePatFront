@@ -1,7 +1,9 @@
+<div  *ngIf="userLoaded" class="subcontainer top">
+  <button class="goBack" (click)="navigateToClientsList()">Retour</button>
+</div>
 <h1 *ngIf="userLoaded && userType==='Particulier'">Mme./M. {{selectedUser.lastName.toUpperCase()}} {{selectedUser.firstName}}</h1>
 <h1 *ngIf="userLoaded && userType==='Professionnel'">Société {{selectedUser.companyName}}</h1>
 <div  *ngIf="userLoaded" class="subcontainer">
-  <button class="geBback" (click)="navigateToClientsList()">Retour</button>
   <button (click)="navigateToClientProjects(userId)">Projets</button>
 </div>
 
