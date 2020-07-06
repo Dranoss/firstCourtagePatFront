@@ -1,0 +1,35 @@
+<h4>Retour aux menus précédents</h4>
+<div class="buttonContainer top" *ngIf="projectTypes">
+  <button class="goBack" routerLink="/client-projects/{{selectedUserType}}/{{selectedUserId}}">Projets</button>
+  <button class="goBack" routerLink="/clientView">Liste clients</button>
+</div>
+
+<h1 *ngIf="selectedUserType==='Particulier' && selectedUser">M./Mme. {{selectedUser.lastName}} {{selectedUser.firstName}}</h1>
+<h1 *ngIf="selectedUserType==='Professionnel' && selectedUser">Société {{selectedUser.companyName}}</h1>
+<div class="buttonContainer" *ngIf="projectTypes">
+  <button class="principal" *ngFor="let projectType of projectTypes" (click)="selectProjectType(projectType)">{{projectType.name}}</button>
+</div>
+
+<form (ngSubmit)="projectForm.valid && onSubmit()" #projectForm="ngForm">
+  <div class="formSubcontainer">
+    <label for="projectName">Nom projet</label>
+    <input type="text" name="projectName" [(ngModel)]="projectModel.name" #projectName="ngModel" required>
+  </div>
+  <div class="formSubcontainer">
+    <label for="amount">Montant</label>
+    <input type="number" name="amount" [(ngModel)]="projectModel.amount" #amount="ngModel" required>
+  </div>
+  <div class="formSubcontainer">
+    <label for="creationDate">Date de création</label>
+    <input type="date" name="creationDate" [(ngModel)]="projectModel.creationDate" #creationDate="ngModel" required>
+  </div>
+  <div class="formSubcontainer">
+    <label for="closingDate">Date de clôture</label>
+    <input type="date" name="closingDate" [(ngModel)]="projectModel.closingDate" #closingDate="ngModel">
+  </div>
+
+  <div class="buttonContainer">
+    <button type="submit">Valider</button>
+    <button class="cancelEdit" type="reset">Annuler</button>
+  </div>
+</form>
