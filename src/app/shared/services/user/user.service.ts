@@ -25,37 +25,40 @@ export class UserService {
   },
   ];
 
-// A DEFINIR POUR LIER LE BACK
-private USER_URL = 'http://localhost:8080/users';
+  // A DEFINIR POUR LIER LE BACK
+  private USER_URL = 'http://localhost:8080/users';
 
-constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-// getUserById(id: number): User{
+  // getUserById(id: number): User{
 
 
-getAllUsers(): Observable<User[]>{
-  return this.http.get<User[]>(this.USER_URL);
-}
+  getAllUsers(): Observable<User[]>{
+    return this.http.get<User[]>(this.USER_URL);
+  }
 
-// A UTILISER LORSQUE L'ON AURA LE BACK
-getUserById(id: number): Observable<User>{
-  return this.http.get<User>(`${this.USER_URL}/${id}`);
-}
+  // A UTILISER LORSQUE L'ON AURA LE BACK
+  getUserById(id: number): Observable<User>{
+    return this.http.get<User>(`${this.USER_URL}/${id}`);
+  }
 
-  // A SUPPRIMER LORSQUE L'ON AURA LA LIAISON BACK
-  // const user = this.users.find(x => x.id === id);
-  // return user;
-  // }
+    // A SUPPRIMER LORSQUE L'ON AURA LA LIAISON BACK
+    // const user = this.users.find(x => x.id === id);
+    // return user;
+    // }
 
-postUser(user: User): Observable<User>{
-  return this.http.post<User>(this.USER_URL, user);
-}
+  postUser(user: User): Observable<User>{
+    return this.http.post<User>(this.USER_URL, user);
+  }
 
-putUserById(user: User): Observable<User>{
-  return this.http.put<User>(`${this.USER_URL}/${user.id}`, user);
-}
+  putUserById(user: User): Observable<User>{
+    return this.http.put<User>(`${this.USER_URL}/${user.id}`, user);
+  }
 
-deleteUserById(id): Observable<void>{
-  return this.http.delete<void>(`${this.USER_URL}/${id}`);
-}
+  deleteUserById(id): Observable<void>{
+    return this.http.delete<void>(`${this.USER_URL}/${id}`);
+  }
+  createUserProjectByUserId(user: User): Observable<User>{
+    return this.http.put<User>(`${this.USER_URL}/${user.id}/create-project`, user);
+  }
 }
