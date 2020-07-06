@@ -1,6 +1,7 @@
 import { UserAddress } from './user-address';
 import { UserRib } from './user-rib';
 import { UserType } from './user_type';
+import { Project } from './project';
 
 export class User {
   public id?: number;
@@ -16,6 +17,7 @@ export class User {
   public sponsorshipCode: string;
   public userAddress: UserAddress;
   public userRib: UserRib;
+  public projects?: Project[];
 
   constructor(
     role: 'admin' | 'client',
@@ -31,6 +33,7 @@ export class User {
     userAddress: UserAddress,
     userRib: UserRib,
     id?: number,
+    projects?: Project[],
     ){
 
     this.id = id;
@@ -46,5 +49,6 @@ export class User {
     this.sponsorshipCode = sponsorshipCode;
     this.userAddress = userAddress;
     this.userRib = userRib;
+    this.projects = projects;
   }
 }
