@@ -1,5 +1,6 @@
 import { Address } from './user-address';
 import { Rib } from './rib';
+import { Project } from './project';
 
 export class User {
   public id: number;
@@ -15,6 +16,7 @@ export class User {
   public sponsorshipCode: string;
   public address: Address;
   public rib: Rib;
+  public projects : Project [];
 
   constructor(
     role: 'admin' | 'client',

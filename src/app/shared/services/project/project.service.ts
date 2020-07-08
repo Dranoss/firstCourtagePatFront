@@ -41,5 +41,8 @@ export class ProjectService {
     return this.http.post<Project>(ProjectService.URL_POST_PROJECT, { user, project });
 
   }
+  getProjectById(id: number) : Observable<Project>{
+    return this.http.get<Project>(ProjectService.URL_GET_PROJECTS+"/"+id);
+  }
 
 }

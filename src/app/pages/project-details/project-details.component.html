@@ -1,0 +1,20 @@
+
+<div id="main">
+    <div class="title"> Mes documents </div>
+
+        <div class="document" *ngFor="let document of project.documents">
+            <p>{{document.name}}</p>
+    </div>
+
+
+    <div class="title"> Avancement de mon projet </div>
+        <div>
+          <!-- {{project.projectStatus.ranking}} -->
+        </div>
+
+    <div class="title">
+        <input class="button" type="button" value="Retour" onclick="history.go(-1)">
+    <div>
+
+
+</div>
