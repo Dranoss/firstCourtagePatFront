@@ -1,6 +1,5 @@
 
 
-
 <!--
 <H4> Liste des projets du client : {{selected.firstName}}{{selected.lastName}} </H4> -->
 
@@ -41,10 +40,6 @@
     <ng-container matColumnDef="Date cloture">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Date de Clôture </mat-header-cell>
       <mat-cell *matCellDef="let project">{{project.dateClosed}}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="Durée">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Durée </mat-header-cell>
-      <mat-cell *matCellDef="let project">{{project.duration}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>

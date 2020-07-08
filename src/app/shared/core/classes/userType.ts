@@ -1,9 +1,9 @@
 
 export class UserType {
-  id: number;
   name: string;
+  id?: number;
 
-  constructor(id: number, name: string) {
+  constructor(name: string,id?: number) {
     this.id = id;
     this.name = name;
 

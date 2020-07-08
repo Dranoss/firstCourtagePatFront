@@ -16,7 +16,7 @@
     <mat-header-row *matHeaderRowDef="headers" > </mat-header-row>
     <mat-row *matRowDef="let row;columns: headers;" class="mat-row"></mat-row>
 
-    <ng-container matColumnDef="Nom" >
+      <ng-container matColumnDef="Nom" >
       <mat-header-cell  *matHeaderCellDef  mat-sort-header>Nom </mat-header-cell>
       <mat-cell *matCellDef="let user" >{{user.lastName}}</mat-cell>
     </ng-container>
@@ -25,7 +25,7 @@
       <mat-cell *matCellDef="let user">{{user.firstName}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="Email">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef >Email</mat-header-cell>
       <mat-cell *matCellDef="let user">{{user.email}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="Téléphone">
@@ -33,7 +33,7 @@
       <mat-cell *matCellDef="let user">{{user.phoneNumber}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="Société">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Compagnie </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef >Compagnie </mat-header-cell>
       <mat-cell *matCellDef="let user">{{user.companyName}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="actions">
@@ -42,8 +42,8 @@
         <button mat-icon-button   (click)="modifyUser(user)" class="button">
           <mat-icon >launch</mat-icon>
         </button>
-        <button mat-icon-button (click)="getListAllProjects()" [routerLink]="['/projects',user.id,user.lastName]" class="button">
-          <mat-icon color="blue" >archive</mat-icon>
+        <button mat-icon-button  [routerLink]="['/projects',user.id,user.lastName]" class="button">
+          <mat-icon color="blue" >anchor</mat-icon>
         </button>
         <button mat-icon-button (click)="deleteUser(user)" class="button">
           <mat-icon color="warn" >delete_forever</mat-icon>
@@ -56,51 +56,3 @@
   </mat-paginator>
 </div>
 
-
-<!--
-<div> Liste des Clients </div>
-<div><button mat-icon-button class="button">
-  Nouveau Client <mat-icon>add_circle</mat-icon>
-</button>
-</div>
-<div>
-  <mat-table [dataSource]="listOfUsers" matSort>
-    <mat-header-row *matHeaderRowDef="headers"> </mat-header-row>
-    <mat-row *matRowDef="let row;columns: headers;"></mat-row>
-
-    <ng-container matColumnDef="Nom">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Nom </mat-header-cell>
-      <mat-cell *matCellDef="let user">{{user.lastName}}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="Prénom">
-      <mat-header-cell *matHeaderCellDef>Prenom </mat-header-cell>
-      <mat-cell *matCellDef="let user">{{user.firstName}}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="Email">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
-      <mat-cell *matCellDef="let user">{{user.email}}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="Téléphone">
-      <mat-header-cell *matHeaderCellDef>Téléphone</mat-header-cell>
-      <mat-cell *matCellDef="let user">{{user.phoneNumber}}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="Société">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Compagnie </mat-header-cell>
-      <mat-cell *matCellDef="let user">{{user.companyName}}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="actions">
-      <mat-header-cell *matHeaderCellDef></mat-header-cell>
-      <mat-cell *matCellDef="let row">
-        <button mat-icon-button class="button">
-          <mat-icon color="blue">launch</mat-icon>
-        </button>
-        <button mat-icon-button class="button" >
-          <mat-icon color="warn" >delete_forever</mat-icon>
-        </button>
-      </mat-cell>
-    </ng-container>
-  </mat-table>
-<mat-paginator [pageSizeOptions]="[5,10,20,50]" [pageSize]="5">
-
-</mat-paginator>
-</div>-->

@@ -43,6 +43,8 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatDatepickerModule, MatDatepicker} from '@angular/material/datepicker';
 import { ProjectCardComponent } from './pages/projectCard/project-card/project-card.component';
 import { from } from 'rxjs';
+import { TypeUserCardComponent } from './pages/typeUserCard/type-user-card/type-user-card.component';
+import { TypeprojectcardComponent } from './pages/typeProjectCard/typeprojectcard/typeprojectcard.component';
 
 
 
@@ -68,6 +70,8 @@ import { from } from 'rxjs';
     ProjectListComponent,
     UserCardComponent,
     ProjectCardComponent,
+    TypeUserCardComponent,
+    TypeprojectcardComponent,
 
 
   ],

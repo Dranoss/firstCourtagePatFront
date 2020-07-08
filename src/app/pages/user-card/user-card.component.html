@@ -22,7 +22,7 @@
       </mat-form-field>
     </div>
     <br>
-        <mat-label class="label"> Société</mat-label>
+    <mat-label class="label"> Société</mat-label>
     <br>
     <div>
       <mat-form-field class="field">
@@ -38,51 +38,57 @@
       <div>
 
         <mat-label class="label"> Adresse</mat-label>
-      <br>
+        <br>
 
-      <mat-form-field class="field">
-        <input formControlName="addressNumber" matInput placeholder="Numéro de rue">
+        <mat-form-field class="field">
+          <input formControlName="addressNumber" matInput placeholder="Numéro de rue">
+        </mat-form-field>
+        <mat-form-field class="field">
+          <input formControlName="street" matInput placeholder="rue">
+        </mat-form-field>
+        <mat-form-field class="field">
+          <input formControlName="zipCode" matInput placeholder="Code Postal">
+        </mat-form-field>
+        <mat-form-field class="field">
+          <input formControlName="city" matInput placeholder="Ville">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-label class="label"> Banque</mat-label>
+        <br>
+        <mat-form-field class="field">
+          <input formControlName="iban" matInput placeholder="Iban">
+        </mat-form-field>
+        <mat-form-field class="field">
+          <input formControlName="bic" matInput placeholder="Bic">
+        </mat-form-field>
+        <mat-form-field class="field">
+          <input formControlName="ownerFullname" matInput placeholder="Nom du Titulaire">
+        </mat-form-field>
+        <mat-form-field class="field">
+          <input formControlName="bankName" matInput placeholder="Nom de la banque">
+        </mat-form-field>
+      </div>
+      <button mat-icon-button (click)="addTypeOfUser()" class="button">
+        <mat-icon>add_circle</mat-icon>
+      </button>
+      <mat-form-field>
+        <mat-label>Type Client</mat-label>
+        <mat-select [compareWith]="compareObjects" formControlName="userTypeForm" matInput placeholder="Type de Client"
+          name="inputSelect">
+          <mat-option *ngFor="let type of typeOfUsers" [value]="type"> {{type.name}}</mat-option>
+
+        </mat-select>
       </mat-form-field>
-      <mat-form-field class="field">
-        <input formControlName="street" matInput placeholder="rue">
-      </mat-form-field>
-      <mat-form-field class="field">
-        <input formControlName="zipCode" matInput placeholder="Code Postal">
-      </mat-form-field>
-      <mat-form-field class="field">
-        <input formControlName="city" matInput placeholder="Ville">
-      </mat-form-field>
+
+      <button mat-stroked-button (click)="onValidate()" class="button">
+        Valider
+      </button>
+
+      <button mat-stroked-button (click)="modifyUserDetails()" class="button">
+        Modifier
+      </button>
     </div>
-    <div>
-       <mat-label class="label"> Banque</mat-label>
-      <br>
-      <mat-form-field class="field">
-        <input formControlName="iban" matInput placeholder="Iban">
-      </mat-form-field>
-      <mat-form-field class="field">
-        <input formControlName="bic" matInput placeholder="Bic">
-      </mat-form-field>
-      <mat-form-field class="field">
-        <input formControlName="ownerFullname" matInput placeholder="Nom du Titulaire">
-      </mat-form-field>
-      <mat-form-field class="field">
-        <input formControlName="bankName" matInput placeholder="Nom de la banque">
-      </mat-form-field>
-    </div>
-    <mat-form-field>
-      <mat-select    formControlName="userTypeForm" matInput placeholder="Type de Client" name="inputSelect">
-        <mat-option  *ngFor="let type of typeOfUsers" [value]="idType"> {{type.name}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <button mat-stroked-button (click)="onValidate()" class="button">
-      Valider
-    </button>
-
-    <button mat-stroked-button (click)="modifyUserDetails()" class="button">
-      Modifier
-    </button>
-</div>
 
   </mat-grid-list>
 </form>

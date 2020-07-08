@@ -11,6 +11,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { UserCardComponent } from '../user-card/user-card.component';
 
+
 @Component({
   selector: 'apa-user-form',
   templateUrl: './user-form.component.html',
@@ -20,28 +21,19 @@ export class UserFormComponent implements OnInit {
 
   users: User[];
   listOfUsers: MatTableDataSource<User>;
-  project: Project = new Project();
-  projects: Project[];
-  projectsAll: Project[];
-  selected: User;
+
   headers: string[];
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  selectedProject: Project;
-  selectedAll: Project[];
-  selectedOneProject: Project;
-  selectedType: TypeProject;
-  typeProjects: TypeProject[];
 
-  userClicked = false;
+
 
   searchKey: string;
 
-  constructor(private userService: UserService,
-    private projectService: ProjectService,
-    private dialog: MatDialog) {
+  constructor(private userService: UserService,private dialog: MatDialog) {
 
   }
+
 
   ngOnInit(): void {
     this.headers = ['Nom', 'Prénom', 'Email', 'Téléphone', 'Société', 'actions'];
@@ -51,60 +43,15 @@ export class UserFormComponent implements OnInit {
     //  this.getTypeOfProjects();
   }
 
+  // Initialize the list of Users
   public getTheUserList() {
     this.userService.getUsers().subscribe(data => {
-      //this.users = data;
 
       this.listOfUsers = new MatTableDataSource(data);
       this.listOfUsers.sort = this.sort;
       this.listOfUsers.paginator = this.paginator;
 
     });
-
-  }
-  public getTypeOfProjects() {
-
-    this.projectService.getTypeProjects().subscribe(data => {
-      this.typeProjects = data;
-      console.log(data);
-    });
-
-  }
-
-
-  // public getTypeProjects(): Observable<TypeProject[]> {
-  //   return this.typeProjectService.getTypeProjects();
-  // }
-
-  public getProjectsByUser() {
-    //      this.getProjectsByUser(this.selected);
-    // console.log('======>  salut le userid selectionne ==========>' + this.selected.id);
-    // this.userService.getProjectsByUserId(this.selected.id);
-
-    this.projectService.getProjectsByUserId(this.selected.id).subscribe(data => {
-      this.projects = data;
-      data.length === 0 ? this.userClicked = false : this.userClicked = true;
-    });
-
-  }
-
-  public getListAllProjects() {
-    this.getProjects().subscribe(data => {
-      this.projectsAll = data;
-      console.log(data);
-    });
-  }
-
-  public getProjects(): Observable<Project[]> {
-
-    return this.projectService.getAllProjects();
-  }
-
-
-
-  clickOnUser(): void {
-    this.getProjectsByUser();
-
 
   }
 
@@ -130,13 +77,23 @@ export class UserFormComponent implements OnInit {
   }
 
   addUser() {
-    this.dialog.open(UserCardComponent, { data: null });
-  }
+    let dialogRef =this.dialog.open(UserCardComponent, { data: null });
+    dialogRef.afterClosed().subscribe(result => {
+      this.getTheUserList();
+    });
+}
 
   modifyUser(user: User) {
-    this.dialog.open(UserCardComponent, { data: user });
+    let dialogRef = this.dialog.open(UserCardComponent, { data: user });
+    dialogRef.afterClosed().subscribe(result => {
+      this.getTheUserList();
+    });
 
   }
 
+
+  // public getTypeProjects(): Observable<TypeProject[]> {
+  //   return this.typeProjectService.getTypeProjects();
+  // }
 
 }

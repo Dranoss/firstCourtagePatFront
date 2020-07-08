@@ -1,1 +1,48 @@
-<p>project-card works!</p>
+<h2>Details du Client</h2>
+
+<form [formGroup]="form" class="form">
+
+  <mat-grid-list cols="2" rowHeight="600px">
+    <!-- <mat-grid-tile></mat-grid-tile> -->
+    <div>
+      <mat-form-field class="field">
+        <input formControlName="name" matInput placeholder="Nom *">
+        <mat-error>Le champs est requis</mat-error>
+      </mat-form-field>
+      <mat-form-field class="field">
+        <input formControlName="amount" matInput placeholder="Montant *">
+      </mat-form-field>
+      <mat-form-field class="field">
+        <input formControlName="dateOpened" matInput placeholder="Date ouverture *">
+      </mat-form-field>
+      <mat-form-field class="field">
+        <input formControlName="dateClosed" matInput placeholder="Date de Cloture *">
+      </mat-form-field>
+    </div>
+
+    <mat-form-field class="field">
+          <input formControlName="projectStatusForm" matInput placeholder="Statut du projet">
+        </mat-form-field>
+
+      <button mat-icon-button (click)="addTypeOfProject()" class="button">
+        <mat-icon>add_circle</mat-icon>
+      </button>
+       <mat-form-field>
+        <mat-label>Type Projet</mat-label>
+        <mat-select [compareWith]="compareObjects" formControlName="projectTypeForm" matInput placeholder="Type de projet"
+          name="inputSelect">
+          <mat-option *ngFor="let type of typeProjects" [value]="type"> {{type.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-stroked-button (click)="onValidate()" class="button">
+        Valider
+      </button>
+
+      <button mat-stroked-button (click)="modifyProjectDetails()" class="button">
+        Modifier
+      </button>
+
+
+  </mat-grid-list>
+</form>

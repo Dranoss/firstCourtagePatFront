@@ -16,7 +16,7 @@ export class UserService {
   private URL_GET_USER_BY_ID = this.local + '/users';
   private URL_GET_USERS = this.local + '/users';
   private URL_POST_USER = this.local + '/users';
-
+  private URL_UPDATE_USER = this.local + '/users';
 
 
   // private URL_GET_PROJECTS = 'http://localhost:8080/projects';
@@ -30,7 +30,7 @@ export class UserService {
 
   //private URL_GET_PROJECTSBYUSER = 'http://localhost:8080/projects/users';
 
-  private URL_UPDATE_USER = 'http://www.courtagepatrimoine.net/users/user';
+//  private URL_UPDATE_USER = 'http://www.courtagepatrimoine.net/users/user';
 
   constructor(private http: HttpClient) { }
 

@@ -7,6 +7,9 @@ import { User } from 'src/app/shared/core/classes/user';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { UserService } from 'src/app/shared/services/user/user.service';
+import { ProjectCardComponent } from '../projectCard/project-card/project-card.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'apa-project-list',
@@ -27,26 +30,28 @@ export class ProjectListComponent implements OnInit {
   userName: string;
 
   constructor(private activatedRouter: ActivatedRoute,
-    private projectService: ProjectService) { }
+    private projectService: ProjectService,
+    private userService: UserService,
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
-    this.headers = ['Nom', 'Type', 'Montant', 'Date Ouverture', 'Date cloture', 'Durée', 'actions'];
+    this.headers = ['Nom', 'Type', 'Montant', 'Date Ouverture', 'Date cloture', 'actions'];
 
     // Projects by userId
     this.activatedRouter.paramMap.subscribe(param => {
       this.userId = +param.get('id');
       this.userName = param.get('userName');
-
-
+      this.getProjects(this.userId);
     });
 
-    this.getProjects(this.userId);
   }
 
 
   getProjects(id: number): void {
-    this.projectService.getProjectsByUserId(id).subscribe(data => {
-      this.projects = new MatTableDataSource(data);
+    this.userService.getUserById(id).subscribe(data => {
+
+      this.projects = new MatTableDataSource(data.projects);
       this.projects.sort = this.sort;
       this.projects.paginator = this.paginator;
     });
@@ -70,15 +75,16 @@ export class ProjectListComponent implements OnInit {
 
   newProject() {
 
-//    this.dialog.open(ProjectCardComponent, { data: null });
+    this.dialog.open(ProjectCardComponent, { data: null });
 
 
-// this.projectService.addProject(this.selected, this.project).subscribe(data => {
-    //   console.log('add a project  ' + data);
+    // this.projectService.addProject(this.selected, this.project).subscribe(data => {
+    //   console.log('add a project  ' + data);    });
 
-    // });
 
-    //  this.getTheUserList();
+
+  //  this.getProjects();
+
 
 
 
