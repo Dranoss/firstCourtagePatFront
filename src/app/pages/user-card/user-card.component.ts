@@ -151,8 +151,6 @@ export class UserCardComponent implements OnInit {
   // statements which put a User
   modifyUserDetails(): void {
 
-
-
     this.user = new User(
       this.user.role,
       this.form.get('userTypeForm')?.value,
@@ -167,9 +165,6 @@ export class UserCardComponent implements OnInit {
       this.form.get('address')?.value,
       this.form.get('rib')?.value,
       this.user.id = this.data.id);
-
-
-
 
     this.user.userType = new UserType( '',this.user.userType.id);
 

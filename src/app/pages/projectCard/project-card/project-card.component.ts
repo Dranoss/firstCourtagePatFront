@@ -14,7 +14,7 @@ import { TypeprojectcardComponent } from '../../typeProjectCard/typeprojectcard/
   styleUrls: ['./project-card.component.scss']
 })
 export class ProjectCardComponent implements OnInit {
-  project: Project = new Project();
+  project: Project;
   projects: Project[];
   projectsAll: Project[];
   selectedProject: Project;
@@ -166,68 +166,60 @@ export class ProjectCardComponent implements OnInit {
 
   }
 
-  // statements which post a new User
+  // statements which post a new Project
   onValidate() {
 
-    // this.user = new User(
-    //   'client',
-    //   this.form.get('userTypeForm')?.value,
-    //   this.form.get('lastName')?.value,
-    //   this.form.get('firstName')?.value,
-    //   this.form.get('email')?.value,
-    //   this.form.get('phoneNumber')?.value,
-    //   this.form.get('password')?.value,
-    //   this.form.get('companyName')?.value,
-    //   this.form.get('siretNumber')?.value,
-    //   this.form.get('sponsorshipCode')?.value,
-    //   this.form.get('address')?.value,
-    //   this.form.get('rib')?.value);
+      this.project = new Project(
+      this.form.get('name')?.value,
+      this.form.get('amount')?.value,
+      this.form.get('dateOpened')?.value,
+      this.form.get('dateClosed')?.value,
+      this.form.get('projectTypeForm')?.value,
+      this.form.get('projectStatusForm')?.value);
 
+// poster le nouveau projet sur l id passer en data .
 
-    // //    this.user.type = this.form.get('userTypeForm')?.value as UserType;
-
-
-    // this.user.userType = new UserType(this.user.id, '');
-    // this.userCardService.postUser(this.user).subscribe(data => {
-    //   this.dialogRef.close('Close');
-
-    // });
+      // this.user.userType = new UserType(this.user.id, '');
+      // this.userCardService.postUser(this.user).subscribe(data => {
+      // this.dialogRef.close('Close');});
 
 
   }
 
-  // statements which put a User
+ // statements which put a User
   modifyProjectDetails(): void {
 
 
 
-    // this.user = new User(
-    //   this.user.role,
-    //   this.form.get('userTypeForm')?.value,
-    //   this.form.get('lastName')?.value,
-    //   this.form.get('firstName')?.value,
-    //   this.form.get('email')?.value,
-    //   this.form.get('phoneNumber')?.value,
-    //   this.form.get('password')?.value,
-    //   this.form.get('companyName')?.value,
-    //   this.form.get('siretNumber')?.value,
-    //   this.form.get('sponsorshipCode')?.value,
-    //   this.form.get('address')?.value,
-    //   this.form.get('rib')?.value,
-    //   this.user.id = this.data.id);
+    this.user = new User(
+      this.user.role,
+      this.form.get('userTypeForm')?.value,
+      this.form.get('lastName')?.value,
+      this.form.get('firstName')?.value,
+      this.form.get('email')?.value,
+      this.form.get('phoneNumber')?.value,
+      this.form.get('password')?.value,
+      this.form.get('companyName')?.value,
+      this.form.get('siretNumber')?.value,
+      this.form.get('sponsorshipCode')?.value,
+      this.form.get('address')?.value,
+      this.form.get('rib')?.value,
+      this.user.id = this.data.id);
 
 
 
 
-    //   this.user.userType = new UserType(this.user.id, '');
+      this.user.userType = new UserType(this.user.id, '');
 
-    //   this.userCardService.putUserById(this.user).subscribe(data => {
-    //   this.dialogRef.close('Close');
+      this.userCardService.putUserById(this.user).subscribe(data => {
+      this.dialogRef.close('Close');
 
 
-    // });
-
-  }
+    });
 
 
 }
+
+}
+
+
