@@ -82,7 +82,7 @@ export class EditableContentComponent implements OnInit {
     // this.userService.getUserById(this.userId).subscribe(data => {
       //   this.user = data;
       // })
-    this.user = this.userService.getUserById(this.userId); // A SUPPRIMER LORSQUE L'ON AURA LA LIAISON BACK
+   // this.user = this.userService.getUserById(this.userId); // A SUPPRIMER LORSQUE L'ON AURA LA LIAISON BACK
     if (this.user.role === 'admin'){
       return this.roleIsAdmin = true;
     } else {

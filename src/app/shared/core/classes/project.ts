@@ -1,8 +1,17 @@
 
-export class Projects {
-  id : Number;
-  type : String;
-  amount : Number;
-  duration : Number;
-  user_name : String
+import { TypeProject } from './typeProject';
+import { User } from './user';
+
+export class Project {
+  id: number;
+  name: string;
+  amount: number;
+  dateOpened: Date;
+  dateClosed: Date;
+  typeProject: TypeProject;
+  user: User;
+
+  constructor() {
+  }
+
 }

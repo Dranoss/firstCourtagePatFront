@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectService } from 'src/app/shared/services/project/project.service';
-import { Projects } from 'src/app/shared/core/classes/project';
+import { Project } from 'src/app/shared/core/classes/project';
 
 @Component({
   selector: 'apa-customer-homepage',
@@ -9,12 +9,12 @@ import { Projects } from 'src/app/shared/core/classes/project';
 })
 export class CustomerHomepageComponent implements OnInit {
 
-  projects : Projects[] = [];
+  projects : Project[] = [];
 
   constructor(private projectService : ProjectService) { }
 
   ngOnInit(): void {
-    this.projectService.getAll().subscribe((projectsFromServeur)=>{
+    this.projectService.getAllProjects().subscribe((projectsFromServeur)=>{
       this.projects = projectsFromServeur;
     });
   }

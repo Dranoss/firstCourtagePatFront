@@ -1,13 +1,14 @@
+<router-outlet></router-outlet>
+
 <div class="back">
-  <form name="login" class="loginForm">
-      <h3>Connexion</h3>
+  <ng-form name="ngLogin" >
+    <fieldset class="loginForm">
+      <h4>Connexion</h4>
       <label for="username">Adresse Mail :</label>
-      <input type="text" />
+      <input type="text" ngModel="userName"/>
       <label for="password">Mot de passe :</label>
-      <input type="password" />
-    <button class="valider">Valider</button>
-    <!-- A supprimer lorsque l'authentification sera faite  -->
-    <!-- <a routerLink="/index" routerLinkActive="active"> <button class="valider">Admin</button> </a>
-<a routerLink="/customer-homepage" routerLinkActive="active"> <button class="valider">Client</button> </a> -->
-  </form>
+      <input type="password" ngModel="password"/>
+    <button type="submit"   onsubmit="valider()" class="valider">Valider</button>
+  </fieldset>
+</ng-form>
 </div>
