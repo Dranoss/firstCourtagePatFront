@@ -189,33 +189,29 @@ export class ProjectCardComponent implements OnInit {
  // statements which put a User
   modifyProjectDetails(): void {
 
+    // this.user = new User(
+    //   this.user.role,
+    //   this.form.get('userTypeForm')?.value,
+    //   this.form.get('lastName')?.value,
+    //   this.form.get('firstName')?.value,
+    //   this.form.get('email')?.value,
+    //   this.form.get('phoneNumber')?.value,
+    //   this.form.get('password')?.value,
+    //   this.form.get('companyName')?.value,
+    //   this.form.get('siretNumber')?.value,
+    //   this.form.get('sponsorshipCode')?.value,
+    //   this.form.get('address')?.value,
+    //   this.form.get('rib')?.value,
+    //   this.user.id = this.data.id);
 
 
-    this.user = new User(
-      this.user.role,
-      this.form.get('userTypeForm')?.value,
-      this.form.get('lastName')?.value,
-      this.form.get('firstName')?.value,
-      this.form.get('email')?.value,
-      this.form.get('phoneNumber')?.value,
-      this.form.get('password')?.value,
-      this.form.get('companyName')?.value,
-      this.form.get('siretNumber')?.value,
-      this.form.get('sponsorshipCode')?.value,
-      this.form.get('address')?.value,
-      this.form.get('rib')?.value,
-      this.user.id = this.data.id);
+    //   this.user.userType = new UserType(this.user.id, '');
+
+    //   this.userCardService.putUserById(this.user).subscribe(data => {
+    //   this.dialogRef.close('Close');
 
 
-
-
-      this.user.userType = new UserType(this.user.id, '');
-
-      this.userCardService.putUserById(this.user).subscribe(data => {
-      this.dialogRef.close('Close');
-
-
-    });
+    // });
 
 
 }
