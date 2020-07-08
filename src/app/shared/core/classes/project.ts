@@ -1,7 +1,9 @@
 
 import { TypeProject } from './typeProject';
 import { User } from './user';
-import { Projectstatus } from './projectstatus.';
+
+import { Documentt } from './documentt';
+import { ProjectStatus } from './projectStatus';
 
 export class Project {
   id?: number;
@@ -10,8 +12,9 @@ export class Project {
   dateOpened: Date;
   dateClosed: Date;
   typeProject: TypeProject;
-  statusProject: Projectstatus;
-
+  documents : Documentt[];
+  projectStatus : ProjectStatus;
+ 
   constructor(
     name: string,
     amount: number,

@@ -10,8 +10,10 @@ import { TypeProject } from '../../core/classes/typeProject';
 })
 export class UserService {
 
+ 
   private URL = 'http://www.courtagepatrimoine.net';
   private local= 'http://localhost:8080';
+ 
 
   private URL_GET_USER_BY_ID = this.local + '/users';
   private URL_GET_USERS = this.local + '/users';

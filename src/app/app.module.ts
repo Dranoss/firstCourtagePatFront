@@ -32,6 +32,7 @@ import { ProjectListComponent } from './pages/project-list/project-list.componen
 import { ArrowDownComponentComponent } from './shared/style/arrow-down-component/arrow-down-component.component';
 import { AppointmentButtonComponent } from './shared/buttons/appointment-button/appointment-button.component';
 import { CustomerHomepageComponent } from './pages/customer-homepage/customer-homepage.component';
+import { ProjectDetailsComponent } from './pages/project-details/project-details.component';
 
 
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -79,6 +80,7 @@ import { TypeprojectcardComponent } from './pages/typeProjectCard/typeprojectcar
     ArrowDownComponentComponent,
     AppointmentButtonComponent,
     CustomerHomepageComponent,
+    ProjectDetailsComponent,
   ],
   imports: [
     BrowserModule,

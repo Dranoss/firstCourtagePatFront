@@ -17,9 +17,8 @@ export class User {
   public sponsorshipCode: string;
   public address: Address;
   public rib: Rib;
-  projects: Project[];
-
-
+  public projects : Project [];
+  
 
   constructor(
     role: 'admin' | 'client',
