@@ -1,17 +1,15 @@
 <router-outlet></router-outlet>
 
-<!-- go to user form -->
-
-
 
 <div class="back">
   <ng-form name="ngLogin" >
-    <fieldset class="loginForm">Connexion
+    <fieldset class="loginForm">
+      <h4>Connexion</h4>
       <label for="username">Adresse Mail :</label>
       <input type="text" ngModel="userName" name="login"/>
       <label for="password">Mot de passe :</label>
-      <input type="password" ngModel="password" name ="password"/>
-      <a routerLink="/user">   <button type="submit"   onsubmit="valider()" class="valider">Valider</button>
-      </a> </fieldset>
+      <input type="password" ngModel="password"/>
+    <button type="submit"   onsubmit="valider()" class="valider">Valider</button>
+  </fieldset>
 </ng-form>
 </div>

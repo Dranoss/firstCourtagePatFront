@@ -1,3 +1,4 @@
+
 import { TypeProject } from './typeProject';
 import { User } from './user';
 import { Projectstatus } from './projectstatus.';
@@ -10,7 +11,6 @@ export class Project {
   dateClosed: Date;
   typeProject: TypeProject;
   statusProject: Projectstatus;
-
 
   constructor(
     name: string,

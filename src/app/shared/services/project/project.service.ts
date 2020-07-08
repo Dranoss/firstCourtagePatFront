@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { User } from '../../core/classes/user';
 import { Project } from '../../core/classes/project';
 import { TypeProject } from '../../core/classes/typeProject';
+import { Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -38,6 +39,7 @@ export class ProjectService {
   }
   addProject(user: User , project: Project): Observable<Project> {
     return this.http.post<Project>(ProjectService.URL_POST_PROJECT, { user, project });
+
   }
 
 }

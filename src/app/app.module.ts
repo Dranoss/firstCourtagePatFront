@@ -29,6 +29,10 @@ import { RecruitmentComponent } from './pages/recruitment/recruitment.component'
 import { UserFormComponent } from './pages/user-form/user-form.component';
 import { UserCardComponent } from './pages/user-card/user-card.component';
 import { ProjectListComponent } from './pages/project-list/project-list.component';
+import { ArrowDownComponentComponent } from './shared/style/arrow-down-component/arrow-down-component.component';
+import { AppointmentButtonComponent } from './shared/buttons/appointment-button/appointment-button.component';
+import { CustomerHomepageComponent } from './pages/customer-homepage/customer-homepage.component';
+
 
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
@@ -72,8 +76,9 @@ import { TypeprojectcardComponent } from './pages/typeProjectCard/typeprojectcar
     ProjectCardComponent,
     TypeUserCardComponent,
     TypeprojectcardComponent,
-
-
+    ArrowDownComponentComponent,
+    AppointmentButtonComponent,
+    CustomerHomepageComponent,
   ],
   imports: [
     BrowserModule,
