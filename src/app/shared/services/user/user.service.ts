@@ -10,22 +10,27 @@ import { TypeProject } from '../../core/classes/typeProject';
 })
 export class UserService {
 
-  private URL_GET_USER_BY_ID = 'http://www.courtagepatrimoine.net/users/';
-  private URL_GET_USERS = 'http://localhost:8080/users';
+  private URL = 'http://www.courtagepatrimoine.net';
+  private local= 'http://localhost:8080';
 
-  private URL_GET_PROJECTS = 'http://localhost:8080/projects';
-  private URL_PUT_PROJECT = 'http://localhost:8080/projects/projectby';
-  private URL_POST_PROJECT = 'http://localhost:8080/projects';
+  private URL_GET_USER_BY_ID = this.local + '/users';
+  private URL_GET_USERS = this.local + '/users';
+  private URL_POST_USER = this.local + '/users';
+  private URL_UPDATE_USER = this.local + '/users';
 
-  private URL_DELETE_USER = 'http://localhost:8080/deluser';
+
+  // private URL_GET_PROJECTS = 'http://localhost:8080/projects';
+  // private URL_PUT_PROJECT = 'http://localhost:8080/projects/projectby';
+  // private URL_POST_PROJECT = 'http://localhost:8080/projects';
+
+  private URL_DELETE_USER = 'http://localhost:8080/users';
 
 
   private URL_GET_TYPEPROJECTS = 'http://localhost:8080/typeProjects';
 
   //private URL_GET_PROJECTSBYUSER = 'http://localhost:8080/projects/users';
 
-  private URL_POST_USER = 'http://www.courtagepatrimoine.net/users/user';
-  private URL_UPDATE_USER = 'http://www.courtagepatrimoine.net/users/user';
+//  private URL_UPDATE_USER = 'http://www.courtagepatrimoine.net/users/user';
 
   constructor(private http: HttpClient) { }
 

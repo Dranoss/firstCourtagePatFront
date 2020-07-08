@@ -1,47 +1,53 @@
 
-:host{
-  display: flex;
-  flex-direction:row ;
-  align-items: center;
-  justify-content: space-evenly;
-}
+h1{
 
-.selectProject{
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-left: 11px;
-}
-.user{
-  margin-left: 11px;
-  display: flex;
-  align-content: center;
+text-align: center;
 
 }
-
-.total{
-  display: flex;
-  justify-content: center;
-
+.button{
+  margin: 2px;
 }
-.formProject{
-    display: flex;
-    justify-content: center;
-}
+// .selectProject{
 
-.projetdetails{
-  display: flex;
-  flex-direction: column;
-  align-items: baseline;
-  margin-left: 11px;
-}
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   margin-left: 11px;
+// }
+// .user{
+//   margin-left: 11px;
+//   display: flex;
+//   align-content: center;
 
-.client , .projet{
-  display: block;
-}
+// }
 
-.ligne{
-  border-top: inset;
-  background-color:--text-color;
-}
+// .total{
+//   display: flex;
+//   justify-content: center;
+
+// }
+// .formProject{
+//     display: flex;
+//     justify-content: center;
+// }
+
+// .projetdetails{
+//   display: flex;
+//   flex-direction: column;
+//   align-items: baseline;
+//   margin-left: 11px;
+// }
+
+// .client , .projet{
+//   display: block;
+// }
+
+// .ligne{
+
+
+//   background-color: blue;
+// }
+.mat-row:nth-child(even){
+  background-color:rgb(225, 225, 236);
+  opacity: 0,6;
+  }

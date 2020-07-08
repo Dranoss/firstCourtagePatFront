@@ -1,96 +1,58 @@
+<h1>Liste des Clients </h1>
 
 
-<section class="client">
-  <span>Liste des Clients</span>
-  <span> <input type="text"> </span>
-
-  <table>
-    <tr >
-      <th class="ligne" *ngFor="let item of headers">{{item}}
-      </th>
-    </tr>
-    <tr class="ligne" *ngFor="let user of users" [routerLink]="['/projects', user.id]"  >
-      <td>{{user.firstName}}</td>
-      <td>{{user.lastName}}</td>
-      <td>{{user.phoneNumber}}</td>
-      <td>{{user.societyName}} </td>
-    </tr>
-  </table>
-</section>
+<div><button mat-icon-button (click)="addUser()" class="button">
+    Nouveau Client <mat-icon>add_circle</mat-icon>
+  </button>
+</div>
 
 
-<!--
-<H4> Catégories de Projets</H4>
-<select [(ngModel)]="selectedtype">
-  <option *ngFor="let type of typeProjects">
-    {{type.name}}
-  </option>
-</select>
--->
-<!--
-<H4> Liste des projets par type : {{selectedtype.name}}
-  </H4>
-<select>
-  <option *ngFor="let project of projects" [ngValue]="project">
-
-    {{project.id}}
-    {{project.name}}
-    {{project.amount}}
-  </option>
-</select>
-
--->
-
-
-<!--
-<H4> Liste des projets du client : {{selected.firstName}}{{selected.lastName}} </H4> -->
-
-<section class="projet">
-  <div class="selectProject">
-    <select [(ngModel)]="selectedProject" (change)="details()" name="selectProj">
-      <option *ngFor="let project of projects" [ngValue]="project" name="optionListe">
-        {{project.name}}
-      </option>
-    </select>
-    <!-- div *ngIf="selectedProject?.id -->
-    <H4> Infos du projet : </H4>
-    <div *ngIf="selectedProject?.id && userClicked; else noproject" class="formProject">
-      <form (ngSubmit)="modifyProjectDetails()" class="projetdetails" name="formDetails">
-
-        <input name="name" type="text" [(ngModel)]="selectedProject.name">
-        <label> Type du Projet </label>
-        <input name="typeProject" type="text" [(ngModel)]="selectedProject.typeProject">
-        <label> Montant </label>
-        <input name="amount" type="text" [(ngModel)]="selectedProject.amount">
-        <label> Date de création </label>
-        <input name="dateOpened" type="text" [(ngModel)]="selectedProject.dateOpened">
-        <label> Date de clôture </label>
-        <input name="dateClosed" type="text" [(ngModel)]="selectedProject.dateClosed">
-        <button type="submit">Modifier </button>
-      </form>
-    </div>
-    <ng-template #noproject> Pas de projects</ng-template>
-  </div>
+<input matInput [(ngModel)]="searchKey" name="inputSearch" placeholder="Search" autocomplete="on" (change)="filter()">
 
 
 
-  <div class="newProject">
-    <button name="buttonNew" type="submit" (click)="newProject()"> Ajouter Un Nouveau Projet</button>
+<div>
+  <mat-table [dataSource]="listOfUsers" matSort>
+    <mat-header-row *matHeaderRowDef="headers" > </mat-header-row>
+    <mat-row *matRowDef="let row;columns: headers;" class="mat-row"></mat-row>
 
-    <form (ngSubmit)="newProject()" class="projetdetails" name="formDetails">
-      <label> Nom du Projet </label>
-      <input name="name" type="text" [(ngModel)]="project.name">
-      <label> Type du Projet </label>
-      <input name="typeProject" type="text" [(ngModel)]="project.typeProject">
-      <label> Montant </label>
-      <input name="amount" type="text" [(ngModel)]="project.amount">
-      <label> Date de création </label>
-      <input name="dateOpened" type="text" [(ngModel)]="project.dateOpened">
-      <label> Date de clôture </label>
-      <input name="dateClosed" type="text" [(ngModel)]="project.dateClosed">
-      <button type="submit">Modifier </button>
-    </form>
+      <ng-container matColumnDef="Nom" >
+      <mat-header-cell  *matHeaderCellDef  mat-sort-header>Nom </mat-header-cell>
+      <mat-cell *matCellDef="let user" >{{user.lastName}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Prénom">
+      <mat-header-cell *matHeaderCellDef>Prenom </mat-header-cell>
+      <mat-cell *matCellDef="let user">{{user.firstName}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Email">
+      <mat-header-cell *matHeaderCellDef >Email</mat-header-cell>
+      <mat-cell *matCellDef="let user">{{user.email}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Téléphone">
+      <mat-header-cell *matHeaderCellDef>Téléphone</mat-header-cell>
+      <mat-cell *matCellDef="let user">{{user.phoneNumber}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Société">
+      <mat-header-cell *matHeaderCellDef >Compagnie </mat-header-cell>
+      <mat-cell *matCellDef="let user">{{user.companyName}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let user">
+        <button mat-icon-button   (click)="modifyUser(user)" class="button">
+          <mat-icon >launch</mat-icon>
+        </button>
+        <button mat-icon-button  [routerLink]="['/projects',user.id,user.lastName]" class="button">
+          <mat-icon color="blue" >anchor</mat-icon>
+        </button>
+        <button mat-icon-button (click)="deleteUser(user)" class="button">
+          <mat-icon color="warn" >delete_forever</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5,10,20,50]" [pageSize]="5">
 
-  </div>
+  </mat-paginator>
+</div>
 
-</section>
