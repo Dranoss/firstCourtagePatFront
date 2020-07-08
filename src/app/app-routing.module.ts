@@ -31,7 +31,8 @@ const routes: Routes = [
   {path : 'user', component : UserFormComponent},
   {path : 'projects/:projectID', component : ProjectDetailsComponent},
   {path : 'customer-homepage/:userID', component: CustomerHomepageComponent}
-];
+  {path : 'projects/:id/:userName', component : ProjectListComponent},
+ ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

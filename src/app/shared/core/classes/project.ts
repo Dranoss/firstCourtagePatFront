@@ -1,21 +1,36 @@
 
 import { TypeProject } from './typeProject';
 import { User } from './user';
+
 import { Documentt } from './documentt';
 import { ProjectStatus } from './projectStatus';
 
 export class Project {
-  id: number;
+  id?: number;
   name: string;
   amount: number;
   dateOpened: Date;
   dateClosed: Date;
   typeProject: TypeProject;
-  user: User;
   documents : Documentt[];
   projectStatus : ProjectStatus;
+ 
+  constructor(
+    name: string,
+    amount: number,
+    dateOpened: Date,
+    dateClosed: Date,
+    typeProject: TypeProject,
+    statusProject: Projectstatus,
+    id?: number) {
 
-  constructor() {
+      this.id= id;
+      this.name= name;
+      this.amount = amount;
+      this.dateClosed = dateClosed;
+      this.dateOpened =dateOpened;
+      this.statusProject = statusProject;
+      this.typeProject = typeProject;
   }
 
 }

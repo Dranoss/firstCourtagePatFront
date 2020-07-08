@@ -1,0 +1,20 @@
+<button mat-stroked-button (click)="onValidate()" class="button">
+  Ajouter
+</button>
+<button mat-stroked-button (click)="onDelete()" class="button">
+  Supprimer
+</button>
+<button mat-stroked-button (click)="onModify()" class="button">
+  Modifier
+</button>
+
+<mat-form-field>
+  <mat-label>Type de Client</mat-label>
+  <mat-select [compareWith]="compareObjects" name="userTypeForm" matInput placeholder="Type de Client"
+    name="inputSelect">
+    <mat-option *ngFor="let type of typeOfUsers" [value]="type"> {{type.name}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<input matInput  [(ngModel)]="inputNewTypeUser" placeholder="nom du type" autocomplete="on">
+

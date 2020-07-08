@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 export class ProjectService {
   //Projects
   private static URL_GET_PROJECTS = 'http://localhost:8080/projects';
-  private static URL_GET_PROJECTSBYUSERID = 'http://localhost:8080/project';
+  private static URL_GET_PROJECTSBYUSERID = 'http://localhost:8080/projects';
   private static URL_PUT_PROJECT = 'http://localhost:8080/projects';
 
   private static URL_GET_TYPEPROJECTS = 'http://localhost:8080/typeProjects';
