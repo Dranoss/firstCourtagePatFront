@@ -169,6 +169,7 @@ export class ProjectCardComponent implements OnInit {
   // statements which post a new Project
   onValidate() {
 
+
       this.project = new Project(
       this.form.get('name')?.value,
       this.form.get('amount')?.value,
