@@ -14,14 +14,14 @@ export class Project {
   typeProject: TypeProject;
   documents : Documentt[];
   projectStatus : ProjectStatus;
- 
+
   constructor(
     name: string,
     amount: number,
     dateOpened: Date,
     dateClosed: Date,
     typeProject: TypeProject,
-    statusProject: Projectstatus,
+    projectStatus: ProjectStatus,
     id?: number) {
 
       this.id= id;
@@ -29,7 +29,7 @@ export class Project {
       this.amount = amount;
       this.dateClosed = dateClosed;
       this.dateOpened =dateOpened;
-      this.statusProject = statusProject;
+      this.projectStatus = projectStatus;
       this.typeProject = typeProject;
   }
 
