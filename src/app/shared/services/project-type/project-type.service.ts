@@ -10,21 +10,21 @@ export class ProjectTypeService {
   private PROJECT_TYPE_URL = 'http://localhost:8080/project-types';
   constructor(private http: HttpClient) { }
 
-  getAllUserTypes(): Observable<ProjectType[]>{
+  getAllProjectTypes(): Observable<ProjectType[]>{
     return this.http.get<ProjectType[]>(this.PROJECT_TYPE_URL);
   }
 
-  getUserTypeById(id: number): Observable<ProjectType>{
+  getProjectTypeById(id: number): Observable<ProjectType>{
     return this.http.get<ProjectType>(`${this.PROJECT_TYPE_URL}/${id}`);
   }
 
-  postUserType(projectType: ProjectType): Observable<ProjectType>{
+  postProjectType(projectType: ProjectType): Observable<ProjectType>{
     return this.http.post<ProjectType>(this.PROJECT_TYPE_URL, projectType);
   }
-  putUserTypeById(projectType: ProjectType): Observable<ProjectType>{
+  putProjectTypeById(projectType: ProjectType): Observable<ProjectType>{
     return this.http.put<ProjectType>(`${this.PROJECT_TYPE_URL}/${projectType.id}`, projectType);
   }
-  deleteUserTypeById(id: number): Observable<void> {
+  deleteProjectTypeById(id: number): Observable<void> {
     return this.http.delete<void>(`${this.PROJECT_TYPE_URL}/${id}`);
   }
 }
