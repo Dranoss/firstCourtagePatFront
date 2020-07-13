@@ -2,11 +2,11 @@ import { User } from './user';
 
 export class UserType{
   public id?: number;
-  public name: string;
+  public name?: string;
   public users?: User[];
 
   constructor(
-    name: string,
+    name?: string,
     id?: number
   ){
     this.id = id;
