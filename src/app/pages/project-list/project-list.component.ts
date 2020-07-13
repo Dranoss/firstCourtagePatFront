@@ -33,6 +33,7 @@ export class ProjectListComponent implements OnInit {
   constructor(private activatedRouter: ActivatedRoute,
     private projectService: ProjectService,
     private userService: UserService,
+
     private dialog: MatDialog
   ) { }
 
@@ -57,9 +58,20 @@ export class ProjectListComponent implements OnInit {
       this.projects.paginator = this.paginator;
     });
   }
+
+  newProject() {
+
+    const dialogRef = this.dialog.open(ProjectCardComponent, { data: [null,this.userId] });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getProjects(this.userId);
+    });
+
+  }
+
   modifyProject(selectedProject: Project): void {
 
-    //  this.dialog.open(ProjectCardComponent, { data: selectedProject });
+     this.dialog.open(ProjectCardComponent, { data: [selectedProject,null] });
 
 
     // this.projectService.putProject(this.selectedProject).subscribe(data => {
@@ -75,16 +87,5 @@ export class ProjectListComponent implements OnInit {
 
   }
 
-
-
-  newProject() {
-
-    const dialogRef = this.dialog.open(ProjectCardComponent, { data: this.userId });
-
-    dialogRef.afterClosed().subscribe(result => {
-      this.getProjects(this.userId);
-    });
-
-  }
 
 }

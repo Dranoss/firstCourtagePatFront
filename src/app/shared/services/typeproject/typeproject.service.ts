@@ -9,9 +9,11 @@ import { Observable } from 'rxjs';
 export class TypeprojectService {
 
 
+
   private URL_GET_TYPEOFPROJECTS = 'http://localhost:8080/project-types';
   private URL_POST_TYPEOFPROJECTS = 'http://localhost:8080/project-types';
   private URL_UPDATE_TYPEOFPROJECTS = 'http://localhost:8080/project-types';
+  private URL_DELETE_TYPEOFPOJECTS = 'http://localhost:8080/project-types';
 
   constructor(private http: HttpClient) { }
 
@@ -19,13 +21,17 @@ export class TypeprojectService {
     return this.http.get<TypeProject[]>(this.URL_GET_TYPEOFPROJECTS);
   }
 
-  postUserType(userType: TypeProject): Observable<TypeProject>{
+  postProjectType(projectType: TypeProject): Observable<TypeProject>{
 
-    return this.http.post<TypeProject>(this.URL_POST_TYPEOFPROJECTS,userType);
+    return this.http.post<TypeProject>(this.URL_POST_TYPEOFPROJECTS,projectType);
 
   }
-  putUserType(userType: TypeProject): Observable<TypeProject> {
-    return this.http.put<TypeProject>(this.URL_UPDATE_TYPEOFPROJECTS + `/${userType.id}`, userType);
+  putProjectType(projectType: TypeProject): Observable<TypeProject> {
+    return this.http.put<TypeProject>(this.URL_UPDATE_TYPEOFPROJECTS + `/${projectType.id}`, projectType);
+  }
+
+  deleteProjectType(id: number) {
+    return this.http.delete(this.URL_DELETE_TYPEOFPOJECTS + "/" + id);
   }
 
 }

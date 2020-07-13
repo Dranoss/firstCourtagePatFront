@@ -25,7 +25,6 @@ export class ProjectCardComponent implements OnInit {
   project: Project;
   projects: Project[];
   projectsAll: Project[];
-  selectedProject: Project;
   selectedAll: Project[];
 
   selectedType: TypeProject;
@@ -33,27 +32,30 @@ export class ProjectCardComponent implements OnInit {
 
   maxRanking: number;
   userSelected: User;
-  selected: User;
-  form: FormGroup;
 
-  slideSelected:MatSlider;
+  form: FormGroup;
+  isCreated = false;
+
+
+  slideSelected: MatSlider;
   selectedRanking: string;
   statusName: string;
   typeStatusses: Projectstatus[];
 
-    steps:  number;
+  steps: number;
 
 
   startDate: MatDatepickerInput<Date>;
   endDate: MatDatepickerInput<Date>;
 
   constructor(public dialogRef: MatDialogRef<ProjectCardComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: { proj: Project, userid: number },
     private dialog: MatDialog,
     private typeProjectService: TypeprojectService,
     private projectService: ProjectService,
     private userService: UserService,
     private statusService: StatusService,
+
 
   ) { }
 
@@ -67,12 +69,16 @@ export class ProjectCardComponent implements OnInit {
     // initialize liste of statusses
     //this.getStatusList();
 
-    //open the dialog as null to create a project
-    if (!isNaN(this.data)) {
-      this.userService.getUserById(this.data).subscribe(us => {
-        this.userSelected = us;
+    this.userService.getUserById(this.data.userid).subscribe(us => {
+      this.userSelected = us;
 
-      });
+    });
+
+
+    //open the dialog as null to create a project
+    if (this.data[0] === null) {
+      this.isCreated = false;
+
       this.form = new FormGroup({
 
         name: new FormControl('', Validators.required),
@@ -88,14 +94,16 @@ export class ProjectCardComponent implements OnInit {
     }
     //open the dialog as data known to update a user
     else {
-      this.project = this.data;
+      this.isCreated = true;
+
+      this.project = this.data.proj;
 
       this.form = new FormGroup({
 
-        name: new FormControl(this.project.name, Validators.required),
-        amount: new FormControl('', Validators.required),
-        dateOpened: new FormControl('', Validators.email),
-        dateClosed: new FormControl('', [Validators.required, Validators.minLength(10)]),
+        name: new FormControl(this.project?.name, Validators.required),
+        amount: new FormControl(this.project?.name, Validators.required),
+        dateOpened: new FormControl(this.project?.dateOpened, Validators.email),
+        dateClosed: new FormControl(this.project?.dateClosed, [Validators.required, Validators.minLength(10)]),
         projectTypeForm: new FormControl(null, Validators.required),
         projectStatusForm: new FormControl(null, Validators.required)
 
@@ -110,34 +118,10 @@ export class ProjectCardComponent implements OnInit {
   // Initialize The type Of Projects List
   public getTypeOfProjects() {
 
-
-    // this.typeProjects = [
-    //   {
-    //     'id': 1,
-    //     'name': 'type 1',
-    //     'projectStatus':
-    //       [{ 'id': 1, 'name': 'En demarrage', 'ranking': 25 },
-    //         { 'id': 2, 'name': 'En cours', 'ranking': 50 },
-    //         { 'id': 3, 'name': 'En validation', 'ranking': 75 }
-    //       ]
-    //   },
-    //   {
-    //     'id': 2,
-    //     'name': 'type 2',
-    //     'projectStatus':
-    //       [{ 'id': 1, 'name': 'En demarrage', 'ranking': 25 },
-    //         { 'id': 2, 'name': 'En cours', 'ranking': 50 },
-    //         { 'id': 3, 'name': 'En validation', 'ranking': 75 }
-    //       ]
-    //   }
-
-    // ];
-
-
     this.typeProjectService.getTypeOfProject().subscribe(data => {
       this.typeProjects = data;
-      this.selectedType = this.form.get('projectStatusform')?.value;
-      this.typeStatusses = this.selectedType?.projectStatus;
+      // this.selectedType = this.form.get('projectStatusform')?.value;
+      // this.typeStatusses = this.selectedType?.projectStatus;
     });
 
 
@@ -148,127 +132,106 @@ export class ProjectCardComponent implements OnInit {
 
   // Initialize The statusses Of status List
   public getStatusList(typeSelected: TypeProject) {
+    this.statusService.getListofStatus(typeSelected.id).subscribe(data => {
+      this.typeStatusses = data;
+      this.steps = this.typeStatusses.length + 1;
 
-    // this.typeStatusses =
-    // [ { 'id': 1, 'name': 'En demarrage', 'ranking': 25 },
-    //   { 'id': 2, 'name': 'En cours', 'ranking': 50 },
-    //   { 'id': 3, 'name': 'En validation', 'ranking': 75 }
-    // ];
-
-
-
-   this.statusService.getListofStatus(typeSelected.id).subscribe(data => {
-    this.typeStatusses = data;
-    this.steps= this.typeStatusses.length +1;
-
-// gerer le ranking
-     });
+      // gerer le ranking
+    });
   }
 
-  slide(){
-
-
-
+  slide() {
     // ranger le tableau type satusses de max a min
     // determiner dans quel intervalle se trouve le selectedstatus
-// typestatusses=[{"","","","",",",""}]
+    // typestatusses=[{"","","","",",",""}]
+    this.typeStatusses.forEach(element => {
+      if (element.ranking >= Number(this.slideSelected.value)) this.statusName = element.name;
+
+    });
+  }
+
+  compareObjects(o1: any, o2: any) {
+
+    if (o1?.id == o2?.id) {
 
 
+      return true;
+    }
+    else {
+      return false;
+    }
 
-this.typeStatusses.forEach(element => {
-  if (element.ranking >= Number(this.slideSelected.value)) this.statusName = element.name;
 
-});
+  }
 
+  // call a dialog to post a new type of Project
+  addTypeOfProject() {
+    let ref = this.dialog.open(TypeprojectcardComponent);
+    ref.afterClosed().subscribe(result => {
+      this.getTypeOfProjects();
+    });
+
+  }
+
+  // statements which post a new Project
+  onValidate() {
+
+    this.project = new Project(
+      this.form.get('name')?.value,
+      this.form.get('amount')?.value,
+      this.form.get('dateOpened')?.value,
+      this.form.get('dateClosed')?.value,
+      this.form.get('projectTypeForm')?.value,
+      null,//document[]
+      this.form.get('projectStatusForm')?.value,
+      null//user
+      //,id
+    );
+
+    this.project.projectStatus = new Projectstatus('', this.project.projectStatus.ranking, this.project.projectStatus.id)
+    // poster le nouveau projet sur le userSelected id .
+
+    this.projectService.addProject(this.project).subscribe(data => {
+      this.dialogRef.close('Close');
+    });
+
+    // this.userService.putUserById(this.userSelected).subscribe(data => {
+    //   this.dialogRef.close('close');
+    // });
 
 
 
   }
 
-compareObjects(o1: any, o2: any) {
+  // statements which put a User
+  modifyProjectDetails(): void {
 
-  if (o1?.id == o2?.id) {
+    // this.user = new User(
+    //   this.user.role,
+    //   this.form.get('userTypeForm')?.value,
+    //   this.form.get('lastName')?.value,
+    //   this.form.get('firstName')?.value,
+    //   this.form.get('email')?.value,
+    //   this.form.get('phoneNumber')?.value,
+    //   this.form.get('password')?.value,
+    //   this.form.get('companyName')?.value,
+    //   this.form.get('siretNumber')?.value,
+    //   this.form.get('sponsorshipCode')?.value,
+    //   this.form.get('address')?.value,
+    //   this.form.get('rib')?.value,
+    //   this.user.id = this.data.id);
 
 
-    return true;
+    //   this.user.userType = new UserType(this.user.id, '');
+
+    //   this.userCardService.putUserById(this.user).subscribe(data => {
+    //   this.dialogRef.close('Close');
+
+
+    // });
+
+
   }
-  else {
-    return false;
-  }
-
-
-}
-
-// call a dialog to post a new type of Project
-addTypeOfProject() {
-
-
-  let ref = this.dialog.open(TypeprojectcardComponent);
-  ref.afterClosed().subscribe(result => {
-    this.getTypeOfProjects();
-  });
-
-}
-
-// statements which post a new Project
-onValidate() {
-
-  this.project = new Project(
-    this.form.get('name')?.value,
-    this.form.get('amount')?.value,
-    this.form.get('dateOpened')?.value,
-    this.form.get('dateClosed')?.value,
-    this.form.get('projectTypeForm')?.value,
-    null,//document[]
-    this.form.get('projectStatusForm')?.value,
-    null//user
-    //,id
-  );
-
-  this.project.projectStatus = new Projectstatus('', this.project.projectStatus.ranking, this.project.projectStatus.id)
-  // poster le nouveau projet sur le userSelected id .
-
-  this.projectService.addProject(this.project).subscribe(data => {
-    this.dialogRef.close('Close');
-  });
-
-  // this.userService.putUserById(this.userSelected).subscribe(data => {
-  //   this.dialogRef.close('close');
-  // });
-
-
-
-}
-
-// statements which put a User
-modifyProjectDetails(): void {
-
-  // this.user = new User(
-  //   this.user.role,
-  //   this.form.get('userTypeForm')?.value,
-  //   this.form.get('lastName')?.value,
-  //   this.form.get('firstName')?.value,
-  //   this.form.get('email')?.value,
-  //   this.form.get('phoneNumber')?.value,
-  //   this.form.get('password')?.value,
-  //   this.form.get('companyName')?.value,
-  //   this.form.get('siretNumber')?.value,
-  //   this.form.get('sponsorshipCode')?.value,
-  //   this.form.get('address')?.value,
-  //   this.form.get('rib')?.value,
-  //   this.user.id = this.data.id);
-
-
-  //   this.user.userType = new UserType(this.user.id, '');
-
-  //   this.userCardService.putUserById(this.user).subscribe(data => {
-  //   this.dialogRef.close('Close');
-
-
-  // });
-
-
-}
 
 }
 

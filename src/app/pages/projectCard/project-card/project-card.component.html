@@ -48,11 +48,11 @@
 
       </mat-form-field>
 
-      <button mat-stroked-button (click)="onValidate()" class="button">
+      <button  *ngIf="!isCreated" mat-stroked-button (click)="onValidate()" class="button">
         Valider
       </button>
 
-      <button mat-stroked-button     (click)="modifyProjectDetails()" class="button">
+      <button *ngIf="isCreated" mat-stroked-button (click)="modifyProjectDetails()" class="button">
         Modifier
       </button>
 
