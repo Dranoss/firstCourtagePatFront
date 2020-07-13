@@ -27,7 +27,7 @@
     </ng-container>
     <ng-container matColumnDef="Type">
       <mat-header-cell *matHeaderCellDef>Type de projet </mat-header-cell>
-      <mat-cell *matCellDef="let project">{{project.typeProject}}</mat-cell>
+      <mat-cell *matCellDef="let project">{{project.typeProject?.name}}</mat-cell>
     </ng-container>
      <ng-container matColumnDef="Montant">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Montant</mat-header-cell>
@@ -44,8 +44,10 @@
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let project">
-        <button mat-icon-button   (click)="modifyProject(project)" class="button">
-          <mat-icon >launch</mat-icon>
+
+        <!-- <button mat-icon-button  [routerLink]="['/projects',project.id]" (click)="modifyProject(project)"  class="button"> -->
+          <button mat-icon-button  [routerLink]="['/projects',project.id]"  class="button">
+            <mat-icon >launch</mat-icon>
         </button>
 
         <button mat-icon-button (click)="deleteProject(project)" class="button">

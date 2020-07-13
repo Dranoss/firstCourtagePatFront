@@ -10,6 +10,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { UserService } from 'src/app/shared/services/user/user.service';
 import { ProjectCardComponent } from '../projectCard/project-card/project-card.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ProjectDetailsComponent } from '../project-details/project-details.component';
 
 @Component({
   selector: 'apa-project-list',
@@ -20,6 +21,7 @@ export class ProjectListComponent implements OnInit {
 
   selectedProject: Project;
   userId: number;
+  userName: string;
   projects: MatTableDataSource<Project>;
   selected: User;
   dateClosed: Date;
@@ -27,7 +29,6 @@ export class ProjectListComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   headers: string[];
-  userName: string;
 
   constructor(private activatedRouter: ActivatedRoute,
     private projectService: ProjectService,
@@ -58,12 +59,15 @@ export class ProjectListComponent implements OnInit {
   }
   modifyProject(selectedProject: Project): void {
 
-    this.projectService.putProject(this.selectedProject).subscribe(data => {
-      console.log('update le projet ' + this.selectedProject.name);
-      this.selectedProject = data;
+    //  this.dialog.open(ProjectCardComponent, { data: selectedProject });
 
-    });
-    // this.getTheUserList();
+
+    // this.projectService.putProject(this.selectedProject).subscribe(data => {
+    //   console.log('update le projet ' + this.selectedProject.name);
+    //   this.selectedProject = data;
+
+    // });
+    // this.getProjects(this.userId);
 
   }
 
@@ -75,18 +79,11 @@ export class ProjectListComponent implements OnInit {
 
   newProject() {
 
-    this.dialog.open(ProjectCardComponent, { data: null });
+    const dialogRef = this.dialog.open(ProjectCardComponent, { data: this.userId });
 
-
-    // this.projectService.addProject(this.selected, this.project).subscribe(data => {
-    //   console.log('add a project  ' + data);    });
-
-
-
-  //  this.getProjects();
-
-
-
+    dialogRef.afterClosed().subscribe(result => {
+      this.getProjects(this.userId);
+    });
 
   }
 

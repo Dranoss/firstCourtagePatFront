@@ -15,7 +15,7 @@ export class ProjectService {
   private static URL_PUT_PROJECT = 'http://localhost:8080/projects';
 
   private static URL_GET_TYPEPROJECTS = 'http://localhost:8080/typeProjects';
-  private static URL_POST_PROJECT = 'http://localhost:8080/projects/project';
+  private static URL_POST_PROJECT = 'http://localhost:8080/projects';
 
   constructor(private http: HttpClient) {
 
@@ -37,8 +37,8 @@ export class ProjectService {
   putProject(project: Project): Observable<Project> {
     return this.http.put<Project>(ProjectService.URL_PUT_PROJECT, project);
   }
-  addProject(user: User , project: Project): Observable<Project> {
-    return this.http.post<Project>(ProjectService.URL_POST_PROJECT, { user, project });
+  addProject(project: Project): Observable<Project> {
+    return this.http.post<Project>(ProjectService.URL_POST_PROJECT, project );
 
   }
   getProjectById(id: number) : Observable<Project>{

@@ -7,8 +7,8 @@
       <label for="username">Adresse Mail :</label>
       <input type="text" ngModel="userName" name="login"/>
       <label for="password">Mot de passe :</label>
-      <input type="password" ngModel="password"/>
-    <button type="submit"   onsubmit="valider()" class="valider">Valider</button>
+      <input type="password" ngModel="password" name="password"/>
+    <button type="submit" [routerLink]="['/user']"   onsubmit="valider()" class="valider">Valider</button>
   </fieldset>
 </ng-form>
 </div>

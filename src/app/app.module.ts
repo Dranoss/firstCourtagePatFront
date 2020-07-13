@@ -50,7 +50,12 @@ import { ProjectCardComponent } from './pages/projectCard/project-card/project-c
 import { from } from 'rxjs';
 import { TypeUserCardComponent } from './pages/typeUserCard/type-user-card/type-user-card.component';
 import { TypeprojectcardComponent } from './pages/typeProjectCard/typeprojectcard/typeprojectcard.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatCardModule} from '@angular/material/card';
 
+import {MatSliderModule} from '@angular/material/slider';
+import { FoldercardComponent } from './pages/foldercard/foldercard.component';
+import {FileSelectDirective, FileUploadModule} from "ng2-file-upload";
 
 
 @NgModule({
@@ -81,6 +86,7 @@ import { TypeprojectcardComponent } from './pages/typeProjectCard/typeprojectcar
     AppointmentButtonComponent,
     CustomerHomepageComponent,
     ProjectDetailsComponent,
+    FoldercardComponent,
   ],
   imports: [
     BrowserModule,
@@ -100,6 +106,11 @@ import { TypeprojectcardComponent } from './pages/typeProjectCard/typeprojectcar
     BrowserAnimationsModule,
     MatButtonModule,
     MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSliderModule,
+    MatCardModule,
+    FileUploadModule,
 
     ReactiveFormsModule,
 

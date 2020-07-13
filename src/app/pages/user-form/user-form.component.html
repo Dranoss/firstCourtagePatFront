@@ -7,7 +7,7 @@
 </div>
 
 
-<input matInput [(ngModel)]="searchKey" name="inputSearch" placeholder="Search" autocomplete="on" (change)="filter()">
+<input matInput [(ngModel)]="searchKey" name="inputSearch" placeholder="Search" autocomplete="off" (change)="filter()">
 
 
 
@@ -16,14 +16,25 @@
     <mat-header-row *matHeaderRowDef="headers" > </mat-header-row>
     <mat-row *matRowDef="let row;columns: headers;" class="mat-row"></mat-row>
 
-      <ng-container matColumnDef="Nom" >
-      <mat-header-cell  *matHeaderCellDef  mat-sort-header>Nom </mat-header-cell>
-      <mat-cell *matCellDef="let user" >{{user.lastName}}</mat-cell>
+      <ng-container matColumnDef="lastName" >
+      <mat-header-cell  *matHeaderCellDef  mat-sort-header>Nom</mat-header-cell>
+      <mat-cell *matCellDef="let user">{{user.lastName}}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="Prénom">
       <mat-header-cell *matHeaderCellDef>Prenom </mat-header-cell>
       <mat-cell *matCellDef="let user">{{user.firstName}}</mat-cell>
     </ng-container>
+
+    <ng-container matColumnDef="Type">
+      <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
+      <mat-cell *matCellDef="let user">{{user.userType?.name}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="sponsorshipCode">
+      <mat-header-cell *matHeaderCellDef  [style.color]="'red'" >Code Parrainage</mat-header-cell>
+      <mat-cell *matCellDef="let user">{{user.sponsorshipCode}}</mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="Email">
       <mat-header-cell *matHeaderCellDef >Email</mat-header-cell>
       <mat-cell *matCellDef="let user">{{user.email}}</mat-cell>

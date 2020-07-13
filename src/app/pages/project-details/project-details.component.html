@@ -1,8 +1,13 @@
+<div><button mat-icon-button (click)="upload()" >
+  Nouveau Document <mat-icon>add_circle</mat-icon>
+</button>
+</div>
+
 
 <div id="main">
     <div class="title"> Mes documents </div>
 
-        <div class="document" *ngFor="let document of project.documents">
+        <div class="document" *ngFor="let document of project?.documents">
             <p>{{document.name}}</p>
     </div>
 

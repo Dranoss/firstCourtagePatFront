@@ -1,12 +1,11 @@
 export class Projectstatus {
-id: number;
+id?: number;
 name: string;
 ranking: number;
 
-constructor(id: number,
-  name: string,
-  ranking: number
-  ){
+constructor(  name: string,
+  ranking: number,
+  id?: number){
 
     this.id = id;
     this.name = name;
