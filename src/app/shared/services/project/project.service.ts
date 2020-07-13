@@ -9,6 +9,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProjectService {
+  deleted(id: number) {
+    throw new Error("Method not implemented.");
+  }
   //Projects
   private static URL_GET_PROJECTS = 'http://localhost:8080/projects';
   private static URL_GET_PROJECTSBYUSERID = 'http://localhost:8080/projects';
@@ -16,33 +19,27 @@ export class ProjectService {
 
   private static URL_GET_TYPEPROJECTS = 'http://localhost:8080/typeProjects';
   private static URL_POST_PROJECT = 'http://localhost:8080/projects';
+  private static URL_DELETE_PROJECTS = 'http://localhost:8080/projects'
 
   constructor(private http: HttpClient) {
 
   }
 
   // Projects
-  getProjectsByUserId(id: number): Observable<Project[]>{
-    return this.http.get<Project[]>(ProjectService.URL_GET_PROJECTSBYUSERID + '/' +id);
- }
-
-  getAllProjects(): Observable<Project[]> {
-    return this.http.get<Project[]>(ProjectService.URL_GET_PROJECTS);
-  }
-
-  getTypeProjects(): Observable<TypeProject[]> {
-    return this.http.get<TypeProject[]>(ProjectService.URL_GET_TYPEPROJECTS);
-  }
 
   putProject(project: Project): Observable<Project> {
     return this.http.put<Project>(ProjectService.URL_PUT_PROJECT, project);
   }
   addProject(project: Project): Observable<Project> {
-    return this.http.post<Project>(ProjectService.URL_POST_PROJECT, project );
+    return this.http.post<Project>(ProjectService.URL_POST_PROJECT, project);
 
   }
-  getProjectById(id: number) : Observable<Project>{
-    return this.http.get<Project>(ProjectService.URL_GET_PROJECTS+"/"+id);
+  getProjectById(id: number): Observable<Project> {
+    return this.http.get<Project>(ProjectService.URL_GET_PROJECTS + "/" + id);
+  }
+
+  delete(id: number){
+    return this.http.delete(ProjectService.URL_DELETE_PROJECTS + "/" + id);
   }
 
 }

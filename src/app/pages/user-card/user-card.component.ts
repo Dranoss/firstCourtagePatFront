@@ -86,8 +86,8 @@ export class UserCardComponent implements OnInit {
         bic: new FormControl(this.user.rib?.bic),
         ownerFullname: new FormControl(this.user.rib?.ownerFullname),
         bankName: new FormControl(this.user.rib?.bankName),
-        //    userTypeForm: new FormControl(this.user.userType?.name, Validators.required)
-        userTypeForm: new FormControl({ id: this.user.userType }, Validators.required)
+        userTypeForm: new FormControl(this.user.userType, Validators.required)
+       // userTypeForm: new FormControl({ id: this.user.userType }, Validators.required)
 
       });
 
@@ -126,10 +126,6 @@ export class UserCardComponent implements OnInit {
 
   // statements which post a new User
   onValidate() {
-
-
-
-
     this.user = new User(
       'client',
       this.form.get('userTypeForm')?.value,
@@ -182,7 +178,8 @@ export class UserCardComponent implements OnInit {
       this.form.get('rib')?.value,
       this.user.id = this.data.id);
 
-    this.user.userType = new UserType('', this.user.userType.id);
+ //   this.user.userType = new UserType('', this.user.userType.id);
+ this.user.userType = {"id" : this.user.userType.id} as UserType;
 
     this.userCardService.putUserById(this.user).subscribe(data => {
       this.dialogRef.close('Close');

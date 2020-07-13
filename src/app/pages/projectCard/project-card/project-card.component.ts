@@ -98,7 +98,7 @@ export class ProjectCardComponent implements OnInit {
     else {
       this.isCreated = true;
 
-      this.project = this.data.proj;
+      this.project = this.data[0];
 
       this.form = new FormGroup({
 
@@ -106,7 +106,7 @@ export class ProjectCardComponent implements OnInit {
         amount: new FormControl(this.project?.name, Validators.required),
         dateOpened: new FormControl(this.project?.dateOpened, Validators.email),
         dateClosed: new FormControl(this.project?.dateClosed, [Validators.required, Validators.minLength(10)]),
-        projectTypeForm: new FormControl(null, Validators.required),
+        projectTypeForm: new FormControl(this.project.typeProject, Validators.required),
         projectStatusForm: new FormControl(null, Validators.required)
 
       });
@@ -125,12 +125,7 @@ export class ProjectCardComponent implements OnInit {
       // this.selectedType = this.form.get('projectStatusform')?.value;
       // this.typeStatusses = this.selectedType?.projectStatus;
     });
-
-
-
   }
-
-
 
   // Initialize The statusses Of status List
   public getStatusList(typeSelected: TypeProject) {
@@ -191,26 +186,13 @@ export class ProjectCardComponent implements OnInit {
     );
 
     // this.project.projectStatus = new Projectstatus('', this.project.projectStatus.ranking, this.project.projectStatus.id)
-    // poster le nouveau projet sur le userSelected id .
-
-
-
-
-        this.userSelected = {id: this.data[1]} as User;
-
-
-
-    this.project.typeProject = {id:this.project.typeProject.id} as TypeProject;
-
+    // poster le nouveau projet sur le userSelected id
+    this.userSelected = { id: this.data[1] } as User;
+    this.project.typeProject = { id: this.project.typeProject.id } as TypeProject;
     this.project.user = this.userSelected;
-
     this.projectService.addProject(this.project).subscribe(data => {
       this.dialogRef.close('Close');
     });
-
-    // this.userService.putUserById(this.userSelected).subscribe(data => {
-    //   this.dialogRef.close('close');
-    // });
 
 
 
@@ -219,38 +201,34 @@ export class ProjectCardComponent implements OnInit {
   // statements which put a User
   modifyProjectDetails(): void {
 
-    // this.user = new User(
-    //   this.user.role,
-    //   this.form.get('userTypeForm')?.value,
-    //   this.form.get('lastName')?.value,
-    //   this.form.get('firstName')?.value,
-    //   this.form.get('email')?.value,
-    //   this.form.get('phoneNumber')?.value,
-    //   this.form.get('password')?.value,
-    //   this.form.get('companyName')?.value,
-    //   this.form.get('siretNumber')?.value,
-    //   this.form.get('sponsorshipCode')?.value,
-    //   this.form.get('address')?.value,
-    //   this.form.get('rib')?.value,
-    //   this.user.id = this.data.id);
+    this.userSelected = { id: this.userSelected.id } as User;
+    this.project = new Project(
+      this.form.get('name')?.value,
+      this.form.get('amount')?.value,
+      this.form.get('dateOpened')?.value,
+      this.form.get('dateClosed')?.value,
+      this.form.get('projectTypeForm')?.value,
+      null,//document[]
+      this.form.get('projectStatusForm')?.value,
+      this.userSelected,
+      this.data[0].id
+    );
 
+   // this.project.projectStatus = {"id": this.project.projectStatus.id} as Projectstatus;
+    this.project.user = {"id": this.userSelected.id} as User;
+    this.project.typeProject = {"id":this.project.typeProject.id} as TypeProject;
 
-    //   this.user.userType = new UserType(this.user.id, '');
-
-    //   this.userCardService.putUserById(this.user).subscribe(data => {
-    //   this.dialogRef.close('Close');
-
-
-    // });
-
+    this.projectService.putProject(this.project).subscribe(data => {
+      this.dialogRef.close('Close');
+    });
 
   }
 
-docs(){
-  // navigate to doc pages
-  this.router.navigate(['/projects',this.userSelected?.id]);
-  this.dialogRef.close('Close');
-}
+  docs() {
+    // navigate to doc pages
+    this.router.navigate(['/projects', this.userSelected?.id]);
+    this.dialogRef.close('Close');
+  }
 
 }
 

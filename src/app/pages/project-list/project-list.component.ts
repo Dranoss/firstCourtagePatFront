@@ -6,6 +6,7 @@ import { Project } from 'src/app/shared/core/classes/project';
 import { User } from 'src/app/shared/core/classes/user';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+import { MatSortModule } from "@angular/material/sort";
 import { MatPaginator } from '@angular/material/paginator';
 import { UserService } from 'src/app/shared/services/user/user.service';
 import { ProjectCardComponent } from '../projectCard/project-card/project-card.component';
@@ -38,7 +39,8 @@ export class ProjectListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.headers = ['Nom', 'Type', 'Montant', 'Date Ouverture', 'Date cloture', 'actions'];
+    this.headers =
+      ['name', 'Type', 'Montant', 'Date Ouverture', 'Date cloture', 'actions'];
 
     // Projects by userId
     this.activatedRouter.paramMap.subscribe(param => {
@@ -50,7 +52,7 @@ export class ProjectListComponent implements OnInit {
   }
 
 
-  getProjects(id: number): void {
+  getProjects(id: number) {
     this.userService.getUserById(id).subscribe(data => {
 
       this.projects = new MatTableDataSource(data.projects);
@@ -61,7 +63,7 @@ export class ProjectListComponent implements OnInit {
 
   newProject() {
 
-    const dialogRef = this.dialog.open(ProjectCardComponent, { data: [null,this.userId] });
+    const dialogRef = this.dialog.open(ProjectCardComponent, { data: [null, this.userId] });
 
     dialogRef.afterClosed().subscribe(result => {
       this.getProjects(this.userId);
@@ -71,19 +73,19 @@ export class ProjectListComponent implements OnInit {
 
   modifyProject(selectedProject: Project): void {
 
-     this.dialog.open(ProjectCardComponent, { data: [selectedProject,this.userId] });
+    let dialogRef = this.dialog.open(ProjectCardComponent, { data: [selectedProject, this.userId] });
 
-
-    // this.projectService.putProject(this.selectedProject).subscribe(data => {
-    //   console.log('update le projet ' + this.selectedProject.name);
-    //   this.selectedProject = data;
-
-    // });
-    // this.getProjects(this.userId);
+    dialogRef.afterClosed().subscribe(result => {
+      this.getProjects(this.userId);
+    });
 
   }
 
   deleteProject(selectedProject: Project) {
+
+    this.projectService.delete(selectedProject.id).subscribe(data => {
+      this.getProjects(this.userId);
+    });
 
   }
 

@@ -40,16 +40,14 @@ export class UserFormComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.headers = ['lastName', 'Prénom', 'Type', 'sponsorshipCode', 'Email', 'Téléphone',
+    this.headers = ['lastName', 'firstName', 'type', 'sponsorshipCode', 'Email', 'Téléphone',
       'Société', 'actions'];
 
     // Initialize users' list and types project's list
     this.getTheUserList();
-    //  this.getTypeOfProjects();
+
   }
 
-
-  // Initialize the list of Users
   public getTheUserList() {
 
     this.userService.getUsers().subscribe(data => {
@@ -57,17 +55,12 @@ export class UserFormComponent implements OnInit {
       // recuperer le tableau des types clients avec valeur
 
       data.forEach(element => {
-
         this.typeOfUserService.getTypeOfUsersById(Number(element.userType))
           .subscribe(typus => {
             element.userType = new UserType(typus.name, typus.id);
           });
 
       });
-
-
-
-
       this.listOfUsers = new MatTableDataSource(data);
       this.listOfUsers.sort = this.sort;
       this.listOfUsers.paginator = this.paginator;
@@ -108,9 +101,5 @@ export class UserFormComponent implements OnInit {
 
   }
 
-
-  // public getTypeProjects(): Observable<TypeProject[]> {
-  //   return this.typeProjectService.getTypeProjects();
-  // }
 
 }

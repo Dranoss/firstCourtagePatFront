@@ -21,7 +21,7 @@
     <mat-header-row *matHeaderRowDef="headers" > </mat-header-row>
     <mat-row *matRowDef="let row;columns: headers;" class="mat-row"></mat-row>
 
-    <ng-container matColumnDef="Nom">
+    <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Nom </mat-header-cell>
       <mat-cell *matCellDef="let project">{{project.name}}</mat-cell>
     </ng-container>

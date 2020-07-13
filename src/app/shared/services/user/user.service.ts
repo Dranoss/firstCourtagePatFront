@@ -10,15 +10,16 @@ import { TypeProject } from '../../core/classes/typeProject';
 })
 export class UserService {
 
- 
+
   private URL = 'http://www.courtagepatrimoine.net';
   private local= 'http://localhost:8080';
- 
+
 
   private URL_GET_USER_BY_ID = this.local + '/users';
   private URL_GET_USERS = this.local + '/users';
   private URL_POST_USER = this.local + '/users';
   private URL_UPDATE_USER = this.local + '/users';
+  private URL_GET_PROJECTSBYUSER = this.local + '/projects/users';
 
 
   // private URL_GET_PROJECTS = 'http://localhost:8080/projects';
@@ -27,10 +28,6 @@ export class UserService {
 
   private URL_DELETE_USER = 'http://localhost:8080/users';
 
-
-  private URL_GET_TYPEPROJECTS = 'http://localhost:8080/typeProjects';
-
-  //private URL_GET_PROJECTSBYUSER = 'http://localhost:8080/projects/users';
 
 //  private URL_UPDATE_USER = 'http://www.courtagepatrimoine.net/users/user';
 
@@ -42,9 +39,9 @@ export class UserService {
 
 
 
-  // getProjectsByUserId(id: number): Observable<Project[]> {
-  //   return this.http.get<Project[]>(this.URL_GET_PROJECTSBYUSER + '/' + id);
-  // }
+  getProjectsByUserId(userId: number): Observable<Project[]> {
+    return this.http.get<Project[]>(this.URL_GET_PROJECTSBYUSER + '/' + userId);
+  }
 
   getUserById(id: number): Observable<User> {
     return this.http.get<User>(`${this.URL_GET_USER_BY_ID}/${id}`);

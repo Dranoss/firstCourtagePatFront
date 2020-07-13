@@ -20,13 +20,13 @@
       <mat-header-cell  *matHeaderCellDef  mat-sort-header>Nom</mat-header-cell>
       <mat-cell *matCellDef="let user">{{user.lastName}}</mat-cell>
     </ng-container>
-    <ng-container matColumnDef="Prénom">
+    <ng-container matColumnDef="firstName">
       <mat-header-cell *matHeaderCellDef>Prenom </mat-header-cell>
       <mat-cell *matCellDef="let user">{{user.firstName}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="Type">
-      <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
+    <ng-container matColumnDef="type">
+      <mat-header-cell *matHeaderCellDef mat-sort-header >Type</mat-header-cell>
       <mat-cell *matCellDef="let user">{{user.userType?.name}}</mat-cell>
     </ng-container>
 
