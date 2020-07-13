@@ -31,20 +31,47 @@ button{
   }
 }
 .cardContainer{
-  width: 60%;
-  margin: 5px auto;
   display: flex;
+  flex-wrap: wrap;
+  width: 70%;
+  margin: auto;
   justify-content: center;
 }
-.card{
-  padding: 10px;
-  margin: 10px;
-  border: 1px solid grey;
-  border-radius: 10px;
+.cardSubContainer{
   width: 30%;
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+
+}
+.card{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  height: 100%;
+  margin-bottom: 50px;
   cursor: pointer;
+  border: 1px solid var(--text-color);
+  border-top: none;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   &:hover{
     border: 2px solid var(--text-color);
+    border-top: none;
+  }
+}
+.deleteCard{
+  background-color: grey;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: white;
+  text-align: center;
+  padding: 10px 0px;
+  cursor: default;
+  &:hover{
+    background-color: red;
+    color: white;
+    border-color: red;
   }
 }
 .subcontainer{
