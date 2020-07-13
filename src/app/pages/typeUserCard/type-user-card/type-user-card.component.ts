@@ -16,7 +16,8 @@ export class TypeUserCardComponent implements OnInit {
   userType: UserType;
   typeSelected: UserType;
 
-  constructor(private typeOfUserService: TypeOfUserService,public dialogRef: MatDialogRef<UserCardComponent>) { }
+  constructor(private typeOfUserService: TypeOfUserService,
+    public dialogRef: MatDialogRef<UserCardComponent>) { }
 
   ngOnInit(): void {
 
@@ -44,9 +45,11 @@ export class TypeUserCardComponent implements OnInit {
   onModify() {
 
 //    this.userType.name = this.inputNewTypeUser;
-    this.userType = new UserType( this.inputNewTypeUser,this.userType.id);
+    this.userType = new UserType( this.inputNewTypeUser,this.typeSelected.id);
     this.typeOfUserService.putUserType(this.userType).subscribe(data => {
       this.getTypeOfUsers();});
+      this.dialogRef.close('Close');
+
 
  }
   onValidate() {

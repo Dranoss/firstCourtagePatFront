@@ -15,6 +15,7 @@ import { StatusService } from 'src/app/shared/services/statusservice/status.serv
 import { Projectstatus } from 'src/app/shared/core/classes/projectstatus.';
 import { element } from 'protractor';
 import { MatSlider } from '@angular/material/slider';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'apa-project-card',
@@ -55,6 +56,7 @@ export class ProjectCardComponent implements OnInit {
     private projectService: ProjectService,
     private userService: UserService,
     private statusService: StatusService,
+    private router: Router
 
 
   ) { }
@@ -69,7 +71,7 @@ export class ProjectCardComponent implements OnInit {
     // initialize liste of statusses
     //this.getStatusList();
 
-    this.userService.getUserById(this.data.userid).subscribe(us => {
+    this.userService.getUserById(this.data[1]).subscribe(us => {
       this.userSelected = us;
 
     });
@@ -188,8 +190,19 @@ export class ProjectCardComponent implements OnInit {
       //,id
     );
 
-    this.project.projectStatus = new Projectstatus('', this.project.projectStatus.ranking, this.project.projectStatus.id)
+    // this.project.projectStatus = new Projectstatus('', this.project.projectStatus.ranking, this.project.projectStatus.id)
     // poster le nouveau projet sur le userSelected id .
+
+
+
+
+        this.userSelected = {id: this.data[1]} as User;
+
+
+
+    this.project.typeProject = {id:this.project.typeProject.id} as TypeProject;
+
+    this.project.user = this.userSelected;
 
     this.projectService.addProject(this.project).subscribe(data => {
       this.dialogRef.close('Close');
@@ -232,6 +245,12 @@ export class ProjectCardComponent implements OnInit {
 
 
   }
+
+docs(){
+  // navigate to doc pages
+  this.router.navigate(['/projects',this.userSelected?.id]);
+  this.dialogRef.close('Close');
+}
 
 }
 

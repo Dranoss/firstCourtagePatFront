@@ -46,7 +46,7 @@
       <mat-cell *matCellDef="let project">
 
         <!-- <button mat-icon-button  [routerLink]="['/projects',project.id]" (click)="modifyProject(project)"  class="button"> -->
-          <button mat-icon-button  [routerLink]="['/projects',project.id]"  class="button">
+          <button mat-icon-button  (click)="modifyProject(project)" class="button">
             <mat-icon >launch</mat-icon>
         </button>
 

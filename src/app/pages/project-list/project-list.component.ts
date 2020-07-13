@@ -71,7 +71,7 @@ export class ProjectListComponent implements OnInit {
 
   modifyProject(selectedProject: Project): void {
 
-     this.dialog.open(ProjectCardComponent, { data: [selectedProject,null] });
+     this.dialog.open(ProjectCardComponent, { data: [selectedProject,this.userId] });
 
 
     // this.projectService.putProject(this.selectedProject).subscribe(data => {

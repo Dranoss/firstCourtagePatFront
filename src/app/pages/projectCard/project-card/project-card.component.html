@@ -56,8 +56,11 @@
         Modifier
       </button>
 
-    </div>
+    </div> <button *ngIf="isCreated" mat-stroked-button (click)="docs()" class="button">
+      <mat-icon>folder</mat-icon> Documents
+    </button>
   </mat-grid-list>
+
 </form>
 </div>
 
