@@ -1,3 +1,4 @@
+<img *ngIf="userTypes" class="settingIcon" routerLink="/settings" src="assets/img/settings.svg" alt="settings">
 <h1>Liste des clients</h1>
 <div class="container">
   <button class="userType newClient" (click)="navigateToCreateClient()">Nouveau client</button>
@@ -8,30 +9,29 @@
 </div>
 <div class="container">
   <form *ngIf="userTypeName" #form="ngForm">
-    <label *ngIf="userTypeName==='Particulier'" for="searchByName">Recherche par noms</label>
-    <label *ngIf="userTypeName==='Professionnel'" for="searchByName">Recherche par raison sociale</label>
+    <label for="searchByName">Recherche client</label>
     <input type="search" name="searchByName" id="searchByName" [(ngModel)]="filterSearch" (ngModelChange)="filterUsers($event)">
   </form>
 </div>
 <Table>
   <thead>
-    <tr>
-      <th *ngIf="userTypeName==='Particulier'">Nom<hr></th>
-      <th *ngIf="userTypeName==='Particulier'">Prénom<hr></th>
-      <th *ngIf="userTypeName==='Professionnel'">Raison sociale<hr></th>
-      <th *ngIf="userTypeName==='Professionnel'">N° siret<hr></th>
-      <th class="iconsColumn" *ngIf="userTypeName">Editer<hr></th>
-      <th class="iconsColumn" *ngIf="userTypeName">Projets<hr></th>
-      <th class="iconsColumn" *ngIf="userTypeName">Supprimer<hr></th>
+    <tr *ngIf="userTypeName">
+      <th *ngIf="displayClientInfo">Prénom<hr></th>
+      <th *ngIf="displayClientInfo">Nom<hr></th>
+      <th *ngIf="displayCompanyInfo">Raison sociale<hr></th>
+      <th *ngIf="displayCompanyInfo">N° siret<hr></th>
+      <th class="iconsColumn">Editer<hr></th>
+      <th class="iconsColumn">Projets<hr></th>
+      <th class="iconsColumn">Supprimer<hr></th>
     </tr>
   </thead>
 
   <tbody>
     <tr *ngFor="let user of filteredUsers">
-      <td *ngIf="userTypeName==='Particulier'">{{user.lastName}}</td>
-      <td *ngIf="userTypeName==='Particulier'">{{user.firstName}}</td>
-      <td *ngIf="userTypeName==='Professionnel'">{{user.companyName}}</td>
-      <td *ngIf="userTypeName==='Professionnel'">{{user.siretNumber}}</td>
+      <td *ngIf="displayClientInfo">{{user.firstName}}</td>
+      <td *ngIf="displayClientInfo">{{user.lastName.toUpperCase()}}</td>
+      <td *ngIf="displayCompanyInfo">{{user.companyName}}</td>
+      <td *ngIf="displayCompanyInfo">{{user.siretNumber}}</td>
       <td class="iconsColumn"><img class="icons" (click)="navigateToUserDetails(user.id)" src="/assets/img/edit.svg" alt=""></td>
       <td class="iconsColumn"><img class="icons" (click)="navigateToUserProjects(user.id)" src="/assets/img/folder.svg" alt=""></td>
       <td class="iconsColumn"><img class="icons" (click)="deleteUser(user.id)" src="/assets/img/trash.svg" alt=""></td>
