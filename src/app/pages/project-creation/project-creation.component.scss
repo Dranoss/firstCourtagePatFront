@@ -27,6 +27,12 @@ input{
   border-radius: 10px;
   padding: 5px 10px;
 }
+select{
+  width: 64%;
+  border: 1px solid var(--text-color);
+  border-radius: 10px;
+  padding: 5px 10px;
+}
 .errorMessage{
   width: 60%;
   margin-left: 40%;
@@ -79,7 +85,6 @@ button{
   }
 }
 .goBack{
-  width: 10%;
   background-color: white;
   color: grey;
   border-color: grey;
