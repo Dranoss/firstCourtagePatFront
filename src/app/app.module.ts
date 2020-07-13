@@ -32,6 +32,11 @@ import { ClientDetailsComponent } from './pages/client-details/client-details.co
 import { ClientProjectsComponent } from './pages/client-projects/client-projects.component';
 import { CreateClientComponent } from './pages/create-client/create-client.component';
 import { ProjectCreationComponent } from './pages/project-creation/project-creation.component';
+import { ProjectTypeCreationComponent } from './pages/project-type-creation/project-type-creation.component';
+import { ProjectTypeListComponent } from './pages/project-type-list/project-type-list.component';
+import { SettingsComponent } from './pages/settings/settings.component';
+import { UserTypeListComponent } from './pages/user-type-list/user-type-list.component';
+import { ProjectDetailComponent } from './pages/project-detail/project-detail.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +63,11 @@ import { ProjectCreationComponent } from './pages/project-creation/project-creat
     ClientProjectsComponent,
     CreateClientComponent,
     ProjectCreationComponent,
+    ProjectTypeCreationComponent,
+    ProjectTypeListComponent,
+    SettingsComponent,
+    UserTypeListComponent,
+    ProjectDetailComponent,
   ],
   imports: [
     BrowserModule,
