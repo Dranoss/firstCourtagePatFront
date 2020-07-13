@@ -8,21 +8,21 @@
 </div>
 <form *ngIf="editedUser.userType.name!=''" (ngSubmit)="createForm.valid && onSubmit()" #createForm="ngForm">
   <section>
-    <div class="formSubcontainer" *ngIf="editedUser.userType.name==='Particulier'">
+    <div class="formSubcontainer">
       <label for="firstName">Prénom <span>*</span></label>
-      <input type="text" name="firstName" [(ngModel)]="editedUser.firstName" #firstName="ngModel" required>
+      <input type="text" name="firstName" [(ngModel)]="editedUser.firstName" #firstName="ngModel">
     </div>
-    <div class="formSubcontainer" *ngIf="editedUser.userType.name==='Particulier'">
+    <div class="formSubcontainer">
       <label for="lastName">Nom <span>*</span></label>
-      <input type="text" name="lastName" [(ngModel)]="editedUser.lastName" #lastName="ngModel" required>
+      <input type="text" name="lastName" [(ngModel)]="editedUser.lastName" #lastName="ngModel">
     </div>
-    <div class="formSubcontainer" *ngIf="editedUser.userType.name==='Professionnel'">
+    <div class="formSubcontainer">
       <label for="companyName">Raison sociale <span>*</span></label>
-      <input type="text" name="companyName" [(ngModel)]="editedUser.companyName" #companyName="ngModel" required>
+      <input type="text" name="companyName" [(ngModel)]="editedUser.companyName" #companyName="ngModel">
     </div>
-    <div class="formSubcontainer" *ngIf="editedUser.userType.name==='Professionnel'">
+    <div class="formSubcontainer">
       <label for="siretNumber">Numéro siret <span>*</span></label>
-      <input type="text" name="siretNumber" [(ngModel)]="editedUser.siretNumber" #siretNumber="ngModel" required>
+      <input type="text" name="siretNumber" [(ngModel)]="editedUser.siretNumber" #siretNumber="ngModel">
     </div>
     <div class="formSubcontainer">
       <label for="email">Email <span>*</span></label>
@@ -45,7 +45,7 @@
   <section>
     <div class="formSubcontainer">
       <label for="addressNumber">Numéro de rue <span>*</span></label>
-      <input type="number" name="addressNumber" [(ngModel)]="editedUser.userAddress.streetNumber" #streetNumber="ngModel" required>
+      <input type="number" name="addressNumber" [(ngModel)]="editedUser.userAddress.streetNumber" #streetNumber="ngModel" required min="1">
     </div>
     <div class="errorMessage" *ngIf="streetNumber.errors?.required && createForm.submitted">Un numéro de rue est requis.</div>
     <div class="formSubcontainer">
@@ -88,7 +88,7 @@
   </section>
 
   <div class="subcontainer">
-    <button class="principal" type="submit">Valider</button>
-    <button class="cancelEdit" (click)="resetForm()" type="reset">Annuler</button>
+    <button class="principal" type="submit" [disabled]="!createForm.valid">Valider</button>
+    <button class="cancelEdit" type="reset">Annuler</button>
   </div>
 </form>

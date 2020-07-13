@@ -11,7 +11,6 @@ import { UserService } from '../../shared/services/user/user.service';
   styleUrls: ['./create-client.component.scss']
 })
 export class CreateClientComponent implements OnInit {
-  userType: 'Particulier';
   editedUser: User = {
     lastName: '',
     firstName: '',
@@ -38,25 +37,20 @@ export class CreateClientComponent implements OnInit {
   }
 
   navigateToClientsList(){
-    this.router.navigate(['/clientView']);
+    this.router.navigate([`/client-list`]);
   }
   getAllUserTypes(){
     this.userTypeService.getAllUserTypes().subscribe((data) => {
       this.userTypes = data;
-      console.log(this.userTypes);
     });
   }
   selectUserType(userType){
-    // const type = this.userTypes.find(x => x.name === userType);
     console.log(userType);
     this.editedUser.userType = {id: userType.id, name: userType.name};
   }
   onSubmit(){
     this.userService.postUser(this.editedUser).subscribe(() => {
-      console.log(this.editedUser);
     });
-  }
-  resetForm(){
-
+    this.navigateToClientsList();
   }
 }
