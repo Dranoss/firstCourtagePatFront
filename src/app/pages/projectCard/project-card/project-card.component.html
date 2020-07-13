@@ -14,14 +14,14 @@
 </div>
 <div>
         <mat-form-field class="element">
-        <input  formControlName="dateOpened" matInput [matDatepicker]="picker1" placeholder="Date de Lancement">
+        <input  matInput  formControlName="dateOpened" [value]="dateOpened" [matDatepicker]="picker1" placeholder="Date de Lancement">
         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-        <mat-datepicker #picker1 [startAt]="startDate"></mat-datepicker>
+        <mat-datepicker #picker1></mat-datepicker>
       </mat-form-field>
       <mat-form-field class="element">
-        <input matInput [matDatepicker]="picker2" placeholder="Date de Clôture">
+        <input matInput   formControlName="dateClosed" [value]="dateClosed" [matDatepicker]="picker2" placeholder="Date de Clôture">
         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-        <mat-datepicker #picker2 [startAt]="endDate"></mat-datepicker>
+        <mat-datepicker #picker2 ></mat-datepicker>
       </mat-form-field>
     </div>
 
