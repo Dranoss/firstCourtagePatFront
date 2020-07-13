@@ -10,19 +10,19 @@
 <h4>Informations client</h4>
 <section>
   <div *ngIf="userLoaded" [ngClass]="{minicontainer: toggleDisplayInfoForm, container: !toggleDisplayInfoForm}" >
-    <div *ngIf="userType==='Particulier'" class="subcontainer">
+    <div class="subcontainer">
       <div [ngClass]="{hugeLabel: toggleDisplayInfoForm, label: !toggleDisplayInfoForm}">Prénom <span>*</span></div>
       <div *ngIf="!toggleDisplayInfoForm" class="element">{{selectedUser.firstName}}</div>
     </div>
-    <div *ngIf="userType==='Particulier'" class="subcontainer">
+    <div class="subcontainer">
       <div [ngClass]="{hugeLabel: toggleDisplayInfoForm, label: !toggleDisplayInfoForm}">Nom <span>*</span></div>
       <div *ngIf="!toggleDisplayInfoForm" class="element">{{selectedUser.lastName}}</div>
     </div>
-    <div *ngIf="userType==='Professionnel'" class="subcontainer">
+    <div class="subcontainer">
       <div [ngClass]="{hugeLabel: toggleDisplayInfoForm, label: !toggleDisplayInfoForm}">Raison sociale <span>*</span></div>
       <div *ngIf="!toggleDisplayInfoForm" class="element">{{selectedUser.companyName}}</div>
     </div>
-    <div *ngIf="userType==='Professionnel'" class="subcontainer">
+    <div class="subcontainer">
       <div [ngClass]="{hugeLabel: toggleDisplayInfoForm, label: !toggleDisplayInfoForm}">Numéro siret <span>*</span></div>
       <div *ngIf="!toggleDisplayInfoForm" class="element">{{selectedUser.siretNumber}}</div>
     </div>
@@ -42,10 +42,10 @@
     <br>
   </div>
   <form *ngIf="toggleDisplayInfoForm && selectedUser" (ngSubmit)="editUserForm.valid && onSubmitUser()" #editUserForm="ngForm">
-    <input *ngIf="userType==='Particulier'" type="text" name="firstName" [(ngModel)]="editedUser.firstName" #firstName="ngModel" required>
-    <input *ngIf="userType==='Particulier'" type="text" name="lastName" [(ngModel)]="editedUser.lastName" #lastName="ngModel" required>
-    <input *ngIf="userType==='Professionnel'" type="text" name="companyName" [(ngModel)]="editedUser.companyName" #companyName="ngModel" required>
-    <input *ngIf="userType==='Professionnel'" type="text" name="siretNumber" [(ngModel)]="editedUser.siretNumber" #siretNumber="ngModel" required>
+    <input type="text" name="firstName" [(ngModel)]="editedUser.firstName" #firstName="ngModel">
+    <input type="text" name="lastName" [(ngModel)]="editedUser.lastName" #lastName="ngModel">
+    <input type="text" name="companyName" [(ngModel)]="editedUser.companyName" #companyName="ngModel">
+    <input type="text" name="siretNumber" [(ngModel)]="editedUser.siretNumber" #siretNumber="ngModel">
     <input type="email" name="email" [(ngModel)]="editedUser.email" #email="ngModel" required>
     <div class="errorMessage" *ngIf="email.errors?.required && editUserForm.submitted">Une addresse email est requise.</div>
     <input type="tel" name="phoneNumber" [(ngModel)]="editedUser.phoneNumber" #phoneNumber="ngModel" required minlength="10">

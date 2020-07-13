@@ -63,6 +63,7 @@ export class ClientDetailsComponent implements OnInit {
       this.editedUser = {...data};
       this.getAddress(this.selectedUser.id);
       this.getRib(this.selectedUser.id);
+      console.log(this.selectedUser);
       return this.selectedUser;
     });
   }
@@ -88,6 +89,8 @@ export class ClientDetailsComponent implements OnInit {
     this.editedUser = {lastName: '', firstName: '', role: 'client', email: '', password: '', phoneNumber: '', companyName: '', siretNumber: '', userType: null, userAddress: null, userRib: null, sponsorshipCode: ''};
   }
   onSubmitUser(){
+    this.editedUser.userType = {id: +this.editedUser.userType};
+    this.editedUser.projects = [];
     this.userService.putUserById(this.editedUser).subscribe(() => {
       this.resetForm();
     });
@@ -103,9 +106,9 @@ export class ClientDetailsComponent implements OnInit {
     });
   }
   navigateToClientsList(){
-    this.router.navigate(['/clientView']);
+    this.router.navigate(['/client-list']);
   }
   navigateToClientProjects(id){
-    this.router.navigate([`/client-projects/${this.userType}/${id}`]);
+    this.router.navigate([`/client-projects/${id}`]);
   }
 }
