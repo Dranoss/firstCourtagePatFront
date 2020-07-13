@@ -17,6 +17,8 @@ export class ClientViewComponent implements OnInit {
   userTypes: UserType[] = [];
   filterSearch = '';
   filteredUsers: User[] = [];
+  displayCompanyInfo = false;
+  displayClientInfo = false;
   constructor(
     private userService: UserService,
     private userTypeService: UserTypeService,
@@ -26,13 +28,10 @@ export class ClientViewComponent implements OnInit {
     this.initializeUserTypes();
   }
   navigateToCreateClient(){
-    this.router.navigate([`/client-details/new-client`]);
+    this.router.navigate([`/new-client`]);
   }
-  initializeUsers(){
-    return this.userService.getAllUsers().subscribe(data => {
-      this.users = data;
-    });
-  }
+
+  // A SUPPRIMER CAR N'EST PAS UTILISE
   initializeUserTypes(){
     return this.userTypeService.getAllUserTypes().subscribe(data => {
       this.userTypes = data;
@@ -41,21 +40,36 @@ export class ClientViewComponent implements OnInit {
   selectUserType(userType){
     this.userTypeName = userType.name;
     this.userType = userType;
-    console.log(this.userTypeName);
     return this.userTypeService.getUserTypeById(userType.id).subscribe(data => {
       this.users = data.users;
       this.filteredUsers = data.users;
-      console.log(this.users);
+      if (this.filteredUsers.length > 0){
+        if (this.filteredUsers[0].companyName === ''){
+          this.displayCompanyInfo = false;
+        } else {
+          this.displayCompanyInfo = true;
+        }
+        if (this.filteredUsers[0].lastName === ''){
+          this.displayClientInfo = false;
+        } else {
+          this.displayClientInfo = true;
+        }
+      }
+      this.filteredUsers.forEach(user => {
+        return user.fullName = `${user.lastName} ${user.firstName} ${user.companyName}`;
+      });
+      this.users.forEach(user => {
+        return user.fullName = `${user.lastName} ${user.firstName} ${user.companyName}`;
+      });
+      console.log(this.filteredUsers);
     });
   }
   filterUsers(name: string){
-    if (name == null){
-      this.filteredUsers = this.users;
-    } else if (this.userTypeName === 'Particulier'){
-      return this.filteredUsers = this.users.filter(user => user.lastName.toLowerCase().includes(name.toLowerCase()));
-    } else {
-      return this.filteredUsers = this.users.filter(user => user.companyName.toLowerCase().includes(name.toLowerCase()));
-    }
+    this.filteredUsers = this.users;
+    this.filteredUsers = this.filteredUsers.filter(user => {
+      return user.fullName.toLowerCase().includes(name.toLowerCase());
+    });
+    return this.filteredUsers;
   }
   deleteUser(id){
     this.userService.deleteUserById(id).subscribe(() => {
@@ -63,10 +77,10 @@ export class ClientViewComponent implements OnInit {
     });
   }
   navigateToUserDetails(id){
-    this.router.navigate([`/client-details/${this.userTypeName}/${id}`]);
+    this.router.navigate([`/client-details/${id}`]);
   }
 
   navigateToUserProjects(id){
-    this.router.navigate([`/client-projects/${this.userTypeName}/${id}`]);
+    this.router.navigate([`/client-projects/${id}`]);
   }
 }
