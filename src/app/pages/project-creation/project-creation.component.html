@@ -1,16 +1,16 @@
 <h4>Retour aux menus précédents</h4>
 <div class="buttonContainer top" *ngIf="projectTypes">
-  <button class="goBack" routerLink="/client-projects/{{selectedUserType}}/{{selectedUserId}}">Projets</button>
-  <button class="goBack" routerLink="/clientView">Liste clients</button>
+  <button class="goBack" routerLink="/client-projects/{{selectedUserId}}">Projets</button>
+  <button class="goBack" routerLink="/client-list">Liste clients</button>
 </div>
 
-<h1 *ngIf="selectedUserType==='Particulier' && selectedUser">M./Mme. {{selectedUser.lastName}} {{selectedUser.firstName}}</h1>
-<h1 *ngIf="selectedUserType==='Professionnel' && selectedUser">Société {{selectedUser.companyName}}</h1>
+<h1 *ngIf="selectedUser.companyName==='' && selectedUser">M./Mme. {{selectedUser.firstName}} {{selectedUser.lastName.toUpperCase()}}</h1>
+<h1 *ngIf="selectedUser.companyName!=='' && selectedUser">Société {{selectedUser.companyName}}</h1>
 <div class="buttonContainer" *ngIf="projectTypes">
   <button class="principal" *ngFor="let projectType of projectTypes" (click)="selectProjectType(projectType)">{{projectType.name}}</button>
 </div>
 
-<form (ngSubmit)="projectForm.valid && onSubmit()" #projectForm="ngForm">
+<form *ngIf="selectedUser" (ngSubmit)="projectForm.valid && onSubmit()" #projectForm="ngForm">
   <div class="formSubcontainer">
     <label for="projectName">Nom projet</label>
     <input type="text" name="projectName" [(ngModel)]="projectModel.name" #projectName="ngModel" required>
@@ -21,11 +21,17 @@
   </div>
   <div class="formSubcontainer">
     <label for="creationDate">Date de création</label>
-    <input type="date" name="creationDate" [(ngModel)]="projectModel.creationDate" #creationDate="ngModel" required>
+    <input type="date" name="creationDate" [ngModel]="projectModel.creationDate | date: 'yyyy-MM-dd'" (ngModelChange)="projectModel.creationDate=$event" #creationDate="ngModel" required>
   </div>
   <div class="formSubcontainer">
     <label for="closingDate">Date de clôture</label>
-    <input type="date" name="closingDate" [(ngModel)]="projectModel.closingDate" #closingDate="ngModel">
+    <input type="date" name="closingDate" [ngModel]="projectModel.closingDate | date: 'yyyy-MM-dd'" (ngModelChange)="projectModel.closingDate=$event" #closingDate="ngModel">
+  </div>
+  <div class="formSubcontainer">
+    <label for="projectStatus">Status</label>
+    <select type="text" name="projectStatus" [ngModel]="projectModel.projectStatus.id" (ngModelChange)="selectStatus($event)" #projectStatus="ngModel">
+      <option value="{{status.id}}" *ngFor="let status of projectModel.projectType.projectStatuses">{{status.name}}</option>
+    </select>
   </div>
 
   <div class="buttonContainer">
