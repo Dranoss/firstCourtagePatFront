@@ -28,7 +28,7 @@ export class ProjectService {
   // Projects
 
   putProject(project: Project): Observable<Project> {
-    return this.http.put<Project>(ProjectService.URL_PUT_PROJECT, project);
+    return this.http.put<Project>(ProjectService.URL_PUT_PROJECT+"/"+project.id,project);
   }
   addProject(project: Project): Observable<Project> {
     return this.http.post<Project>(ProjectService.URL_POST_PROJECT, project);

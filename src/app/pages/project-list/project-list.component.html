@@ -4,7 +4,7 @@
 <H4> Liste des projets du client : {{selected.firstName}}{{selected.lastName}} </H4> -->
 
 
-<H3>Liste des Projets de : {{userName}}</H3>
+<H3>Liste des Projets de : {{userName}}s</H3>
 
 <div><button mat-icon-button (click)="newProject()" class="button">
   Nouveau Projet <mat-icon>add_circle</mat-icon>
@@ -25,22 +25,23 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header>Nom </mat-header-cell>
       <mat-cell *matCellDef="let project">{{project.name}}</mat-cell>
     </ng-container>
-    <ng-container matColumnDef="Type">
-      <mat-header-cell *matHeaderCellDef>Type de projet </mat-header-cell>
-      <mat-cell *matCellDef="let project">{{project.typeProject?.name}}</mat-cell>
+    <ng-container matColumnDef="projectType.name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Type de projet </mat-header-cell>
+      <mat-cell *matCellDef="let project">{{project.projectType.name}}</mat-cell>
     </ng-container>
-     <ng-container matColumnDef="Montant">
+     <ng-container matColumnDef="amount">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Montant</mat-header-cell>
       <mat-cell *matCellDef="let project">{{project.amount}}</mat-cell>
     </ng-container>
-     <ng-container matColumnDef="Date Ouverture">
+     <ng-container matColumnDef="creationDate">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Date d'Ouverture</mat-header-cell>
-      <mat-cell *matCellDef="let project">{{project.dateOpened}}</mat-cell>
+      <mat-cell *matCellDef="let project">{{project.creationDate  | date: 'dd/MM/yyyy' }}</mat-cell>
     </ng-container>
-    <ng-container matColumnDef="Date cloture">
+    <ng-container matColumnDef="closingDate">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Date de Clôture </mat-header-cell>
-      <mat-cell *matCellDef="let project">{{project.dateClosed}}</mat-cell>
+      <mat-cell *matCellDef="let project">{{project.closingDate | date: 'dd/MM/yyyy'}}</mat-cell>
     </ng-container>
+
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let project">

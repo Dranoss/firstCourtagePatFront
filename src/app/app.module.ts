@@ -33,6 +33,7 @@ import { ArrowDownComponentComponent } from './shared/style/arrow-down-component
 import { AppointmentButtonComponent } from './shared/buttons/appointment-button/appointment-button.component';
 import { CustomerHomepageComponent } from './pages/customer-homepage/customer-homepage.component';
 import { ProjectDetailsComponent } from './pages/project-details/project-details.component';
+import { Ng5SliderModule } from 'ng5-slider';
 
 
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -52,10 +53,12 @@ import { TypeUserCardComponent } from './pages/typeUserCard/type-user-card/type-
 import { TypeprojectcardComponent } from './pages/typeProjectCard/typeprojectcard/typeprojectcard.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatCardModule} from '@angular/material/card';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import {MatSliderModule} from '@angular/material/slider';
 import { FoldercardComponent } from './pages/foldercard/foldercard.component';
 import {FileSelectDirective, FileUploadModule} from "ng2-file-upload";
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 @NgModule({
@@ -110,7 +113,11 @@ import {FileSelectDirective, FileUploadModule} from "ng2-file-upload";
     MatNativeDateModule,
     MatSliderModule,
     MatCardModule,
+    MatProgressBarModule,
+    Ng5SliderModule,
+    MatProgressSpinnerModule,
     FileUploadModule,
+
 
     ReactiveFormsModule,
 

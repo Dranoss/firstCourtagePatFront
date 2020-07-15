@@ -25,6 +25,7 @@
     "@angular/youtube-player": "^9.2.4",
     "angular-material-data-table": "^0.10.10",
     "ng2-file-upload": "^1.4.0",
+    "ng5-slider": "^1.2.4",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

@@ -21,6 +21,9 @@ export class TypeprojectService {
     return this.http.get<TypeProject[]>(this.URL_GET_TYPEOFPROJECTS);
   }
 
+  getTypeOfProjectById(id: number): Observable<TypeProject> {
+    return this.http.get<TypeProject>(this.URL_GET_TYPEOFPROJECTS+"/"+id);
+  }
   postProjectType(projectType: TypeProject): Observable<TypeProject>{
 
     return this.http.post<TypeProject>(this.URL_POST_TYPEOFPROJECTS,projectType);

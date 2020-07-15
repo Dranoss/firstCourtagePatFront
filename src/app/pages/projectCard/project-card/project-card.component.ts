@@ -17,6 +17,8 @@ import { element } from 'protractor';
 import { MatSlider } from '@angular/material/slider';
 import { Router } from '@angular/router';
 import { UserType } from 'src/app/shared/core/classes/userType';
+import { Options, LabelType } from 'ng5-slider';
+import { runInThisContext } from 'vm';
 
 @Component({
   selector: 'apa-project-card',
@@ -24,6 +26,7 @@ import { UserType } from 'src/app/shared/core/classes/userType';
   styleUrls: ['./project-card.component.scss']
 })
 export class ProjectCardComponent implements OnInit {
+
   project: Project;
   projects: Project[];
   projectsAll: Project[];
@@ -40,13 +43,48 @@ export class ProjectCardComponent implements OnInit {
 
 
   slideSelected: MatSlider;
-  selectedRanking: string;
+
+  selectedRanking: number;
   statusName: string;
+
   typeStatusses: Projectstatus[];
+  selectedStatus: Projectstatus;
 
   steps: number;
   dateOpened = new Date();
-  dateClosed = new Date();
+  dateClosed: Date;
+
+
+  options: Options = {
+    floor: 0,
+    ceil: 100,
+    step: 10,
+
+    showSelectionBar: true,
+    getSelectionBarColor: (value: number): string => {
+      if (value <= 30) {
+        return 'red';
+      }
+      if (value <= 60) {
+        return 'orange';
+      }
+      if (value <= 90) {
+        return 'yellow';
+      }
+      return '#2AE02A';
+    },
+
+    showTicks: true,
+    getLegend: (value: number): string => {
+      return this.getTherankName(value);
+    },
+    // translate: (value: number, label: LabelType): string => {
+
+    //   // check the value get the name coresponding
+    //   return '%' + value;
+
+    // }
+  };
 
 
   constructor(public dialogRef: MatDialogRef<ProjectCardComponent>,
@@ -65,25 +103,21 @@ export class ProjectCardComponent implements OnInit {
 
     // initialize liste of types projects
     this.getTypeOfProjects();
-    // initialize liste of statusses
-    //this.getStatusList();
-
-    this.userService.getUserById(this.data[1]).subscribe(us => {
+     this.userService.getUserById(this.data[1]).subscribe(us => {
       this.userSelected = us;
-
-    });
+  });
 
 
     //open the dialog as null to create a project
     if (this.data[0] === null) {
-      this.isCreated = false;
-      this.form = new FormGroup({
+       this.isCreated = false;
+       this.form = new FormGroup({
         name: new FormControl('', Validators.required),
         amount: new FormControl('', Validators.required),
         dateOpened: new FormControl(this.dateOpened),
         dateClosed: new FormControl(this.dateClosed),
         projectTypeForm: new FormControl(null),
-        projectStatusForm: new FormControl(null)
+        projectStatusForm: new FormControl(this.project?.projectStatus)
       });
 
     }
@@ -92,55 +126,63 @@ export class ProjectCardComponent implements OnInit {
     else {
       this.isCreated = true;
       this.project = this.data[0];
-      this.form = new FormGroup({
+      this.getStatusList(this.project.projectType);
 
-        name: new FormControl(this.project?.name),
+      this.statusService.getStatusById(Number(this.project.projectStatus)).subscribe(
+        data => {
+          this.project.projectStatus = data;
+          this.project.projectStatus.ranking = data.ranking;
+
+        });
+
+      this.form = new FormGroup({
+        name: new FormControl(this.project?.name, Validators.required),
         amount: new FormControl(this.project?.amount),
-        dateOpened: new FormControl(this.project?.dateOpened),
-        dateClosed: new FormControl(this.project?.dateClosed),
-        projectTypeForm: new FormControl(this.project?.typeProject),
+        dateOpened: new FormControl(this.project?.creationDate),
+        dateClosed: new FormControl(this.project?.closingDate),
+        projectTypeForm: new FormControl(this.project?.projectType, Validators.required),
         projectStatusForm: new FormControl(this.project?.projectStatus)
 
       });
     }
-
-
-
-
   }
-
+  getTherankName(value: number): string {
+    let n = '';
+    this.typeStatusses.filter(item => {
+      if (item.ranking === value)
+      n = item.name;
+    });
+    return n;
+  }
   // Initialize The type Of Projects List
   public getTypeOfProjects() {
 
     this.typeProjectService.getTypeOfProject().subscribe(data => {
       this.typeProjects = data;
-      // this.selectedType = this.form.get('projectStatusform')?.value;
-      // this.typeStatusses = this.selectedType?.projectStatus;
     });
   }
 
   // Initialize The statusses Of status List
   public getStatusList(typeSelected: TypeProject) {
-    this.statusService.getListofStatus(typeSelected.id).subscribe(data => {
+    if (!this.isCreated)
+     typeSelected = this.form.get('projectTypeForm').value;
+
+      this.statusService.getListofStatus(typeSelected?.id).subscribe(data => {
       this.typeStatusses = data;
-      this.steps = this.typeStatusses.length + 1;
+      this.options.step = data.length + 1;
 
-      // gerer le ranking
-    });
-  }
-
-  slide() {
-    // ranger le tableau type satusses de max a min
-    // determiner dans quel intervalle se trouve le selectedstatus
-    // typestatusses=[{"","","","",",",""}]
-    this.typeStatusses.forEach(element => {
-      if (element.ranking >= Number(this.slideSelected.value)) this.statusName = element.name;
-
+      // gerer le max ranking
+      const n = this.typeStatusses.map(item => {
+        return item.ranking;
+      });
+      this.maxRanking = n.sort()[n.length - 1];
+      this.steps = n.length + 1;
     });
   }
 
   compareObjects(o1: any, o2: any) {
     if (o1?.id == o2?.id) {
+      this.getStatusList(this.project.projectType);
       return true;
     }
     else {
@@ -173,17 +215,9 @@ export class ProjectCardComponent implements OnInit {
       //,id
     );
 
-    // this.project.projectStatus = new Projectstatus('', this.project.projectStatus.ranking, this.project.projectStatus.id)
 
-    // poster le nouveau projet sur le userSelected
-
-    this.userService.getUserById(this.data[1]).subscribe(data => {
-      this.userSelected = data; this.userSelected = { id: this.data[1] } as User;
-
-    });
-    // Creer le userType
-    this.userSelected.userType = new UserType('', this.userSelected.userType.id/*  */);
-    this.project.user = this.userSelected;
+    this.project.user = { "id": this.userSelected.id } as User;
+    this.project.projectType = { "id": this.project.projectType.id } as TypeProject;
 
     this.projectService.addProject(this.project).subscribe(data => {
       this.dialogRef.close('Close');
@@ -192,6 +226,7 @@ export class ProjectCardComponent implements OnInit {
 
   // statements which put a User
   modifyProjectDetails(): void {
+
 
     this.userSelected = { id: this.userSelected.id } as User;
     this.project = new Project(
@@ -206,9 +241,14 @@ export class ProjectCardComponent implements OnInit {
       this.data[0].id
     );
 
-    this.project.projectStatus = { "id": 1 } as Projectstatus;
+    // this.project.projectStatus = { "id": 1 } as Projectstatus;
     this.project.user = { "id": this.userSelected.id } as User;
-    this.project.typeProject = { "id": this.project.typeProject.id } as TypeProject;
+    this.project.projectType = { "id": this.project.projectType.id } as TypeProject;
+
+    // this.typeProjectService.getTypeOfProjectById(this.form.get('projectTypeForm')?.value,).subscribe(data=>{
+    //   this.project.projectType = data;
+    //   this.dialogRef.close('Close');
+    // });
 
     this.projectService.putProject(this.project).subscribe(data => {
       this.dialogRef.close('Close');
@@ -221,7 +261,18 @@ export class ProjectCardComponent implements OnInit {
     this.router.navigate(['/projects', this.userSelected?.id]);
     this.dialogRef.close('Close');
   }
+  slide() {
 
+    this.options.tickValueStep = this.selectedRanking;
+    // get dans typeStatusses le name correspondant.
+    const tempo = this.typeStatusses.map(element => {
+      return [{ "name": element.name, "ranking": element.ranking }];
+
+    });
+
+
+
+  }
 }
 
 

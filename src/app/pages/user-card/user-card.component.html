@@ -78,9 +78,9 @@
       </button>
       <mat-form-field>
         <mat-label>Type Client</mat-label>
-        <mat-select [compareWith]="compareObjects" formControlName="userTypeForm" matInput placeholder="Type de Client"
-          name="inputSelect">
-          <mat-option *ngFor="let type of typeOfUsers" [value]="type"> {{type.name}}</mat-option>        </mat-select>
+        <mat-select [compareWith]="compareObjects" formControlName="userTypeForm" matInput placeholder="Type de Client" name="inputUser">
+          <mat-option *ngFor="let type of typeOfUsers" [value]="type"> {{type.name}}</mat-option>
+        </mat-select>
       </mat-form-field>
 
       <button  *ngIf="!isCreated" mat-stroked-button (click)="onValidate()" class="button">

@@ -27,7 +27,7 @@
 
     <ng-container matColumnDef="type">
       <mat-header-cell *matHeaderCellDef mat-sort-header >Type</mat-header-cell>
-      <mat-cell *matCellDef="let user">{{user.userType?.name}}</mat-cell>
+      <mat-cell *matCellDef="let user">{{user.userType.name}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="sponsorshipCode">
@@ -53,7 +53,7 @@
         <button mat-icon-button   (click)="modifyUser(user)" class="button">
           <mat-icon >launch</mat-icon>
         </button>
-        <button mat-icon-button  [routerLink]="['/projects',user.id,user.lastName]" class="button">
+        <button mat-icon-button  [routerLink]="['/projects',user.id,user.lastName+' '+ user.firstName]" class="button">
           <mat-icon color="blue" >anchor</mat-icon>
         </button>
         <button mat-icon-button (click)="deleteUser(user)" class="button">

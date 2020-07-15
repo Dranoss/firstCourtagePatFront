@@ -12,6 +12,9 @@ import { UserService } from 'src/app/shared/services/user/user.service';
 import { ProjectCardComponent } from '../projectCard/project-card/project-card.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ProjectDetailsComponent } from '../project-details/project-details.component';
+import { TypeProject } from 'src/app/shared/core/classes/typeProject';
+import { TypeprojectService } from 'src/app/shared/services/typeproject/typeproject.service';
+
 
 @Component({
   selector: 'apa-project-list',
@@ -21,26 +24,28 @@ import { ProjectDetailsComponent } from '../project-details/project-details.comp
 export class ProjectListComponent implements OnInit {
 
   selectedProject: Project;
+  projectType :TypeProject;
   userId: number;
   userName: string;
   projects: MatTableDataSource<Project>;
   selected: User;
-  dateClosed: Date;
-  dateOpened: Date;
+  creationDate: Date;
+  closingDate: Date;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   headers: string[];
 
+
   constructor(private activatedRouter: ActivatedRoute,
     private projectService: ProjectService,
     private userService: UserService,
-
+    private typeOfProjectService: TypeprojectService,
     private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
     this.headers =
-      ['name', 'Type', 'Montant', 'Date Ouverture', 'Date cloture', 'actions'];
+      ['name', 'projectType.name', 'amount', 'creationDate', 'closingDate', 'actions'];
 
     // Projects by userId
     this.activatedRouter.paramMap.subscribe(param => {
@@ -49,17 +54,37 @@ export class ProjectListComponent implements OnInit {
       this.getProjects(this.userId);
     });
 
+
   }
 
 
   getProjects(id: number) {
     this.userService.getUserById(id).subscribe(data => {
 
+
+      data.projects.forEach(element => {
+        this.typeOfProjectService.getTypeOfProjectById(Number(element.projectType))
+          .subscribe(typus => {
+            element.projectType = new TypeProject(typus.name,null, typus.id);
+          });
+
+      });
+
       this.projects = new MatTableDataSource(data.projects);
       this.projects.sort = this.sort;
       this.projects.paginator = this.paginator;
-    });
-  }
+
+      // data.projects.forEach(element => {
+      //   this.projectType = element.projectType;
+      // });
+
+
+
+
+});
+
+}
+
 
   newProject() {
 
