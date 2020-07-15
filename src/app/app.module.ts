@@ -50,6 +50,7 @@ import { ProjectCardComponent } from './pages/projectCard/project-card/project-c
 import { from } from 'rxjs';
 import { TypeUserCardComponent } from './pages/typeUserCard/type-user-card/type-user-card.component';
 import { TypeprojectcardComponent } from './pages/typeProjectCard/typeprojectcard/typeprojectcard.component';
+import { FaqComponent } from './pages/faq/faq.component';
 
 
 
@@ -81,6 +82,7 @@ import { TypeprojectcardComponent } from './pages/typeProjectCard/typeprojectcar
     AppointmentButtonComponent,
     CustomerHomepageComponent,
     ProjectDetailsComponent,
+    FaqComponent,
   ],
   imports: [
     BrowserModule,
