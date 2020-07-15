@@ -2,8 +2,8 @@
   <button class="goBack" routerLink="/client-list">Retour</button>
 </div>
 
-<h1 *ngIf="selectedUser.companyName===''">M./Mme. {{selectedUser.firstName}} {{selectedUser.lastName.toUpperCase()}}</h1>
-<h1 *ngIf="selectedUser.companyName!==''">Société {{selectedUser.companyName}}</h1>
+<h1 *ngIf="selectedUser && selectedUser.companyName===''">M./Mme. {{selectedUser.firstName}} {{selectedUser.lastName.toUpperCase()}}</h1>
+<h1 *ngIf="selectedUser && selectedUser.companyName!==''">Société {{selectedUser.companyName}}</h1>
 
 <div class="buttonContainer">
   <button (click)="navigatoToProjectCreation()">Nouveau Projet</button>
