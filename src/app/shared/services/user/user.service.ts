@@ -17,7 +17,7 @@ export class UserService {
 
   private URL_GET_USER_BY_ID = this.local + '/users';
   private URL_GET_USERS = this.local + '/users';
-  private URL_POST_USER = this.local + '/users';
+  private URL_POST_USER = this.local + '/users/sign-up';
   private URL_UPDATE_USER = this.local + '/users';
   private URL_GET_PROJECTSBYUSER = this.local + '/projects/users';
 

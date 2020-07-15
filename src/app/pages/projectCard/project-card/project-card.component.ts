@@ -43,17 +43,14 @@ export class ProjectCardComponent implements OnInit {
 
 
   slideSelected: MatSlider;
-
   selectedRanking: number;
   statusName: string;
-
   typeStatusses: Projectstatus[];
   selectedStatus: Projectstatus;
 
   steps: number;
   dateOpened = new Date();
-  dateClosed: Date;
-
+  dateClosed =  new Date();
 
   options: Options = {
     floor: 0,
@@ -103,22 +100,27 @@ export class ProjectCardComponent implements OnInit {
 
     // initialize liste of types projects
     this.getTypeOfProjects();
-     this.userService.getUserById(this.data[1]).subscribe(us => {
+    this.userService.getUserById(this.data[1]).subscribe(us => {
       this.userSelected = us;
-  });
+    });
 
 
     //open the dialog as null to create a project
     if (this.data[0] === null) {
-       this.isCreated = false;
-       this.form = new FormGroup({
+      this.isCreated = false;
+      this.form = new FormGroup({
         name: new FormControl('', Validators.required),
         amount: new FormControl('', Validators.required),
         dateOpened: new FormControl(this.dateOpened),
         dateClosed: new FormControl(this.dateClosed),
-        projectTypeForm: new FormControl(null),
-        projectStatusForm: new FormControl(this.project?.projectStatus)
+        projectTypeForm: new FormControl(this.getTypeOfProjects()[0]),
+        projectStatusForm: new FormControl(
+          this.form.controls.projectStatusForm
+          .setValue(this.getStatusList(this.form.get('projectTypeForm')?.value))
+
+        )
       });
+
 
     }
 
@@ -150,7 +152,7 @@ export class ProjectCardComponent implements OnInit {
     let n = '';
     this.typeStatusses.filter(item => {
       if (item.ranking === value)
-      n = item.name;
+        n = item.name;
     });
     return n;
   }
@@ -164,10 +166,8 @@ export class ProjectCardComponent implements OnInit {
 
   // Initialize The statusses Of status List
   public getStatusList(typeSelected: TypeProject) {
-    if (!this.isCreated)
-     typeSelected = this.form.get('projectTypeForm').value;
 
-      this.statusService.getListofStatus(typeSelected?.id).subscribe(data => {
+    this.statusService.getListofStatus(typeSelected?.id).subscribe(data => {
       this.typeStatusses = data;
       this.options.step = data.length + 1;
 
@@ -182,10 +182,10 @@ export class ProjectCardComponent implements OnInit {
 
   compareObjects(o1: any, o2: any) {
     if (o1?.id == o2?.id) {
-      this.getStatusList(this.project.projectType);
       return true;
     }
     else {
+
       return false;
     }
 
@@ -214,6 +214,8 @@ export class ProjectCardComponent implements OnInit {
       null//user
       //,id
     );
+    this.form.controls.projectStatusForm
+      .setValue(this.getStatusList(this.form.get('projectTypeForm')?.value));
 
 
     this.project.user = { "id": this.userSelected.id } as User;

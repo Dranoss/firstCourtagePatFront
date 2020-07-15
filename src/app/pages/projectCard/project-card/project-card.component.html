@@ -37,20 +37,20 @@
           <mat-label>Type Projet</mat-label>
           <mat-select [compareWith]="compareObjects" formControlName="projectTypeForm" matInput
             placeholder="Type de projet" name="inputSelect">
-            <mat-option (onSelectionChange)="getStatusList(type)" *ngFor="let type of typeProjects" [value]="type">
+            <mat-option (onSelectionChange)="getStatusList(type)" *ngFor="let type of typeProjects" [value]="typeProjects">
               {{type.name}}</mat-option>
           </mat-select>
 
         </mat-form-field>
-         <!-- <mat-form-field>
+         <mat-form-field>
           <mat-label>Liste des étapes</mat-label>
           <mat-select [compareWith]="compareObjects" formControlName="projectStatusForm" matInput
             placeholder="Etapes" name="inputSelect">
-            <mat-option  *ngFor="let status of typeStatusses" [value]="status">
+            <mat-option  *ngFor="let status of typeStatusses" [value]="typeStatusses">
               {{status.name}}: {{status.ranking}}</mat-option>
           </mat-select>
 
-        </mat-form-field> -->
+        </mat-form-field>
 
         <button *ngIf="!isCreated" mat-stroked-button (click)="onValidate()" class="button">
           Valider
@@ -67,7 +67,7 @@
     </mat-grid-list>
 
 
-    <!-- <span *ngIf="isCreated">
+    <span *ngIf="isCreated">
       <div class="custom-slider">
         <div [ngModel]="project"> STATUS Actuel=> {{project.projectStatus.name}}</div>
         <div [ngModel]="project"> Select ranking => {{project.projectStatus.ranking}}</div>
@@ -76,7 +76,7 @@
 
         </ng5-slider>
       </div>
-    </span> -->
+    </span>
 
   </form>
 </div>
