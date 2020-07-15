@@ -3,10 +3,10 @@ import { Projectstatus } from './projectstatus.';
 export class TypeProject {
   public id?: number;
   public name: string;
-  public projectStatus: Projectstatus[];
-  constructor(name: string,  projectStatus: Projectstatus[],id?: number) {
+  public projectStatuses: Projectstatus[];
+  constructor(name: string,  projectStatuses: Projectstatus[],id?: number) {
 
-    this.projectStatus = projectStatus;
+    this.projectStatuses = projectStatuses;
     this.id = id;
     this.name = name;
   }

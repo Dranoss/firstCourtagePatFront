@@ -20,7 +20,7 @@ export class StatusService {
     return this.http.get<Projectstatus[]>(this.URL_GET_StatusList);
   }
 
-  getListofStatus(id: number): Observable<Projectstatus[]> {
+  getListofStatusByTypeProjectId(id: number): Observable<Projectstatus[]> {
     return this.http.get<Projectstatus[]>(this.URL_GET_StatusListByTypeProject+"/"+id);
   }
   getStatusById(id: number) {

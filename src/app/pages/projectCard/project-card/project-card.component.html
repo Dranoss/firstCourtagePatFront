@@ -1,11 +1,13 @@
+
+
 <h2>Details du Projet</h2>
 <div>
-  <form [formGroup]="form" class="form">
+  <form [formGroup]="form" *ngIf="typeProjects" class="form">
 
     <mat-grid-list cols="2" rowHeight="300px">
       <div>
         <mat-form-field class="element">
-          <input formControlName="name" matInput placeholder="Nom *">
+          <input formControlName="name" matInput placeholder="Nom *" name="name">
           <mat-error>Le champs est requis</mat-error>
         </mat-form-field>
         <mat-form-field class="element">
@@ -33,20 +35,20 @@
           <mat-icon>add_circle</mat-icon>
         </button>
 
-        <mat-form-field>
+        <mat-form-field  >
           <mat-label>Type Projet</mat-label>
           <mat-select [compareWith]="compareObjects" formControlName="projectTypeForm" matInput
-            placeholder="Type de projet" name="inputSelect">
-            <mat-option (onSelectionChange)="getStatusList(type)" *ngFor="let type of typeProjects" [value]="typeProjects">
+            placeholder="Type de projet" name="inputSelectType" (selectionChange)="getStatusList($event)" >
+            <mat-option   *ngFor="let type of typeProjects" [value]="type">
               {{type.name}}</mat-option>
           </mat-select>
 
         </mat-form-field>
-         <mat-form-field>
+         <mat-form-field >
           <mat-label>Liste des étapes</mat-label>
-          <mat-select [compareWith]="compareObjects" formControlName="projectStatusForm" matInput
-            placeholder="Etapes" name="inputSelect">
-            <mat-option  *ngFor="let status of typeStatusses" [value]="typeStatusses">
+          <mat-select [compareWith]="compareObjects" formControlName="listStatusForm" matInput
+            placeholder="Etapes" name="inputSelectStatus">
+            <mat-option (onSelectionChange)="setSlide(status)" *ngFor="let status of typeStatusses" [value]="status">
               {{status.name}}: {{status.ranking}}</mat-option>
           </mat-select>
 
@@ -69,9 +71,9 @@
 
     <span *ngIf="isCreated">
       <div class="custom-slider">
-        <div [ngModel]="project"> STATUS Actuel=> {{project.projectStatus.name}}</div>
-        <div [ngModel]="project"> Select ranking => {{project.projectStatus.ranking}}</div>
-        <ng5-slider (change)="slide()" formControlName="projectStatusForm" [(value)]="project.projectStatus.ranking"
+        <div > STATUS Actuel=> {{project.projectStatus.name}}</div>
+        <div > Select ranking => {{project.projectStatus.ranking}}</div>
+        <ng5-slider (change)="slide()"  [value]="project.projectStatus.ranking"
           [options]="options">
 
         </ng5-slider>
