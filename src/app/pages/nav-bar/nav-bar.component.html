@@ -1,5 +1,6 @@
 <nav>
-  <div class="account" routerLink="/login">COMPTE CLIENT</div>
+  <div class="account" (click)="navigateDependingOnConnectionStatus()">COMPTE CLIENT</div>
+  <div *ngIf="displayDisconnectButton" class="account deco" (click)="deconnectToken()">DECONNEXION</div>
   <div class="container">
     <img class="logo" routerLink="/home" src="assets/img/logo.png" alt="logo">
     <img class="separator" src="assets/img/Separateur.png" alt="separateur">
