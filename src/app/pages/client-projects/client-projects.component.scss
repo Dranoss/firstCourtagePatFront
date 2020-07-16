@@ -16,6 +16,13 @@ h4{
   justify-content: center;
 }
 
+.settingIcon{
+  width: 25px;
+  margin-left: 70%;
+  margin-top: 100px;
+  cursor: pointer;
+}
+
 button{
   width: 20%;
   margin: 20px;
@@ -58,6 +65,14 @@ button{
   &:hover{
     border: 2px solid var(--text-color);
     border-top: none;
+  }
+}
+.clientViewCard{
+  border-top: 1px solid var(--text-color);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  &:hover{
+    border-top: 2px solid var(--text-color);
   }
 }
 .deleteCard{
