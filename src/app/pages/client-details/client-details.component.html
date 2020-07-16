@@ -11,19 +11,19 @@
 <section>
   <div *ngIf="userLoaded" [ngClass]="{minicontainer: toggleDisplayInfoForm, container: !toggleDisplayInfoForm}" >
     <div class="subcontainer">
-      <div [ngClass]="{hugeLabel: toggleDisplayInfoForm, label: !toggleDisplayInfoForm}">Prénom <span>*</span></div>
+      <div [ngClass]="{hugeLabel: toggleDisplayInfoForm, label: !toggleDisplayInfoForm}">Prénom <span></span></div>
       <div *ngIf="!toggleDisplayInfoForm" class="element">{{selectedUser.firstName}}</div>
     </div>
     <div class="subcontainer">
-      <div [ngClass]="{hugeLabel: toggleDisplayInfoForm, label: !toggleDisplayInfoForm}">Nom <span>*</span></div>
+      <div [ngClass]="{hugeLabel: toggleDisplayInfoForm, label: !toggleDisplayInfoForm}">Nom <span></span></div>
       <div *ngIf="!toggleDisplayInfoForm" class="element">{{selectedUser.lastName}}</div>
     </div>
     <div class="subcontainer">
-      <div [ngClass]="{hugeLabel: toggleDisplayInfoForm, label: !toggleDisplayInfoForm}">Raison sociale <span>*</span></div>
+      <div [ngClass]="{hugeLabel: toggleDisplayInfoForm, label: !toggleDisplayInfoForm}">Raison sociale <span></span></div>
       <div *ngIf="!toggleDisplayInfoForm" class="element">{{selectedUser.companyName}}</div>
     </div>
     <div class="subcontainer">
-      <div [ngClass]="{hugeLabel: toggleDisplayInfoForm, label: !toggleDisplayInfoForm}">Numéro siret <span>*</span></div>
+      <div [ngClass]="{hugeLabel: toggleDisplayInfoForm, label: !toggleDisplayInfoForm}">Numéro siret <span></span></div>
       <div *ngIf="!toggleDisplayInfoForm" class="element">{{selectedUser.siretNumber}}</div>
     </div>
     <div class="subcontainer">
@@ -37,6 +37,10 @@
     <div class="subcontainer">
       <div [ngClass]="{hugeLabel: toggleDisplayInfoForm, label: !toggleDisplayInfoForm}">Mot de passe <span>*</span></div>
       <div *ngIf="!toggleDisplayInfoForm" class="element">{{selectedUser.password}}</div>
+    </div>
+    <div class="subcontainer">
+      <div [ngClass]="{hugeLabel: toggleDisplayInfoForm, label: !toggleDisplayInfoForm}">Code partenaire <span></span></div>
+      <div *ngIf="!toggleDisplayInfoForm" class="element">{{selectedUser.sponsorshipCode}}</div>
     </div>
     <br>
     <br>
@@ -54,6 +58,7 @@
     <input type="password" name="password" [(ngModel)]="editedUser.password" #password="ngModel" required minlength="8">
     <div class="errorMessage" *ngIf="password.errors?.required && editUserForm.submitted">Un mot de passe est requis.</div>
     <div class="errorMessage" *ngIf="password.errors?.minlength && editUserForm.submitted">Le mot de passe doit faire plus de 8 charactères.</div>
+    <input type="text" name="sponsorshipCode" [(ngModel)]="editedUser.sponsorshipCode" #sponsorshipCode="ngModel">
     <div class="subcontainer">
       <button type="submit">Valider</button>
       <button class="cancelEdit" (click)="resetForm()" type="reset">Annuler</button>
