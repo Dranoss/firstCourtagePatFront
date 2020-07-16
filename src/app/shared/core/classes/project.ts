@@ -13,7 +13,7 @@ export class Project {
   dateClosed: Date;
   typeProject: TypeProject;
   documents : Documentt[];
-  projectStatus : ProjectStatus;
+  projectStatus : ProjectStatus | number;
 
   constructor(
     name: string,

@@ -2,14 +2,15 @@
 <div id="main">
     <div class="title"> Mes documents </div>
 
-        <div class="document" *ngFor="let document of project.documents">
+        <div class="document" *ngFor="let document of project?.documents">
             <p>{{document.name}}</p>
     </div>
 
 
     <div class="title"> Avancement de mon projet </div>
         <div>
-          <!-- {{project.projectStatus.ranking}} -->
+           <progress-bar [progress]="projectStatus?.ranking*10" [color]="'#488aff'"></progress-bar>
+
         </div>
 
     <div class="title">

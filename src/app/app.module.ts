@@ -50,6 +50,7 @@ import { ProjectCardComponent } from './pages/projectCard/project-card/project-c
 import { from } from 'rxjs';
 import { TypeUserCardComponent } from './pages/typeUserCard/type-user-card/type-user-card.component';
 import { TypeprojectcardComponent } from './pages/typeProjectCard/typeprojectcard/typeprojectcard.component';
+import {ProgressBarModule} from "angular-progress-bar";
 
 
 
@@ -100,6 +101,7 @@ import { TypeprojectcardComponent } from './pages/typeProjectCard/typeprojectcar
     BrowserAnimationsModule,
     MatButtonModule,
     MatInputModule,
+    ProgressBarModule,
 
     ReactiveFormsModule,
 
