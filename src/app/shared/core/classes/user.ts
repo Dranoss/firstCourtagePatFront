@@ -13,11 +13,11 @@ export class User {
   public phoneNumber?: string;
   public password?: string;
   public companyName?: string;
-  public siretNumber: string;
+  public siretNumber?: string;
   public sponsorshipCode?: string;
   public address?: Address;
   public rib?: Rib;
-  public projects: Project [];
+  public projects?: Project [];
 
 
   constructor(
