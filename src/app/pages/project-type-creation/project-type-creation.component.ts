@@ -29,12 +29,12 @@ export class ProjectTypeCreationComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(paramMap => {
       this.projectTypeId = +paramMap.get('id');
-      this.initializeProjectTypeToUpdate();
+      this.initializeProjectTypeToUpdate(this.projectTypeId);
     });
   }
-  initializeProjectTypeToUpdate(){
-    if (this.projectTypeId){
-      this.projectTypeService.getProjectTypeById(this.projectTypeId).subscribe(data => {
+  initializeProjectTypeToUpdate(id: number){
+    if (id){
+      this.projectTypeService.getProjectTypeById(id).subscribe(data => {
         this.projectTypeModel = data;
         this.projectStatuses = this.projectTypeModel.projectStatuses;
         this.projectStatuses = this.projectStatuses.sort((a, b) => {
@@ -86,7 +86,7 @@ export class ProjectTypeCreationComponent implements OnInit {
   }
   resetForm(){
     this.projectTypeModel = {name: ''};
-    this.initializeProjectTypeToUpdate();
+    this.initializeProjectTypeToUpdate(this.projectTypeId);
   }
   arrayLength(array){
     if (array != null){
@@ -106,7 +106,7 @@ export class ProjectTypeCreationComponent implements OnInit {
   deleteDocumentType(element){
     if (element.id) {
       this.documentTypeService.deleteDocumentTypeById(element.id).subscribe(() => {
-        this.initializeProjectTypeToUpdate();
+        this.initializeProjectTypeToUpdate(this.projectTypeId);
       });
     } else {
       const index = this.documentTypes.findIndex(document => {
@@ -118,7 +118,7 @@ export class ProjectTypeCreationComponent implements OnInit {
   deleteProjectStatus(element){
     if (element.id){
       this.projectStatusService.deleteProjectStatusById(element.id).subscribe(() => {
-        this.initializeProjectTypeToUpdate();
+        this.initializeProjectTypeToUpdate(this.projectTypeId);
       });
     } else {
       const index = this.projectStatuses.findIndex(status => {
