@@ -9,19 +9,19 @@
 <form *ngIf="editedUser.userType.name!=''" (ngSubmit)="createForm.valid && onSubmit()" #createForm="ngForm">
   <section>
     <div class="formSubcontainer">
-      <label for="firstName">Prénom <span>*</span></label>
+      <label for="firstName">Prénom <span></span></label>
       <input type="text" name="firstName" [(ngModel)]="editedUser.firstName" #firstName="ngModel">
     </div>
     <div class="formSubcontainer">
-      <label for="lastName">Nom <span>*</span></label>
+      <label for="lastName">Nom <span></span></label>
       <input type="text" name="lastName" [(ngModel)]="editedUser.lastName" #lastName="ngModel">
     </div>
     <div class="formSubcontainer">
-      <label for="companyName">Raison sociale <span>*</span></label>
+      <label for="companyName">Raison sociale <span></span></label>
       <input type="text" name="companyName" [(ngModel)]="editedUser.companyName" #companyName="ngModel">
     </div>
     <div class="formSubcontainer">
-      <label for="siretNumber">Numéro siret <span>*</span></label>
+      <label for="siretNumber">Numéro siret <span></span></label>
       <input type="text" name="siretNumber" [(ngModel)]="editedUser.siretNumber" #siretNumber="ngModel">
     </div>
     <div class="formSubcontainer">
@@ -41,6 +41,10 @@
     </div>
     <div class="errorMessage" *ngIf="password.errors?.required && createForm.submitted">Un mot de passe est requis.</div>
     <div class="errorMessage" *ngIf="password.errors?.minlength && createForm.submitted">Le mot de passe doit faire plus de 8 charactères.</div>
+    <div class="formSubcontainer">
+      <label for="sponsorshipCode">Code partenaire <span></span></label>
+      <input type="text" name="sponsorshipCode" [(ngModel)]="editedUser.sponsorshipCode" #sponsorshipCode="ngModel">
+    </div>
   </section>
   <section>
     <div class="formSubcontainer">
