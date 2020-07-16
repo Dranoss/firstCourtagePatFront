@@ -5,7 +5,7 @@ import localeFr from '@angular/common/locales/fr';
 registerLocaleData(localeFr, 'fr');
 
 import {FormsModule} from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,6 +37,7 @@ import { ProjectTypeListComponent } from './pages/project-type-list/project-type
 import { SettingsComponent } from './pages/settings/settings.component';
 import { UserTypeListComponent } from './pages/user-type-list/user-type-list.component';
 import { ProjectDetailComponent } from './pages/project-detail/project-detail.component';
+import { AuthInterceptor } from './shared/core/interceptor/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { ProjectDetailComponent } from './pages/project-detail/project-detail.co
     HttpClientModule,
   ],
   providers: [
-    {provide: LOCALE_ID, useValue: 'fr-FR'},
+    { provide: LOCALE_ID, useValue: 'fr-FR'},
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent],
   exports: [VideoComponent],
