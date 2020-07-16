@@ -7,24 +7,24 @@ import { ProjectType } from '../../core/classes/project-type';
   providedIn: 'root'
 })
 export class ProjectTypeService {
-  private PROJECT_TYPE_URL = 'http://localhost:8080/project-types';
+  private static PROJECT_TYPE_URL = 'http://localhost:8080/project-types';
   constructor(private http: HttpClient) { }
 
   getAllProjectTypes(): Observable<ProjectType[]>{
-    return this.http.get<ProjectType[]>(this.PROJECT_TYPE_URL);
+    return this.http.get<ProjectType[]>(ProjectTypeService.PROJECT_TYPE_URL);
   }
 
   getProjectTypeById(id: number): Observable<ProjectType>{
-    return this.http.get<ProjectType>(`${this.PROJECT_TYPE_URL}/${id}`);
+    return this.http.get<ProjectType>(`${ProjectTypeService.PROJECT_TYPE_URL}/${id}`);
   }
 
   postProjectType(projectType: ProjectType): Observable<ProjectType>{
-    return this.http.post<ProjectType>(this.PROJECT_TYPE_URL, projectType);
+    return this.http.post<ProjectType>(ProjectTypeService.PROJECT_TYPE_URL, projectType);
   }
   putProjectTypeById(projectType: ProjectType): Observable<ProjectType>{
-    return this.http.put<ProjectType>(`${this.PROJECT_TYPE_URL}/${projectType.id}`, projectType);
+    return this.http.put<ProjectType>(`${ProjectTypeService.PROJECT_TYPE_URL}/${projectType.id}`, projectType);
   }
   deleteProjectTypeById(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.PROJECT_TYPE_URL}/${id}`);
+    return this.http.delete<void>(`${ProjectTypeService.PROJECT_TYPE_URL}/${id}`);
   }
 }

@@ -8,24 +8,24 @@ import { ProjectStatus } from '../../core/classes/project-status';
 })
 export class ProjectStatusService {
 
-  private PROJECT_STATUS_URL = 'http://localhost:8080/project-status';
+  private static PROJECT_STATUS_URL = 'http://localhost:8080/project-status';
   constructor(private http: HttpClient) { }
 
   getAllProjectStatuses(): Observable<ProjectStatus[]>{
-    return this.http.get<ProjectStatus[]>(this.PROJECT_STATUS_URL);
+    return this.http.get<ProjectStatus[]>(ProjectStatusService.PROJECT_STATUS_URL);
   }
 
   getProjectStatusById(id: number): Observable<ProjectStatus>{
-    return this.http.get<ProjectStatus>(`${this.PROJECT_STATUS_URL}/${id}`);
+    return this.http.get<ProjectStatus>(`${ProjectStatusService.PROJECT_STATUS_URL}/${id}`);
   }
 
   postProjectStatus(projectStatus: ProjectStatus): Observable<ProjectStatus>{
-    return this.http.post<ProjectStatus>(this.PROJECT_STATUS_URL, projectStatus);
+    return this.http.post<ProjectStatus>(ProjectStatusService.PROJECT_STATUS_URL, projectStatus);
   }
   putProjectStatusById(projectStatus: ProjectStatus): Observable<ProjectStatus>{
-    return this.http.put<ProjectStatus>(`${this.PROJECT_STATUS_URL}/${projectStatus.id}`, projectStatus);
+    return this.http.put<ProjectStatus>(`${ProjectStatusService.PROJECT_STATUS_URL}/${projectStatus.id}`, projectStatus);
   }
   deleteProjectStatusById(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.PROJECT_STATUS_URL}/${id}`);
+    return this.http.delete<void>(`${ProjectStatusService.PROJECT_STATUS_URL}/${id}`);
   }
 }

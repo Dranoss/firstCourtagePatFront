@@ -7,58 +7,27 @@ import { User } from '../../core/classes/user';
   providedIn: 'root'
 })
 export class UserService {
-  // A SUPPRIMER LORSQUE NOUS AURONS LE LIEN AVEC LE BACK
-  users: User[] = [{
-    role: 'client',
-    userType: {id: 0, name: '', users: []},
-    firstName: 'Fabien',
-    lastName: 'Jouanneau',
-    email: 'jouanneau.fab@gmail.com',
-    phoneNumber: '0768195419',
-    password: 'test',
-    companyName: '',
-    siretNumber: '',
-    sponsorshipCode: '',
-    id: 1,
-    userAddress: {id: 1, streetNumber: 27, streetName: 'rue Saincric', zipCode: '33000', cityName: 'Bordeaux'},
-    userRib: {id: 1, ibanNumber: '', bicCode: '', ownerName: '', bankName: ''}
-  },
-  ];
-
-  // A DEFINIR POUR LIER LE BACK
-  private USER_URL = 'http://localhost:8080/users';
+  private static USER_URL = 'http://localhost:8080/users';
 
   constructor(private http: HttpClient) { }
 
-  // getUserById(id: number): User{
-
-
-  getAllUsers(): Observable<User[]>{
-    return this.http.get<User[]>(this.USER_URL);
+  getAllUsers(): Observable < User[] > {
+    return this.http.get<User[]>(UserService.USER_URL);
   }
 
-  // A UTILISER LORSQUE L'ON AURA LE BACK
-  getUserById(id: number): Observable<User>{
-    return this.http.get<User>(`${this.USER_URL}/${id}`);
+  getUserById(id: number): Observable < User > {
+    return this.http.get<User>(`${UserService.USER_URL}/${id}`);
   }
 
-    // A SUPPRIMER LORSQUE L'ON AURA LA LIAISON BACK
-    // const user = this.users.find(x => x.id === id);
-    // return user;
-    // }
-
-  postUser(user: User): Observable<User>{
-    return this.http.post<User>(this.USER_URL, user);
+  postUser(user: User): Observable < User > {
+    return this.http.post<User>(`${UserService.USER_URL}/sign-up`, user);
   }
 
-  putUserById(user: User): Observable<User>{
-    return this.http.put<User>(`${this.USER_URL}/${user.id}`, user);
+  putUserById(user: User): Observable < User > {
+    return this.http.put<User>(`${UserService.USER_URL}/${user.id}`, user);
   }
 
-  deleteUserById(id): Observable<void>{
-    return this.http.delete<void>(`${this.USER_URL}/${id}`);
-  }
-  createUserProjectByUserId(user: User): Observable<User>{
-    return this.http.put<User>(`${this.USER_URL}/${user.id}/create-project`, user);
+  deleteUserById(id): Observable < void > {
+    return this.http.delete<void>(`${UserService.USER_URL}/${id}`);
   }
 }

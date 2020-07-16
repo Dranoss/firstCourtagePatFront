@@ -7,26 +7,26 @@ import { UserType } from '../../core/classes/user_type';
   providedIn: 'root'
 })
 export class UserTypeService {
-  USERTYPE_URL = 'http://localhost:8080/user-types';
+  private static USERTYPE_URL = 'http://localhost:8080/user-types';
   constructor(private http: HttpClient) { }
 
   getAllUserTypes(): Observable<UserType[]> {
-    return this.http.get<UserType[]>(this.USERTYPE_URL);
+    return this.http.get<UserType[]>(UserTypeService.USERTYPE_URL);
   }
 
   getUserTypeById(id: number): Observable<UserType> {
-    return this.http.get<UserType>(`${this.USERTYPE_URL}/${id}`);
+    return this.http.get<UserType>(`${UserTypeService.USERTYPE_URL}/${id}`);
   }
 
   createUserType(userType: UserType): Observable<UserType> {
-    return this.http.post<UserType>(`${this.USERTYPE_URL}`, userType);
+    return this.http.post<UserType>(`${UserTypeService.USERTYPE_URL}`, userType);
   }
 
   updateUserType(userType: UserType): Observable<UserType> {
-    return this.http.put<UserType>(`${this.USERTYPE_URL}/${userType.id}`, userType);
+    return this.http.put<UserType>(`${UserTypeService.USERTYPE_URL}/${userType.id}`, userType);
   }
 
   deleteUserType(id: number): Observable<void>{
-    return this.http.delete<void>(`${this.USERTYPE_URL}/${id}`);
+    return this.http.delete<void>(`${UserTypeService.USERTYPE_URL}/${id}`);
   }
 }
