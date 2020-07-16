@@ -37,11 +37,11 @@
         <td>{{projectStatus.name}}</td>
       </tr>
       <tr>
-        <td colspan="2"><progress value="{{progress}}" max="100"></progress></td>
+        <td colspan="2" *ngIf="progress"><progress value="{{progress}}" max="100"></progress></td>
       </tr>
     </thead>
   </table>
-  <div class="buttonContainer">
+  <div *ngIf="userRole==='admin'" class="buttonContainer">
     <button (click)="toggleDisplayForm()">Editer</button>
   </div>
 
