@@ -72,7 +72,7 @@ export class ProjectCardComponent implements OnInit {
     //   }
     //   return '#2AE02A';
     //
-     return 'black'; },
+     return 'rgb(225, 225, 236)'; },
 
     showTicks: true,
     getLegend: (value: number): string => {
@@ -180,7 +180,7 @@ export class ProjectCardComponent implements OnInit {
       return item.ranking;
     });
     this.maxRanking = n.sort()[n.length - 1];
-    this.steps = n.length + 1;
+    //this.steps = n.length + 1;
   }
 
   compareObjects(o1: any, o2: any) {

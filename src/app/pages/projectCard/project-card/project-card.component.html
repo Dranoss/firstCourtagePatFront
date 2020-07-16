@@ -1,31 +1,36 @@
-
-<div>
+<div class="buttonup">
   <button mat-stroked-button (click)="out()" class="button">
     <mat-icon>close</mat-icon> Fermer
+  </button>
+  <button *ngIf="isCreated" mat-stroked-button (click)="docs()" class="button">
+    <mat-icon>folder</mat-icon> Documents
+  </button>
+<button *ngIf="isCreated" mat-stroked-button (click)="modifyProjectDetails()" class="button">
+    Modifier
   </button>
 </div>
 <h2>Details du Projet</h2>
 <div>
   <form [formGroup]="form" *ngIf="typeProjects" class="form">
 
-    <mat-grid-list cols="2" rowHeight="300px">
-      <div>
-        <mat-form-field class="element">
+    <mat-grid-list cols="2" rowHeight="220px">
+      <div class="champs">
+        <mat-form-field>
           <input formControlName="name" matInput placeholder="Nom *" name="name">
           <mat-error>Le champs est requis</mat-error>
         </mat-form-field>
-        <mat-form-field class="element">
+        <mat-form-field>
           <input formControlName="amount" matInput placeholder="Montant *">
         </mat-form-field>
       </div>
-      <div>
-        <mat-form-field class="element">
+      <div class="element">
+        <mat-form-field>
           <input matInput formControlName="dateOpened" [value]="dateOpened" [matDatepicker]="picker1"
             placeholder="Date de Lancement">
           <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
           <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field>
-        <mat-form-field class="element">
+        <mat-form-field>
           <input matInput formControlName="dateClosed" [value]="dateClosed" [matDatepicker]="picker2"
             placeholder="Date de Clôture">
           <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
@@ -33,64 +38,42 @@
         </mat-form-field>
       </div>
 
-      <div>
+      <div >
 
         <button mat-icon-button (click)="addTypeOfProject()" class="button">
           <mat-icon>add_circle</mat-icon>
         </button>
 
-        <mat-form-field  >
+        <mat-form-field class="selectdiv">
           <mat-label>Type Projet</mat-label>
           <mat-select [compareWith]="compareObjects" formControlName="projectTypeForm" matInput
-            placeholder="Type de projet" name="inputSelectType" (selectionChange)="getStatusList($event)" >
-            <mat-option   *ngFor="let type of typeProjects" [value]="type">
+            placeholder="Type de projet" name="inputSelectType" (selectionChange)="getStatusList($event)">
+            <mat-option *ngFor="let type of typeProjects" [value]="type">
               {{type.name}}</mat-option>
           </mat-select>
-
         </mat-form-field>
-
         <button mat-icon-button (click)="addStatusses()">
           <mat-icon>add_circle</mat-icon>
         </button>
-       <mat-form-field >
+        <mat-form-field class="selectdiv">
           <mat-label>Liste des étapes</mat-label>
-          <mat-select [compareWith]="compareObjects" formControlName="listStatusForm" matInput
-            placeholder="Etapes" name="inputSelectStatus">
+          <mat-select [compareWith]="compareObjects" formControlName="listStatusForm" matInput placeholder="Etapes"
+            name="inputSelectStatus">
             <mat-option (onSelectionChange)="setSlide(status)" *ngFor="let status of typeStatusses" [value]="status">
               {{status.name}}: {{status.ranking}}</mat-option>
           </mat-select>
-
         </mat-form-field>
 
         <button *ngIf="!isCreated" mat-stroked-button (click)="onValidate()" class="button">
           Valider
         </button>
-
-        <button *ngIf="isCreated" mat-stroked-button (click)="modifyProjectDetails()" class="button">
-          Modifier
-        </button>
-
       </div>
-
-      <button *ngIf="isCreated" mat-stroked-button (click)="docs()" class="button">
-        <mat-icon>folder</mat-icon> Documents
-      </button>
-
     </mat-grid-list>
-
-
     <span *ngIf="isCreated">
       <div class="custom-slider">
-        <div > STATUS Actuel=> {{project.projectStatus.name}}</div>
-        <div > Select ranking => {{project.projectStatus.ranking}}</div>
-        <ng5-slider (change)="slide()"  [value]="project.projectStatus.ranking"
-          [options]="options">
-
+        <ng5-slider (change)="slide()" [value]="project.projectStatus.ranking" [options]="options">
         </ng5-slider>
       </div>
     </span>
-
   </form>
 </div>
-
-
