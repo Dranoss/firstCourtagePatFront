@@ -5,20 +5,20 @@ import { Project } from './project';
 
 export class User {
   public id?: number;
-  public role: 'admin' | 'client';
-  public userType: UserType;
-  public lastName: string;
-  public firstName: string;
-  public email: string;
-  public phoneNumber: string;
-  public password: string;
-  public companyName: string;
+  public role?: 'admin' | 'client';
+  public userType?: UserType;
+  public lastName?: string;
+  public firstName?: string;
+  public email?: string;
+  public phoneNumber?: string;
+  public password?: string;
+  public companyName?: string;
   public siretNumber: string;
-  public sponsorshipCode: string;
-  public address: Address;
-  public rib: Rib;
-  public projects : Project [];
-  
+  public sponsorshipCode?: string;
+  public address?: Address;
+  public rib?: Rib;
+  public projects: Project [];
+
 
   constructor(
     role: 'admin' | 'client',
