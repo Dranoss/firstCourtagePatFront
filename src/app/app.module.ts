@@ -1,5 +1,5 @@
 import { registerLocaleData } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import localeFr from '@angular/common/locales/fr';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -45,6 +45,7 @@ import { AppointmentButtonComponent } from './shared/buttons/appointment-button/
 import { EditableContentComponent } from './shared/components/editable-content/editable-content.component';
 import { VideoComponent } from './shared/components/video/video.component';
 import { ArrowDownComponentComponent } from './shared/style/arrow-down-component/arrow-down-component.component';
+import { AuthInterceptor } from './shared/core/interceptor/auth.interceptor';
 registerLocaleData(localeFr, 'fr');
 
 
@@ -114,6 +115,7 @@ registerLocaleData(localeFr, 'fr');
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'fr-FR' },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent],
   exports: [VideoComponent, MatTableModule, MatGridListModule, MatSelectModule, BrowserAnimationsModule,
