@@ -7,10 +7,8 @@
       <mat-form-field class="form-field">
         <mat-label>Select Document Type</mat-label>
         <mat-select formControlName="type" required>
-          <mat-option value="Passport">Passport</mat-option>
-          <mat-option value="Driving_license">Driving License</mat-option>
-          <mat-option value="PAN">PAN</mat-option>
-        </mat-select>
+          <mat-option *ngFor="let option of options" [value]="option">{{option.name}}</mat-option>
+         </mat-select>
       </mat-form-field>
       <br>
       <input formControlName="doc" type="file" ng2FileSelect accept=".png" [uploader]="uploader" multiple/><br/>

@@ -28,7 +28,7 @@ export class ProjectDetailsComponent implements OnInit {
     this.projectId = parseInt(params.get('projectID'));
     this.projectService.getProjectById(this.projectId).subscribe((projectFromServeur)=>{
     this.project=projectFromServeur;
-    this.docs = this.project.documents;
+    this.docs = this.project?.documents;
 
 
     console.log(this.project);

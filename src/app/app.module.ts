@@ -59,7 +59,7 @@ import {MatSliderModule} from '@angular/material/slider';
 import { FoldercardComponent } from './pages/foldercard/foldercard.component';
 import {FileSelectDirective, FileUploadModule} from "ng2-file-upload";
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-import { TypestatusComponent } from './pages/typestatus/typestatus/typestatus.component';
+import { TypestatusComponent } from './pages/typestatusCard/typestatus/typestatus.component';
 
 
 @NgModule({

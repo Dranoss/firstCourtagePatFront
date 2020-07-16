@@ -5,7 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FileUploader } from 'ng2-file-upload';
-import { Docuser } from 'src/app/shared/core/docuser';
+import { Docuser } from 'src/app/shared/core/classes/docuser';
 import { element } from 'protractor';
 
 @Component({
@@ -18,6 +18,7 @@ export class FoldercardComponent implements OnInit {
   uploadForm: FormGroup;
   doc : File;
   docUser: Docuser;
+  options:[{"id":1,"name":"Contrat"},{"id":1,"name":"Compromis"},{"id":1,"name":"Vente"}];
 
   public uploader: FileUploader = new FileUploader({
     isHTML5: true

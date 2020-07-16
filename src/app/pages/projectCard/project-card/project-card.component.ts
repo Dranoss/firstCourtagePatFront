@@ -20,7 +20,7 @@ import { UserType } from 'src/app/shared/core/classes/userType';
 import { Options, LabelType } from 'ng5-slider';
 import { runInThisContext } from 'vm';
 import { MatSelectChange } from '@angular/material/select';
-import { TypestatusComponent } from '../../typestatus/typestatus/typestatus.component';
+import { TypestatusComponent } from '../../typestatusCard/typestatus/typestatus.component';
 
 @Component({
   selector: 'apa-project-card',
