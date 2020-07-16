@@ -6,30 +6,32 @@ h2{
 ::ng-deep {
   .mat-dialog-container{
 
-    border: black solid 2px;
+    // border: black solid 2px;
     width: 650px;
     height: 700px;
   }
 
   .custom-slider .ng5-slider .ng5-slider-bar {
-    background:#5b5969;
+    // background:#5b5969;
     height: 5px;
-    width: 10rem;
+   // width: 10rem;
   }
   .custom-slider .ng5-slider .ng5-slider-selection {
-    background: orange;
-  } .custom-slider .ng5-slider .ng5-slider-tick {
-    width: 1px;
-    height: 10px;
-    margin-left: 4px;
-    border-radius: 0;
-    background: #9b918b;
-    top: -1px;
+   background: rgb(26, 25, 25);
   }
+  // .custom-slider .ng5-slider .ng5-slider-tick {
+  //   width: 1px;
+  //   height: 10px;
+  //   margin-left: 4px;
+  //   border-radius: 0;
+  //   background: #9b918b;
+  //   top: -1px;
+  // }
 
   .custom-slider .ng5-slider .ng5-slider-tick.ng5-slider-selected {
-    background: orange;
-  }  .custom-slider .ng5-slider .ng5-slider-pointer {
+    // background: orange;
+  }
+    .custom-slider .ng5-slider .ng5-slider-pointer {
     width: 8px;
     height: 16px;
     top: auto; /* to remove the default positioning */

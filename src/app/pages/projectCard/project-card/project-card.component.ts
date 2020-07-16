@@ -60,18 +60,19 @@ export class ProjectCardComponent implements OnInit {
     step: 10,
 
     showSelectionBar: true,
-    getSelectionBarColor: (value: number): string => {
-      if (value <= 30) {
-        return 'red';
-      }
-      if (value <= 60) {
-      return 'orange';
-      }
-      if (value <= 90) {
-        return 'yellow';
-      }
-      return '#2AE02A';
-    },
+     getSelectionBarColor: (value: number): string => {
+    //   if (value <= 30) {
+    //     return 'red';
+    //   }
+    //   if (value <= 60) {
+    //   return 'orange';
+    //   }
+    //   if (value <= 90) {
+    //     return 'yellow';
+    //   }
+    //   return '#2AE02A';
+    //
+     return 'black'; },
 
     showTicks: true,
     getLegend: (value: number): string => {
@@ -257,7 +258,7 @@ export class ProjectCardComponent implements OnInit {
    // this.project.projectStatus = { "id": this.selectedStatus.id } as Projectstatus;
 
     this.projectService.putProject(this.project).subscribe(data => {
-      this.dialogRef.close('Close');
+      // this.dialogRef.close('Close');
     });
 
   }
@@ -268,6 +269,9 @@ export class ProjectCardComponent implements OnInit {
     this.dialogRef.close('Close');
   }
 
+  out(){
+    this.dialogRef.close('Close');
+  }
   slide() {
 
 //     this.options.step = this.selectedRanking;

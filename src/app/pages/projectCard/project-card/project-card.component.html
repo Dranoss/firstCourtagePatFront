@@ -1,5 +1,9 @@
 
-
+<div>
+  <button mat-stroked-button (click)="out()" class="button">
+    <mat-icon>close</mat-icon> Fermer
+  </button>
+</div>
 <h2>Details du Projet</h2>
 <div>
   <form [formGroup]="form" *ngIf="typeProjects" class="form">
@@ -88,3 +92,5 @@
 
   </form>
 </div>
+
+
