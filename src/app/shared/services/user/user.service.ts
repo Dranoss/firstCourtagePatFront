@@ -4,61 +4,41 @@ import { Observable } from 'rxjs';
 import { User } from '../../core/classes/user';
 import { Project } from '../../core/classes/project';
 import { TypeProject } from '../../core/classes/typeProject';
+import { environment } from '../../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
- 
-  private URL = 'http://www.courtagepatrimoine.net';
-  private local= 'http://localhost:8080';
- 
+  private local = environment.base_url;
+  private URL_USER = this.local + 'users';
+  private URL_TYPEPROJECTS = this.local + 'typeProjects';
 
-  private URL_GET_USER_BY_ID = this.local + '/users';
-  private URL_GET_USERS = this.local + '/users';
-  private URL_POST_USER = this.local + '/users';
-  private URL_UPDATE_USER = this.local + '/users';
-
-
-  // private URL_GET_PROJECTS = 'http://localhost:8080/projects';
-  // private URL_PUT_PROJECT = 'http://localhost:8080/projects/projectby';
-  // private URL_POST_PROJECT = 'http://localhost:8080/projects';
-
-  private URL_DELETE_USER = 'http://localhost:8080/users';
-
-
-  private URL_GET_TYPEPROJECTS = 'http://localhost:8080/typeProjects';
-
-  //private URL_GET_PROJECTSBYUSER = 'http://localhost:8080/projects/users';
-
-//  private URL_UPDATE_USER = 'http://www.courtagepatrimoine.net/users/user';
 
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.URL_GET_USERS);
+    return this.http.get<User[]>(this.URL_USER);
   }
 
-
-
   // getProjectsByUserId(id: number): Observable<Project[]> {
-  //   return this.http.get<Project[]>(this.URL_GET_PROJECTSBYUSER + '/' + id);
+  //   return this.http.get<Project[]>(this.URL_TYPEPROJECTS + '/' + id);
   // }
 
   getUserById(id: number): Observable<User> {
-    return this.http.get<User>(`${this.URL_GET_USER_BY_ID}/${id}`);
+    return this.http.get<User>(`${this.URL_USER}/${id}`);
   }
 
   postUser(user: User): Observable<User> {
-    return this.http.post<User>(this.URL_POST_USER, user);
+    return this.http.post<User>(this.URL_USER, user);
   }
 
   putUserById(user: User): Observable<User> {
-    return this.http.put<User>(this.URL_UPDATE_USER + `/${user.id}`, user);
+    return this.http.put<User>(this.URL_USER + `/${user.id}`, user);
   }
 
   deleteUserById(id: number) {
-    return this.http.delete(this.URL_DELETE_USER + "/" + id);
+    return this.http.delete(this.URL_USER + '/' + id);
   }
 }

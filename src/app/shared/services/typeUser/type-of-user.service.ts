@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { UserType } from '../../core/classes/userType';
+import { environment } from '../../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -9,23 +10,21 @@ import { UserType } from '../../core/classes/userType';
 export class TypeOfUserService {
 
 
-  private URL_GET_TYPEOFUSERS = 'http://localhost:8080/user-types';
-  private URL_POST_TYPEOFUSERS = 'http://localhost:8080/user-types';
-  private URL_UPDATE_TYPEOFUSERS = 'http://localhost:8080/user-types';
+  private URL_TYPEOFUSERS = environment.base_url + 'user-types';
 
   constructor(private http: HttpClient) { }
 
   getTypeOfUsers(): Observable<UserType[]> {
-    return this.http.get<UserType[]>(this.URL_GET_TYPEOFUSERS);
+    return this.http.get<UserType[]>(this.URL_TYPEOFUSERS);
   }
 
   postUserType(userType: UserType):Observable<UserType>{
 
-    return this.http.post<UserType>(this.URL_POST_TYPEOFUSERS,userType);
+    return this.http.post<UserType>(this.URL_TYPEOFUSERS,userType);
 
   }
   putUserType(userType: UserType): Observable<UserType> {
-    return this.http.put<UserType>(this.URL_UPDATE_TYPEOFUSERS + `/${userType.id}`, userType);
+    return this.http.put<UserType>(this.URL_TYPEOFUSERS + `/${userType.id}`, userType);
   }
 
 }
