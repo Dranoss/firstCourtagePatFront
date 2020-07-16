@@ -1,8 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ProjectService } from 'src/app/shared/services/project/project.service';
 import { Project } from 'src/app/shared/core/classes/project';
+import { User } from 'src/app/shared/core/classes/user';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
+import { UserService } from 'src/app/shared/services/user/user.service';
+import { ProjectCardComponent } from '../projectCard/project-card/project-card.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'apa-project-list',
@@ -11,22 +18,76 @@ import { Project } from 'src/app/shared/core/classes/project';
 })
 export class ProjectListComponent implements OnInit {
 
-  userId;
+  selectedProject: Project;
+  userId: number;
+  projects: MatTableDataSource<Project>;
+  selected: User;
+  dateClosed: Date;
+  dateOpened: Date;
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  headers: string[];
+  userName: string;
 
-  constructor(private activatedRouter: ActivatedRoute, private projectService: ProjectService) { }
+  constructor(private activatedRouter: ActivatedRoute,
+    private projectService: ProjectService,
+    private userService: UserService,
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
+    this.headers = ['Nom', 'Type', 'Montant', 'Date Ouverture', 'Date cloture', 'actions'];
 
-  // Projects by userId
+    // Projects by userId
     this.activatedRouter.paramMap.subscribe(param => {
-      this.userId = param.get('id');
+      this.userId = +param.get('id');
+      this.userName = param.get('userName');
       this.getProjects(this.userId);
     });
+
   }
 
 
-  getProjects(id: number): Observable<Project[]> {
-  return this.projectService.getProjectsByUserId(id);
+  getProjects(id: number): void {
+    this.userService.getUserById(id).subscribe(data => {
+
+      this.projects = new MatTableDataSource(data.projects);
+      this.projects.sort = this.sort;
+      this.projects.paginator = this.paginator;
+    });
+  }
+  modifyProject(selectedProject: Project): void {
+
+    this.projectService.putProject(this.selectedProject).subscribe(data => {
+      console.log('update le projet ' + this.selectedProject.name);
+      this.selectedProject = data;
+
+    });
+    // this.getTheUserList();
+
+  }
+
+  deleteProject(selectedProject: Project) {
+
+  }
+
+
+
+  newProject() {
+
+    this.dialog.open(ProjectCardComponent, { data: null });
+
+
+    // this.projectService.addProject(this.selected, this.project).subscribe(data => {
+    //   console.log('add a project  ' + data);    });
+
+
+
+  //  this.getProjects();
+
+
+
+
   }
 
 }

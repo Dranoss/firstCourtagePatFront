@@ -13,6 +13,8 @@ import { CorporateComponent } from './pages/corporate/corporate.component';
 import { UserFormComponent } from './pages/user-form/user-form.component';
 import { ProjectListComponent } from './pages/project-list/project-list.component';
 import { CustomerHomepageComponent } from './pages/customer-homepage/customer-homepage.component';
+import { ProjectDetailsComponent } from './pages/project-details/project-details.component';
+import { FaqComponent } from './pages/faq/faq.component';
 
 
 const routes: Routes = [
@@ -28,9 +30,11 @@ const routes: Routes = [
   {path : 'partnership', component : PartnershipComponent},
   {path : 'corporate', component : CorporateComponent},
   {path : 'user', component : UserFormComponent},
-  {path : 'projects/:id', component : ProjectListComponent},
-  {path : 'customer-homepage', component: CustomerHomepageComponent}
-];
+  {path : 'projects/:projectID', component : ProjectDetailsComponent},
+  {path : 'customer-homepage/:userID', component: CustomerHomepageComponent},
+  {path : 'projects/:id/:userName', component : ProjectListComponent},
+  {path : 'faq', component : FaqComponent}
+ ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SystemJsNgModuleLoader, Output } from '@angular/core';
 import { ProjectService } from 'src/app/shared/services/project/project.service';
 import { Project } from 'src/app/shared/core/classes/project';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Observable } from 'rxjs';
+import { User } from 'src/app/shared/core/classes/user';
+import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
   selector: 'apa-customer-homepage',
@@ -9,14 +13,21 @@ import { Project } from 'src/app/shared/core/classes/project';
 })
 export class CustomerHomepageComponent implements OnInit {
 
-  projects : Project[] = [];
+  userId : number;
+  user : User;
 
-  constructor(private projectService : ProjectService) { }
+  constructor(private userService : UserService, private activatedRouter: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.projectService.getAllProjects().subscribe((projectsFromServeur)=>{
-      this.projects = projectsFromServeur;
+    this.activatedRouter.paramMap.subscribe((params : ParamMap)=>{
+      this.userId = parseInt(params.get('userID'));
+      this.userService.getUserById(this.userId).subscribe((userFromServeur)=>{
+        this.user = userFromServeur;
+
     });
+  });
+
   }
 
 }
+
