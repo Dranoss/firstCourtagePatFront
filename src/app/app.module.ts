@@ -51,6 +51,8 @@ import { from } from 'rxjs';
 import { TypeUserCardComponent } from './pages/typeUserCard/type-user-card/type-user-card.component';
 import { TypeprojectcardComponent } from './pages/typeProjectCard/typeprojectcard/typeprojectcard.component';
 import { FaqComponent } from './pages/faq/faq.component';
+import {ProgressBarModule} from "angular-progress-bar";
+
 
 
 
@@ -102,6 +104,7 @@ import { FaqComponent } from './pages/faq/faq.component';
     BrowserAnimationsModule,
     MatButtonModule,
     MatInputModule,
+    ProgressBarModule,
 
     ReactiveFormsModule,
 
