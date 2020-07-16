@@ -1,18 +1,18 @@
-<div class="buttonContainer top">
+<div *ngIf="userRole==='admin'" class="buttonContainer top">
   <button class="goBack" routerLink="/client-list">Retour</button>
 </div>
-
+<img *ngIf="userRole!=='admin' && selectedUser && selectedUser.companyName===''" class="settingIcon" routerLink="/client-details/{{userId}}" src="assets/img/settings.svg" alt="settings">
 <h1 *ngIf="selectedUser && selectedUser.companyName===''">M./Mme. {{selectedUser.firstName}} {{selectedUser.lastName.toUpperCase()}}</h1>
 <h1 *ngIf="selectedUser && selectedUser.companyName!==''">Société {{selectedUser.companyName}}</h1>
 
-<div class="buttonContainer">
+<div *ngIf="userRole==='admin'" class="buttonContainer">
   <button (click)="navigatoToProjectCreation()">Nouveau Projet</button>
 </div>
 <h4 *ngIf="selectedUser && selectedUser.projects.length!==0">Projets</h4>
 <div *ngIf="selectedUser" class="cardContainer">
   <div class="cardSubContainer" *ngFor="let project of selectedUser.projects">
-    <div class="deleteCard" (click)="deleteProject(project)">Supprimer</div>
-    <div class="card"routerLink="/project-details/{{userId}}/{{project.id}}">
+    <div *ngIf="userRole==='admin'" class="deleteCard" (click)="deleteProject(project)">Supprimer</div>
+    <div class="card" [ngClass]="{'clientViewCard': userRole!=='admin'}" routerLink="/project-details/{{userId}}/{{project.id}}">
       <div class="title">{{project.name}}</div>
       <div class="subcontainer">
         <div class="elementCardName">Type :</div>

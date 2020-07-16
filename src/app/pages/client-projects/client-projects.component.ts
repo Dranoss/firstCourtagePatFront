@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../shared/services/user/user.service';
 import { User } from '../../shared/core/classes/user';
-import { UserTypeService } from '../../shared/services/user-type/user-type.service';
 import { ProjectType } from '../../shared/core/classes/project-type';
 import { ProjectTypeService } from '../../shared/services/project-type/project-type.service';
 import { ProjectService } from '../../shared/services/project/project.service';
@@ -15,6 +14,7 @@ import { ProjectService } from '../../shared/services/project/project.service';
 export class ClientProjectsComponent implements OnInit {
   userId: number;
   userType: string;
+  userRole;
   selectedUser: User;
   projectTypes: ProjectType[] = [];
 
@@ -26,10 +26,15 @@ export class ClientProjectsComponent implements OnInit {
     private projectTypeService: ProjectTypeService,
   ) { }
 
+
   ngOnInit(): void {
     this.route.paramMap.subscribe(paramMap => {
-      this.userId = +paramMap.get('id');
-      this.userType = paramMap.get('userType');
+      this.initialiszeUserRole();
+      if (this.userRole === 'admin'){
+        this.userId = +paramMap.get('userId');
+      } else {
+        this.userId = +localStorage.getItem('userId');
+      }
       this.initializeUser(this.userId);
     });
   }
@@ -39,7 +44,12 @@ export class ClientProjectsComponent implements OnInit {
   initializeUser(id: number){
     this.userService.getUserById(id).subscribe(data => {
       this.selectedUser = data;
-      console.log(this.selectedUser);
+      console.log(this.selectedUser.projects);
+
+      this.selectedUser.projects = this.selectedUser.projects.sort((a, b) => {
+        return +new Date(b.creationDate) - +new Date(a.creationDate);
+      });
+      console.log(this.selectedUser.projects);
       this.initializeUserType();
     });
   }
@@ -48,9 +58,11 @@ export class ClientProjectsComponent implements OnInit {
       this.projectTypes = data;
       this.selectedUser.projects.forEach(project => {
         project.projectType = this.projectTypes.find(type => type.id === +project.projectType);
-        console.log(this.selectedUser);
       });
     });
+  }
+  initialiszeUserRole(){
+    return this.userRole = localStorage.getItem('userRole');
   }
   deleteProject(project){
     this.projectService.deleteProjectById(project.id).subscribe(() => {
