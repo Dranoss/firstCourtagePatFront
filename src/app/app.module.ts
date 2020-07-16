@@ -59,6 +59,7 @@ import {MatSliderModule} from '@angular/material/slider';
 import { FoldercardComponent } from './pages/foldercard/foldercard.component';
 import {FileSelectDirective, FileUploadModule} from "ng2-file-upload";
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { TypestatusComponent } from './pages/typestatus/typestatus/typestatus.component';
 
 
 @NgModule({
@@ -90,6 +91,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     CustomerHomepageComponent,
     ProjectDetailsComponent,
     FoldercardComponent,
+    TypestatusComponent,
   ],
   imports: [
     BrowserModule,

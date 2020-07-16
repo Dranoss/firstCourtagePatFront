@@ -20,6 +20,7 @@ import { UserType } from 'src/app/shared/core/classes/userType';
 import { Options, LabelType } from 'ng5-slider';
 import { runInThisContext } from 'vm';
 import { MatSelectChange } from '@angular/material/select';
+import { TypestatusComponent } from '../../typestatus/typestatus/typestatus.component';
 
 @Component({
   selector: 'apa-project-card',
@@ -64,7 +65,7 @@ export class ProjectCardComponent implements OnInit {
         return 'red';
       }
       if (value <= 60) {
-        return 'orange';
+      return 'orange';
       }
       if (value <= 90) {
         return 'yellow';
@@ -106,7 +107,6 @@ export class ProjectCardComponent implements OnInit {
         this.userSelected = us;
       });
 
-
       // open the dialog as null to create a project
       if (this.data[0] === null) {
         this.isCreated = false;
@@ -117,7 +117,7 @@ export class ProjectCardComponent implements OnInit {
           dateOpened: new FormControl(this.dateOpened),
           dateClosed: new FormControl(this.dateClosed),
           projectTypeForm: new FormControl(this.typeProjects[0]),
-          listStatusForm: new FormControl(this.typeProjects[0]?.projectStatuses[0])
+          listStatusForm: new FormControl(this.project?.projectStatus)
         });
       }
 
@@ -147,8 +147,6 @@ export class ProjectCardComponent implements OnInit {
 
     });
 
-
-
   }
 
   getTherankName(value: number): string {
@@ -164,8 +162,7 @@ export class ProjectCardComponent implements OnInit {
   }
   // Initialize The type Of Projects List
   public getTypeOfProjects() {
-
-    return this.typeProjectService.getTypeOfProject();
+      return this.typeProjectService.getTypeOfProject();
   }
 
   // Initialize The statusses Of status List
@@ -174,11 +171,8 @@ export class ProjectCardComponent implements OnInit {
 
     this.selectedType = selectChange.value;
     this.typeStatusses = this.selectedType.projectStatuses;
-
     this.options.step = this.typeStatusses.length + 1;
-
     this.listStatusForm.setValue(this.typeStatusses);
-
 
     // gerer le max ranking
     const n = this.typeStatusses.map(item => {
@@ -203,11 +197,25 @@ export class ProjectCardComponent implements OnInit {
   addTypeOfProject() {
     let ref = this.dialog.open(TypeprojectcardComponent);
     ref.afterClosed().subscribe(result => {
-      this.getTypeOfProjects();
+      this.getTypeOfProjects().subscribe(data => {
+        this.typeProjects = data;
+        });
+
     });
 
   }
 
+  // call a dialog to post a new statuss for a typeOfProject
+  addStatusses(){
+
+    let ref = this.dialog.open(TypestatusComponent, {data:[this.userSelected,this.form.get('projectTypeForm').value]});
+    ref.afterClosed().subscribe(result => {
+      this.typeStatusses = this.selectedType.projectStatuses;
+
+      this.listStatusForm.setValue(this.typeStatusses);
+    });
+
+  }
   // statements which post a new Project
   onValidate() {
 
@@ -244,10 +252,9 @@ export class ProjectCardComponent implements OnInit {
       this.data[0].id
     );
 
-    // this.project.projectStatus = { "id": 1 } as Projectstatus;
-    // this.project.user = { "id": this.userSelected.id } as User;
-    // this.project.projectType = { "id": this.selectedType.id } as TypeProject;
-    // this.project.projectStatus = { "id": this.selectedStatus.id } as Projectstatus;
+    this.project.user = { "id": this.userSelected.id } as User;
+    this.project.projectType = { "id": this.project.projectType.id } as TypeProject;
+   // this.project.projectStatus = { "id": this.selectedStatus.id } as Projectstatus;
 
     this.projectService.putProject(this.project).subscribe(data => {
       this.dialogRef.close('Close');
@@ -263,8 +270,8 @@ export class ProjectCardComponent implements OnInit {
 
   slide() {
 
-    // this.options.step = this.selectedRanking;
-    // // this.options.tickValueStep = this.selectedRanking;
+//     this.options.step = this.selectedRanking;
+this.selectedRanking= this.options.tickValueStep ;
     // // get dans typeStatusses le name correspondant.
     // const tempo = this.typeStatusses.map(element => {
     //   return [{ "name": element.name, "ranking": element.ranking }];

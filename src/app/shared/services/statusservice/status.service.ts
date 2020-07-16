@@ -12,6 +12,7 @@ export class StatusService {
 
   private URL_GET_StatusList = 'http://localhost:8080/project-status';
   private URL_GET_StatusListByTypeProject = 'http://localhost:8080/project-status/typeProject';
+  private URL_POST_STATUS = 'http://localhost:8080/project-status';
 
 
   constructor(private http: HttpClient) { }
@@ -20,11 +21,16 @@ export class StatusService {
     return this.http.get<Projectstatus[]>(this.URL_GET_StatusList);
   }
 
-  getListofStatusByTypeProjectId(id: number): Observable<Projectstatus[]> {
-    return this.http.get<Projectstatus[]>(this.URL_GET_StatusListByTypeProject+"/"+id);
-  }
   getStatusById(id: number) {
     return this.http.get<Projectstatus>(this.URL_GET_StatusList+"/"+id);
+  }
+
+  postStatus(status: Projectstatus): Observable<Projectstatus> {
+    return this.http.post<Projectstatus>(this.URL_POST_STATUS,status);
+  }
+
+  deletestatus(id: number) {
+    return this.http.delete(this.URL_GET_StatusList+"/"+id);
   }
 
 

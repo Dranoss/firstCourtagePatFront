@@ -44,7 +44,11 @@
           </mat-select>
 
         </mat-form-field>
-         <mat-form-field >
+
+        <button mat-icon-button (click)="addStatusses()">
+          <mat-icon>add_circle</mat-icon>
+        </button>
+       <mat-form-field >
           <mat-label>Liste des étapes</mat-label>
           <mat-select [compareWith]="compareObjects" formControlName="listStatusForm" matInput
             placeholder="Etapes" name="inputSelectStatus">
@@ -62,7 +66,9 @@
           Modifier
         </button>
 
-      </div> <button *ngIf="isCreated" mat-stroked-button (click)="docs()" class="button">
+      </div>
+
+      <button *ngIf="isCreated" mat-stroked-button (click)="docs()" class="button">
         <mat-icon>folder</mat-icon> Documents
       </button>
 

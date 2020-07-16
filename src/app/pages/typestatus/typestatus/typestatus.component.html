@@ -1,0 +1,25 @@
+
+<input matInput  [(ngModel)]="inputNameStatus" placeholder="nom étape'" autocomplete="on">
+<input matInput  [(ngModel)]="inputRanking" placeholder="Rang" autocomplete="on">
+<br>
+<mat-form-field >
+  <mat-label>Liste des étapes</mat-label>
+  <mat-select [compareWith]="compareObjects" [(ngModel)]="statusSelected" name="input" matInput
+    placeholder="Etapes" >
+    <mat-option *ngFor="let status of statusses" [value]="status">
+      {{status.name}}: {{status.ranking}}</mat-option>
+  </mat-select>
+
+</mat-form-field>
+
+<button mat-stroked-button (click)="onValidate()" class="button">
+  <mat-icon color="blue" >add_circle</mat-icon>
+</button>
+<button mat-stroked-button (click)="onModify()" class="button">
+  <mat-icon >launch</mat-icon>
+</button>
+<button mat-stroked-button (click)="onDelete()" class="button">
+  <mat-icon color="warn" >delete_forever</mat-icon>
+</button>
+
+

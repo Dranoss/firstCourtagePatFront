@@ -2,6 +2,8 @@
 ::ng-deep {
   .mat-dialog-container{
 
+    flex-direction: column;
+    justify-content: center;
     border: black solid 2px;
     width: 650px;
     height: 400px;
