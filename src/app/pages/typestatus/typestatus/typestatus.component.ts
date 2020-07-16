@@ -51,9 +51,11 @@ export class TypestatusComponent implements OnInit {
     this.status = new Projectstatus( this.inputNameStatus,Number(this.inputRanking),null,this.statusSelected.id);
     this.status.projectType = { "id": this.type.id} as TypeProject;
     this.statusService.postStatus(this.status).subscribe(data => {
-         this.type.projectStatuses.push(data);
+      //arr.splice(index,1,item);
+         this.type.projectStatuses.
+              splice(this.type.projectStatuses.
+                    indexOf(this.statusSelected), 1, data);
          this.dialogRef.close('Close');
-         this.type.projectStatuses.slice(this.type.projectStatuses.indexOf(this.statusSelected));
 
         });
 
@@ -71,7 +73,7 @@ export class TypestatusComponent implements OnInit {
   }
   onDelete() {
     this.statusService.deletestatus(this.statusSelected.id).subscribe(data => {
-      this.type.projectStatuses.slice(this.type.projectStatuses.indexOf(this.statusSelected));
+      this.type.projectStatuses.splice(this.type.projectStatuses.indexOf(this.statusSelected,1));
       this.dialogRef.close('Close');
  });
 

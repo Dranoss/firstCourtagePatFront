@@ -60,12 +60,11 @@ export class ProjectListComponent implements OnInit {
 
   getProjects(id: number) {
     this.userService.getUserById(id).subscribe(data => {
-
-
-      data.projects.forEach(element => {
+        data.projects.forEach(element => {
         this.typeOfProjectService.getTypeOfProjectById(Number(element.projectType))
           .subscribe(typus => {
-            element.projectType = new TypeProject(typus.name,null, typus.id);
+     // element.projectType = new TypeProject(typus.name,null, typus.id);
+     element.projectType = typus;
           });
 
       });

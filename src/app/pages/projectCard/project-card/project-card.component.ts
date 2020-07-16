@@ -126,14 +126,14 @@ export class ProjectCardComponent implements OnInit {
       else {
         this.isCreated = true;
         this.project = this.data[0];
+        this.typeStatusses = this.project.projectType.projectStatuses;
 
+        // this.statusService.getStatusById(Number(this.project.projectStatus)).subscribe(
+        //   data => {
+        //     this.project.projectStatus = data;
+        //     this.project.projectStatus.ranking = data.ranking;
 
-        this.statusService.getStatusById(Number(this.project.projectStatus)).subscribe(
-          data => {
-            this.project.projectStatus = data;
-            this.project.projectStatus.ranking = data.ranking;
-
-          });
+        //   });
 
         this.form = new FormGroup({
           name: new FormControl(this.project?.name, Validators.required),
@@ -206,14 +206,14 @@ export class ProjectCardComponent implements OnInit {
 
   }
 
-  // call a dialog to post a new statuss for a typeOfProject
+  // call a dialog to post delete or modify a  statuss for a typeOfProject
   addStatusses(){
 
     let ref = this.dialog.open(TypestatusComponent, {data:[this.userSelected,this.form.get('projectTypeForm').value]});
     ref.afterClosed().subscribe(result => {
       this.typeStatusses = this.selectedType.projectStatuses;
 
-      this.listStatusForm.setValue(this.typeStatusses);
+//      this.listStatusForm.setValue(this.typeStatusses);
     });
 
   }

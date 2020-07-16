@@ -40,7 +40,7 @@ export class UserFormComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.headers = ['lastName', 'firstName', 'type', 'sponsorshipCode', 'Email', 'Téléphone',
+    this.headers = ['lastName', 'firstName', 'userType.name', 'sponsorshipCode', 'Email', 'Téléphone',
       'Société', 'actions'];
 
     // Initialize users' list and types project's list
