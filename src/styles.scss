@@ -18,6 +18,7 @@ html, body{
   --text-color:rgb(42, 42, 78);
   --title-font: 'Cinzel', serif;
   --text-font: 'Segoe UI', sans-serif;
+  --text-color2: #9A9A9A
 }
 
 h3{
@@ -26,7 +27,7 @@ h3{
 
 h4{
   font-size: 1.3vw;
-  color: #9A9A9A
+  color: var(--text-color2)
 }
 
 p, a{
