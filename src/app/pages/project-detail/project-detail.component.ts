@@ -39,18 +39,28 @@ export class ProjectDetailComponent implements OnInit {
   newProjectStatus: ProjectStatus;
   progress: number;
 
+  userRole;
   // Display form
   displayForm = false;
+
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(paramMap => {
       this.projectId = +paramMap.get('id');
-      this.userId = +paramMap.get('userId');
+      if (localStorage.getItem('userRole') === 'admin'){
+        this.userId = +paramMap.get('userId');
+      } else {
+        this.userId = +localStorage.getItem('userId');
+      }
       this.getProjectById(this.projectId);
       this.getUserById(this.userId);
       this.getAllProjectTypes();
       this.getAllProjectStatuses();
+      this.initialiszeUserRole();
     });
+  }
+  initialiszeUserRole(){
+    return this.userRole = localStorage.getItem('userRole');
   }
   getProjectById(id){
     this.projectService.getProjectById(id).subscribe(data => {
@@ -108,15 +118,10 @@ export class ProjectDetailComponent implements OnInit {
     this.projectModel.projectStatus = this.newProjectStatus;
   }
   onSubmit(){
-    console.log(new Date(this.projectModel.creationDate));
-    console.log(new Date(this.projectModel.closingDate));
-
     this.projectModel.projectStatus = {id: this.projectModel.projectStatus.id};
     this.projectModel.projectType = {id: this.projectModel.projectType.id};
     this.projectModel.user = {id: this.user.id};
     this.projectModel.creationDate = new Date(this.projectModel.creationDate);
-    console.log(this.projectModel);
-
     this.projectService.putProjectById(this.projectModel).subscribe(() => {
       this.getProjectById(this.projectId);
       this.resetForm();
