@@ -5,12 +5,33 @@ p{
 }
 
 h3{
-  font-weight: lighter;
+  font-weight: 500;
 }
-.wrapper{
-  margin-bottom: 8vh;
+
+.wrapper *{
+  padding: 1em;
 }
 
 .last-wrapped{
   text-align: end;
+}
+
+.wrapper-gray{
+  background-color: #EEE;
+}
+
+.wrapper-blue{
+  background-color: #e8eeff;
+}
+
+.wrapper-top{
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+  margin-top: 5vh;
+}
+
+.wrapper-bottom{
+  margin-bottom: 5vh;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
 }
