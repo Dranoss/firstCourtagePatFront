@@ -8,7 +8,8 @@ h2{
 
     // border: black solid 2px;
     width: 650px;
-    height: 550px;
+    height: 100%;
+    resize: both;
   }
 
   .custom-slider .ng5-slider .ng5-slider-bar {
@@ -59,7 +60,9 @@ h2{
 
 }
 .selectdiv{
-  // width: 140px;
-  // display: flex;
-  // justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+}
+.selectlist{
+  margin: 25px;
 }

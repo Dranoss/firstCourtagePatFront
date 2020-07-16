@@ -5,7 +5,7 @@
   <button *ngIf="isCreated" mat-stroked-button (click)="docs()" class="button">
     <mat-icon>folder</mat-icon> Documents
   </button>
-<button *ngIf="isCreated" mat-stroked-button (click)="modifyProjectDetails()" class="button">
+  <button *ngIf="isCreated" mat-stroked-button (click)="modifyProjectDetails()" class="button">
     Modifier
   </button>
 </div>
@@ -38,32 +38,41 @@
         </mat-form-field>
       </div>
 
-      <div >
+      <div>
 
-        <button mat-icon-button (click)="addTypeOfProject()" class="button">
-          <mat-icon>add_circle</mat-icon>
-        </button>
 
-        <mat-form-field class="selectdiv">
-          <mat-label>Type Projet</mat-label>
-          <mat-select [compareWith]="compareObjects" formControlName="projectTypeForm" matInput
-            placeholder="Type de projet" name="inputSelectType" (selectionChange)="getStatusList($event)">
-            <mat-option *ngFor="let type of typeProjects" [value]="type">
-              {{type.name}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <button mat-icon-button (click)="addStatusses()">
-          <mat-icon>add_circle</mat-icon>
-        </button>
-        <mat-form-field class="selectdiv">
-          <mat-label>Liste des étapes</mat-label>
-          <mat-select [compareWith]="compareObjects" formControlName="listStatusForm" matInput placeholder="Etapes"
-            name="inputSelectStatus">
-            <mat-option (onSelectionChange)="setSlide(status)" *ngFor="let status of typeStatusses" [value]="status">
-              {{status.name}}: {{status.ranking}}</mat-option>
-          </mat-select>
-        </mat-form-field>
 
+        <span class="selectdiv">
+          <div>
+            <button mat-icon-button (click)="addTypeOfProject()" class="button">
+
+              <mat-icon>add_circle</mat-icon>
+            </button>
+            <mat-form-field class="selectlist">
+              <mat-label>Type Projet</mat-label>
+              <mat-select [compareWith]="compareObjects" formControlName="projectTypeForm" matInput
+                placeholder="Type de projet" name="inputSelectType" (selectionChange)="getStatusList($event)">
+                <mat-option *ngFor="let type of typeProjects" [value]="type">
+                  {{type.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <button mat-icon-button (click)="addStatusses()">
+              <mat-icon>add_circle</mat-icon>
+            </button>
+            <mat-form-field class="selectlist">
+              <mat-label>Liste des étapes</mat-label>
+              <mat-select [compareWith]="compareObjects" formControlName="listStatusForm" matInput placeholder="Etapes"
+                name="inputSelectStatus">
+                <mat-option (onSelectionChange)="setSlide(status)" *ngFor="let status of typeStatusses"
+                  [value]="status">
+                  {{status.name}}: {{status.ranking}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </span>
         <button *ngIf="!isCreated" mat-stroked-button (click)="onValidate()" class="button">
           Valider
         </button>

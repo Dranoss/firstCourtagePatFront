@@ -128,12 +128,9 @@ export class ProjectCardComponent implements OnInit {
         this.project = this.data[0];
         this.typeStatusses = this.project.projectType.projectStatuses;
 
-        // this.statusService.getStatusById(Number(this.project.projectStatus)).subscribe(
-        //   data => {
-        //     this.project.projectStatus = data;
-        //     this.project.projectStatus.ranking = data.ranking;
-
-        //   });
+        this.statusService.getStatusById(Number(this.project.projectStatus))
+                          .subscribe(data=>{
+        this.project.projectStatus = data});
 
         this.form = new FormGroup({
           name: new FormControl(this.project?.name, Validators.required),
