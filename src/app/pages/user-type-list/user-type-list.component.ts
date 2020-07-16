@@ -50,7 +50,6 @@ export class UserTypeListComponent implements OnInit {
     });
   }
   updateUserType(userType: UserType){
-    this.toggleDisplayForm();
     this.userTypeService.updateUserType(userType).subscribe(() => {
       this.initializeUserType();
     });
@@ -62,7 +61,6 @@ export class UserTypeListComponent implements OnInit {
   }
   onSubmit(){
     if (this.userTypeEdition){
-      console.log(this.userType);
       this.updateUserType(this.userType);
       this.userTypeEdition = false;
     } else {
