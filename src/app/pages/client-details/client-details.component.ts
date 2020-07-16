@@ -35,11 +35,17 @@ export class ClientDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(paramMap => {
-      this.userId = +paramMap.get('id');
+      if (localStorage.getItem('userRole') === 'admin'){
+        this.userId = +paramMap.get('userId');
+      } else {
+        this.userId = +localStorage.getItem('userId');
+      }
       this.userType = paramMap.get('userType');
       this.getUser(this.userId);
     });
   }
+
+
   getAddress(id: number){
     this.userAddressService.getAddressById(id).subscribe((data: UserAddress) => {
       this.selectedUserAddress = data;
@@ -61,9 +67,8 @@ export class ClientDetailsComponent implements OnInit {
     this.userService.getUserById(id).subscribe((data: User) => {
       this.selectedUser = data;
       this.editedUser = {...data};
-      this.getAddress(this.selectedUser.id);
-      this.getRib(this.selectedUser.id);
-      console.log(this.selectedUser);
+      this.getAddress(this.selectedUser.userAddress.id);
+      this.getRib(this.selectedUser.userRib.id);
       return this.selectedUser;
     });
   }
@@ -86,7 +91,7 @@ export class ClientDetailsComponent implements OnInit {
     this.getUser(this.userId);
     this.editedUserAddress = {streetName: '', streetNumber: 0, zipCode: '', cityName: ''};
     this.editedUserRib = {ownerName: '', bankName: '', ibanNumber: '', bicCode: ''};
-    this.editedUser = {lastName: '', firstName: '', role: 'client', email: '', password: '', phoneNumber: '', companyName: '', siretNumber: '', userType: null, userAddress: null, userRib: null, sponsorshipCode: ''};
+    this.editedUser = {lastName: '', firstName: '', role: 'client', email: '', password: '', phoneNumber: '', companyName: '', siretNumber: '', sponsorshipCode: '', userType: null, userAddress: null, userRib: null};
   }
   onSubmitUser(){
     this.editedUser.userType = {id: +this.editedUser.userType};
