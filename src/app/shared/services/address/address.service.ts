@@ -8,24 +8,24 @@ import { Observable } from 'rxjs';
 })
 export class AddressService {
 
-  private ADDRESS_URL = 'http://localhost:8080/user-addresses';
+  private static ADDRESS_URL = 'http://localhost:8080/user-addresses';
   constructor(private http: HttpClient) { }
 
   getAllAddresses(): Observable<UserAddress[]>{
-    return this.http.get<UserAddress[]>(this.ADDRESS_URL);
+    return this.http.get<UserAddress[]>(AddressService.ADDRESS_URL);
   }
 
   getAddressById(id: number): Observable<UserAddress>{
-    return this.http.get<UserAddress>(`${this.ADDRESS_URL}/${id}`);
+    return this.http.get<UserAddress>(`${AddressService.ADDRESS_URL}/${id}`);
   }
 
   postAddress(userAddress: UserAddress): Observable<UserAddress>{
-    return this.http.post<UserAddress>(this.ADDRESS_URL, userAddress);
+    return this.http.post<UserAddress>(AddressService.ADDRESS_URL, userAddress);
   }
   putAddressById(userAddress: UserAddress): Observable<UserAddress>{
-    return this.http.put<UserAddress>(`${this.ADDRESS_URL}/${userAddress.id}`, userAddress);
+    return this.http.put<UserAddress>(`${AddressService.ADDRESS_URL}/${userAddress.id}`, userAddress);
   }
   deleteAddresseById(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.ADDRESS_URL}/${id}`);
+    return this.http.delete<void>(`${AddressService.ADDRESS_URL}/${id}`);
   }
 }
