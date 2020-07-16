@@ -20,6 +20,8 @@ import { ProjectTypeCreationComponent } from './pages/project-type-creation/proj
 import { SettingsComponent } from './pages/settings/settings.component';
 import { UserTypeListComponent } from './pages/user-type-list/user-type-list.component';
 import { ProjectDetailComponent } from './pages/project-detail/project-detail.component';
+import { AuthGuard } from './shared/core/guard/auth/auth.guard';
+import { AdminGuard } from './shared/core/guard/admin/admin.guard';
 
 
 const routes: Routes = [
@@ -29,22 +31,22 @@ const routes: Routes = [
   {path: 'brokerage', component: BrokerageComponent},
   {path: 'business-contributor', component: BusinessContributorComponent},
   {path: 'consultancy', component: ConsultancyComponent},
-  {path : 'legal', component : LegalComponent},
-  {path : 'claim', component : ClaimComponent},
-  {path : 'recruitment', component : RecruitmentComponent},
-  {path : 'partnership', component : PartnershipComponent},
-  {path : 'corporate', component : CorporateComponent},
-  {path : 'client-list', component : ClientViewComponent},
-  {path : 'client-details/:id', component : ClientDetailsComponent},
-  {path : 'new-client', component : CreateClientComponent},
-  {path : 'client-projects/:id', component : ClientProjectsComponent},
-  {path: 'project-creation/:userId', component: ProjectCreationComponent},
-  {path : 'settings', component : SettingsComponent},
-  {path : 'user-types', component : UserTypeListComponent},
-  {path : 'project-types', component : ProjectTypeListComponent},
-  {path : 'create-project-type', component : ProjectTypeCreationComponent},
-  {path : 'project-types/:id', component : ProjectTypeCreationComponent},
-  {path : 'project-details/:userId/:id', component : ProjectDetailComponent},
+  {path: 'legal', component: LegalComponent},
+  {path: 'claim', component: ClaimComponent},
+  {path: 'recruitment', component: RecruitmentComponent},
+  {path: 'partnership', component: PartnershipComponent},
+  {path: 'corporate', component: CorporateComponent},
+  {path: 'client-list', component: ClientViewComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'client-details/:userId', component: ClientDetailsComponent, canActivate: [AuthGuard]},
+  {path: 'new-client', component: CreateClientComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'client-projects/:userId', component: ClientProjectsComponent, canActivate: [AuthGuard]},
+  {path: 'project-creation/:userId', component: ProjectCreationComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'user-types', component: UserTypeListComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'project-types', component: ProjectTypeListComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'create-project-type', component: ProjectTypeCreationComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'project-types/:id', component: ProjectTypeCreationComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'project-details/:userId/:id', component: ProjectDetailComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({
