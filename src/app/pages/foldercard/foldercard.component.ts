@@ -2,11 +2,13 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { ProjectDetailsComponent } from '../project-details/project-details.component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpEventType, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FileUploader } from 'ng2-file-upload';
 import { Docuser } from 'src/app/shared/core/classes/docuser';
 import { element } from 'protractor';
+import { UploadfileService } from 'src/app/shared/services/uploadfile/uploadfile.service';
+import { Project } from 'src/app/shared/core/classes/project';
 
 @Component({
   selector: 'apa-foldercard',
@@ -14,17 +16,33 @@ import { element } from 'protractor';
   styleUrls: ['./foldercard.component.scss']
 })
 export class FoldercardComponent implements OnInit {
+  selectedFiles: FileList;
+  currentFile: File;
+  progress = 0;
+  message = '';
 
+  fileInfos: Observable<any>;
+
+
+  project: Project;
   uploadForm: FormGroup;
   doc : File;
   docUser: Docuser;
-  options:[{"id":1,"name":"Contrat"},{"id":1,"name":"Compromis"},{"id":1,"name":"Vente"}];
+  options=
+  [{"id":1,"name":"Contrat"},{"id":1,"name":"Compromis"},{"id":1,"name":"Vente"}];
 
   public uploader: FileUploader = new FileUploader({
     isHTML5: true
   });
-  title: string = 'Angular File Upload';
-  constructor(private fb: FormBuilder, private http: HttpClient) { }
+
+
+  title: string = 'Docs Upload Patrimoine';
+  constructor(private fb: FormBuilder,
+     private uploadService: UploadfileService,
+     @Inject(MAT_DIALOG_DATA) public data:any ) {
+
+      this.project = data;
+      }
 
   uploadSubmit() {
     for (let i = 0; i < this.uploader.queue.length; i++) {
@@ -42,24 +60,37 @@ export class FoldercardComponent implements OnInit {
       data.append('fileSeq', 'seq' + j);
       data.append('dataType', this.uploadForm.controls.type.value);
       console.log("data avec 3 append"+ data);
-      this.uploadFile(data).subscribe(element =>{
-
-        console.log("element " + element)});
-
-
-    }
-    this.uploader.clearQueue();
+      this.uploadFile(fileItem)
+      this.uploader.clearQueue();
+  }
   }
 
-  uploadFile(data: FormData): Observable<Docuser> {
+  uploadFile(fileToUpload: File) {
+    this.progress = 0;
 
-    console.log("data" + data);
-//    this.docUser = new Docuser()
+    this.docUser = new Docuser("","",fileToUpload,this.project,null)
 
-// transfomer le data en docUSER
+    this.uploadService.upload(fileToUpload,this.docUser).subscribe(data=>{
+      // event => {
+      //   if (event.type === HttpEventType.UploadProgress) {
+      //     this.progress = Math.round(100 * event.loaded / event.total);
+      //   } else if (event instanceof HttpResponse) {
+      //     this.message = event.body.message;
+      //     this.fileInfos = this.uploadService.getFiles();
+      //   }
+      // },
+      // err => {
+      //   this.progress = 0;
+      //   this.message = 'Could not upload the file!';
+
+      console.log(data);
 
 
-    return this.http.post<Docuser>('http://localhost:8080/documents', data);
+      });
+
+
+
+
   }
 
   ngOnInit() {

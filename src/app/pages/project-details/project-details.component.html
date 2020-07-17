@@ -7,14 +7,23 @@
 <div id="main">
     <div class="title"> Mes documents </div>
 
-        <div class="document" *ngFor="let document of project?.documents">
-            <p>{{document.name}}</p>
+        <div class="document" *ngFor="let document of docs">
+
+
+          <a [href]="document.url" [download]="document">{{document.name}}</a>
+          <p>{{document.documentType?.name}}</p>
+
+
+
+
+
+
     </div>
 
 
     <div class="title"> Avancement de mon projet </div>
         <div>
-          <!-- {{project.projectStatus.ranking}} -->
+          {{project.projectStatus?.ranking}}
         </div>
 
     <div class="title">

@@ -24,6 +24,10 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header>Type de projet </mat-header-cell>
       <mat-cell *matCellDef="let project">{{project.projectType.name}}</mat-cell>
     </ng-container>
+    <!-- <ng-container matColumnDef="projectStatus.ranking">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Avancement % </mat-header-cell>
+      <mat-cell *matCellDef="let project">{{ranking}}</mat-cell>
+    </ng-container> -->
      <ng-container matColumnDef="amount">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Montant</mat-header-cell>
       <mat-cell *matCellDef="let project">{{project.amount}}</mat-cell>

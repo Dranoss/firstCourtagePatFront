@@ -2,7 +2,10 @@
   <button mat-stroked-button (click)="out()" class="button">
     <mat-icon>close</mat-icon> Fermer
   </button>
-  <button *ngIf="isCreated" mat-stroked-button (click)="docs()" class="button">
+  <button *ngIf="!isCreated" mat-stroked-button (click)="onValidate()" class="button">
+    Valider
+  </button>
+<button *ngIf="isCreated" mat-stroked-button (click)="docs()" class="button">
     <mat-icon>folder</mat-icon> Documents
   </button>
   <button *ngIf="isCreated" mat-stroked-button (click)="modifyProjectDetails()" class="button">
@@ -24,13 +27,13 @@
         </mat-form-field>
       </div>
       <div class="element">
-        <mat-form-field>
+        <mat-form-field  *ngIf="!isCreated">
           <input matInput formControlName="dateOpened" [value]="dateOpened" [matDatepicker]="picker1"
             placeholder="Date de Lancement">
           <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
           <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field  *ngIf="isCreated">
           <input matInput formControlName="dateClosed" [value]="dateClosed" [matDatepicker]="picker2"
             placeholder="Date de Clôture">
           <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
@@ -73,9 +76,6 @@
             </mat-form-field>
           </div>
         </span>
-        <button *ngIf="!isCreated" mat-stroked-button (click)="onValidate()" class="button">
-          Valider
-        </button>
       </div>
     </mat-grid-list>
     <span *ngIf="isCreated">

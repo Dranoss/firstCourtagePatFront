@@ -5,6 +5,7 @@ import { User } from './user';
 import { Documentt } from './documentt';
 import { Projectstatus } from './projectstatus.';
 import { TypeProject } from './typeProject';
+import { Docuser } from './docuser';
 
 export class Project {
   id?: number;
@@ -13,7 +14,9 @@ export class Project {
   creationDate: Date;
   closingDate: Date;
   projectType: TypeProject;
-  documents : Documentt[];
+  documents : Docuser[];
+  // documents : Documentt[];
+
   projectStatus : Projectstatus;
   user : User;
 
@@ -24,7 +27,7 @@ export class Project {
     creationDate: Date,
     closingDate: Date,
     projectType: TypeProject,
-    documents : Documentt[],
+    documents : Docuser[],
     projectStatus : Projectstatus,
     user: User,
     id?: number) {

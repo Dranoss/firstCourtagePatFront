@@ -7,6 +7,7 @@ import { ProjectService } from 'src/app/shared/services/project/project.service'
 import { Documentt } from 'src/app/shared/core/classes/documentt';
 import { FoldercardComponent } from '../foldercard/foldercard.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Docuser } from 'src/app/shared/core/classes/docuser';
 
 @Component({
   selector: 'apa-project-details',
@@ -21,14 +22,14 @@ export class ProjectDetailsComponent implements OnInit {
   project : Project;
   projectId : number;
 
-  docs: Documentt[];
+  docs: Docuser[];
 
   ngOnInit(): void {
     this.activatedRouter.paramMap.subscribe((params : ParamMap)=>{
     this.projectId = parseInt(params.get('projectID'));
     this.projectService.getProjectById(this.projectId).subscribe((projectFromServeur)=>{
     this.project=projectFromServeur;
-    this.docs = this.project?.documents;
+    this.docs = this.project.documents;
 
 
     console.log(this.project);
@@ -38,7 +39,7 @@ export class ProjectDetailsComponent implements OnInit {
 
 }
 upload(){
-  const dialogRef = this.dialog.open(FoldercardComponent, { data: null});
+  const dialogRef = this.dialog.open(FoldercardComponent, { data: this.project});
 
     dialogRef.afterClosed().subscribe(result => {
      });

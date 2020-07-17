@@ -262,7 +262,7 @@ export class ProjectCardComponent implements OnInit {
 
   docs() {
     // navigate to doc pages
-    this.router.navigate(['/projects', this.userSelected?.id]);
+    this.router.navigate(['/projects', this.project?.id]);
     this.dialogRef.close('Close');
   }
 

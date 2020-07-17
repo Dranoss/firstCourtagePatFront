@@ -6,10 +6,10 @@ h2{
 ::ng-deep {
   .mat-dialog-container{
 
-    // border: black solid 2px;
+    border: black solid 2px;
     width: 650px;
     height: 100%;
-    resize: both;
+   // resize: both;
   }
 
   .custom-slider .ng5-slider .ng5-slider-bar {
