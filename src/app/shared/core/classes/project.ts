@@ -15,9 +15,7 @@ export class Project {
   closingDate: Date;
   projectType: TypeProject;
   documents : Docuser[];
-  // documents : Documentt[];
-
-  projectStatus : Projectstatus;
+   projectStatus : Projectstatus;
   user : User;
 
 

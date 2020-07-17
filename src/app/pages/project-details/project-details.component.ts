@@ -4,10 +4,11 @@ import { User } from 'src/app/shared/core/classes/user';
 import { ProjectDetailsService } from 'src/app/shared/services/project/project-details.service';
 import { Project } from 'src/app/shared/core/classes/project';
 import { ProjectService } from 'src/app/shared/services/project/project.service';
-import { Documentt } from 'src/app/shared/core/classes/documentt';
 import { FoldercardComponent } from '../foldercard/foldercard.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Docuser } from 'src/app/shared/core/classes/docuser';
+import { ProjectStatusService } from 'src/app/shared/services/projectStatus/project-status.service';
+import { ProjectStatus } from 'src/app/shared/core/classes/projectStatus';
 
 @Component({
   selector: 'apa-project-details',
@@ -19,8 +20,10 @@ export class ProjectDetailsComponent implements OnInit {
   constructor(private projectService : ProjectService,
     private dialog: MatDialog, private activatedRouter: ActivatedRoute) { }
 
+
   project : Project;
-  projectId : number;
+  projectId : number | ProjectStatus;
+  projectStatus : ProjectStatus;
 
   docs: Docuser[];
 
@@ -30,10 +33,8 @@ export class ProjectDetailsComponent implements OnInit {
     this.projectService.getProjectById(this.projectId).subscribe((projectFromServeur)=>{
     this.project=projectFromServeur;
     this.docs = this.project.documents;
-
-
-    console.log(this.project);
   });
+
 });
 
 

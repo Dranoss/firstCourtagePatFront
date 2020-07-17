@@ -1,13 +1,13 @@
-import { Component, OnInit, Type, Inject } from '@angular/core';
-import { UserService } from 'src/app/shared/services/user/user.service';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { User } from 'src/app/shared/core/classes/user';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-
-import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { UserType } from 'src/app/shared/core/classes/userType';
 import { TypeOfUserService } from 'src/app/shared/services/typeUser/type-of-user.service';
+import { UserService } from 'src/app/shared/services/user/user.service';
 import { TypeUserCardComponent } from '../typeUserCard/type-user-card/type-user-card.component';
 import { Address } from 'src/app/shared/core/classes/user-address';
+
 
 
 
@@ -24,10 +24,10 @@ export class UserCardComponent implements OnInit {
   isCreated = false;
 
   constructor(public dialogRef: MatDialogRef<UserCardComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    private userCardService: UserService,
-    private typeOfUserService: TypeOfUserService,
-    private dialog: MatDialog) {
+              @Inject(MAT_DIALOG_DATA) public data: any,
+              private userCardService: UserService,
+              private typeOfUserService: TypeOfUserService,
+              private dialog: MatDialog) {
 
   }
 
@@ -35,7 +35,7 @@ export class UserCardComponent implements OnInit {
     // initialize liste of types users
     this.getTypeOfUsers();
 
-    //open the dialog as null to create a user
+    // open the dialog as null to create a user
     if (this.data === null) {
       this.isCreated = false;
 
@@ -63,7 +63,7 @@ export class UserCardComponent implements OnInit {
 
 
     }
-    //open the dialog as data known to update a user
+    // open the dialog as data known to update a user
     else {
       this.isCreated = true;
       this.user = this.data;
@@ -73,7 +73,7 @@ export class UserCardComponent implements OnInit {
         lastName: new FormControl(this.user.lastName),
         firstName: new FormControl(this.user.firstName),
         email: new FormControl(this.user.email),
-        phoneNumber: new FormControl(this.user.phoneNumber),//, [Validators.required, Validators.minLength(10)]
+        phoneNumber: new FormControl(this.user.phoneNumber), // , [Validators.required, Validators.minLength(10)]
         password: new FormControl(this.user.password),
         companyName: new FormControl(this.user.companyName),
         siretNumber: new FormControl(this.user.siretNumber),
@@ -117,7 +117,7 @@ export class UserCardComponent implements OnInit {
   addTypeOfUser() {
 
 
-    let ref = this.dialog.open(TypeUserCardComponent);
+    const ref = this.dialog.open(TypeUserCardComponent);
     ref.afterClosed().subscribe(result => {
       this.getTypeOfUsers();
     });
@@ -146,9 +146,9 @@ export class UserCardComponent implements OnInit {
       this.form.get('street')?.value,
       this.form.get('zipCode')?.value,
       this.form.get('city')?.value,
-
     );
     // Creer le userType
+
     this.user.userType = new UserType('', this.user.userType.id);
 
     this.userCardService.postUser(this.user).subscribe(data => {
@@ -180,6 +180,7 @@ export class UserCardComponent implements OnInit {
 
  //   this.user.userType = new UserType('', this.user.userType.id);
  this.user.userType = {"id" : this.user.userType.id} as UserType;
+
 
     this.userCardService.putUserById(this.user).subscribe(data => {
       this.dialogRef.close('Close');

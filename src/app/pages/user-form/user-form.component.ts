@@ -1,14 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { UserService } from 'src/app/shared/services/user/user.service';
-import { User } from 'src/app/shared/core/classes/user';
-import { Observable } from 'rxjs';
-import { Project } from 'src/app/shared/core/classes/project';
-import { TypeProject } from 'src/app/shared/core/classes/typeProject';
-import { ProjectService } from 'src/app/shared/services/project/project.service';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatSort } from '@angular/material/sort';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { User } from 'src/app/shared/core/classes/user';
+import { UserService } from 'src/app/shared/services/user/user.service';
 import { UserCardComponent } from '../user-card/user-card.component';
 import { MatSortModule } from "@angular/material/sort";
 import { UserType } from 'src/app/shared/core/classes/userType';
@@ -94,7 +90,7 @@ export class UserFormComponent implements OnInit {
   }
 
   modifyUser(user: User) {
-    let dialogRef = this.dialog.open(UserCardComponent, { data: user });
+    const dialogRef = this.dialog.open(UserCardComponent, { data: user });
     dialogRef.afterClosed().subscribe(result => {
       this.getTheUserList();
     });

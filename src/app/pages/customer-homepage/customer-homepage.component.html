@@ -1,8 +1,8 @@
 <div id="title">
-  Bonjour Mr/Mme {{user.lastName}}, bienvenue dans votre espace personnel
+  Bonjour Mr/Mme {{user?.lastName}}, bienvenue dans votre espace personnel
 </div>
 
-<div id="main">
+<div id="main" *ngIf="user?.projects">
   <div class="container" *ngFor="let projet of user.projects" [routerLink]="['/projects', projet.id]">
     <p>Projet N° {{projet.id}} :</p>
     <p>{{projet.name}}</p>
