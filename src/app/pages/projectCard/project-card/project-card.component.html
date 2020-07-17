@@ -1,48 +1,88 @@
-<h2>Details du Client</h2>
+<div class="buttonup">
+  <button mat-stroked-button (click)="out()" class="button">
+    <mat-icon>close</mat-icon> Fermer
+  </button>
+  <button *ngIf="!isCreated" mat-stroked-button (click)="onValidate()" class="button">
+    Valider
+  </button>
+<button *ngIf="isCreated" mat-stroked-button (click)="docs()" class="button">
+    <mat-icon>folder</mat-icon> Documents
+  </button>
+  <button *ngIf="isCreated" mat-stroked-button (click)="modifyProjectDetails()" class="button">
+    Modifier
+  </button>
+</div>
+<h2>Details du Projet</h2>
+<div>
+  <form [formGroup]="form" *ngIf="typeProjects" class="form">
 
-<form [formGroup]="form" class="form">
-
-  <mat-grid-list cols="2" rowHeight="600px">
-    <!-- <mat-grid-tile></mat-grid-tile> -->
-    <div>
-      <mat-form-field class="field">
-        <input formControlName="name" matInput placeholder="Nom *">
-        <mat-error>Le champs est requis</mat-error>
-      </mat-form-field>
-      <mat-form-field class="field">
-        <input formControlName="amount" matInput placeholder="Montant *">
-      </mat-form-field>
-      <mat-form-field class="field">
-        <input formControlName="dateOpened" matInput placeholder="Date ouverture *">
-      </mat-form-field>
-      <mat-form-field class="field">
-        <input formControlName="dateClosed" matInput placeholder="Date de Cloture *">
-      </mat-form-field>
-    </div>
-
-    <mat-form-field class="field">
-          <input formControlName="projectStatusForm" matInput placeholder="Statut du projet">
+    <mat-grid-list cols="2" rowHeight="220px">
+      <div class="champs">
+        <mat-form-field>
+          <input formControlName="name" matInput placeholder="Nom *" name="name">
+          <mat-error>Le champs est requis</mat-error>
         </mat-form-field>
+        <mat-form-field>
+          <input formControlName="amount" matInput placeholder="Montant *">
+        </mat-form-field>
+      </div>
+      <div class="element">
+        <mat-form-field  *ngIf="!isCreated">
+          <input matInput formControlName="dateOpened" [value]="dateOpened" [matDatepicker]="picker1"
+            placeholder="Date de Lancement">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field  *ngIf="isCreated">
+          <input matInput formControlName="dateClosed" [value]="dateClosed" [matDatepicker]="picker2"
+            placeholder="Date de Clôture">
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      </div>
 
-      <button mat-icon-button (click)="addTypeOfProject()" class="button">
-        <mat-icon>add_circle</mat-icon>
-      </button>
-       <mat-form-field>
-        <mat-label>Type Projet</mat-label>
-        <mat-select [compareWith]="compareObjects" formControlName="projectTypeForm" matInput placeholder="Type de projet"
-          name="inputSelect">
-          <mat-option *ngFor="let type of typeProjects" [value]="type"> {{type.name}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <button mat-stroked-button (click)="onValidate()" class="button">
-        Valider
-      </button>
-
-      <button mat-stroked-button (click)="modifyProjectDetails()" class="button">
-        Modifier
-      </button>
+      <div>
 
 
-  </mat-grid-list>
-</form>
+
+        <span class="selectdiv">
+          <div>
+            <button mat-icon-button (click)="addTypeOfProject()" class="button">
+
+              <mat-icon>add_circle</mat-icon>
+            </button>
+            <mat-form-field class="selectlist">
+              <mat-label>Type Projet</mat-label>
+              <mat-select [compareWith]="compareObjects" formControlName="projectTypeForm" matInput
+                placeholder="Type de projet" name="inputSelectType" (selectionChange)="getStatusList($event)">
+                <mat-option *ngFor="let type of typeProjects" [value]="type">
+                  {{type.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <button mat-icon-button (click)="addStatusses()">
+              <mat-icon>add_circle</mat-icon>
+            </button>
+            <mat-form-field class="selectlist">
+              <mat-label>Liste des étapes</mat-label>
+              <mat-select [compareWith]="compareObjects" formControlName="listStatusForm" matInput placeholder="Etapes"
+                name="inputSelectStatus">
+                <mat-option (onSelectionChange)="setSlide(status)" *ngFor="let status of typeStatusses"
+                  [value]="status">
+                  {{status.name}}: {{status.ranking}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </span>
+      </div>
+    </mat-grid-list>
+    <span *ngIf="isCreated">
+      <div class="custom-slider">
+        <ng5-slider (change)="slide()" [value]="project.projectStatus.ranking" [options]="options">
+        </ng5-slider>
+      </div>
+    </span>
+  </form>
+</div>

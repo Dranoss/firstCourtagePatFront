@@ -6,6 +6,7 @@ import { UserType } from 'src/app/shared/core/classes/userType';
 import { TypeOfUserService } from 'src/app/shared/services/typeUser/type-of-user.service';
 import { UserService } from 'src/app/shared/services/user/user.service';
 import { TypeUserCardComponent } from '../typeUserCard/type-user-card/type-user-card.component';
+import { Address } from 'src/app/shared/core/classes/user-address';
 
 
 
@@ -20,7 +21,7 @@ export class UserCardComponent implements OnInit {
   typeOfUsers: UserType[] = [];
   user: User;
   form;
-
+  isCreated = false;
 
   constructor(public dialogRef: MatDialogRef<UserCardComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
@@ -36,6 +37,8 @@ export class UserCardComponent implements OnInit {
 
     // open the dialog as null to create a user
     if (this.data === null) {
+      this.isCreated = false;
+
       this.form = new FormGroup({
 
         lastName: new FormControl('', Validators.required),
@@ -43,7 +46,7 @@ export class UserCardComponent implements OnInit {
         email: new FormControl('', Validators.email),
         phoneNumber: new FormControl('', [Validators.required, Validators.minLength(10)]),
         password: new FormControl(''),
-        societyName: new FormControl(''),
+        companyName: new FormControl(''),
         siretNumber: new FormControl(''),
         sponsorshipCode: new FormControl(''),
         addressNumber: new FormControl(null),
@@ -62,6 +65,7 @@ export class UserCardComponent implements OnInit {
     }
     // open the dialog as data known to update a user
     else {
+      this.isCreated = true;
       this.user = this.data;
 
       this.form = new FormGroup({
@@ -71,7 +75,7 @@ export class UserCardComponent implements OnInit {
         email: new FormControl(this.user.email),
         phoneNumber: new FormControl(this.user.phoneNumber), // , [Validators.required, Validators.minLength(10)]
         password: new FormControl(this.user.password),
-        societyName: new FormControl(this.user.companyName),
+        companyName: new FormControl(this.user.companyName),
         siretNumber: new FormControl(this.user.siretNumber),
         sponsorshipCode: new FormControl(this.user.sponsorshipCode),
         addressNumber: new FormControl(this.user.address?.addressNumber),
@@ -82,8 +86,8 @@ export class UserCardComponent implements OnInit {
         bic: new FormControl(this.user.rib?.bic),
         ownerFullname: new FormControl(this.user.rib?.ownerFullname),
         bankName: new FormControl(this.user.rib?.bankName),
-        //    userTypeForm: new FormControl(this.user.userType?.name, Validators.required)
-        userTypeForm: new FormControl({ id: this.user.userType }, Validators.required)
+        userTypeForm: new FormControl(this.user.userType, Validators.required)
+       // userTypeForm: new FormControl({ id: this.user.userType }, Validators.required)
 
       });
 
@@ -122,7 +126,6 @@ export class UserCardComponent implements OnInit {
 
   // statements which post a new User
   onValidate() {
-
     this.user = new User(
       'client',
       this.form.get('userTypeForm')?.value,
@@ -134,9 +137,17 @@ export class UserCardComponent implements OnInit {
       this.form.get('companyName')?.value,
       this.form.get('siretNumber')?.value,
       this.form.get('sponsorshipCode')?.value,
-      this.form.get('address')?.value,
+      null,
       this.form.get('rib')?.value);
 
+
+    // Creer l adresse
+    this.user.address = new Address(this.form.get('addressNumber')?.value,
+      this.form.get('street')?.value,
+      this.form.get('zipCode')?.value,
+      this.form.get('city')?.value,
+    );
+    // Creer le userType
 
     this.user.userType = new UserType('', this.user.userType.id);
 
@@ -144,6 +155,7 @@ export class UserCardComponent implements OnInit {
       this.dialogRef.close('Close');
 
     });
+
 
 
   }
@@ -166,7 +178,9 @@ export class UserCardComponent implements OnInit {
       this.form.get('rib')?.value,
       this.user.id = this.data.id);
 
-    this.user.userType = new UserType( '', this.user.userType.id);
+ //   this.user.userType = new UserType('', this.user.userType.id);
+ this.user.userType = {"id" : this.user.userType.id} as UserType;
+
 
     this.userCardService.putUserById(this.user).subscribe(data => {
       this.dialogRef.close('Close');

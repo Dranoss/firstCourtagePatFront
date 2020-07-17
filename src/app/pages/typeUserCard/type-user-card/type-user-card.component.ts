@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TypeOfUserService } from 'src/app/shared/services/typeUser/type-of-user.service';
 import { UserType } from 'src/app/shared/core/classes/userType';
+import { MatDialogRef } from '@angular/material/dialog';
+import { UserCardComponent } from '../../user-card/user-card.component';
 
 @Component({
   selector: 'apa-type-user-card',
@@ -12,8 +14,10 @@ export class TypeUserCardComponent implements OnInit {
   typeOfUsers: UserType[];
   inputNewTypeUser;
   userType: UserType;
+  typeSelected: UserType;
 
-  constructor(private typeOfUserService: TypeOfUserService) { }
+  constructor(private typeOfUserService: TypeOfUserService,
+    public dialogRef: MatDialogRef<UserCardComponent>) { }
 
   ngOnInit(): void {
 
@@ -41,20 +45,31 @@ export class TypeUserCardComponent implements OnInit {
   onModify() {
 
 //    this.userType.name = this.inputNewTypeUser;
-    this.userType = new UserType( this.inputNewTypeUser,this.userType.id);
+    this.userType = new UserType( this.inputNewTypeUser,this.typeSelected.id);
     this.typeOfUserService.putUserType(this.userType).subscribe(data => {
       this.getTypeOfUsers();});
+      this.dialogRef.close('Close');
+
 
  }
   onValidate() {
 
     this.userType = new UserType( this.inputNewTypeUser);
     this.typeOfUserService.postUserType(this.userType).subscribe(data => {
-      this.getTypeOfUsers();});
+      this.getTypeOfUsers();
+      this.dialogRef.close('Close');
+    });
 
 
   }
-  onDelete() { }
+  onDelete() {
+    this.typeOfUserService.deleteUserType(this.typeSelected.id).subscribe(data => {
+      this.getTypeOfUsers();
+      this.dialogRef.close('Close');
+
+    });
+
+   }
 
 }
 

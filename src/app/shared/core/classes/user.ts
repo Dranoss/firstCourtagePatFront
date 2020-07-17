@@ -18,7 +18,7 @@ export class User {
   public address: Address;
   public rib: Rib;
   public projects : Project [];
-  
+
 
   constructor(
     role: 'admin' | 'client',
@@ -28,7 +28,7 @@ export class User {
     email: string,
     phoneNumber: string,
     password: string,
-    societyName: string,
+    companyName: string,
     siretNumber: string,
     sponsorshipCode: string,
     address: Address,
@@ -43,7 +43,7 @@ export class User {
     this.email = email;
     this.phoneNumber = phoneNumber;
     this.password = password;
-    this.companyName = societyName;
+    this.companyName = companyName;
     this.siretNumber = siretNumber;
     this.sponsorshipCode = sponsorshipCode;
     this.address = address;

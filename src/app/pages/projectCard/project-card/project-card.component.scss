@@ -1,0 +1,68 @@
+h2{
+  text-align: center;
+}
+
+
+::ng-deep {
+  .mat-dialog-container{
+
+    border: black solid 2px;
+    width: 650px;
+    height: 100%;
+   // resize: both;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-bar {
+    // background:#5b5969;
+    height: 5px;
+   // width: 10rem;
+  }
+  .custom-slider .ng5-slider .ng5-slider-selection {
+   background: rgb(59, 58, 58);
+  }
+  // .custom-slider .ng5-slider .ng5-slider-tick {
+  //   width: 1px;
+  //   height: 10px;
+  //   margin-left: 4px;
+  //   border-radius: 0;
+  //   background: #9b918b;
+  //   top: -1px;
+  // }
+
+  .custom-slider .ng5-slider .ng5-slider-tick.ng5-slider-selected {
+    // background: orange;
+  }
+    .custom-slider .ng5-slider .ng5-slider-pointer {
+      display: flex;
+      justify-content: center;
+        width: 8px;
+    height: 16px;
+    top: auto; /* to remove the default positioning */
+    bottom: 0;
+    background-color: #333;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+}
+
+.button {
+  margin: 8px;
+  shape-outside: margin-box;
+
+}
+.buttonup{
+  display: flex;
+  justify-content: space-around;
+}
+.champs, .element{
+  display: flex;
+  justify-content: space-around;
+
+}
+.selectdiv{
+  display: flex;
+  justify-content: space-between;
+}
+.selectlist{
+  margin: 25px;
+}

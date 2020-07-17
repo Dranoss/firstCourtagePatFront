@@ -15,10 +15,17 @@
         <input formControlName="firstName" matInput placeholder="Prénom *">
       </mat-form-field>
       <mat-form-field class="field">
+        <input type="password" formControlName="password" matInput placeholder="Password *">
+      </mat-form-field>
+      <mat-form-field class="field">
         <input formControlName="email" matInput placeholder="Email *">
       </mat-form-field>
       <mat-form-field class="field">
         <input formControlName="phoneNumber" matInput placeholder="Numéro de téléphone *">
+      </mat-form-field>
+
+      <mat-form-field class="field">
+        <input formControlName="sponsorshipCode" matInput placeholder="Code Parrainage *">
       </mat-form-field>
     </div>
     <br>
@@ -26,14 +33,12 @@
     <br>
     <div>
       <mat-form-field class="field">
-        <input formControlName="societyName" matInput placeholder="Nom de Société">
+        <input matInput formControlName="companyName"   placeholder="Nom de Société" name="inputcompany">
       </mat-form-field>
       <mat-form-field class="field">
         <input formControlName="siretNumber" matInput placeholder="Numéro de Siret">
       </mat-form-field>
-      <!-- <mat-grid-tile>
 
-      </mat-grid-tile> -->
 
       <div>
 
@@ -69,23 +74,21 @@
           <input formControlName="bankName" matInput placeholder="Nom de la banque">
         </mat-form-field>
       </div>
-      <button mat-icon-button (click)="addTypeOfUser()" class="button">
+      <button  mat-icon-button (click)="addTypeOfUser()"  class="button">
         <mat-icon>add_circle</mat-icon>
       </button>
       <mat-form-field>
         <mat-label>Type Client</mat-label>
-        <mat-select [compareWith]="compareObjects" formControlName="userTypeForm" matInput placeholder="Type de Client"
-          name="inputSelect">
+        <mat-select [compareWith]="compareObjects" formControlName="userTypeForm" matInput placeholder="Type de Client" name="inputUser">
           <mat-option *ngFor="let type of typeOfUsers" [value]="type"> {{type.name}}</mat-option>
-
         </mat-select>
       </mat-form-field>
 
-      <button mat-stroked-button (click)="onValidate()" class="button">
+      <button  *ngIf="!isCreated" mat-stroked-button (click)="onValidate()" class="button">
         Valider
       </button>
 
-      <button mat-stroked-button (click)="modifyUserDetails()" class="button">
+      <button *ngIf="isCreated" mat-stroked-button (click)="modifyUserDetails()" class="button">
         Modifier
       </button>
     </div>

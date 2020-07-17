@@ -42,16 +42,37 @@ import { TypeUserCardComponent } from './pages/typeUserCard/type-user-card/type-
 import { UserCardComponent } from './pages/user-card/user-card.component';
 import { UserFormComponent } from './pages/user-form/user-form.component';
 import { AppointmentButtonComponent } from './shared/buttons/appointment-button/appointment-button.component';
+import { CustomerHomepageComponent } from './pages/customer-homepage/customer-homepage.component';
+import { ProjectDetailsComponent } from './pages/project-details/project-details.component';
+import { Ng5SliderModule } from 'ng5-slider';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule} from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import {MatDatepickerModule, MatDatepicker} from '@angular/material/datepicker';
+import { ProjectCardComponent } from './pages/projectCard/project-card/project-card.component';
+import { from } from 'rxjs';
+import { TypeUserCardComponent } from './pages/typeUserCard/type-user-card/type-user-card.component';
+import { TypeprojectcardComponent } from './pages/typeProjectCard/typeprojectcard/typeprojectcard.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatCardModule} from '@angular/material/card';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { EditableContentComponent } from './shared/components/editable-content/editable-content.component';
 import { VideoComponent } from './shared/components/video/video.component';
 import { ArrowDownComponentComponent } from './shared/style/arrow-down-component/arrow-down-component.component';
 registerLocaleData(localeFr, 'fr');
 
-
-
-
-
-
+import {MatSliderModule} from '@angular/material/slider';
+import { FoldercardComponent } from './pages/foldercard/foldercard.component';
+import {FileSelectDirective, FileUploadModule} from "ng2-file-upload";
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { TypestatusComponent } from './pages/typestatusCard/typestatus/typestatus.component';
 
 
 @NgModule({
@@ -82,7 +103,10 @@ registerLocaleData(localeFr, 'fr');
     AppointmentButtonComponent,
     CustomerHomepageComponent,
     ProjectDetailsComponent,
+    FoldercardComponent,
+    TypestatusComponent,
     FaqComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -102,8 +126,15 @@ registerLocaleData(localeFr, 'fr');
     BrowserAnimationsModule,
     MatButtonModule,
     MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSliderModule,
+    MatCardModule,
+    MatProgressBarModule,
+    Ng5SliderModule,
+    MatProgressSpinnerModule,
+    FileUploadModule,
     ProgressBarModule,
-
     ReactiveFormsModule,
 
 

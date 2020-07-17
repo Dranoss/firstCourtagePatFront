@@ -3,49 +3,53 @@
 <!--
 <H4> Liste des projets du client : {{selected.firstName}}{{selected.lastName}} </H4> -->
 
+<h3>Liste des Projets de Mr/Mme : {{userName}}</h3>
 
-<H3>Liste des Projets de : {{userName}}</H3>
-
-<div><button mat-icon-button (click)="newProject()" class="button">
+<div class="haut">
+  <button mat-icon-button (click)="newProject()">
   Nouveau Projet <mat-icon>add_circle</mat-icon>
 </button>
 </div>
-
-
-<input matInput  name="inputSearch" placeholder="Search" autocomplete="on" >
-
-
-
+<div class="hautsearch">
+  <input  name="inputSearch" placeholder="Search" >
+</div>
 <div>
    <mat-table [dataSource]="projects" matSort>
     <mat-header-row *matHeaderRowDef="headers" > </mat-header-row>
     <mat-row *matRowDef="let row;columns: headers;" class="mat-row"></mat-row>
 
-    <ng-container matColumnDef="Nom">
+    <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Nom </mat-header-cell>
       <mat-cell *matCellDef="let project">{{project.name}}</mat-cell>
     </ng-container>
-    <ng-container matColumnDef="Type">
-      <mat-header-cell *matHeaderCellDef>Type de projet </mat-header-cell>
-      <mat-cell *matCellDef="let project">{{project.typeProject}}</mat-cell>
+    <ng-container matColumnDef="projectType.name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Type de projet </mat-header-cell>
+      <mat-cell *matCellDef="let project">{{project.projectType.name}}</mat-cell>
     </ng-container>
-     <ng-container matColumnDef="Montant">
+    <!-- <ng-container matColumnDef="projectStatus.ranking">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Avancement % </mat-header-cell>
+      <mat-cell *matCellDef="let project">{{ranking}}</mat-cell>
+    </ng-container> -->
+     <ng-container matColumnDef="amount">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Montant</mat-header-cell>
       <mat-cell *matCellDef="let project">{{project.amount}}</mat-cell>
     </ng-container>
-     <ng-container matColumnDef="Date Ouverture">
+     <ng-container matColumnDef="creationDate">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Date d'Ouverture</mat-header-cell>
-      <mat-cell *matCellDef="let project">{{project.dateOpened}}</mat-cell>
+      <mat-cell *matCellDef="let project">{{project.creationDate  | date: 'dd/MM/yyyy' }}</mat-cell>
     </ng-container>
-    <ng-container matColumnDef="Date cloture">
+    <ng-container matColumnDef="closingDate">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Date de Clôture </mat-header-cell>
-      <mat-cell *matCellDef="let project">{{project.dateClosed}}</mat-cell>
+      <mat-cell *matCellDef="let project">{{project.closingDate | date: 'dd/MM/yyyy'}}</mat-cell>
     </ng-container>
+
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let project">
-        <button mat-icon-button   (click)="modifyProject(project)" class="button">
-          <mat-icon >launch</mat-icon>
+
+        <!-- <button mat-icon-button  [routerLink]="['/projects',project.id]" (click)="modifyProject(project)"  class="button"> -->
+          <button mat-icon-button  (click)="modifyProject(project)" class="button">
+            <mat-icon >launch</mat-icon>
         </button>
 
         <button mat-icon-button (click)="deleteProject(project)" class="button">

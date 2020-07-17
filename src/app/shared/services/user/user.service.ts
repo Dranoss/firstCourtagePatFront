@@ -11,9 +11,15 @@ import { environment } from '../../../../environments/environment.prod';
 })
 export class UserService {
 
+
+  private URL = 'http://www.courtagepatrimoine.net';
+
+  private URL_GET_PROJECTSBYUSER = this.local + '/projects/users';
+
   private local = environment.base_url;
   private URL_USER = this.local + 'users';
   private URL_TYPEPROJECTS = this.local + 'typeProjects';
+
 
 
   constructor(private http: HttpClient) { }
@@ -22,9 +28,11 @@ export class UserService {
     return this.http.get<User[]>(this.URL_USER);
   }
 
-  // getProjectsByUserId(id: number): Observable<Project[]> {
-  //   return this.http.get<Project[]>(this.URL_TYPEPROJECTS + '/' + id);
-  // }
+
+  getProjectsByUserId(userId: number): Observable<Project[]> {
+    return this.http.get<Project[]>(this.URL_GET_PROJECTSBYUSER + '/' + userId);
+  }
+
 
   getUserById(id: number): Observable<User> {
     return this.http.get<User>(`${this.URL_USER}/${id}`);

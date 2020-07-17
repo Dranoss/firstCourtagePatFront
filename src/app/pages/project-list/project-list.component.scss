@@ -1,4 +1,46 @@
-h3{
+.haut{
+    display: flex;
+    justify-content: center;
+    margin-left: -80px;
 
+}
+.hautsearch{
+  display: flex;
+    justify-content: center;
+    margin-left: -10px;
+}
+h3{
   text-align: center;
+  margin-top: 8vh ;
+
+}
+
+::ng-deep {
+
+  .custom-slider .ng5-slider .ng5-slider-bar {
+    background: #ffe4d1;
+    height: 2px;
+  }
+  .custom-slider .ng5-slider .ng5-slider-selection {
+    background: orange;
+  } .custom-slider .ng5-slider .ng5-slider-tick {
+    width: 1px;
+    height: 10px;
+    margin-left: 4px;
+    border-radius: 0;
+    background: #9b918b;
+    top: -1px;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-tick.ng5-slider-selected {
+    background: orange;
+  }  .custom-slider .ng5-slider .ng5-slider-pointer {
+    width: 8px;
+    height: 16px;
+    top: auto; /* to remove the default positioning */
+    bottom: 0;
+    background-color: #333;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  }
 }

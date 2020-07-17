@@ -1,14 +1,16 @@
+
 <h1>Liste des Clients </h1>
 
 
-<div><button mat-icon-button (click)="addUser()" class="button">
+<div class="haut">
+  <button mat-icon-button (click)="addUser()">
     Nouveau Client <mat-icon>add_circle</mat-icon>
   </button>
 </div>
 
-
-<input matInput [(ngModel)]="searchKey" name="inputSearch" placeholder="Search" autocomplete="on" (change)="filter()">
-
+<div class="hautsearch">
+<input   [(ngModel)]="searchKey" name="inputSearch" placeholder="Search"(change)="filter()">
+</div>
 
 
 <div>
@@ -16,14 +18,25 @@
     <mat-header-row *matHeaderRowDef="headers" > </mat-header-row>
     <mat-row *matRowDef="let row;columns: headers;" class="mat-row"></mat-row>
 
-      <ng-container matColumnDef="Nom" >
-      <mat-header-cell  *matHeaderCellDef  mat-sort-header>Nom </mat-header-cell>
-      <mat-cell *matCellDef="let user" >{{user.lastName}}</mat-cell>
+      <ng-container matColumnDef="lastName" >
+      <mat-header-cell  *matHeaderCellDef  mat-sort-header>Nom</mat-header-cell>
+      <mat-cell *matCellDef="let user">{{user.lastName}}</mat-cell>
     </ng-container>
-    <ng-container matColumnDef="Prénom">
+    <ng-container matColumnDef="firstName">
       <mat-header-cell *matHeaderCellDef>Prenom </mat-header-cell>
       <mat-cell *matCellDef="let user">{{user.firstName}}</mat-cell>
     </ng-container>
+
+    <ng-container matColumnDef="userType.name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header >Type</mat-header-cell>
+      <mat-cell *matCellDef="let user">{{user.userType.name}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="sponsorshipCode">
+      <mat-header-cell *matHeaderCellDef  [style.color]="'red'" >Code Parrainage</mat-header-cell>
+      <mat-cell *matCellDef="let user">{{user.sponsorshipCode}}</mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="Email">
       <mat-header-cell *matHeaderCellDef >Email</mat-header-cell>
       <mat-cell *matCellDef="let user">{{user.email}}</mat-cell>
@@ -42,7 +55,7 @@
         <button mat-icon-button   (click)="modifyUser(user)" class="button">
           <mat-icon >launch</mat-icon>
         </button>
-        <button mat-icon-button  [routerLink]="['/projects',user.id,user.lastName]" class="button">
+        <button mat-icon-button  [routerLink]="['/projects',user.id,user.lastName+' '+ user.firstName]" class="button">
           <mat-icon color="blue" >anchor</mat-icon>
         </button>
         <button mat-icon-button (click)="deleteUser(user)" class="button">

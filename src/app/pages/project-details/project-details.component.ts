@@ -4,6 +4,9 @@ import { User } from 'src/app/shared/core/classes/user';
 import { ProjectDetailsService } from 'src/app/shared/services/project/project-details.service';
 import { Project } from 'src/app/shared/core/classes/project';
 import { ProjectService } from 'src/app/shared/services/project/project.service';
+import { FoldercardComponent } from '../foldercard/foldercard.component';
+import { MatDialog } from '@angular/material/dialog';
+import { Docuser } from 'src/app/shared/core/classes/docuser';
 import { ProjectStatusService } from 'src/app/shared/services/projectStatus/project-status.service';
 import { ProjectStatus } from 'src/app/shared/core/classes/projectStatus';
 
@@ -14,27 +17,35 @@ import { ProjectStatus } from 'src/app/shared/core/classes/projectStatus';
 })
 export class ProjectDetailsComponent implements OnInit {
 
-  constructor(private projectService : ProjectService, private activatedRouter: ActivatedRoute, private projectStatusService : ProjectStatusService) { }
+  constructor(private projectService : ProjectService,
+    private dialog: MatDialog, private activatedRouter: ActivatedRoute) { }
+
 
   project : Project;
   projectId : number | ProjectStatus;
   projectStatus : ProjectStatus;
 
+  docs: Docuser[];
 
   ngOnInit(): void {
     this.activatedRouter.paramMap.subscribe((params : ParamMap)=>{
     this.projectId = parseInt(params.get('projectID'));
     this.projectService.getProjectById(this.projectId).subscribe((projectFromServeur)=>{
     this.project=projectFromServeur;
-    this.projectStatusService.getProjectStatusById(this.project.projectStatus).subscribe((projectStatusFromServeur)=>{
-      this.projectStatus=projectStatusFromServeur;
-  })
-
-  })
+    this.docs = this.project.documents;
+  });
 
 });
 
 
 }
+upload(){
+  const dialogRef = this.dialog.open(FoldercardComponent, { data: this.project});
+
+    dialogRef.afterClosed().subscribe(result => {
+     });
+}
+
+
 
 }

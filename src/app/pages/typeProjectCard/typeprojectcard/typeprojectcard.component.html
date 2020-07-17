@@ -1,1 +1,22 @@
-<p>typeprojectcard works!</p>
+
+<input matInput  [(ngModel)]="inputNewTypeProject" placeholder="nom du type" autocomplete="on">
+
+<mat-form-field>
+  <mat-label>Type de Projet</mat-label>
+  <mat-select [compareWith]="compareObjects" [(ngModel)]="typeSelected" matInput placeholder="Type de Client"
+    name="inputSelect">
+    <mat-option *ngFor="let type of typeProjects" [value]="type"> {{type.name}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<button mat-stroked-button (click)="onValidate()" class="button">
+  <mat-icon color="blue" >add_circle</mat-icon>
+</button>
+<button mat-stroked-button (click)="onModify()" class="button">
+  <mat-icon >launch</mat-icon>
+</button>
+<button mat-stroked-button (click)="onDelete()" class="button">
+  <mat-icon color="warn" >delete_forever</mat-icon>
+</button>
+
+
