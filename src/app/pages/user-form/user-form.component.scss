@@ -1,4 +1,18 @@
 
+  .haut{
+  display: flex;
+  justify-content: center;
+  margin-left: -80px;
+
+}
+.hautsearch{
+display: flex;
+  justify-content: center;
+  margin-left: -10px;
+}
+
+
+
 h1{
 
  text-align: center;
@@ -6,50 +20,6 @@ margin-top: 6vh;
 
 }
 
-
-.button{
-  // margin: 2px;
-}
-// .selectProject{
-
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   margin-left: 11px;
-// }
-// .user{
-//   margin-left: 11px;
-//   display: flex;
-//   align-content: center;
-
-// }
-
-// .total{
-//   display: flex;
-//   justify-content: center;
-
-// }
-// .formProject{
-//     display: flex;
-//     justify-content: center;
-// }
-
-// .projetdetails{
-//   display: flex;
-//   flex-direction: column;
-//   align-items: baseline;
-//   margin-left: 11px;
-// }
-
-// .client , .projet{
-//   display: block;
-// }
-
-// .ligne{
-
-
-//   background-color: blue;
-// }
 .mat-row:nth-child(even){
   background-color:rgb(225, 225, 236);
   opacity: 0,6;

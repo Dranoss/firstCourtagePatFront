@@ -3,14 +3,16 @@
 <!--
 <H4> Liste des projets du client : {{selected.firstName}}{{selected.lastName}} </H4> -->
 
+<h3>Liste des Projets de Mr/Mme : {{userName}}</h3>
 
-<H3>Liste des Projets de : {{userName}}s</H3>
-
-<div><button mat-icon-button (click)="newProject()" class="button">
+<div class="haut">
+  <button mat-icon-button (click)="newProject()">
   Nouveau Projet <mat-icon>add_circle</mat-icon>
 </button>
 </div>
-<input matInput  name="inputSearch" placeholder="Search" autocomplete="on" >
+<div class="hautsearch">
+  <input  name="inputSearch" placeholder="Search" >
+</div>
 <div>
    <mat-table [dataSource]="projects" matSort>
     <mat-header-row *matHeaderRowDef="headers" > </mat-header-row>

@@ -1,14 +1,16 @@
+
 <h1>Liste des Clients </h1>
 
 
-<div><button mat-icon-button (click)="addUser()" class="button">
+<div class="haut">
+  <button mat-icon-button (click)="addUser()">
     Nouveau Client <mat-icon>add_circle</mat-icon>
   </button>
 </div>
 
-
-<input matInput [(ngModel)]="searchKey" name="inputSearch" placeholder="Search" autocomplete="off" (change)="filter()">
-
+<div class="hautsearch">
+<input   [(ngModel)]="searchKey" name="inputSearch" placeholder="Search"(change)="filter()">
+</div>
 
 
 <div>
