@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { DocumentType } from '../../core/classes/document-type';
+import { environment } from '../../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DocumentTypeService {
-  private static DOCUMENT_TYPE_URL = 'http://localhost:8080/document-types';
+  private static DOCUMENT_TYPE_URL = environment.baseUrl + 'document-types';
   constructor(private http: HttpClient) { }
 
   getAllDocumentTypes(): Observable<DocumentType[]>{

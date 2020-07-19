@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserType } from '../../core/classes/user_type';
+import { environment } from '../../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserTypeService {
-  private static USERTYPE_URL = 'http://localhost:8080/user-types';
+  private static USERTYPE_URL = environment.baseUrl + 'user-types';
   constructor(private http: HttpClient) { }
 
   getAllUserTypes(): Observable<UserType[]> {

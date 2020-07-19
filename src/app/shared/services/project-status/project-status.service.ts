@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ProjectStatus } from '../../core/classes/project-status';
+import { environment } from '../../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectStatusService {
 
-  private static PROJECT_STATUS_URL = 'http://localhost:8080/project-status';
+  private static PROJECT_STATUS_URL = environment.baseUrl + 'project-status';
   constructor(private http: HttpClient) { }
 
   getAllProjectStatuses(): Observable<ProjectStatus[]>{

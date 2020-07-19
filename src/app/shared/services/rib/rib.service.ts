@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { UserRib } from '../../core/classes/user-rib';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RibService {
 
-  private static RIB_URL = 'http://localhost:8080/user-ribs';
+  private static RIB_URL = environment.baseUrl + 'user-ribs';
   constructor(private http: HttpClient) { }
 
   getAllRibs(): Observable<UserRib[]>{

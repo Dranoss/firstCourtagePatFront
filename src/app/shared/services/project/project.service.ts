@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Project } from '../../core/classes/project';
+import { environment } from '../../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectService {
-  private static PROJECT__URL = 'http://localhost:8080/projects';
+  private static PROJECT__URL = environment.baseUrl + 'projects';
   constructor(private http: HttpClient) { }
 
   getAllProjects(): Observable<Project[]>{

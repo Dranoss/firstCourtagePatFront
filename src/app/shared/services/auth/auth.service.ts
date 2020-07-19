@@ -3,13 +3,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../../core/classes/user';
 import { Router } from '@angular/router';
+import { environment } from '../../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private static LOGIN_URL = 'http://localhost:8080/login';
-  private static GET_ME_URL = 'http://localhost:8080/users/me';
+  private static LOGIN_URL = environment.baseUrl + 'login';
+  private static GET_ME_URL = environment.baseUrl + 'users/me';
   token;
   user: User;
 

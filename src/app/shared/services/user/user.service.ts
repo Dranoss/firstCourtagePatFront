@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, ObservableInput} from 'rxjs';
 import { User } from '../../core/classes/user';
+import { environment } from '../../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private static USER_URL = 'http://localhost:8080/users';
+  private static USER_URL = environment.baseUrl + 'users';
 
   constructor(private http: HttpClient) { }
 

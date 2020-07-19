@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserAddress } from '../../core/classes/user-address';
 import { Observable } from 'rxjs';
+import { environment } from '../../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AddressService {
 
-  private static ADDRESS_URL = 'http://localhost:8080/user-addresses';
+  private static ADDRESS_URL = environment.baseUrl + 'user-addresses';
   constructor(private http: HttpClient) { }
 
   getAllAddresses(): Observable<UserAddress[]>{
