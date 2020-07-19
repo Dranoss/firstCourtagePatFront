@@ -22,6 +22,7 @@ import { UserTypeListComponent } from './pages/user-type-list/user-type-list.com
 import { ProjectDetailComponent } from './pages/project-detail/project-detail.component';
 import { AuthGuard } from './shared/core/guard/auth/auth.guard';
 import { AdminGuard } from './shared/core/guard/admin/admin.guard';
+import { FaqComponent } from './pages/faq/faq.component';
 
 
 const routes: Routes = [
@@ -47,6 +48,7 @@ const routes: Routes = [
   {path: 'create-project-type', component: ProjectTypeCreationComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'project-types/:id', component: ProjectTypeCreationComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'project-details/:userId/:id', component: ProjectDetailComponent, canActivate: [AuthGuard]},
+  {path : 'faq', component : FaqComponent}
 ];
 
 @NgModule({

@@ -38,6 +38,7 @@ import { SettingsComponent } from './pages/settings/settings.component';
 import { UserTypeListComponent } from './pages/user-type-list/user-type-list.component';
 import { ProjectDetailComponent } from './pages/project-detail/project-detail.component';
 import { AuthInterceptor } from './shared/core/interceptor/auth.interceptor';
+import { FaqComponent } from './pages/faq/faq.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { AuthInterceptor } from './shared/core/interceptor/auth.interceptor';
     SettingsComponent,
     UserTypeListComponent,
     ProjectDetailComponent,
+    FaqComponent,
   ],
   imports: [
     BrowserModule,
