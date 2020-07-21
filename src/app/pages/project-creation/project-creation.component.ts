@@ -89,7 +89,7 @@ export class ProjectCreationComponent implements OnInit {
       documents: [],
     };
     this.projectModel.projectType.documentTypes.forEach(element => {
-      newProject.documents.push({name: element.name, url: '', documentType: element});
+      newProject.documents.push({name: element.name, url: '', documentType: {id: element.id}});
     });
     this.projectService.postProject(newProject).subscribe(() => {
     this.router.navigate([`/client-projects/${this.selectedUserId}`]);
