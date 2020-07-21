@@ -78,7 +78,6 @@
     <h4>Documents</h4>
     <div class="formSubcontainer" *ngFor="let document of projectModel.documents, let i = index">
       <label for="document{{i+1}}">{{document.name}}</label>
-      <!-- <input class="inputFile" type="file" name="document{{i}}" [(ngModel)]="document.url" #document{{i+1}}="ngModel"> -->
       <input type="file" (change)="selectFile($event)" />
       <button [disabled]="!selectedFiles" (click)="upload(document)">
         Upload
