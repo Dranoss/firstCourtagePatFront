@@ -8,6 +8,10 @@ import { ProjectStatusService } from '../../shared/services/project-status/proje
 import { ProjectStatus } from '../../shared/core/classes/project-status';
 import { UserService } from '../../shared/services/user/user.service';
 import { User } from '../../shared/core/classes/user';
+import { UploadFilesService } from 'src/app/shared/services/upload-files/upload-files.service';
+import { Observable } from 'rxjs';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { Document } from 'src/app/shared/core/classes/document';
 
 @Component({
   selector: 'apa-project-detail',
@@ -22,6 +26,7 @@ export class ProjectDetailComponent implements OnInit {
     private projectService: ProjectService,
     private projectTypeService: ProjectTypeService,
     private projectStatusService: ProjectStatusService,
+    private uploadService: UploadFilesService,
   ) { }
 
   // GET FROM URL
@@ -38,6 +43,12 @@ export class ProjectDetailComponent implements OnInit {
   projectStatuses: ProjectStatus[] = [];
   newProjectStatus: ProjectStatus;
   progress: number;
+
+  selectedFiles: FileList;
+  currentFile: File;
+  message = '';
+
+  fileInfos: Observable<any>;
 
   userRole;
   // Display form
@@ -122,6 +133,8 @@ export class ProjectDetailComponent implements OnInit {
     this.projectModel.projectType = {id: this.projectModel.projectType.id};
     this.projectModel.user = {id: this.user.id};
     this.projectModel.creationDate = new Date(this.projectModel.creationDate);
+    this.projectModel.documents = [];
+    console.log(this.projectModel);
     this.projectService.putProjectById(this.projectModel).subscribe(() => {
       this.getProjectById(this.projectId);
       this.resetForm();
@@ -131,4 +144,37 @@ export class ProjectDetailComponent implements OnInit {
     this.getProjectById(this.projectId);
     this.toggleDisplayForm();
   }
+
+
+selectFile(event) {
+  this.selectedFiles = event.target.files;
 }
+
+upload(document: Document){
+  this.progress = 0;
+  this.currentFile = this.selectedFiles.item(0);
+  this.uploadService.upload(this.currentFile, document).subscribe(
+    event => {
+      if (event.type === HttpEventType.UploadProgress) {
+        this.progress = Math.round(100 * event.loaded / event.total);
+      } else if (event instanceof HttpResponse) {
+        this.message = event.body.message;
+        this.fileInfos = this.uploadService.getFiles();
+      }
+    },
+    err => {
+      this.progress = 0;
+      this.message = 'Could not upload the file!';
+      this.currentFile = undefined;
+    });
+  this.selectedFiles = undefined;
+  }
+
+  downloadFile(document: Document){
+    return this.uploadService.download(document).subscribe(data => {
+    const url = window.URL.createObjectURL(data.body);
+    window.open(url);
+    });
+}
+}
+

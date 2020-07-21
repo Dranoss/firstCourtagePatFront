@@ -5,7 +5,7 @@ export class Document{
   public id?: number;
   public name: string;
   public url?: string;
-  public documentType: DocumentType;
+  public documentType: DocumentType | {id: number};
   public project?: Project;
 
   constructor(name: string, documentType: DocumentType, url?: string, id?: number, project?: Project){

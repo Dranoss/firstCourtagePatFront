@@ -39,7 +39,6 @@ import { UserTypeListComponent } from './pages/user-type-list/user-type-list.com
 import { ProjectDetailComponent } from './pages/project-detail/project-detail.component';
 import { AuthInterceptor } from './shared/core/interceptor/auth.interceptor';
 import { FaqComponent } from './pages/faq/faq.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,7 +69,7 @@ import { FaqComponent } from './pages/faq/faq.component';
     SettingsComponent,
     UserTypeListComponent,
     ProjectDetailComponent,
-    FaqComponent,
+    FaqComponent
   ],
   imports: [
     BrowserModule,
