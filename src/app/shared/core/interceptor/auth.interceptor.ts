@@ -11,12 +11,6 @@ export class AuthInterceptor implements HttpInterceptor {
     const modifiedReq = req.clone({
       headers: req.headers.set('Authorization', `${userToken}`)
     });
-    // if (!req.headers.has('Content-Type')) {
-    //   modifiedReq = req.clone({ headers: req.headers.delete('Content-Type', 'application/json')});
-    //   return next.handle(modifiedReq);
-    // }
-    // else{
     return next.handle(modifiedReq);
-    // }
-}
+  }
 }
