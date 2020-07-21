@@ -39,8 +39,6 @@ import { UserTypeListComponent } from './pages/user-type-list/user-type-list.com
 import { ProjectDetailComponent } from './pages/project-detail/project-detail.component';
 import { AuthInterceptor } from './shared/core/interceptor/auth.interceptor';
 import { FaqComponent } from './pages/faq/faq.component';
-import { FilesUploadComponent } from './shared/components/files-upload/files-upload.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,8 +69,7 @@ import { FilesUploadComponent } from './shared/components/files-upload/files-upl
     SettingsComponent,
     UserTypeListComponent,
     ProjectDetailComponent,
-    FaqComponent,
-    FilesUploadComponent,
+    FaqComponent
   ],
   imports: [
     BrowserModule,
