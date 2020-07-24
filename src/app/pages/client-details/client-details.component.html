@@ -1,0 +1,152 @@
+<div  *ngIf="userLoaded" class="subcontainer top">
+  <button class="goBack" (click)="navigateToClientsList()">Retour</button>
+</div>
+<h1 *ngIf="userLoaded && userType==='Particulier'">Mme./M. {{selectedUser.lastName.toUpperCase()}} {{selectedUser.firstName}}</h1>
+<h1 *ngIf="userLoaded && userType==='Professionnel'">Société {{selectedUser.companyName}}</h1>
+<div  *ngIf="userLoaded" class="subcontainer">
+  <button (click)="navigateToClientProjects(userId)">Projets</button>
+</div>
+
+<h4>Informations client</h4>
+<section>
+  <div *ngIf="userLoaded" [ngClass]="{minicontainer: toggleDisplayInfoForm, container: !toggleDisplayInfoForm}" >
+    <div class="subcontainer">
+      <div [ngClass]="{hugeLabel: toggleDisplayInfoForm, label: !toggleDisplayInfoForm}">Prénom <span></span></div>
+      <div *ngIf="!toggleDisplayInfoForm" class="element">{{selectedUser.firstName}}</div>
+    </div>
+    <div class="subcontainer">
+      <div [ngClass]="{hugeLabel: toggleDisplayInfoForm, label: !toggleDisplayInfoForm}">Nom <span></span></div>
+      <div *ngIf="!toggleDisplayInfoForm" class="element">{{selectedUser.lastName}}</div>
+    </div>
+    <div class="subcontainer">
+      <div [ngClass]="{hugeLabel: toggleDisplayInfoForm, label: !toggleDisplayInfoForm}">Raison sociale <span></span></div>
+      <div *ngIf="!toggleDisplayInfoForm" class="element">{{selectedUser.companyName}}</div>
+    </div>
+    <div class="subcontainer">
+      <div [ngClass]="{hugeLabel: toggleDisplayInfoForm, label: !toggleDisplayInfoForm}">Numéro siret <span></span></div>
+      <div *ngIf="!toggleDisplayInfoForm" class="element">{{selectedUser.siretNumber}}</div>
+    </div>
+    <div class="subcontainer">
+      <div [ngClass]="{hugeLabel: toggleDisplayInfoForm, label: !toggleDisplayInfoForm}">Email <span>*</span></div>
+      <div *ngIf="!toggleDisplayInfoForm" class="element">{{selectedUser.email}}</div>
+    </div>
+    <div class="subcontainer">
+      <div [ngClass]="{hugeLabel: toggleDisplayInfoForm, label: !toggleDisplayInfoForm}">Numéro de téléphone <span>*</span></div>
+      <div *ngIf="!toggleDisplayInfoForm" class="element">{{selectedUser.phoneNumber}}</div>
+    </div>
+    <div class="subcontainer">
+      <div [ngClass]="{hugeLabel: toggleDisplayInfoForm, label: !toggleDisplayInfoForm}">Mot de passe <span>*</span></div>
+      <div *ngIf="!toggleDisplayInfoForm" class="element">{{selectedUser.password}}</div>
+    </div>
+    <div class="subcontainer">
+      <div [ngClass]="{hugeLabel: toggleDisplayInfoForm, label: !toggleDisplayInfoForm}">Code partenaire <span></span></div>
+      <div *ngIf="!toggleDisplayInfoForm" class="element">{{selectedUser.sponsorshipCode}}</div>
+    </div>
+    <br>
+    <br>
+  </div>
+  <form *ngIf="toggleDisplayInfoForm && selectedUser" (ngSubmit)="editUserForm.valid && onSubmitUser()" #editUserForm="ngForm">
+    <input type="text" name="firstName" [(ngModel)]="editedUser.firstName" #firstName="ngModel">
+    <input type="text" name="lastName" [(ngModel)]="editedUser.lastName" #lastName="ngModel">
+    <input type="text" name="companyName" [(ngModel)]="editedUser.companyName" #companyName="ngModel">
+    <input type="text" name="siretNumber" [(ngModel)]="editedUser.siretNumber" #siretNumber="ngModel">
+    <input type="email" name="email" [(ngModel)]="editedUser.email" #email="ngModel" required>
+    <div class="errorMessage" *ngIf="email.errors?.required && editUserForm.submitted">Une addresse email est requise.</div>
+    <input type="tel" name="phoneNumber" [(ngModel)]="editedUser.phoneNumber" #phoneNumber="ngModel" required minlength="10">
+    <div class="errorMessage" *ngIf="phoneNumber.errors?.required && editUserForm.submitted">Un numéro de téléphone est requis.</div>
+    <div class="errorMessage" *ngIf="phoneNumber.errors?.minlength && editUserForm.submitted">Le numéro de téléphone doit faire plus de 10 charactères.</div>
+    <input type="password" name="password" [(ngModel)]="editedUser.password" #password="ngModel" required minlength="8">
+    <div class="errorMessage" *ngIf="password.errors?.required && editUserForm.submitted">Un mot de passe est requis.</div>
+    <div class="errorMessage" *ngIf="password.errors?.minlength && editUserForm.submitted">Le mot de passe doit faire plus de 8 charactères.</div>
+    <input type="text" name="sponsorshipCode" [(ngModel)]="editedUser.sponsorshipCode" #sponsorshipCode="ngModel">
+    <div class="subcontainer">
+      <button type="submit">Valider</button>
+      <button class="cancelEdit" (click)="resetForm()" type="reset">Annuler</button>
+    </div>
+  </form>
+</section>
+<div *ngIf="userLoaded" class="subcontainer">
+  <button class="editButton" (click)="editClientInformation()">Editer</button>
+</div>
+
+<h4>Adresse client</h4>
+<section>
+  <div *ngIf="userLoaded && selectedUserAddress" [ngClass]="{minicontainer: toggleDisplayAddressForm, container: !toggleDisplayAddressForm}">
+    <div class="subcontainer">
+      <div [ngClass]="{hugeLabel: toggleDisplayAddressForm, label: !toggleDisplayAddressForm}">Numéro de rue <span>*</span></div>
+      <div *ngIf="!toggleDisplayAddressForm" class="element">{{selectedUserAddress.streetNumber}}</div>
+    </div>
+    <div class="subcontainer">
+      <div [ngClass]="{hugeLabel: toggleDisplayAddressForm, label: !toggleDisplayAddressForm}">Rue <span>*</span></div>
+      <div *ngIf="!toggleDisplayAddressForm" class="element">{{selectedUserAddress.streetName}}</div>
+    </div>
+    <div class="subcontainer">
+      <div [ngClass]="{hugeLabel: toggleDisplayAddressForm, label: !toggleDisplayAddressForm}">Code postal <span>*</span></div>
+      <div *ngIf="!toggleDisplayAddressForm" class="element">{{selectedUserAddress.zipCode}}</div>
+    </div>
+    <div class="subcontainer">
+      <div [ngClass]="{hugeLabel: toggleDisplayAddressForm, label: !toggleDisplayAddressForm}">Ville <span>*</span></div>
+      <div *ngIf="!toggleDisplayAddressForm" class="element">{{selectedUserAddress.cityName}}</div>
+    </div>
+    <br>
+    <br>
+  </div>
+  <form *ngIf="toggleDisplayAddressForm" (ngSubmit)="editAddressForm.valid && onSubmitAddress()" #editAddressForm="ngForm">
+    <input type="number" name="addressNumber" [(ngModel)]="editedUserAddress.streetNumber" #streetNumber="ngModel" required>
+    <div class="errorMessage" *ngIf="streetNumber.errors?.required && editAddressForm.submitted">Un numéro de rue est requis.</div>
+    <input type="text" name="street" [(ngModel)]="editedUserAddress.streetName" #streetName="ngModel" required>
+    <div class="errorMessage" *ngIf="streetName.errors?.required && editAddressForm.submitted">Un nom de rue est requis.</div>
+    <input type="text" name="zipCode" [(ngModel)]="editedUserAddress.zipCode" #zipCode="ngModel" required>
+    <div class="errorMessage" *ngIf="zipCode.errors?.required && editAddressForm.submitted">Un code postal est requis.</div>
+    <input type="text" name="city" [(ngModel)]="editedUserAddress.cityName" #city="ngModel" required>
+    <div class="errorMessage" *ngIf="city.errors?.required && editAddressForm.submitted">Une ville est requise.</div>
+    <div class="subcontainer">
+      <button type="submit">Valider</button>
+      <button class="cancelEdit" (click)="resetForm()" type="reset">Annuler</button>
+    </div>
+  </form>
+</section>
+<div *ngIf="userLoaded" class="subcontainer">
+  <button (click)="editClientAddress()">Editer</button>
+</div>
+
+<h4>Informations bancaires</h4>
+<section>
+  <div *ngIf="userLoaded && selectedUserRib" [ngClass]="{minicontainer: toggleDisplayRibForm, container: !toggleDisplayRibForm}">
+    <div class="subcontainer">
+      <div [ngClass]="{hugeLabel: toggleDisplayRibForm, label: !toggleDisplayRibForm}">Titulaire du compte <span>*</span></div>
+      <div *ngIf="!toggleDisplayRibForm" class="element">{{selectedUserRib.ownerName}}</div>
+    </div>
+    <div class="subcontainer">
+      <div [ngClass]="{hugeLabel: toggleDisplayRibForm, label: !toggleDisplayRibForm}">Banque <span>*</span></div>
+      <div *ngIf="!toggleDisplayRibForm" class="element">{{selectedUserRib.bankName}}</div>
+    </div>
+    <div class="subcontainer">
+      <div [ngClass]="{hugeLabel: toggleDisplayRibForm, label: !toggleDisplayRibForm}">Iban <span>*</span></div>
+      <div *ngIf="!toggleDisplayRibForm" class="element">{{selectedUserRib.ibanNumber}}</div>
+    </div>
+    <div class="subcontainer">
+      <div [ngClass]="{hugeLabel: toggleDisplayRibForm, label: !toggleDisplayRibForm}">Code BIC <span>*</span></div>
+      <div *ngIf="!toggleDisplayRibForm" class="element">{{selectedUserRib.bicCode}}</div>
+    </div>
+    <br>
+    <br>
+  </div>
+  <form *ngIf="toggleDisplayRibForm" (ngSubmit)="editRibForm.valid && onSubmitRib()" #editRibForm="ngForm">
+    <input type="text" name="ownerName" [(ngModel)]="editedUserRib.ownerName" #ownerName="ngModel" required>
+    <div class="errorMessage" *ngIf="ownerName.errors?.required && editRibForm.submitted">Un titulaire de compte est requis.</div>
+    <input type="text" name="bankName" [(ngModel)]="editedUserRib.bankName" #bankName="ngModel" required>
+    <div class="errorMessage" *ngIf="bankName.errors?.required && editRibForm.submitted">Un nom de banque est requis.</div>
+    <input type="text" name="ibanNumber" [(ngModel)]="editedUserRib.ibanNumber" #ibanNumber="ngModel" required>
+    <div class="errorMessage" *ngIf="ibanNumber.errors?.required && editRibForm.submitted">Un numéro iban requis.</div>
+    <input type="text" name="bicCode" [(ngModel)]="editedUserRib.bicCode" #bicCode="ngModel" required>
+    <div class="errorMessage" *ngIf="bicCode.errors?.required && editRibForm.submitted">Un code BIC est requis.</div>
+    <div class="subcontainer">
+      <button type="submit">Valider</button>
+      <button class="cancelEdit" (click)="resetForm()" type="reset">Annuler</button>
+    </div>
+  </form>
+</section>
+<div *ngIf="userLoaded" class="subcontainer">
+  <button (click)="editClientRib()">Editer</button>
+</div>

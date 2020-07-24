@@ -1,0 +1,93 @@
+<div class="buttonContainer top">
+  <button class="goBack" routerLink="/client-projects/{{userId}}">Retour</button>
+</div>
+<h1 *ngIf="user && user.companyName===''">M/Mme. {{user.firstName}} {{user.lastName.toUpperCase()}}</h1>
+<h1 *ngIf="user && user.companyName!==''">Société {{user.companyName}}</h1>
+<div *ngIf="projectTypes">
+  <table *ngIf="project && projectType && projectStatus && !displayForm" class="subContainer">
+    <thead>
+      <tr>
+        <td colspan="2"><h2>{{project.name}}</h2></td>
+      </tr>
+      <tr>
+        <td>Type</td>
+        <td>{{projectType.name}}</td>
+      </tr>
+      <tr>
+        <td>Montant</td>
+        <td>{{project.amount | currency: 'EUR': 'symbol':'1.0':'fr'}}</td>
+      </tr>
+      <h4>Etat</h4>
+      <tr>
+        <td>Date de création</td>
+        <td>{{project.creationDate | date: 'shortDate':'fr'}}</td>
+      </tr>
+      <tr>
+        <td>Date de clôture</td>
+        <td>{{project.closingDate | date: 'shortDate':'fr'}}</td>
+      </tr>
+      <h4>Documents</h4>
+      <tr *ngFor="let document of project.documents">
+        <td>{{document.name}}</td>
+        <td><img src="/assets/img/document.svg" alt="icone fichier" (click)="downloadFile(document)"></td>
+      </tr>
+      <h4>Avancement</h4>
+      <tr>
+        <td>Status</td>
+        <td>{{projectStatus.name}}</td>
+      </tr>
+      <tr>
+        <td colspan="2" *ngIf="progress"><progress value="{{progress}}" max="100"></progress></td>
+      </tr>
+    </thead>
+  </table>
+  <div *ngIf="userRole==='admin'" class="buttonContainer">
+    <button (click)="toggleDisplayForm()">Editer</button>
+  </div>
+
+  <form *ngIf="projectModel && displayForm" (ngSubmit)="projectForm.valid && onSubmit()" #projectForm="ngForm">
+    <div class="formSubcontainer">
+      <label for="name">Nom projet<span>*</span></label>
+      <input type="text" name="name" placeholder="Courtage" [(ngModel)]="projectModel.name" #projectName="ngModel" required>
+    </div>
+    <div class="formSubcontainer">
+      <label for="projectType">Type<span>*</span></label>
+      <select name="projectType" [ngModel]="projectModel.projectType.id" #projectType="ngModel" (ngModelChange)="selectNewProjectType($event)" required>
+        <option value="{{projectType.id}}" *ngFor="let projectType of projectTypes">{{projectType.name}}</option>
+      </select>
+    </div>
+    <div class="formSubcontainer">
+      <label for="amount">Montant<span>*</span></label>
+      <input type="numbe" name="amount" placeholder="100 000 €" [(ngModel)]="projectModel.amount" #amout="ngModel" required>
+    </div>
+    <h4>Etat</h4>
+    <div class="formSubcontainer">
+      <label for="projectStatus">Status<span>*</span></label>
+      <select name="projectStatus" [ngModel]="projectModel.projectStatus.id" #projectStatus="ngModel" (ngModelChange)="selectNewProjectStatus($event)" required>
+        <option value="{{projectStatus.id}}" *ngFor="let projectStatus of projectModel.projectType.projectStatuses">{{projectStatus.name}}</option>
+      </select>
+    </div>
+    <div class="formSubcontainer">
+      <label for="creationDate">Date de création<span>*</span></label>
+      <input type="date" name="creationDate" placeholder="01/01/2020" [ngModel]="projectModel.creationDate | date: 'yyyy-MM-dd'" (ngModelChange)="projectModel.creationDate=$event" #creationDate="ngModel" required>
+    </div>
+    <div class="formSubcontainer">
+      <label for="closingDate">Date de clôture<span>*</span></label>
+      <input type="date" name="closingDate" placeholder="31/12/2020" [ngModel]="projectModel.closingDate | date: 'yyyy-MM-dd'" (ngModelChange)="projectModel.closingDate=$event" #closingDate="ngModel">
+    </div>
+    <h4>Documents</h4>
+    <div class="formSubcontainer" *ngFor="let document of projectModel.documents, let i = index">
+      <label for="document{{i+1}}">{{document.name}}</label>
+      <input type="file" (change)="selectFile($event)" />
+      <button [disabled]="!selectedFiles" (click)="upload(document)">
+        Upload
+      </button>
+      <div class="alert alert-light" role="alert">{{ message }}></div>
+    </div>
+    <div class="buttonContainer">
+      <button type="submit">Valider</button>
+      <button type="button" class="cancelEdit" (click)="resetForm()">Annuler</button>
+    </div>
+  </form>
+</div>
+

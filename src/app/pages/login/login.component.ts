@@ -1,7 +1,6 @@
-import { Component, OnInit, ResolvedReflectiveFactory } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../shared/services/auth/auth.service';
 import { Router } from '@angular/router';
-import { log } from 'util';
-import { User } from 'src/app/shared/core/classes/user';
 
 @Component({
   selector: 'apa-login',
@@ -9,29 +8,15 @@ import { User } from 'src/app/shared/core/classes/user';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  userModel = {email: '', password: ''};
 
-  email: string;
-  password: string;
-
-  constructor(private router: Router) { }
-
+  constructor(
+    private authService: AuthService,
+  ) { }
 
   ngOnInit(): void {
-
   }
-
-  valider(): void{
-
-    console.log(this.email);
-    console.log(this.password);
-
-
+  onSubmit(){
+    this.authService.login(this.userModel);
   }
-
-  redirect(): void{
-
-    this.router.navigate(['user']);
-  }
-
-
 }

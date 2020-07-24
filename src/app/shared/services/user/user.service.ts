@@ -1,44 +1,34 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable, ObservableInput} from 'rxjs';
 import { User } from '../../core/classes/user';
-import { Project } from '../../core/classes/project';
-import { TypeProject } from '../../core/classes/typeProject';
 import { environment } from '../../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-
-  private local = environment.base_url;
-  private URL_USER = this.local + 'users';
-  private URL_TYPEPROJECTS = this.local + 'typeProjects';
-
+  private static USER_URL = environment.baseUrl + 'users';
 
   constructor(private http: HttpClient) { }
 
-  getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.URL_USER);
+  getAllUsers(): Observable < User[] > {
+    return this.http.get<User[]>(UserService.USER_URL);
   }
 
-  // getProjectsByUserId(id: number): Observable<Project[]> {
-  //   return this.http.get<Project[]>(this.URL_TYPEPROJECTS + '/' + id);
-  // }
-
-  getUserById(id: number): Observable<User> {
-    return this.http.get<User>(`${this.URL_USER}/${id}`);
+  getUserById(id: number): Observable < User > {
+    return this.http.get<User>(`${UserService.USER_URL}/${id}`);
   }
 
-  postUser(user: User): Observable<User> {
-    return this.http.post<User>(this.URL_USER, user);
+  postUser(user: User): Observable < User > {
+    return this.http.post<User>(`${UserService.USER_URL}/sign-up`, user);
   }
 
-  putUserById(user: User): Observable<User> {
-    return this.http.put<User>(this.URL_USER + `/${user.id}`, user);
+  putUserById(user: User): Observable < User > {
+    return this.http.put<User>(`${UserService.USER_URL}/${user.id}`, user);
   }
 
-  deleteUserById(id: number) {
-    return this.http.delete(this.URL_USER + '/' + id);
+  deleteUserById(id): Observable < void > {
+    return this.http.delete<void>(`${UserService.USER_URL}/${id}`);
   }
 }

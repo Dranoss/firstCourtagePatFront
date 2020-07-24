@@ -1,0 +1,89 @@
+h1{
+  text-align: center;
+  margin-top: 50px;
+}
+h4{
+  text-align: center;
+}
+form{
+  width: 70%;
+  margin: auto;
+  margin-bottom: 50px;
+}
+.subcontainer{
+  display: flex;
+  justify-content: center;
+}
+section{
+  width: 50%;
+  margin: 40px auto;
+}
+.formSubcontainer{
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+}
+label{
+  width: 30%;
+}
+input{
+  width: 60%;
+  border: 1px solid var(--text-color);
+  border-radius: 10px;
+  padding: 5px 10px;
+}
+.errorMessage{
+  width: 60%;
+  margin-left: 40%;
+  color: red;
+}
+span{
+  color: red;
+}
+button{
+  background-color: white;
+  width: 10%;
+  margin: 20px;
+  border: 1px solid var(--text-color);
+  border-radius: 10px;;
+  color: var(--text-color);
+  padding: 5px 20px;
+  cursor: pointer;
+  &:hover{
+    background-color: var(--text-color);
+    color: white;
+  };
+  &:focus{
+    background-color: var(--text-color);
+    color: white;
+  }
+}
+
+.cancelEdit{
+  border-color: red;
+  color: red;
+  background-color: white;
+  &:hover{
+    color: white;
+    background-color: red;
+
+  }
+}
+.principal{
+  background-color: var(--text-color);
+  color: white;
+  &:hover{
+    background-color: white;
+    color: var(--text-color);
+  }
+}
+.goBack{
+  background-color: white;
+  color: grey;
+  border-color: grey;
+  &:hover{
+    background-color: grey;
+    color: white;
+    border-color: grey;
+  }
+}

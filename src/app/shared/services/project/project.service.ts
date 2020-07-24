@@ -1,46 +1,31 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { User } from '../../core/classes/user';
-import { Project } from '../../core/classes/project';
-import { TypeProject } from '../../core/classes/typeProject';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Project } from '../../core/classes/project';
 import { environment } from '../../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectService {
+  private static PROJECT__URL = environment.baseUrl + 'projects';
+  constructor(private http: HttpClient) { }
 
-  private static URL_GET_PROJECTS = environment.base_url + 'projects';
-  private static URL_GET_TYPEPROJECTS = environment.base_url + 'typeProjects';
-  private static URL_POST_PROJECT = ProjectService.URL_GET_PROJECTS + '/project';
-
-  constructor(private http: HttpClient) {
-
+  getAllProjects(): Observable<Project[]>{
+    return this.http.get<Project[]>(ProjectService.PROJECT__URL);
   }
 
-  // Projects
-  getProjectsByUserId(id: number): Observable<Project[]>{
-    return this.http.get<Project[]>(ProjectService.URL_GET_PROJECTS + '/' + id);
- }
-
-  getAllProjects(): Observable<Project[]> {
-    return this.http.get<Project[]>(ProjectService.URL_GET_PROJECTS);
-  }
-
-  getTypeProjects(): Observable<TypeProject[]> {
-    return this.http.get<TypeProject[]>(ProjectService.URL_GET_TYPEPROJECTS);
-  }
-
-  putProject(project: Project): Observable<Project> {
-    return this.http.put<Project>(ProjectService.URL_GET_PROJECTS, project);
-  }
-  addProject(user: User , project: Project): Observable<Project> {
-    return this.http.post<Project>(ProjectService.URL_POST_PROJECT, { user, project });
-
-  }
   getProjectById(id: number): Observable<Project>{
-    return this.http.get<Project>(ProjectService.URL_GET_PROJECTS + '/' + id);
+    return this.http.get<Project>(`${ProjectService.PROJECT__URL}/${id}`);
   }
 
+  postProject(project): Observable<any>{
+    return this.http.post<any>(ProjectService.PROJECT__URL, project);
+  }
+  putProjectById(project): Observable<any>{
+    return this.http.put<any>(`${ProjectService.PROJECT__URL}/${project.id}`, project);
+  }
+  deleteProjectById(id: number): Observable<void> {
+    return this.http.delete<void>(`${ProjectService.PROJECT__URL}/${id}`);
+  }
 }

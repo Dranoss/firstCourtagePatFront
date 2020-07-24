@@ -1,33 +1,11 @@
-p{
-  margin: 12% 42%;
+div{
+  height: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-// .claim{
-//   display: flex;
-//   justify-content: center;
-//   margin-top: 4em;
-//   height: 42%;
-//   width: 100%;
-// }
-
-// .claimForm{
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   margin-top: 0.5em;
-//   width: 30em;
-//   height: 80%;
-//   border-radius: 30px;
-// }
-
-// .valider{
-
-//   margin-top: 1em;
-//   width: 120px;
-//   margin-bottom: 2em;
-
-// }
-// textarea {
-//   resize: none;
-//   border-radius: 10px;
-//   }
+p{
+  width: fit-content;
+}

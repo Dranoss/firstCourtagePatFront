@@ -1,0 +1,25 @@
+<div class="buttonContainer top">
+  <button class="goBack" routerLink="/settings">Retour</button>
+</div>
+<h1>Types de projets</h1>
+<div class="buttonContainer">
+  <button routerLink="/create-project-type">Nouveau</button>
+</div>
+<div class="container">
+  <div class="cardContainer" *ngFor="let projectType of projectTypes">
+    <div class="deleteCard" (click)="deleteProjectType(projectType)">Supprimer</div>
+    <div class="card" routerLink="/project-types/{{projectType.id}}">
+      <h2>{{projectType.name}}</h2>
+      <h4>Documents</h4>
+      <div class="subcontainer" *ngFor="let document of projectType.documentTypes; let i = index">
+        <div class="rank">{{i+1}}</div>
+        <div class="cardElement">{{document.name}}</div>
+      </div>
+      <h4>Etapes</h4>
+      <div class="subcontainer" *ngFor="let status of projectType.projectStatuses; let i = index">
+        <div class="rank">{{i+1}}</div>
+        <div class="cardElement">{{status.name}}</div>
+      </div>
+    </div>
+  </div>
+</div>

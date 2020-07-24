@@ -1,16 +1,16 @@
-export class Address {
+export class UserAddress {
   public id?: number;
-  public addressNumber: number;
-  public street: string;
+  public streetNumber: number;
+  public streetName: string;
   public zipCode: string;
-  public city: string;
+  public cityName: string;
 
-  constructor(addressNumber: number, street: string, zipCode: string, city: string, id?: number ){
+  constructor(streetNumber: number, streetName: string, zipCode: string, cityName: string, id?: number ){
     this.id = id;
-    this.addressNumber = addressNumber;
-    this.street = street;
+    this.streetNumber = streetNumber;
+    this.streetName = streetName;
     this.zipCode = zipCode;
-    this.city = city;
+    this.cityName = cityName;
   }
 
 }
