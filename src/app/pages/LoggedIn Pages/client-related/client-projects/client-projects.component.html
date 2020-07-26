@@ -1,0 +1,37 @@
+<div class="page-wrapper">
+<div *ngIf="userRole==='admin'" class="buttonContainer">
+  <button class="goBack" routerLink="/client-list">Retour</button>
+</div>
+<img *ngIf="userRole!=='admin' && selectedUser && selectedUser.companyName===''" class="settingIcon" routerLink="/client-details/{{userId}}" src="assets/img/settings.svg" alt="settings">
+<h1 *ngIf="selectedUser && selectedUser.companyName===''">M./Mme. {{selectedUser.firstName}} {{selectedUser.lastName.toUpperCase()}}</h1>
+<h1 *ngIf="selectedUser && selectedUser.companyName!==''">Société {{selectedUser.companyName}}</h1>
+
+<div *ngIf="userRole==='admin'" class="buttonContainer">
+  <button (click)="navigatoToProjectCreation()">Nouveau Projet</button>
+</div>
+<h4 *ngIf="selectedUser && selectedUser.projects.length!==0">Projets</h4>
+<div *ngIf="selectedUser" class="cardContainer">
+  <div class="cardSubContainer" *ngFor="let project of selectedUser.projects">
+    <div *ngIf="userRole==='admin'" class="deleteCard" (click)="deleteProject(project)">Supprimer</div>
+    <div class="card" [ngClass]="{'clientViewCard': userRole!=='admin'}" routerLink="/project-details/{{userId}}/{{project.id}}">
+      <div class="title">{{project.name}}</div>
+      <div class="subcontainer">
+        <div class="elementCardName">Type :</div>
+        <div>{{project.projectType.name}}</div>
+      </div>
+      <div class="subcontainer">
+        <div class="elementCardName">Montant :</div>
+        <div>{{project.amount | currency: 'EUR': 'symbol':'1.0':'fr'}}</div>
+      </div>
+      <div class="subcontainer">
+        <div class="elementCardName">Date de création :</div>
+        <div>{{project.creationDate | date: 'shortDate':'fr'}}</div>
+      </div>
+      <div class="subcontainer">
+        <div class="elementCardName">Date de clôture :</div>
+        <div>{{project.closingDate | date: 'shortDate':'fr'}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
