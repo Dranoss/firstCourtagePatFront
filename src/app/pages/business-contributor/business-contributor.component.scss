@@ -6,7 +6,7 @@
 }
 
 .case-study{
-  background-color: #dcf0f7;
+  background-color: var(--blue-background);
   border-radius: 2em;
   margin-bottom: 4vh;
 }
@@ -101,7 +101,7 @@
 
 .bottom-study-number{
   border-radius: 50%;
-  background-color: #A2C9DC;
+  background-color: #DCE4FE;
   height: 2em;
   width: 2em;
   display: flex;
