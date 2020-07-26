@@ -1,5 +1,6 @@
+<div class="page-wrapper">
 <h4>Retour aux menus précédents</h4>
-<div class="buttonContainer top" *ngIf="projectTypes">
+<div class="buttonContainer" *ngIf="projectTypes">
   <button class="goBack" routerLink="/client-projects/{{selectedUserId}}">Projets</button>
   <button class="goBack" routerLink="/client-list">Liste clients</button>
 </div>
@@ -39,3 +40,4 @@
     <button class="cancelEdit" type="reset">Annuler</button>
   </div>
 </form>
+</div>

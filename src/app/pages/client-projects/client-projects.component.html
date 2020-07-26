@@ -1,4 +1,5 @@
-<div *ngIf="userRole==='admin'" class="buttonContainer top">
+<div class="page-wrapper">
+<div *ngIf="userRole==='admin'" class="buttonContainer">
   <button class="goBack" routerLink="/client-list">Retour</button>
 </div>
 <img *ngIf="userRole!=='admin' && selectedUser && selectedUser.companyName===''" class="settingIcon" routerLink="/client-details/{{userId}}" src="assets/img/settings.svg" alt="settings">
@@ -32,4 +33,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>

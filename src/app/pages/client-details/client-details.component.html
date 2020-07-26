@@ -1,4 +1,5 @@
-<div  *ngIf="userLoaded" class="subcontainer top">
+<div class="page-wrapper">
+<div  *ngIf="userLoaded" class="subcontainer">
   <button class="goBack" (click)="navigateToClientsList()">Retour</button>
 </div>
 <h1 *ngIf="userLoaded && userType==='Particulier'">Mme./M. {{selectedUser.lastName.toUpperCase()}} {{selectedUser.firstName}}</h1>
@@ -149,4 +150,5 @@
 </section>
 <div *ngIf="userLoaded" class="subcontainer">
   <button (click)="editClientRib()">Editer</button>
+</div>
 </div>
