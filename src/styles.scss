@@ -18,7 +18,12 @@ html, body{
   --text-color:rgb(42, 42, 78);
   --title-font: 'Cinzel', serif;
   --text-font: 'Segoe UI', sans-serif;
-  --text-color2: #9A9A9A
+  --text-color2: #9A9A9A;
+  --blue-background: #e8eeff
+}
+
+.page-wrapper{
+  min-height: 44vh;
 }
 
 h3{
@@ -58,7 +63,6 @@ p, a{
 }
 
 .all-wrapper{
-  padding-top: 5em;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -90,7 +94,7 @@ img{
 
 .spark{
   width: 55%;
-  height: 10em
+  height: 8vh
 }
 
 .spark-container-right{

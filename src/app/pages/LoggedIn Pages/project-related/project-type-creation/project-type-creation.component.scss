@@ -1,0 +1,96 @@
+h1{
+  text-align: center;
+  margin-bottom: 15px;
+}
+h4{
+  margin-top: 20px;
+}
+form{
+  width: 50%;
+  margin: auto;
+}
+span{
+  color: red;
+}
+.errorMessage{
+  color: red;
+  font-size: smaller;
+}
+.buttonContainer{
+  width: 50%;
+  margin: auto;
+  display: flex;
+}
+button{
+  border: 1px solid var(--text-color);
+  background-color: var(--text-color);
+  color: white;
+  padding: 2px 40px;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  margin: 10px auto 10px auto;
+  cursor: pointer;
+  &:hover{
+    background-color: white;
+    color: var(--text-color);
+  }
+}
+.cancelForm{
+  background-color: white;
+  color: red;
+  border: 1px solid red;
+  &:hover{
+    background-color: red;
+    color: white;
+  }
+}
+.goBack{
+  background-color: white;
+  color: grey;
+  border-color: grey;
+  &:hover{
+    background-color: grey;
+    color: white;
+    border-color: grey;
+  }
+  &:focus{
+    background-color: white;
+    color: grey;
+    border-color: grey;
+  }
+}
+.deleteDocAndStatus{
+  padding: 5px 10px;
+  margin: 0;
+}
+table{
+  width: 100%;
+}
+th, td{
+  text-align: left;
+}
+tr{
+  width: 100%;
+}
+.tableRow{
+  width: 20%;
+}
+.tableInput{
+  width: 45%;
+
+}
+.tableButton, .projectStatusRanking{
+  width: 10%;
+}
+input{
+  width: 90%;
+  border: 1px solid var(--text-color);
+  border-radius: 10px;
+  padding: 5px 10px;
+}
+.ranking{
+  width: 30%;
+}
+img{
+  width: 25px;
+}
