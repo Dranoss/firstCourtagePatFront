@@ -38,6 +38,8 @@ span{
   border-color: red;
   color: red;
   background-color: white;
+  border-radius: 10%;
+  margin-left: 5px;
   &:hover{
     color: white;
     background-color: red;
@@ -47,6 +49,7 @@ span{
 .principal{
   background-color: var(--text-color);
   color: white;
+  border-radius: 10%;
   &:hover{
     background-color: white;
     color: var(--text-color);

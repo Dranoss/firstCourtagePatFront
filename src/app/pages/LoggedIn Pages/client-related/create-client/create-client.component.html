@@ -10,19 +10,19 @@
 <form *ngIf="editedUser.userType.name!=''" (ngSubmit)="createForm.valid && onSubmit()" #createForm="ngForm">
   <section>
     <div class="formSubcontainer">
-      <label for="firstName">Prénom <span></span></label>
+      <label for="firstName">Prénom</label>
       <input type="text" name="firstName" [(ngModel)]="editedUser.firstName" #firstName="ngModel">
     </div>
     <div class="formSubcontainer">
-      <label for="lastName">Nom <span></span></label>
+      <label for="lastName">Nom</label>
       <input type="text" name="lastName" [(ngModel)]="editedUser.lastName" #lastName="ngModel">
     </div>
     <div class="formSubcontainer">
-      <label for="companyName">Raison sociale <span></span></label>
+      <label for="companyName">Raison sociale</label>
       <input type="text" name="companyName" [(ngModel)]="editedUser.companyName" #companyName="ngModel">
     </div>
     <div class="formSubcontainer">
-      <label for="siretNumber">Numéro siret <span></span></label>
+      <label for="siretNumber">Numéro siret</label>
       <input type="text" name="siretNumber" [(ngModel)]="editedUser.siretNumber" #siretNumber="ngModel">
     </div>
     <div class="formSubcontainer">
@@ -31,10 +31,9 @@
     </div>
     <div *ngIf="email.errors?.required && createForm.submitted" class="errorMessage">Une addresse email est requise.</div>
     <div class="formSubcontainer">
-      <label for="phoneNumber">Numéro de téléphone <span>*</span></label>
-      <input type="tel" name="phoneNumber" [(ngModel)]="editedUser.phoneNumber" #phoneNumber="ngModel" required minlength="10">
+      <label for="phoneNumber">Numéro de téléphone</label>
+      <input type="tel" name="phoneNumber" [(ngModel)]="editedUser.phoneNumber" #phoneNumber="ngModel" minlength="10">
     </div>
-    <div class="errorMessage" *ngIf="phoneNumber.errors?.required && createForm.submitted">Un numéro de téléphone est requis.</div>
     <div class="errorMessage" *ngIf="phoneNumber.errors?.minlength && createForm.submitted">Le numéro de téléphone doit faire plus de 10 charactères.</div>
     <div class="formSubcontainer">
       <label for="password">Mot de passe <span>*</span></label>
@@ -43,53 +42,45 @@
     <div class="errorMessage" *ngIf="password.errors?.required && createForm.submitted">Un mot de passe est requis.</div>
     <div class="errorMessage" *ngIf="password.errors?.minlength && createForm.submitted">Le mot de passe doit faire plus de 8 charactères.</div>
     <div class="formSubcontainer">
-      <label for="sponsorshipCode">Code partenaire <span></span></label>
+      <label for="sponsorshipCode">Code partenaire</label>
       <input type="text" name="sponsorshipCode" [(ngModel)]="editedUser.sponsorshipCode" #sponsorshipCode="ngModel">
     </div>
   </section>
   <section>
     <div class="formSubcontainer">
-      <label for="addressNumber">Numéro de rue <span>*</span></label>
-      <input type="number" name="addressNumber" [(ngModel)]="editedUser.userAddress.streetNumber" #streetNumber="ngModel" required min="1">
+      <label for="addressNumber">Numéro de rue</label>
+      <input type="number" name="addressNumber" [(ngModel)]="editedUser.userAddress.streetNumber" #streetNumber="ngModel" min="0">
     </div>
-    <div class="errorMessage" *ngIf="streetNumber.errors?.required && createForm.submitted">Un numéro de rue est requis.</div>
     <div class="formSubcontainer">
-      <label for="street">Rue <span>*</span></label>
-      <input type="text" name="street" [(ngModel)]="editedUser.userAddress.streetName" #streetName="ngModel" required>
+      <label for="street">Rue</label>
+      <input type="text" name="street" [(ngModel)]="editedUser.userAddress.streetName" #streetName="ngModel">
     </div>
-    <div class="errorMessage" *ngIf="streetName.errors?.required && createForm.submitted">Un nom de rue est requis.</div>
     <div class="formSubcontainer">
-      <label for="zipCode">Code postal <span>*</span></label>
-      <input type="text" name="zipCode" [(ngModel)]="editedUser.userAddress.zipCode" #zipCode="ngModel" required>
+      <label for="zipCode">Code postal</label>
+      <input type="text" name="zipCode" [(ngModel)]="editedUser.userAddress.zipCode" #zipCode="ngModel">
     </div>
-    <div class="errorMessage" *ngIf="zipCode.errors?.required && createForm.submitted">Un code postal est requis.</div>
     <div class="formSubcontainer">
-      <label for="city">Ville <span>*</span></label>
-      <input type="text" name="city" [(ngModel)]="editedUser.userAddress.cityName" #city="ngModel" required>
+      <label for="city">Ville</label>
+      <input type="text" name="city" [(ngModel)]="editedUser.userAddress.cityName" #city="ngModel">
     </div>
-    <div class="errorMessage" *ngIf="city.errors?.required && createForm.submitted">Une ville est requise.</div>
   </section>
   <section>
     <div class="formSubcontainer">
-      <label for="ownerName">Titulaire du compte <span>*</span></label>
-      <input type="text" name="ownerName" [(ngModel)]="editedUser.userRib.ownerName" #ownerName="ngModel" required>
+      <label for="ownerName">Titulaire du compte</label>
+      <input type="text" name="ownerName" [(ngModel)]="editedUser.userRib.ownerName" #ownerName="ngModel">
     </div>
-    <div class="errorMessage" *ngIf="ownerName.errors?.required && createForm.submitted">Un titulaire de compte est requis.</div>
     <div class="formSubcontainer">
-      <label for="bankName">Banque <span>*</span></label>
-      <input type="text" name="bankName" [(ngModel)]="editedUser.userRib.bankName" #bankName="ngModel" required>
+      <label for="bankName">Banque</label>
+      <input type="text" name="bankName" [(ngModel)]="editedUser.userRib.bankName" #bankName="ngModel">
     </div>
-    <div class="errorMessage" *ngIf="bankName.errors?.required && createForm.submitted">Un nom de banque est requis.</div>
     <div class="formSubcontainer">
-      <label for="ibanNumber">Iban <span>*</span></label>
-      <input type="text" name="ibanNumber" [(ngModel)]="editedUser.userRib.ibanNumber" #ibanNumber="ngModel" required>
+      <label for="ibanNumber">Iban</label>
+      <input type="text" name="ibanNumber" [(ngModel)]="editedUser.userRib.ibanNumber" #ibanNumber="ngModel">
     </div>
-    <div class="errorMessage" *ngIf="ibanNumber.errors?.required && createForm.submitted">Un numéro iban requis.</div>
     <div class="formSubcontainer">
-      <label for="bicCode">Code BIC <span>*</span></label>
-      <input type="text" name="bicCode" [(ngModel)]="editedUser.userRib.bicCode" #bicCode="ngModel" required>
+      <label for="bicCode">Code BIC</label>
+      <input type="text" name="bicCode" [(ngModel)]="editedUser.userRib.bicCode" #bicCode="ngModel">
     </div>
-    <div class="errorMessage" *ngIf="bicCode.errors?.required && createForm.submitted">Un code BIC est requis.</div>
   </section>
 
   <div class="subcontainer">
