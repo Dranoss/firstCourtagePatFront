@@ -1,7 +1,7 @@
 <div class="back">
   <form class="loginForm" (ngSubmit)="loginForm.valid && onSubmit()" #loginForm="ngForm">
     <h3>Connexion</h3>
-    <label for="email">Addresse Email</label>
+    <label for="email">Adresse Email</label>
     <input type="email" name="email" [(ngModel)]="userModel.email" #email="ngModel" required>
     <label for="password">Mot de passe</label>
     <input type="password" name="password" [(ngModel)]="userModel.password" #password="ngModel" required>

@@ -2,14 +2,6 @@
   width: 100%;
 }
 
-h1{
-  margin-bottom: 40px;
-}
-
-h1, h4{
-  text-align: center;
-}
-
 .container{
   width: 60%;
   display: flex;
@@ -55,10 +47,6 @@ tr:nth-child(2n+0){
   background-color: rgb(221, 221, 221);
 }
 
-button{
-  font-size: 0.9rem;
-}
-
 .icons{
   width: 25px;
   cursor: pointer;
@@ -67,26 +55,6 @@ button{
   width: 25px;
   margin-left: 70%;
   cursor: pointer;
-}
-
-.userType{
-  width: 20%;
-  text-align: center;
-  margin: 10px;
-  padding: 5px 20px;
-  border: 1px solid var(--text-color);
-  border-radius: 10px;
-  background-color: white;
-  color: var(--text-color);
-  cursor: pointer;
-  &:hover{
-    background-color: var(--text-color);
-    color: white;
-  };
-  &:focus{
-    background-color: var(--text-color);
-    color: white;
-  }
 }
 
 .newClient{
