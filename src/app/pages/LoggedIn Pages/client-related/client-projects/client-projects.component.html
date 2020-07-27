@@ -3,11 +3,11 @@
   <button class="goBack" routerLink="/client-list">Retour</button>
 </div>
 <img *ngIf="userRole!=='admin' && selectedUser && selectedUser.companyName===''" class="settingIcon" routerLink="/client-details/{{userId}}" src="assets/img/settings.svg" alt="settings">
-<h1 *ngIf="selectedUser && selectedUser.companyName===''">M./Mme. {{selectedUser.firstName}} {{selectedUser.lastName.toUpperCase()}}</h1>
-<h1 *ngIf="selectedUser && selectedUser.companyName!==''">Société {{selectedUser.companyName}}</h1>
+<h3 class="logged-title" *ngIf="selectedUser && selectedUser.companyName===''">M./Mme. {{selectedUser.firstName}} {{selectedUser.lastName.toUpperCase()}}</h3>
+<h3 class="logged-title" *ngIf="selectedUser && selectedUser.companyName!==''">Société {{selectedUser.companyName}}</h3>
 
 <div *ngIf="userRole==='admin'" class="buttonContainer">
-  <button (click)="navigatoToProjectCreation()">Nouveau Projet</button>
+  <button class="goBack" (click)="navigatoToProjectCreation()">Nouveau Projet</button>
 </div>
 <h4 *ngIf="selectedUser && selectedUser.projects.length!==0">Projets</h4>
 <div *ngIf="selectedUser" class="cardContainer">
