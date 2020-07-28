@@ -45,7 +45,7 @@
     <table>
       <tbody>
         <tr *ngFor="let status of projectStatuses; let i = index">
-          <th class="tableRow"><label class="tableElement" for="projectStatus{{i+1}}">Status {{i+1}}</label></th>
+          <th class="tableRow"><label class="tableElement" for="projectStatus{{i+1}}">Statut {{i+1}}</label></th>
           <td class="tableInput">
             <input type="text" name="projectStatus{{i}}" placeholder="Paiement commission" [(ngModel)]="status.name" #projectStatusName="ngModel" required>
             <div *ngIf="projectTypeForm.submitted && (projectStatusName.errors?.required || projectStatusRanking.errors?.required)" class="errorMessage">Un nom de status et un rang sont requis.</div>

@@ -7,7 +7,7 @@
 
 <h1 *ngIf="selectedUser && !selectedUser.companyName ">M./Mme. {{selectedUser.firstName}} {{selectedUser.lastName.toUpperCase()}}</h1>
 <h1 *ngIf="selectedUser && selectedUser.companyName && selectedUser.companyName!==''">Société {{selectedUser.companyName}}</h1>
-<div class="buttonContainer" *ngIf="projectTypes">
+<div class="projectContainer" *ngIf="projectTypes">
   <button class="principal" *ngFor="let projectType of projectTypes" (click)="selectProjectType(projectType)">{{projectType.name}}</button>
 </div>
 
@@ -29,7 +29,7 @@
     <input type="date" name="closingDate" [ngModel]="projectModel.closingDate | date: 'yyyy-MM-dd'" (ngModelChange)="projectModel.closingDate=$event" #closingDate="ngModel">
   </div>
   <div class="formSubcontainer">
-    <label for="projectStatus">Status</label>
+    <label for="projectStatus">Statut</label>
     <select type="text" name="projectStatus" [ngModel]="projectModel.projectStatus.id" (ngModelChange)="selectStatus($event)" #projectStatus="ngModel">
       <option value="{{status.id}}" *ngFor="let status of projectModel.projectType.projectStatuses">{{status.name}}</option>
     </select>
