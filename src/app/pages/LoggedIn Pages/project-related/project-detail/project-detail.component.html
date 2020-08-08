@@ -52,12 +52,6 @@
       <input type="text" name="name" placeholder="Courtage" [(ngModel)]="projectModel.name" #projectName="ngModel" required>
     </div>
     <div class="formSubcontainer">
-      <label for="projectType">Type<span>*</span></label>
-      <select name="projectType" [ngModel]="projectModel.projectType.id" #projectType="ngModel" (ngModelChange)="selectNewProjectType($event)" required>
-        <option value="{{projectType.id}}" *ngFor="let projectType of projectTypes">{{projectType.name}}</option>
-      </select>
-    </div>
-    <div class="formSubcontainer">
       <label for="amount">Montant<span>*</span></label>
       <input type="numbe" name="amount" placeholder="100 000 €" [(ngModel)]="projectModel.amount" #amout="ngModel" required>
     </div>
