@@ -2,10 +2,15 @@
   font-weight: bolder;
 }
 
+hr.solid {
+  border: 3px solid var(--text-color);
+  width: 25%;
+  margin : 2vh auto
+}
+
 .subtitle {
-  font-weight: bold;
   color : var(--text-color);
-  margin: 3em auto;
+  margin: 0 auto;
   text-align: center;
 }
 #main {
