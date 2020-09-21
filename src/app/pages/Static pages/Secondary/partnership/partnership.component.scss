@@ -6,3 +6,12 @@ div{
   align-items: center;
 }
 
+h3{
+  text-align: center;
+  margin-top: 2vh;
+}
+hr.solid {
+  border: 3px solid var(--text-color);
+  width: 15%;
+  margin : 2vh auto
+}
