@@ -1,4 +1,4 @@
-<nav>
+<nav *ngIf="innerWidth > 500">
   <div class="account" (click)="navigateDependingOnConnectionStatus()">COMPTE CLIENT</div>
   <div *ngIf="displayDisconnectButton" class="account deco" (click)="deconnectToken()">DECONNEXION</div>
   <div class="container">
@@ -11,4 +11,26 @@
     </div>
   </div>
 </nav>
-
+<div *ngIf="innerWidth <= 500" class="mobile-container">
+ <ng-sidebar-container>
+   <ng-sidebar [opened]="opened">
+     <button (click)="toggleSideBar()" class="hamburger hamburger--collapse" type="button">
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+     <ul class="menu-mobile">
+       <li><a (click)="toggleSideBar()" routerLink="/business-contributor">Apporteur d'Affaires</a></li>
+       <li><a (click)="toggleSideBar()" routerLink="/brokerage">Courtage Financement</a></li>
+       <li><a (click)="toggleSideBar()" routerLink="/consultancy">Conseils Financiers</a></li>
+     </ul>
+   </ng-sidebar>
+   <div ng-sidebar-content class="sidebar-closed">
+    <button (click)="toggleSideBar()" class="hamburger hamburger--collapse" type="button">
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+   </div>
+ </ng-sidebar-container>
+</div>

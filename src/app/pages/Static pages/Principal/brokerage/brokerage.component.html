@@ -1,3 +1,4 @@
+<div *ngIf="innerWidth > 500">
 <div class="container">
   <apa-simulator></apa-simulator>
 </div>
@@ -59,4 +60,8 @@
   <div class="rdv-container">
     <apa-appointment-button></apa-appointment-button>
   </div>
+</div>
+</div>
+<div *ngIf="innerWidth <= 500" class="mobile-container">
+
 </div>

@@ -69,3 +69,34 @@ nav{
   background-repeat:no-repeat;
   transition: background 1.5s;
 }
+
+ng-sidebar-container{
+  position: absolute;
+  height: 100%;
+}
+ ::ng-deep .ng-sidebar{
+   background-color: #33485f;
+   width: 50%;
+   padding: 2em 3em;
+   box-shadow: 0 0 2.5em rgba(85, 85, 85, 0.5);
+ }
+
+ .menu-mobile{
+   margin-top: 2em;
+   display: block;
+ }
+
+ .menu-mobile li{
+   cursor: pointer;
+   margin-bottom: 15px;
+   list-style: none;
+ }
+
+ .menu-mobile li a{
+   display: block;
+   width: 100%
+ }
+
+ .sidebar-closed{
+   background-color: #33485f;
+ }

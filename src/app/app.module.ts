@@ -7,6 +7,7 @@ registerLocaleData(localeFr, 'fr');
 import {FormsModule} from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
+import { SidebarModule } from 'ng-sidebar';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { YouTubePlayerModule } from '@angular/youtube-player';
@@ -77,6 +78,7 @@ import { FaqComponent } from './pages/Static pages/Secondary/faq/faq.component';
     FormsModule,
     YouTubePlayerModule,
     HttpClientModule,
+    SidebarModule.forRoot(),
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'fr-FR'},

@@ -1,4 +1,5 @@
 @import 'assets/scss/modules/_fonts.scss';
+@import '~hamburgers/_sass/hamburgers/hamburgers.scss';
 
 
 *{
@@ -198,4 +199,22 @@ img{
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+button{
+  cursor: pointer;
+}
+
+// MOBILE VERSION
+
+.mobile-container p, a{
+  font-size: 10px;
+}
+
+.mobile-container h4{
+  font-size: 10px;
+}
+
+.mobile-container h3{
+  font-size: 15px;
 }

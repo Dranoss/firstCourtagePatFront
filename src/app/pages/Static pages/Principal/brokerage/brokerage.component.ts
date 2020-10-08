@@ -8,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class BrokerageComponent implements OnInit {
   isShow = true;
   articleId = 3;
+  innerWidth: number;
   constructor() { }
 
   ngOnInit(): void {
+    this.innerWidth = window.innerWidth;
+
     this.sendArticleId();
   }
 
@@ -19,6 +22,6 @@ export class BrokerageComponent implements OnInit {
   }
 
   toggleDisplay(){
-    this.isShow= !this.isShow;
+    this.isShow = !this.isShow;
   }
 }

@@ -10,12 +10,15 @@ import { AuthService } from 'src/app/shared/services/auth/auth.service';
 export class NavBarComponent implements OnInit {
   displayDisconnectButton = false;
   userId: number;
+  opened: boolean;
+  innerWidth: number;
   constructor(
     private authService: AuthService,
     private router: Router,
   ) { }
 
   ngOnInit(): void {
+    this.innerWidth = window.innerWidth;
     this.userId = +localStorage.getItem('userId');
     setInterval(() => {
       this.testConnection();
@@ -45,5 +48,9 @@ export class NavBarComponent implements OnInit {
     this.authService.removeToken();
     this.displayDisconnectButton = false;
     this.router.navigateByUrl('/login');
+  }
+
+  toggleSideBar(){
+    this.opened = !this.opened;
   }
 }
