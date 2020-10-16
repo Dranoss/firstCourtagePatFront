@@ -82,7 +82,6 @@ ng-sidebar-container{
    background-color: #F4F4F4;
    width: 100%;
    margin-top: 55px;
-  //  box-shadow: 0 0 2.5em rgba(85, 85, 85, 0.5);
  }
 
  .menu-mobile{
@@ -92,13 +91,18 @@ ng-sidebar-container{
 
  .menu-mobile li{
    cursor: pointer;
-   margin-bottom: 15px;
    list-style: none;
+   display: flex;
+   justify-content: center;
+   border-top: 1px solid var(--text-color);
  }
 
  .menu-mobile li a{
    display: block;
-   width: 100%
+   margin: 15px auto;
+   width: fit-content;
+   font-weight: bold;
+   font-size: larger;
  }
 
  .sticky {

@@ -1,4 +1,4 @@
-<footer>
+<footer *ngIf="innerWidth > 500">
   <div class="container">
     <img class="logo" routerLink="/home" src="assets/img/logo.png" alt="logo">
     <div class="footerElement">
@@ -19,4 +19,7 @@
     </div>
   </div>
 
+</footer>
+<footer *ngIf="innerWidth <= 500">
+  
 </footer>
