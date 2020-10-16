@@ -114,36 +114,4 @@
   display: flex;
   justify-content: center;
 }
- // Mobile version
 
- .mobile-intro{
-   margin: 70px auto 0 auto;
-   display: flex;
-   flex-direction: column;
-   justify-content: space-evenly;
-   align-items: center;
-   text-align: center;
-   background-color: #E2E3E3;
-   padding: 5%;
-   width: 80%;
-   border-radius: 10px;
- }
-
-.mobile-div{
-  display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   text-align: center;
-   padding: 5%;
-}
-
-.aligned{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-   align-items: center;
-   text-align: center;
-  background-color: #E2E3E3;
-  padding: 5%;
-}

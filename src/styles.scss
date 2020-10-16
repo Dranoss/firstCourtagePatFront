@@ -45,24 +45,6 @@ p, a{
 }
 }
 
-@media screen and (max-width: 500px) {
-  h3{
-    font-size: 20px;
-  }
-
-  h4{
-    font-size: 15px;
-    color: var(--text-color2)
-  }
-
-  p, a{
-    font-size: 12px;
-    margin-top: 1em;
-    text-align: justify;
-    text-decoration: none;
-  }
-  }
-
 .back{
   background-image: url(/assets/img/Background.png);
   background-size: contain;
@@ -228,4 +210,57 @@ img{
 
 button{
   cursor: pointer;
+}
+
+// Mobile version
+
+@media screen and (max-width: 500px) {
+  h3{
+    font-size: 20px;
+  }
+
+  h4{
+    font-size: 15px;
+    color: var(--text-color2)
+  }
+
+  p, a{
+    font-size: 12px;
+    margin-top: 1em;
+    text-align: justify;
+    text-decoration: none;
+  }
+  }
+
+.mobile-intro{
+  margin: 70px auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  background-color: #E2E3E3;
+  padding: 5%;
+  width: 80%;
+  border-radius: 10px;
+}
+
+
+.mobile-div{
+  display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   padding: 5%;
+}
+
+.aligned{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+   align-items: center;
+   text-align: center;
+  background-color: #E2E3E3;
+  padding: 5%;
 }
