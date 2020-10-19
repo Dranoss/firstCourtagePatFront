@@ -48,3 +48,22 @@ p, a{
 .lastP {
   cursor : pointer;
 }
+
+// Mobile version
+
+.mobile-footer-container{
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  padding-left: 20px;
+  height: max-content;
+}
+ .mobile-footer{
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+}
+ .mobile-footer *{
+  border-bottom: 2px solid lightgrey;
+  height: 30px;
+ }

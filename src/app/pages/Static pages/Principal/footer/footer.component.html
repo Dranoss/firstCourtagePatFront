@@ -20,6 +20,24 @@
   </div>
 
 </footer>
-<footer *ngIf="innerWidth <= 500">
-  
+<footer class="mobile-footer-container" *ngIf="innerWidth <= 500">
+  <div class="mobile-footer">
+    <h4>NOS COORDONNEES</h4>
+    <p>+33 (0)6 34 72 49 33</p>
+    <p>glenn.gendre@gmail.com</p>
+    <p>Bordeaux</p>
+  </div>
+  <div class="mobile-footer">
+    <h4>INFORMATIONS</h4>
+    <a class ="footerLink" routerLink="/legal" routerLinkActive="active" > Mentions légales</a>
+    <a class ="footerLink" routerLink="/faq" routerLinkActive="active">  F.A.Q</a>
+  </div>
+  <div class="mobile-footer">
+    <h4>DIVERS</h4>
+    <a class ="footerLink" routerLink="/partnership" routerLinkActive="active">Nos partenaires</a>
+    <a class="lastP" routerLink="/corporate" routerLinkActive="active">Notre société</a>
+  </div>
+  <div>
+
+  </div>
 </footer>
