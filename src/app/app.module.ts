@@ -15,19 +15,19 @@ import { VideoComponent } from './shared/components/video/video.component';
 import { ArrowDownComponentComponent } from './shared/style/arrow-down-component/arrow-down-component.component';
 import { AppointmentButtonComponent } from './shared/buttons/appointment-button/appointment-button.component';
 import { AuthInterceptor } from './shared/core/interceptor/auth.interceptor';
-import { NavBarComponent } from './pages/Static pages/Principal/nav-bar/nav-bar.component';
-import { FooterComponent } from './pages/Static pages/Principal/footer/footer.component';
-import { HomeComponent } from './pages/Static pages/Principal/home/home.component';
-import { BrokerageComponent } from './pages/Static pages/Principal/brokerage/brokerage.component';
-import { BusinessContributorComponent } from './pages/Static pages/Principal/business-contributor/business-contributor.component';
-import { ConsultancyComponent } from './pages/Static pages/Principal/consultancy/consultancy.component';
-import { LoginComponent } from './pages/Static pages/Principal/login/login.component';
-import { SimulatorComponent } from './pages/Static pages/Principal/brokerage/components/simulator/simulator.component';
-import { LegalComponent } from './pages/Static pages/Secondary/legal/legal.component';
-import { CorporateComponent } from './pages/Static pages/Secondary/corporate/corporate.component';
-import { ClaimComponent } from './pages/Static pages/Secondary/claim/claim.component';
-import { PartnershipComponent } from './pages/Static pages/Secondary/partnership/partnership.component';
-import { RecruitmentComponent } from './pages/Static pages/Secondary/recruitment/recruitment.component';
+import { NavBarComponent } from './pages/Static_pages/Principal/nav-bar/nav-bar.component';
+import { FooterComponent } from './pages/Static_pages/Principal/footer/footer.component';
+import { HomeComponent } from './pages/Static_pages/Principal/home/home.component';
+import { BrokerageComponent } from './pages/Static_pages/Principal/brokerage/brokerage.component';
+import { BusinessContributorComponent } from './pages/Static_pages/Principal/business-contributor/business-contributor.component';
+import { ConsultancyComponent } from './pages/Static_pages/Principal/consultancy/consultancy.component';
+import { LoginComponent } from './pages/Static_pages/Principal/login/login.component';
+import { SimulatorComponent } from './pages/Static_pages/Principal/brokerage/components/simulator/simulator.component';
+import { LegalComponent } from './pages/Static_pages/Secondary/legal/legal.component';
+import { CorporateComponent } from './pages/Static_pages/Secondary/corporate/corporate.component';
+import { ClaimComponent } from './pages/Static_pages/Secondary/claim/claim.component';
+import { PartnershipComponent } from './pages/Static_pages/Secondary/partnership/partnership.component';
+import { RecruitmentComponent } from './pages/Static_pages/Secondary/recruitment/recruitment.component';
 import { ClientViewComponent } from './pages/LoggedIn Pages/client-related/client-view/client-view.component';
 import { ClientDetailsComponent } from './pages/LoggedIn Pages/client-related/client-details/client-details.component';
 import { ClientProjectsComponent } from './pages/LoggedIn Pages/client-related/client-projects/client-projects.component';
@@ -38,8 +38,7 @@ import { ProjectTypeListComponent } from './pages/LoggedIn Pages/project-related
 import { SettingsComponent } from './pages/LoggedIn Pages/settings/settings.component';
 import { UserTypeListComponent } from './pages/LoggedIn Pages/client-related/user-type-list/user-type-list.component';
 import { ProjectDetailComponent } from './pages/LoggedIn Pages/project-related/project-detail/project-detail.component';
-import { FaqComponent } from './pages/Static pages/Secondary/faq/faq.component';
-import { ExamplesComponent } from './pages/Static pages/Principal/examples/examples.component';
+import { FaqComponent } from './pages/Static_pages/Secondary/faq/faq.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +71,6 @@ import { ExamplesComponent } from './pages/Static pages/Principal/examples/examp
     UserTypeListComponent,
     ProjectDetailComponent,
     FaqComponent,
-    ExamplesComponent
   ],
   imports: [
     BrowserModule,
