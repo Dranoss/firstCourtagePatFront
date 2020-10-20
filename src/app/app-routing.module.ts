@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './pages/Static pages/Principal/home/home.component';
-import { LoginComponent } from './pages/Static pages/Principal/login/login.component';
-import { BrokerageComponent } from './pages/Static pages/Principal/brokerage/brokerage.component';
-import { BusinessContributorComponent } from './pages/Static pages/Principal/business-contributor/business-contributor.component';
-import { ConsultancyComponent } from './pages/Static pages/Principal/consultancy/consultancy.component';
-import { LegalComponent } from './pages/Static pages/Secondary/legal/legal.component';
-import { ClaimComponent } from './pages/Static pages/Secondary/claim/claim.component';
-import { RecruitmentComponent } from './pages/Static pages/Secondary/recruitment/recruitment.component';
-import { PartnershipComponent } from './pages/Static pages/Secondary/partnership/partnership.component';
-import { CorporateComponent } from './pages/Static pages/Secondary/corporate/corporate.component';
+import { HomeComponent } from './pages/Static_pages/Principal/home/home.component';
+import { LoginComponent } from './pages/Static_pages/Principal/login/login.component';
+import { BrokerageComponent } from './pages/Static_pages/Principal/brokerage/brokerage.component';
+import { BusinessContributorComponent } from './pages/Static_pages/Principal/business-contributor/business-contributor.component';
+import { ConsultancyComponent } from './pages/Static_pages/Principal/consultancy/consultancy.component';
+import { LegalComponent } from './pages/Static_pages/Secondary/legal/legal.component';
+import { ClaimComponent } from './pages/Static_pages/Secondary/claim/claim.component';
+import { RecruitmentComponent } from './pages/Static_pages/Secondary/recruitment/recruitment.component';
+import { PartnershipComponent } from './pages/Static_pages/Secondary/partnership/partnership.component';
+import { CorporateComponent } from './pages/Static_pages/Secondary/corporate/corporate.component';
 import { ClientViewComponent } from './pages/LoggedIn Pages/client-related/client-view/client-view.component';
 import { AuthGuard } from './shared/core/guard/auth/auth.guard';
 import { AdminGuard } from './shared/core/guard/admin/admin.guard';
@@ -22,7 +22,7 @@ import { UserTypeListComponent } from './pages/LoggedIn Pages/client-related/use
 import { ProjectTypeListComponent } from './pages/LoggedIn Pages/project-related/project-type-list/project-type-list.component';
 import { ProjectTypeCreationComponent } from './pages/LoggedIn Pages/project-related/project-type-creation/project-type-creation.component';
 import { ProjectDetailComponent } from './pages/LoggedIn Pages/project-related/project-detail/project-detail.component';
-import { FaqComponent } from './pages/Static pages/Secondary/faq/faq.component';
+import { FaqComponent } from './pages/Static_pages/Secondary/faq/faq.component';
 
 
 const routes: Routes = [

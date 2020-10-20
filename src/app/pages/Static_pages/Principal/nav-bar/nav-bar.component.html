@@ -1,0 +1,40 @@
+<nav *ngIf="innerWidth > 500">
+  <div class="account" (click)="navigateDependingOnConnectionStatus()">COMPTE CLIENT</div>
+  <div *ngIf="displayDisconnectButton" class="account deco" (click)="deconnectToken()">DECONNEXION</div>
+  <div class="container">
+    <img class="logo" routerLink="/home" src="assets/img/logo.png" alt="logo">
+    <img class="separator" src="assets/img/Separateur.png" alt="separateur">
+    <div class="menu">
+      <h3 class="menuElement" routerLink="/business-contributor" routerLinkActive="active">APPORTEUR<br>D'AFFAIRES</h3>
+      <h3 class="menuElement" routerLink="/brokerage" routerLinkActive="active">COURTAGE<br>FINANCEMENT</h3>
+      <h3 class="menuElement" routerLink="/consultancy" routerLinkActive="active">CONSEILS<br>FINANCIERS</h3>
+    </div>
+  </div>
+</nav>
+<div *ngIf="innerWidth <= 500" class="mobile-container">
+ <ng-sidebar-container>
+   <ng-sidebar [opened]="opened" class="sidebar-opened">
+     <!-- <button (click)="toggleSideBar()" class="hamburger hamburger--collapse" type="button">
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button> -->
+     <ul class="menu-mobile">
+       <li><a (click)="toggleSideBar()" routerLink="/business-contributor">Apporteur d'Affaires</a></li>
+       <li><a (click)="toggleSideBar()" routerLink="/brokerage">Courtage Financement</a></li>
+       <li><a (click)="toggleSideBar()" routerLink="/consultancy">Conseils Financiers</a></li>
+       <li><a (click)="toggleSideBar()" routerLink="/corporate">Notre Société</a></li>
+       <li><a (click)="toggleSideBar()" routerLink="/faq">F.A.Q</a></li>
+     </ul>
+   </ng-sidebar>
+   <div ng-sidebar-content class="sidebar-closed sticky">
+    <button (click)="toggleSideBar()" [ngClass]="opened ? 'hamburger hamburger--collapse is-active' : 'hamburger hamburger--collapse'" type="button">
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+    <h3 class="mobile-menu-title">COURTAGE PATRIMOINE</h3>
+    <img src="/assets/img/favicon32.png" alt="icon">
+   </div>
+ </ng-sidebar-container>
+</div>
