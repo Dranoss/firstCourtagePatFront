@@ -1,4 +1,8 @@
-export class SimulatorData {
+import { Input } from '@angular/core';
+
+export class SimulatorData{
+
+    @Input() windowWidth: number;
 
     netIncome = 0;
     rentIncome = 0;

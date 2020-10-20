@@ -115,3 +115,20 @@ ng-sidebar-container{
   width: 100%;
 }
 
+.mobile-menu-title{
+  font-family: var(--title-font);
+}
+
+.sidebar-closed{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.sidebar-closed button, .sidebar-closed h3{
+  margin-right: 20px;
+}
+
+.sidebar-closed img{
+  width: 30px;
+}

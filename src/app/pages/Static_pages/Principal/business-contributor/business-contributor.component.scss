@@ -115,3 +115,15 @@
   justify-content: center;
 }
 
+.last-of-page{
+  height: 70px;
+  width: 110%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.last-of-page *{
+  width: fit-content;
+}

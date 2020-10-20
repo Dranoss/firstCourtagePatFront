@@ -39,6 +39,7 @@ import { SettingsComponent } from './pages/LoggedIn Pages/settings/settings.comp
 import { UserTypeListComponent } from './pages/LoggedIn Pages/client-related/user-type-list/user-type-list.component';
 import { ProjectDetailComponent } from './pages/LoggedIn Pages/project-related/project-detail/project-detail.component';
 import { FaqComponent } from './pages/Static pages/Secondary/faq/faq.component';
+import { ExamplesComponent } from './pages/Static pages/Principal/examples/examples.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { FaqComponent } from './pages/Static pages/Secondary/faq/faq.component';
     SettingsComponent,
     UserTypeListComponent,
     ProjectDetailComponent,
-    FaqComponent
+    FaqComponent,
+    ExamplesComponent
   ],
   imports: [
     BrowserModule,

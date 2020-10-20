@@ -79,11 +79,6 @@ img{
   height: auto;
 }
 
-.mobile-img{
-  width: 100%;
-  height: auto;
-}
-
 .wrapped-text-right{
   display: flex;
   flex-direction: column;
@@ -233,7 +228,8 @@ button{
   }
 
 .mobile-intro{
-  margin: 70px auto 0 auto;
+  margin-top: 80px ;
+  margin-left: 40px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -248,6 +244,7 @@ button{
 
 .mobile-div{
   display: flex;
+  width: 100%;
    flex-direction: column;
    justify-content: center;
    align-items: center;
@@ -255,12 +252,21 @@ button{
    padding: 5%;
 }
 
+.mobile-img{
+  width: 100%;
+  height: auto;
+}
+
 .aligned{
   display: flex;
+  width: 100%;
   flex-direction: column;
   justify-content: center;
    align-items: center;
    text-align: center;
-  background-color: #E2E3E3;
   padding: 5%;
+}
+
+.grey-background{
+  background-color: #E2E3E3;
 }
