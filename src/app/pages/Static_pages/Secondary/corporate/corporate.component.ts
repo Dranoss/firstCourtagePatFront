@@ -6,12 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./corporate.component.scss']
 })
 export class CorporateComponent implements OnInit {
-
+  innerWidth: number;
   constructor() { }
 
   articleId = 4;
 
   ngOnInit(): void {
+    this.innerWidth = window.innerWidth;
   }
 
   sendActicleId(){

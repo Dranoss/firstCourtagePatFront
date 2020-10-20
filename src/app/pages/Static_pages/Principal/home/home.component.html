@@ -1,1 +1,5 @@
- <div class="back"> </div>
+ <div *ngIf="innerWidth > 500" class="back"> </div>
+ <div *ngIf="innerWidth <= 500">
+   <img class="img1" src="/assets/img/signature.png" alt="signature">
+   <img class="img2" src="/assets/img/background3.png" alt="building">
+ </div>
