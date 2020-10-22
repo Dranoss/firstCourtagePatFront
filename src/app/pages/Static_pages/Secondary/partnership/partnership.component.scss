@@ -1,3 +1,4 @@
+@media screen and (min-width: 501px) {
 div{
   height: 50%;
   width: 100%;
@@ -21,4 +22,28 @@ hr.solid {
 }
 img{
   width: 50%;
+}
+}
+
+@media screen and (max-width: 500px) {
+  h3{
+    text-align: center;
+    margin-top: 70px;
+  }
+  hr.solid {
+    border: 1px solid var(--text-color);
+    width: 15%;
+    margin : 2vw auto;
+  }
+
+  .img-container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  img{
+    width: 100%;
+  }
 }

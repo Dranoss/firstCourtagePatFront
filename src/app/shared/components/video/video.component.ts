@@ -7,9 +7,11 @@ import { Component, OnInit, Input} from '@angular/core';
 })
 export class VideoComponent implements OnInit {
   @Input() videoCode;
+  innerWidth: number;
   constructor() { }
 
   ngOnInit(): void {
+    this.innerWidth = window.innerWidth;
     this.videoCode = 'fMa4aQ7cRyY';
     const tag = document.createElement('script');
 

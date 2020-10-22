@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./partnership.component.scss']
 })
 export class PartnershipComponent implements OnInit {
-
+  innerWidth: number;
   constructor() { }
 
   ngOnInit(): void {
+    this.innerWidth = window.innerWidth;
   }
 
 }

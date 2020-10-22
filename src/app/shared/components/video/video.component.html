@@ -1,3 +1,6 @@
-<div *ngIf="videoCode" class="video">
+<div *ngIf="videoCode && innerWidth > 500" class="video">
   <youtube-player height="400" width="800" videoId="{{videoCode}}"></youtube-player>
+</div>
+<div *ngIf="videoCode && innerWidth <= 500" class="video">
+  <youtube-player height="200" width="400" videoId="{{videoCode}}"></youtube-player>
 </div>

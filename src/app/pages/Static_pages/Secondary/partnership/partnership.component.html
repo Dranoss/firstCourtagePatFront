@@ -1,5 +1,16 @@
-<h3>NOS PARTENAIRES :</h3>
-<hr class="solid">
-<div class="img-container">
-  <img src="../../../../../assets/img/partners.png" alt="image partenaires">
+<div *ngIf="innerWidth > 500">
+  <h3>NOS PARTENAIRES :</h3>
+  <hr class="solid">
+  <div class="img-container">
+    <img src="/assets/img/partners.png" alt="image partenaires">
+  </div>
+</div>
+
+
+<div *ngIf="innerWidth <= 500">
+  <h3>NOS PARTENAIRES :</h3>
+  <hr class="solid">
+  <div class="img-container">
+    <img src="/assets/img/partners.png" alt="image partenaires">
+  </div>
 </div>

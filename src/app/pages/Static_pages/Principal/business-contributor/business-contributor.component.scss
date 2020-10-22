@@ -127,3 +127,10 @@
 .last-of-page *{
   width: fit-content;
 }
+
+.video-container{
+  width: 110%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
