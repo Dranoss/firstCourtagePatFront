@@ -12,5 +12,4 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {
     this.innerWidth = window.innerWidth;
   }
-
 }
