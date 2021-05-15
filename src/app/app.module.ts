@@ -52,7 +52,6 @@ import { FaqComponent } from './pages/Static_pages/Secondary/faq/faq.component';
     LoginComponent,
     VideoComponent,
     SimulatorComponent,
-    // EditableContentComponent,
     LegalComponent,
     CorporateComponent,
     ClaimComponent,
