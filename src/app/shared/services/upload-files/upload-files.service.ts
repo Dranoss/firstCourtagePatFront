@@ -29,6 +29,6 @@ export class UploadFilesService {
   }
 
   download(document: Document): Observable<any>{
-    return this.http.get(`${this.baseUrl}documents/file/${document.name}`, {responseType: 'blob', observe: 'response'});
+    return this.http.get(`${this.baseUrl}documents/file/${document.id}/${document.name}`, {responseType: 'blob', observe: 'response'});
   }
 }
