@@ -14,29 +14,34 @@ form, table{
 label{
   width: 30%;
 }
-span{
-  color: red;
-}
-input, select{
+input, select, .labelInputFile{
   width: 55%;
   padding: 5px 10px;
   border: 1px solid var(--text-color);
   border-radius: 10px;
+  -ms-box-sizing:content-box;
+  -moz-box-sizing:content-box;
+  box-sizing:content-box;
+  -webkit-box-sizing:content-box;
 }
-.inputFile{
-  border: none;
+
+.documentNotReady img{
+  cursor: not-allowed
 }
-.inputFile::-webkit-file-upload-button {
-  visibility: hidden;
-}
-.inputFile::before {
-  content: 'Fichier';
-  border: 1px solid var(--text-color);
-  border-radius: 10px;
-  padding: 5px 10px;
+
+.labelInputFile{
   cursor: pointer;
-  font-weight: 700;
-  font-size: 10pt;
+  display: flex;
+  justify-content: center;
+  width: 30%;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.upload{
+  margin-right: 1rem;
+}
+.fileInput{
+  display: none
 }
 h1{
   text-align: center;
@@ -57,39 +62,6 @@ img{
 }
 
 // BUTTON
-.buttonContainer{
-  width: 100%;
-  margin: auto;
-  display: flex;
-  justify-content: center;
-}
-button{
-  background-color: white;
-  width: 150px;
-  margin: 20px;
-  border: 1px solid var(--text-color);
-  border-radius: 10px;;
-  color: var(--text-color);
-  padding: 5px 20px;
-  cursor: pointer;
-  &:hover{
-    background-color: var(--text-color);
-    color: white;
-  };
-  &:focus{
-    background-color: var(--text-color);
-    color: white;
-  }
-}
-.cancelEdit{
-  border-color: red;
-  color: red;
-  background-color: white;
-  &:hover{
-    color: white;
-    background-color: red;
-  }
-}
 .principal{
   background-color: var(--text-color);
   color: white;
@@ -98,15 +70,12 @@ button{
     color: var(--text-color);
   }
 }
-.goBack{
-  background-color: white;
-  color: grey;
-  border-color: grey;
-  &:hover{
-    background-color: grey;
-    color: white;
-    border-color: grey;
-  }
+.uploadButton{
+  width: fit;
+  height: 100%;
+  margin: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 // PROGRESS BAR
@@ -134,4 +103,10 @@ progress::-webkit-progress-value {
   border-radius: 12px;
   background: var(--text-color);;
   box-shadow: inset 0 -2px 4px rgba(0,0,0,0.4), 0 2px 5px 0px rgba(0,0,0,0.3);
+}
+
+@media screen and (max-width: 700px) {
+  .subContainer, form, table{
+    width: 70%
+  }
 }

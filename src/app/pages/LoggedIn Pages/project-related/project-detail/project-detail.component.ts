@@ -51,7 +51,6 @@ export class ProjectDetailComponent implements OnInit {
   fileInfos: Observable<any>;
 
   userRole;
-  // Display form
   displayForm = false;
 
 
@@ -70,23 +69,28 @@ export class ProjectDetailComponent implements OnInit {
       this.initialiszeUserRole();
     });
   }
+
   initialiszeUserRole(){
     return this.userRole = localStorage.getItem('userRole');
   }
+
   getProjectById(id){
     this.projectService.getProjectById(id).subscribe(data => {
       this.project = data;
       this.projectModel = data;
       this.getProjectStatusById(this.project.projectStatus);
       this.getProjectTypeById(this.project.projectType);
+      console.log(this.project)
     });
   }
+
   getProjectStatusById(id){
     this.projectStatusService.getProjectStatusById(id).subscribe((data) => {
       this.projectStatus = data;
       this.projectModel.projectStatus = data;
     });
   }
+
   getProjectTypeById(id){
     this.projectTypeService.getProjectTypeById(id).subscribe((data) => {
       this.projectType = data;
@@ -97,14 +101,21 @@ export class ProjectDetailComponent implements OnInit {
       this.calculateProgress();
     });
   }
+
   getUserById(id: number){
     this.userService.getUserById(id).subscribe((data) => {
       this.user = data;
     });
   }
+
   toggleDisplayForm(){
     return this.displayForm = ! this.displayForm;
   }
+
+  displayDocumentIcon(document){
+    return document.url ? true : false
+  }
+
   calculateProgress(){
     return this.progress = Math.floor((this.project.projectStatus.ranking / this.project.projectType.projectStatuses.length) * 10000) / 100;
   }
@@ -115,66 +126,74 @@ export class ProjectDetailComponent implements OnInit {
       this.projectTypes = data;
     });
   }
+
   getAllProjectStatuses(){
     this.projectStatusService.getAllProjectStatuses().subscribe(data => {
       this.projectStatuses = data;
     });
   }
+
   selectNewProjectType(id){
     this.newProjectType = this.projectTypes.find(x => x.id === +id);
     this.projectModel.projectType = this.newProjectType;
   }
+
   selectNewProjectStatus(id){
     this.newProjectStatus = this.projectStatuses.find(x => x.id === +id);
     this.projectModel.projectStatus = this.newProjectStatus;
   }
+
   onSubmit(){
     this.projectModel.projectStatus = {id: this.projectModel.projectStatus.id};
     this.projectModel.projectType = {id: this.projectModel.projectType.id};
     this.projectModel.user = {id: this.user.id};
     this.projectModel.creationDate = new Date(this.projectModel.creationDate);
     this.projectModel.documents = [];
-    console.log(this.projectModel);
     this.projectService.putProjectById(this.projectModel).subscribe(() => {
       this.getProjectById(this.projectId);
       this.resetForm();
     });
   }
+
   resetForm(){
     this.getProjectById(this.projectId);
     this.toggleDisplayForm();
   }
 
 
-selectFile(event) {
-  this.selectedFiles = event.target.files;
-}
+  selectFile(event, document) {
+    this.selectedFiles = event.target.files;
+    this.upload(document)
+  }
 
-upload(document: Document){
-  this.progress = 0;
-  this.currentFile = this.selectedFiles.item(0);
-  this.uploadService.upload(this.currentFile, document).subscribe(
-    event => {
-      if (event.type === HttpEventType.UploadProgress) {
-        this.progress = Math.round(100 * event.loaded / event.total);
-      } else if (event instanceof HttpResponse) {
-        this.message = event.body.message;
-        this.fileInfos = this.uploadService.getFiles();
-      }
-    },
-    err => {
-      this.progress = 0;
-      this.message = 'Could not upload the file!';
-      this.currentFile = undefined;
-    });
-  this.selectedFiles = undefined;
+  upload(document: Document){
+    this.progress = 0;
+    this.currentFile = this.selectedFiles.item(0);
+    let blob = this.currentFile.slice(0, this.currentFile.size, this.currentFile.type)
+    let newFile = new File([blob], document.name + "_" + document.id.toString(), {type: this.currentFile.type})
+    this.uploadService.upload(newFile, document).subscribe(
+      event => {
+        if (event.type === HttpEventType.UploadProgress) {
+          this.progress = Math.round(100 * event.loaded / event.total);
+        } else if (event instanceof HttpResponse) {
+          this.message = event.body.message;
+          this.fileInfos = this.uploadService.getFiles();
+        }
+      },
+      err => {
+        this.progress = 0;
+        this.message = 'Could not upload the file!';
+        this.currentFile = undefined;
+      });
+    this.selectedFiles = undefined;
   }
 
   downloadFile(document: Document){
     return this.uploadService.download(document).subscribe(data => {
-    const url = window.URL.createObjectURL(data.body);
-    window.open(url);
+      const blob = new Blob([data.body], { type: 'application/pdf' })
+      const url = window.URL.createObjectURL(blob);
+      window.open(url);
     });
-}
+  } 
 }
 
