@@ -8,63 +8,16 @@ h4{
 form{
   width: 50%;
   margin: auto;
-}
-span{
-  color: red;
-}
-.errorMessage{
-  color: red;
-  font-size: smaller;
-}
-.buttonContainer{
-  width: 50%;
-  margin: auto;
-  display: flex;
-}
-button{
-  border: 1px solid var(--text-color);
-  background-color: var(--text-color);
-  color: white;
-  padding: 2px 40px;
-  font-size: 0.9rem;
-  border-radius: 10px;
-  margin: 10px auto 10px auto;
-  cursor: pointer;
-  &:hover{
-    background-color: white;
-    color: var(--text-color);
-  }
-}
-.cancelForm{
-  background-color: white;
-  color: red;
-  border: 1px solid red;
-  &:hover{
-    background-color: red;
-    color: white;
-  }
-}
-.goBack{
-  background-color: white;
-  color: grey;
-  border-color: grey;
-  &:hover{
-    background-color: grey;
-    color: white;
-    border-color: grey;
-  }
-  &:focus{
-    background-color: white;
-    color: grey;
-    border-color: grey;
-  }
+  font-size: 1.5vw;
 }
 .deleteDocAndStatus{
-  padding: 5px 10px;
+  padding: 0px 10px;
   margin: 0;
+  text-align: center;
 }
 table{
   width: 100%;
+  font-size: 1.3vw;
 }
 th, td{
   text-align: left;
@@ -73,24 +26,58 @@ tr{
   width: 100%;
 }
 .tableRow{
-  width: 20%;
+  width: 25%;
 }
 .tableInput{
   width: 45%;
 
 }
-.tableButton, .projectStatusRanking{
+.projectStatusRanking{
+  width: 10%;
+  text-align: center;
+}
+.tableButton{ 
   width: 10%;
 }
+.buttonContainer{
+  flex-direction: row;
+}
 input{
-  width: 90%;
+  width: 30vw;
   border: 1px solid var(--text-color);
   border-radius: 10px;
   padding: 5px 10px;
+  font-size: 1.3vw;
 }
 .ranking{
   width: 30%;
 }
 img{
   width: 25px;
+}
+
+@media screen and (max-width: 850px) {
+  h3{
+    font-size: 4vw;
+  }
+  table, form{
+    width: 90%;
+    font-size: 2vw;
+  }
+  input{
+    width: 45vw;
+    font-size: 2vw;
+  }
+}
+@media screen and (max-width: 500px) {
+  h3{
+    font-size: 5vw;
+  }
+  table, form{
+    width: 90%;
+    font-size: 2.5vw;
+  }
+  input{
+    font-size: 2.5vw;
+  }
 }
