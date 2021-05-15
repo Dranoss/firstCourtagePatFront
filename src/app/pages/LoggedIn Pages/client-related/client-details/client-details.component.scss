@@ -40,6 +40,7 @@ input{
 .subcontainer{
   width: 100%;
   display: flex;
+  align-items: center;
   justify-content: center;
 }
 
@@ -53,52 +54,12 @@ input{
   margin: 5px 10px;
   justify-self: baseline;
 }
-span{
-  color: red;
-}
-
-button{
-  border: 1px solid var(--text-color);
-  background-color: var(--text-color);
-  color: white;
-  padding: 2px 40px;
-  font-size: 0.9rem;
-  border-radius: 10px;
-  margin: 10px auto 10px auto;
-  cursor: pointer;
-  &:hover{
-    background-color: white;
-    color: var(--text-color);
-  }
-}
-.cancelEdit{
-  background-color: white;
-  color: red;
-  border: 1px solid red;
-  &:hover{
-    background-color: red;
-    color: white;
-  }
-}
 .editButton{
   margin-top: 0px;
 }
-.errorMessage{
-  color: red;
-  font-size: smaller;
-}
-.goBack{
-  background-color: white;
-  color: grey;
-  border-color: grey;
-  &:hover{
-    background-color: grey;
-    color: white;
-    border-color: grey;
-  }
-  &:focus{
-    background-color: white;
-    color: grey;
-    border-color: grey;
+
+@media screen and (max-width: 850px) {
+  .container{
+    width: 80%
   }
 }

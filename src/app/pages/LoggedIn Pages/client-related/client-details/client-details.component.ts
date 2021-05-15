@@ -90,7 +90,7 @@ export class ClientDetailsComponent implements OnInit {
   resetForm(){
     this.toggleDisplayForms();
     this.getUser(this.userId);
-    this.editedUserAddress = {streetName: '', streetNumber: 0, zipCode: '', cityName: ''};
+    this.editedUserAddress = {streetName: '', zipCode: '', cityName: ''};
     this.editedUserRib = {ownerName: '', bankName: '', ibanNumber: '', bicCode: ''};
     this.editedUser = {lastName: '', firstName: '', role: 'client', email: '', password: '', phoneNumber: '', companyName: '', siretNumber: '', sponsorshipCode: '', userType: null, userAddress: null, userRib: null};
   }
