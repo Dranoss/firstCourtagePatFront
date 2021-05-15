@@ -1,10 +1,10 @@
 <div class="page-wrapper">
 <div class="buttonContainer">
-  <button class="goBack" routerLink="/settings">Retour</button>
+  <button class="previousButton" routerLink="/settings">Retour</button>
 </div>
 <h3 class="logged-title">Types de projets</h3>
 <div class="buttonContainer">
-  <button class="userType" routerLink="/create-project-type">Nouveau</button>
+  <button routerLink="/create-project-type">Nouveau</button>
 </div>
 <div class="container">
   <div class="cardContainer" *ngFor="let projectType of projectTypes">
