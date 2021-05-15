@@ -1,17 +1,17 @@
 <div class="page-wrapper">
 <h4>Retour aux menus précédents</h4>
 <div class="buttonContainer" *ngIf="projectTypes">
-  <button class="goBack" routerLink="/client-projects/{{selectedUserId}}">Projets</button>
-  <button class="goBack" routerLink="/client-list">Liste clients</button>
+  <button class="previousButton" routerLink="/client-projects/{{selectedUserId}}">Projets</button>
+  <button class="previousButton" routerLink="/client-list">Liste clients</button>
 </div>
 
 <h1 *ngIf="selectedUser && !selectedUser.companyName ">M./Mme. {{selectedUser.firstName}} {{selectedUser.lastName.toUpperCase()}}</h1>
 <h1 *ngIf="selectedUser && selectedUser.companyName && selectedUser.companyName!==''">Société {{selectedUser.companyName}}</h1>
-<div class="projectContainer" *ngIf="projectTypes">
-  <button class="principal" *ngFor="let projectType of projectTypes" (click)="selectProjectType(projectType)">{{projectType.name}}</button>
-</div>
 
 <form *ngIf="selectedUser" (ngSubmit)="projectForm.valid && onSubmit()" #projectForm="ngForm">
+  <div class="projectContainer" *ngIf="projectTypes">
+    <button class="projectTypeButton" type="button" *ngFor="let projectType of projectTypes" (click)="selectProjectType(projectType)">{{projectType.name}}</button>
+  </div>
   <div class="formSubcontainer">
     <label for="projectName">Nom projet</label>
     <input type="text" name="projectName" [(ngModel)]="projectModel.name" #projectName="ngModel" required>
@@ -37,7 +37,7 @@
 
   <div class="buttonContainer">
     <button type="submit">Valider</button>
-    <button class="cancelEdit" type="reset">Annuler</button>
+    <button class="redButton" type="reset">Annuler</button>
   </div>
 </form>
 </div>

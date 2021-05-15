@@ -33,14 +33,12 @@ select{
   border-radius: 10px;
   padding: 5px 10px;
 }
-.errorMessage{
-  width: 60%;
-  margin-left: 40%;
-  color: red;
+
+// Overwrite styles.scss class
+.buttonContainer{
+  flex-direction: row;
 }
-span{
-  color: red;
-}
+
 .projectContainer{
   width: 100%;
   display: flex;
@@ -48,35 +46,9 @@ span{
   align-items: center;
 }
 
-button{
-  width: 20%;
-  margin: 20px;
-  border: 1px solid var(--text-color);
-  border-radius: 10px;;
-  padding: 5px 20px;
-  background-color: var(--text-color);
-  color: white;
-  cursor: pointer;
-  &:hover{
-    background-color: white;
-    color: var(--text-color);
-  }
-}
-
-.cancelEdit{
-  border-color: red;
-  color: red;
+.projectTypeButton{
   background-color: white;
-  &:hover{
-    color: white;
-    background-color: red;
-  }
-}
-.principal{
-  background-color: white;
-  height: 3vh;
   color: var(--text-color);
-  width: 10%;
   &:hover{
     background-color: var(--text-color);
     color: white;
@@ -84,20 +56,5 @@ button{
   &:focus{
     background-color: var(--text-color);
     color: white;
-  }
-}
-.goBack{
-  background-color: white;
-  color: grey;
-  border-color: grey;
-  &:hover{
-    background-color: grey;
-    color: white;
-    border-color: grey;
-  }
-  &:focus{
-    background-color: white;
-    color: grey;
-    border-color: grey;
   }
 }
