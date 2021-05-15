@@ -20,7 +20,7 @@ export class CreateClientComponent implements OnInit {
     siretNumber: '',
     companyName: '',
     sponsorshipCode: '',
-    userAddress: {streetNumber: 0, streetName: '', zipCode: '', cityName: ''},
+    userAddress: {streetName: '', zipCode: '', cityName: ''},
     userRib: {ownerName: '', bankName: '', ibanNumber: '', bicCode: ''},
     role: 'client',
     password: '',
