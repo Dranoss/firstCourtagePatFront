@@ -1,45 +1,21 @@
 hr{
   width: 100%;
 }
-
-BUTTONS
-
-// button{
-//   border: 1px solid var(--text-color);
-//   background-color: var(--text-color);
-//   color: white;
-//   padding: 2px 40px;
-//   font-size: 0.9rem;
-//   border-radius: 10px;
-//   margin: 20px;
-//   cursor: pointer;
-//   &:hover{
-//     background-color: white;
-//     color: var(--text-color);
-//   }
-// }
-
-.cancelEdit{
-  border-color: red;
-  color: red;
-  background-color: white;
-  &:hover{
-    color: white;
-    background-color: red;
-
-  }
+h3{
+  font-size: 3vw;
 }
 
 // TABLE
 table{
   width: 70%;
   margin: 50px auto;
+  font-size: 1.3vw;
 }
 tr:nth-child(2n+0){
   background-color: rgb(221, 221, 221);
 }
 img{
-  width: 25px;
+  width: 2vw;
   margin: auto;
   cursor: pointer;
 }
@@ -78,10 +54,36 @@ input{
   border: 1px solid var(--text-color);
   border-radius: 10px;
 }
-span, .errorMessage{
-  color: red;
-  font-size: smaller;
-}
 .top{
   margin-top: 50px;
+}
+.buttonContainer{
+  flex-direction: row;
+}
+
+@media screen and (max-width: 850px) {
+  h3{
+    font-size: 4vw;
+  }
+  table{
+    width: 90%;
+    font-size: 2vw;
+  }
+  .id{
+    text-align: center;
+    text-indent: 0;
+    width: auto
+  }
+}
+@media screen and (max-width: 500px) {
+  h3{
+    font-size: 5vw;
+  }
+  table{
+    width: 90%;
+    font-size: 3vw;
+  }
+  img{
+    width: 3vw
+  }
 }

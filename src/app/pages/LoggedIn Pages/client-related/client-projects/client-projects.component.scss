@@ -13,12 +13,12 @@ h4{
 .cardContainer{
   display: flex;
   flex-wrap: wrap;
-  width: 70%;
+  width: fit-content;
   margin: auto;
   justify-content: center;
 }
 .cardSubContainer{
-  width: 30%;
+  width: fit-content;
   margin: 15px;
   display: flex;
   flex-direction: column;
@@ -62,10 +62,14 @@ h4{
     border-color: red;
   }
 }
+
+.elementCardName{
+  margin-right: 1rem
+}
+
 .subcontainer{
   width: 100%;
   display: flex;
-  justify-content: space-between;
   margin: 2px;
 }
 .title{
@@ -73,4 +77,10 @@ h4{
   color: var(--text-color);
   font-weight: bolder;
   margin-bottom: 10px;
+}
+
+@media screen and (max-width: 700px) {
+  .cardContainer, .cardSubContainer{
+    width: fit-content
+  }
 }

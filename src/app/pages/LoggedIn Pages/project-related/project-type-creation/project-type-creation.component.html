@@ -1,6 +1,6 @@
 <div class="page-wrapper">
 <div class="buttonContainer">
-  <button class="goBack" routerLink="/project-types">Retour</button>
+  <button class="previousButton" routerLink="/project-types">Retour</button>
 </div>
 
 <h1 *ngIf="projectTypeId">Edition type de projets</h1>
@@ -10,7 +10,7 @@
     <table>
       <tbody>
         <tr>
-          <th class="tableRow"><label class="tableElement" for="name">Nom<span>*</span></label></th>
+          <th class="tableRow"><label class="tableElement" for="name">Nom<span class="mandatoryField">*</span></label></th>
           <td class="tableInput">
             <input type="text" name="name" placeholder="Paiement commission" [(ngModel)]="projectTypeModel.name" #projecTypeName="ngModel" required>
             <div *ngIf="projectTypeForm.submitted && projecTypeName.errors?.required" class="errorMessage">Un nom requis.</div>
@@ -31,7 +31,7 @@
             <div *ngIf="projectTypeForm.submitted && documentName.errors?.required" class="errorMessage">Un nom de document requis.</div>
           </td>
           <td class="projectStatusRanking"></td>
-          <td class="tableButton"><button class="deleteDocAndStatus cancelForm" type="button" (click)="deleteDocumentType(document)">-</button></td>
+          <td class="tableButton"><button class="deleteDocAndStatus redButton" type="button" (click)="deleteDocumentType(document)">-</button></td>
         </tr>
       </tbody>
     </table>
@@ -51,7 +51,7 @@
             <div *ngIf="projectTypeForm.submitted && (projectStatusName.errors?.required || projectStatusRanking.errors?.required)" class="errorMessage">Un nom de status et un rang sont requis.</div>
           </td>
           <td class="projectStatusRanking"><input class="ranking"type="number" name="projectRanking{{i}}" placeholder="{{projectStatuses.length}}" [(ngModel)]="status.ranking" #projectStatusRanking="ngModel" required min="0"></td>
-          <td class="tableButton"><button class="deleteDocAndStatus cancelForm" type="button" (click)="deleteProjectStatus(status)">-</button></td>
+          <td class="tableButton"><button class="deleteDocAndStatus redButton" type="button" (click)="deleteProjectStatus(status)">-</button></td>
         </tr>
       </tbody>
     </table>
@@ -61,7 +61,7 @@
   </div>
   <div class="buttonContainer">
     <button type="submit">Valider</button>
-    <button class="cancelForm" (click)="resetForm()" type="reset">Annuler</button>
+    <button class="redButton" (click)="resetForm()" type="reset">Annuler</button>
   </div>
 </form>
 </div>

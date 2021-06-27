@@ -57,11 +57,11 @@ tr:nth-child(2n+0){
   cursor: pointer;
 }
 
-.newClient{
-  background-color: var(--text-color);
-  color: white;
-  &:hover{
+.clientType{
     background-color: white;
     color: var(--text-color);
-  }
+    &:hover{
+      background-color: var(--text-color);
+      color: white;
+    }
 }

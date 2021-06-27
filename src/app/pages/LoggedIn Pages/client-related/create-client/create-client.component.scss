@@ -5,7 +5,14 @@ form{
 }
 .subcontainer{
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  width: fit-content;
+  margin: auto;
+}
+.userType{
+  margin-right: 5px;
+  margin-left: 5px;
 }
 section{
   width: 50%;
@@ -14,6 +21,7 @@ section{
 .formSubcontainer{
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 10px;
 }
 label{
@@ -25,34 +33,27 @@ input{
   border-radius: 10px;
   padding: 5px 10px;
 }
-.errorMessage{
-  width: 60%;
-  margin-left: 40%;
-  color: red;
-}
-span{
-  color: red;
-}
-
-.cancelEdit{
-  border-color: red;
-  color: red;
-  background-color: white;
-  border-radius: 10%;
-  margin-left: 5px;
-  &:hover{
-    color: white;
-    background-color: red;
-
-  }
-}
 .principal{
   background-color: var(--text-color);
   color: white;
-  border-radius: 10%;
   &:hover{
     background-color: white;
     color: var(--text-color);
   }
 }
 
+@media screen and (max-width: 1000px) {
+  form, section{
+    width: 70%
+  }
+}
+@media screen and (max-width: 850px) {
+  form, section{
+    width: 90%
+  }
+}
+@media screen and (max-width: 500px) {
+  form, section{
+    width: 95%
+  }
+}
